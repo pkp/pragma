@@ -1,0 +1,113 @@
+/**
+* @file resources/less/components/header.less
+*
+* Copyright (c) 2014-2018 Simon Fraser University
+* Copyright (c) 2003-2018 John Willinsky
+* Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
+*
+* @brief Stylesheet for journal-wide header
+*
+*/
+
+.main-header {
+	padding: 1vh 0;
+	font-family: @font-family-secondary;
+	font-weight: 300;
+	font-size: 16px;
+	height: 15vh;
+	background-color: #fff;
+}
+
+.main-header ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	text-align: center;
+}
+
+.main-header li {
+	display: inline-block;
+	font-family: @font-family-secondary;
+}
+
+.main-header a {
+	border: 0;
+	box-shadow: none;
+	text-decoration: none;
+}
+
+.main-header__admin {
+	font-size: smaller;
+}
+
+.main-header__admin {
+	display: flex;
+	font-size: smaller;
+	
+	&.locale-enabled {
+		justify-content: space-between;
+	}
+	
+	&.locale-disabled {
+		justify-content: flex-end;
+	}
+}
+
+.main-header__admin ul {
+	text-align: right;
+}
+
+.main-header__admin-link {
+	padding: 0.25em 0.5em;
+	margin-left: 0.5em;
+	color: rgba(0, 0, 0, 0.75);
+}
+
+.main-header__admin-link:hover,
+.main-header__admin-link:focus,
+.main-header__admin-link:active {
+	color: #000;
+}
+
+.main-header__lang-link {
+	color: rgba(0, 0, 0, 0.75);
+}
+
+.main-header__lang-link:hover,
+.main-header__lang-link:focus,
+.main-header__lang-link:active {
+	color: #000;
+}
+
+.language-toggle {
+	text-align: left;
+	border-bottom: 0;
+}
+
+.main-header__logo,
+.main-header__title {
+	display: inline-block;
+	text-align: center;
+	font-size: 1em;
+	letter-spacing: normal;
+	
+	font-family: @font-family-secondary;
+	font-weight: 700;
+	margin: 3.5rem 0 1.5rem 0;
+}
+
+.main-header__nav {
+	display: inline-block;
+}
+
+.main-header__nav-link {
+	padding: 0.25em 0.5em;
+	margin: 0 0.25vw;
+}
+
+.main-header__nav-link:hover,
+.main-header__nav-link:focus,
+.main-header__nav-link:active {
+	color: #fff;
+	background-color: #000;
+}

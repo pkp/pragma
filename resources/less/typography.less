@@ -1,0 +1,124 @@
+/**
+ * @file resources/less/typography.less
+ *
+ * Copyright (c) 2014-2018 Simon Fraser University
+ * Copyright (c) 2003-2018 John Willinsky
+ * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
+ *
+ * @brief most site-wide typography
+ *
+ */
+
+body {
+  font-family: @font-family-secondary;
+  color: #000;
+  font-size: 18px;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: none;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  background-color: @color-background;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: @font-family-secondary;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  margin: 3.5rem 0 1.5rem 0;
+}
+
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
+  text-decoration: none;
+}
+
+p, li, blockquote, cite, dd {
+  font-family: @font-family-primary;
+  line-height: 1.5;
+  margin-bottom: 1.25rem;
+}
+
+dt, address, table {
+  font-family: @font-family-primary;
+  font-size: smaller;
+}
+
+hr {
+  border-top: 2px solid #fff;
+}
+
+table {
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 1rem;
+}
+
+thead {
+  border-bottom: 2px solid #000;
+  text-transform: uppercase;
+}
+
+tr {
+  border-bottom: 1px solid #000;
+}
+
+tr:last-child {
+  border: 0;
+}
+
+td, th {
+  padding: 1.15em 0.25em 1.15em 0;
+}
+
+li {
+  margin-bottom: 0.25em;
+}
+
+blockquote {
+  border-left: 1px solid #000;
+  padding-left: 30px;
+}
+
+cite {
+  display: block;
+  text-align: right;
+}
+
+dt {
+  font-family: @font-family-secondary;
+  font-weight: 400;
+  margin: 30px 0 10px 0;
+}
+
+dt:first-child {
+  margin-top: 0;
+}
+
+code {
+  color: #000;
+  font-size: smaller;
+}
+
+a {
+  color: #000;
+  text-decoration: underline;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  word-wrap: break-word;
+}
+
+a:hover {
+  color: #000;
+  text-decoration: none;
+}
+
+address a {
+  border-bottom: 1px solid #000;
+  box-shadow: none;
+}
+
+address a:hover {
+  color: #000;
+  text-decoration: none;
+  background-color: transparent;
+}

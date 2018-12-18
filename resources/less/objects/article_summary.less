@@ -1,0 +1,66 @@
+/**
+* @file resources/less/objects/article_summary.less
+*
+* Copyright (c) 2014-2018 Simon Fraser University
+* Copyright (c) 2003-2018 John Willinsky
+* Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
+*
+* @brief Stylesheet for article summary inside TOC
+*
+*/
+
+.article {
+	margin-bottom: 5vh;
+}
+
+.article__title {
+	margin: 0 0 0.25em 0;
+	font-family: 'Alegreya', serif;
+	font-weight: 400;
+}
+
+.article__meta {
+	margin-bottom: 0;
+	font-size: smaller;
+	font-family: 'Work Sans', sans-serif;
+}
+
+.article__img {
+	margin: 0 0 2.5vh 0;
+	min-width: 100%;
+}
+
+.article__img img {
+	mix-blend-mode: multiply;
+}
+
+.article__btn-group {
+	list-style: none;
+	padding: 0;
+	margin: 1em 0 0 0;
+	text-align: right;
+}
+
+.article__btn-group li {
+	display: inline-block;
+}
+
+.article__btn {
+	display: inline-block;
+	margin: 0.25em 0 0.25em 0.25em;
+	font-size: smaller;
+	padding: 0.5em 0.75em;
+	box-shadow: none;
+	border-bottom: 0;
+	border: 1px solid #fff;
+	text-decoration: none;
+	color: #fff;
+	font-family: 'Work Sans', sans-serif;
+}
+
+.article__btn:hover,
+.article__btn:focus,
+.article__btn:active {
+	background-color: #fff;
+	color: #000;
+}
