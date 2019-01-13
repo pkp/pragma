@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE locale SYSTEM "../../../../../lib/pkp/dtd/locale.dtd">
+
+<locale name="de_DE" full_name="Deutsch (Deutschland)">
+	
+	<!-- Theme description -->
+	<message key="plugins.themes.pragma.name">Pragma-Theme</message>
+	<message key="plugins.themes.pragma.description">Das Theme für OJS 3</message>
+	
+	<message key="plugins.themes.pragma.more-info">Weitere Informationen</message>
+	<message key="plugins.themes.pragma.issues.recent">Letzte Ausgaben</message>
+	<message key="plugins.themes.pragma.issue.published">Veröffentlicht</message>
+	<message key="plugins.themes.pragma.issue.description">Beschreibung der Ausgabe</message>
+	<message key="plugins.themes.pragma.registration.consent">Zustimmung</message>
+	<message key="plugins.themes.pragma.mainMenu">Hauptmenü</message>
+	<message key="plugins.themes.pragma.language.toggle">Sprache ändern. Aktuell ausgewählte Sprache ist:</message>
+	<message key="plugins.themes.pragma.adminMenu">Administrationsmenü</message>
+	<message key="plugins.themes.pragma.issue.fullIssueLink">Komplette Ausgabe sehen</message>
+	<message key="plugins.themes.pragma.article.biography">Biografie</message>
+	<message key="plugins.themes.pragma.article.figure">Titelbild</message>
+	<message key="plugins.themes.pragma.authors.browse">Nach Autor/in blättern</message>
+	<message key="plugins.themes.pragma.author.details">Autor/innendetails</message>
+	
+</locale>
