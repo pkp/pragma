@@ -17,13 +17,26 @@ import('lib.pkp.classes.plugins.ThemePlugin');
 class PragmaThemePlugin extends ThemePlugin {
 
 	public function init() {
+		/* Additional theme options */
+		// Changing theme primary color
+		$this->addOption('primaryColor', 'colour', array(
+			'label' => 'plugins.themes.pragma.option.primaryColor.label',
+			'description' => 'plugins.themes.pragma.option.primaryColor.description',
+			'default' => '#A8DCDD',
+		));
+
+		$additionalLessVariables = [];
+		if ($this->getOption('primaryColor') !== '#A8DCDD') {
+			$additionalLessVariables[] = '@primary-colour:' . $this->getOption('primaryColor') . ';';
+		}
 
 		// Add navigation menu areas for this theme
 		$this->addMenuArea(array('primary', 'user'));
 
 		// Adding styles (JQuery UI, Bootstrap, Tag-it)
 		$this->addStyle('app-css', 'resources/dist/app.min.css');
-		$this->addStyle('less', 'resources/less/import.less');
+		$this->addStyle('stylesheet', 'resources/less/import.less');
+		$this->modifyStyle('stylesheet', array('addLessVariables' => join($additionalLessVariables)));
 
 		// Fonts
 		$this->addStyle(
