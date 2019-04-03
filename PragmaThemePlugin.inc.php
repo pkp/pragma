@@ -18,7 +18,7 @@ class PragmaThemePlugin extends ThemePlugin {
 
 	public function init() {
 		/* Additional theme options */
-		// Changing theme primary color
+		// Change theme primary color
 		$this->addOption('primaryColor', 'colour', array(
 			'label' => 'plugins.themes.pragma.option.primaryColor.label',
 			'description' => 'plugins.themes.pragma.option.primaryColor.description',
@@ -28,6 +28,16 @@ class PragmaThemePlugin extends ThemePlugin {
 		$additionalLessVariables = [];
 		if ($this->getOption('primaryColor') !== '#A8DCDD') {
 			$additionalLessVariables[] = '@primary-colour:' . $this->getOption('primaryColor') . ';';
+			$additionalLessVariables[] = '@secondary-colour: darken(@primary-colour, 50%);';
+		}
+
+		// Update contrast colour based on primary colour
+		if ($this->isColourDark($this->getOption('primaryColor'))) {
+			$additionalLessVariables[] = '
+				@contrast-colour: rgba(255, 255, 255, 0.85);
+				@secondary-contrast-colour: rgba(255, 255, 255, 0.65);
+				@tertiary-contrast-colour: rgba(255, 255, 255, 0.45);
+			';
 		}
 
 		// Add navigation menu areas for this theme
