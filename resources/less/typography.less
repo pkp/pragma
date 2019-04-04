@@ -11,14 +11,14 @@
 
 body {
   font-family: @font-family-secondary;
-  color: #000;
+  color: @contrast-colour;
   font-size: 18px;
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
   -webkit-text-size-adjust: none;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
-  background-color: @color-background;
+  background-color: @primary-colour;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -26,6 +26,7 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
   letter-spacing: -0.025em;
   margin: 3.5rem 0 1.5rem 0;
+  color: @secondary-contrast-colour;
 }
 
 h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
@@ -44,7 +45,7 @@ dt, address, table {
 }
 
 hr {
-  border-top: 2px solid #fff;
+  border-top: 2px solid @tertiary-contrast-colour;
 }
 
 table {
@@ -54,12 +55,12 @@ table {
 }
 
 thead {
-  border-bottom: 2px solid #000;
+  border-bottom: 2px solid @contrast-colour;
   text-transform: uppercase;
 }
 
 tr {
-  border-bottom: 1px solid #000;
+  border-bottom: 1px solid @contrast-colour;
 }
 
 tr:last-child {
@@ -75,7 +76,7 @@ li {
 }
 
 blockquote {
-  border-left: 1px solid #000;
+  border-left: 1px solid @contrast-colour;
   padding-left: 30px;
 }
 
@@ -95,12 +96,12 @@ dt:first-child {
 }
 
 code {
-  color: #000;
+  color: @contrast-colour;
   font-size: smaller;
 }
 
 a {
-  color: #000;
+  color: @contrast-colour;
   text-decoration: underline;
   overflow-wrap: break-word;
   word-break: break-word;
@@ -108,17 +109,17 @@ a {
 }
 
 a:hover {
-  color: #000;
+  color: @contrast-colour;
   text-decoration: none;
 }
 
 address a {
-  border-bottom: 1px solid #000;
+  border-bottom: 1px solid @contrast-colour;
   box-shadow: none;
 }
 
 address a:hover {
-  color: #000;
+  color: @contrast-colour;
   text-decoration: none;
   background-color: transparent;
 }

@@ -15,7 +15,7 @@
 	font-weight: 300;
 	font-size: 16px;
 	height: 15vh;
-	background-color: #fff;
+	background-color: contrast(@contrast-colour);
 }
 
 .main-header ul {
@@ -43,11 +43,11 @@
 .main-header__admin {
 	display: flex;
 	font-size: smaller;
-	
+
 	&.locale-enabled {
 		justify-content: space-between;
 	}
-	
+
 	&.locale-disabled {
 		justify-content: flex-end;
 	}
@@ -60,23 +60,23 @@
 .main-header__admin-link {
 	padding: 0.25em 0.5em;
 	margin-left: 0.5em;
-	color: rgba(0, 0, 0, 0.75);
+	color: @contrast-colour
 }
 
 .main-header__admin-link:hover,
 .main-header__admin-link:focus,
 .main-header__admin-link:active {
-	color: #000;
+	color: @contrast-colour;
 }
 
 .main-header__lang-link {
-	color: rgba(0, 0, 0, 0.75);
+	color: @contrast-colour
 }
 
 .main-header__lang-link:hover,
 .main-header__lang-link:focus,
 .main-header__lang-link:active {
-	color: #000;
+	color: @contrast-colour;
 }
 
 .language-toggle {
@@ -90,7 +90,7 @@
 	text-align: center;
 	font-size: 1em;
 	letter-spacing: normal;
-	
+
 	font-family: @font-family-secondary;
 	font-weight: 700;
 	margin: 3.5rem 0 1.5rem 0;
@@ -108,6 +108,6 @@
 .main-header__nav-link:hover,
 .main-header__nav-link:focus,
 .main-header__nav-link:active {
-	color: #fff;
-	background-color: #000;
+	color: contrast(@contrast-colour);
+	background-color: @contrast-colour;
 }
