@@ -18,7 +18,7 @@
  * @uses $sectionHeading string Tag to use (h2, h3, etc) for section headings
  *}
 
-<div class="container issue__header-wrapper">
+<div class="issue__header-wrapper">
 	<div class="row">
 		<header class="col-sm-6 issue__header">
 			{if $requestedOp === "index"}
@@ -78,23 +78,21 @@
 {foreach name=sections from=$publishedArticles item=section key=sectionNumber}
 	{if $section.articles}
 		<section class="issue-section">
-			<div class="container">
-				{if !$contentTableInserted}
-					<hr/>
-					<h3 class="issue-section__toc-title">Table of contents</h3>
-					{assign var=contentTableInserted value=true}
-				{/if}
-				<header class="issue-section__header">
-					<h3 class="issue-section__title">{$section.title|escape}</h3>
-				</header>
-				<ol class="issue-section__toc">
-					{foreach from=$section.articles item=article}
-						<li class="issue-section__toc-item">
-							{include file="frontend/objects/article_summary.tpl"}
-						</li>
-					{/foreach}
-				</ol>
-			</div>
+			{if !$contentTableInserted}
+				<hr/>
+				<h3 class="issue-section__toc-title">Table of contents</h3>
+				{assign var=contentTableInserted value=true}
+			{/if}
+			<header class="issue-section__header">
+				<h3 class="issue-section__title">{$section.title|escape}</h3>
+			</header>
+			<ol class="issue-section__toc">
+				{foreach from=$section.articles item=article}
+					<li class="issue-section__toc-item">
+						{include file="frontend/objects/article_summary.tpl"}
+					</li>
+				{/foreach}
+			</ol>
 		</section>
 	{/if}
 {/foreach}

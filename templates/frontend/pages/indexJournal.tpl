@@ -22,9 +22,9 @@
 
 {include file="frontend/components/header.tpl" pageTitleTranslated=$currentJournal->getLocalizedName()}
 
-<main>
+<main class="container main__content">
 	{if $journalDescription}
-		<section class="container journal-desc">
+		<section class="journal-desc">
 			<h2 class="journal-desc__title">About this journal</h2>
 			<div class="row">
 				<div class="col-sm-8 journal-desc__content">
@@ -49,7 +49,7 @@
 
 	{* Additional Homepage Content *}
 	{if $additionalHomeContent}
-		<section class="container recent-issues">
+		<section class="recent-issues">
 			<hr/>
 			<div class="row">
 				<div class="col-sm-8">
@@ -60,7 +60,7 @@
 	{/if}
 
 	{if ($recentIssues && !empty($recentIssues))}
-		<section class="container recent-issues">
+		<section class="recent-issues">
 			<hr/>
 			<h2 class="recent-issues__title">{translate key="plugins.themes.pragma.issues.recent"}</h2>
 			<div class="row">
