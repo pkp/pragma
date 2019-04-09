@@ -36,6 +36,7 @@ class PragmaThemePlugin extends ThemePlugin {
 
 		HookRegistry::register ('TemplateManager::display', array($this, 'addSiteWideData'));
 		HookRegistry::register ('TemplateManager::display', array($this, 'addIndexJournalData'));
+		HookRegistry::register ('TemplateManager::display', array($this, 'checkCurrentPage'));
 	}
 
 	/**
@@ -117,5 +118,57 @@ class PragmaThemePlugin extends ThemePlugin {
 		}
 
 		$templateMgr->assign('recentIssues', $recentIssues);
+	}
+
+
+	/**
+	 * @param $hookname string
+	 * @param $args array
+	 */
+	public function checkCurrentPage($hookname, $args) {
+		$templateMgr = $args[0];
+
+		$request = $this->getRequest();
+		$router = $request->getRouter();
+		$handler = $router->getHandler();
+
+		$templateMgr->registerPlugin('function', 'pragma_item_active', array($this, 'isActiveItem'));
+
+	}
+
+	/**
+	 * @param $params array
+	 * @param $smarty Smarty_Internal_Template
+	 * @return string
+	 */
+	public function isActiveItem($params, $smarty) {
+		$navigationMenuItem = $params['item'];
+		$emptyMarker = '';
+		$activeMarker = ' active';
+
+		if (!$navigationMenuItem instanceof NavigationMenuItem && $navigationMenuItem->getIsDisplayed()) return $emptyMarker;
+
+		// Do not add an active marker if it's a dropdown menu
+		if ($navigationMenuItem->getIsChildVisible()) return $emptyMarker;
+
+		// Retrieve URL and its components for a menu item
+		$itemUrl = $navigationMenuItem->getUrl();
+
+		// Get URL of the current page
+		$request = $this->getRequest();
+		$currentUrl = $request->getCompleteUrl();
+
+		// Check whether menu item points to the current page
+		switch ($navigationMenuItem->getType()) {
+			case NMI_TYPE_CURRENT:
+				$issue = $smarty->getTemplateVars('issue');
+				if ($issue && $issue->getCurrent()) return $activeMarker;
+				break;
+			default:
+				if ($currentUrl === $itemUrl) return $activeMarker;
+				break;
+		}
+
+		return $emptyMarker;
 	}
 }
