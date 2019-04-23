@@ -4,7 +4,7 @@
 <locale name="es_ES" full_name="Español (España)">
 	
 	<!-- Theme description -->
-	<message key="plugins.themes.pragma.name">Tema Theme</message>
+	<message key="plugins.themes.pragma.name">Tema Pragma</message>
 	<message key="plugins.themes.pragma.description">El tema para OJS 3</message>
 	
 	<message key="plugins.themes.pragma.more-info">Más información</message>
@@ -18,7 +18,7 @@
 	<message key="plugins.themes.pragma.issue.fullIssueLink">Ver el número completo</message>
 	<message key="plugins.themes.pragma.article.biography">Biografía</message>
 	<message key="plugins.themes.pragma.article.figure">Imagen de portada</message>
-	<message key="plugins.themes.pragma.authors.browse">Navegar por autor</message>
-	<message key="plugins.themes.pragma.author.details">Información del autor</message>
+	<message key="plugins.themes.pragma.authors.browse">Navegar por los autores</message>
+	<message key="plugins.themes.pragma.author.details">Información del Autor</message>
 	
 </locale>
