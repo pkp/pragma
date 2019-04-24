@@ -16,18 +16,31 @@
  *}
 {include file="frontend/components/header.tpl" pageTitleTranslated=$issueIdentification}
 
-<main id="pragma_content_main">
+<main class="container main__content">
+	{if $journalDescription}
+		<section class="journal-desc">
+			<h2 class="journal-desc__title">About this journal</h2>
+			<div class="row">
+				<div class="col-sm-8 journal-desc__content">
+					{$journalDescription|strip_unsafe_html}
+				</div>
+			</div>
+			{capture assign="aboutPageUrl"}{url router=$smarty.const.ROUTE_PAGE page="about"}{/capture}
+			<p><a href="{$aboutPageUrl}" class="btn btn-primary">{translate key="plugins.themes.pragma.more-info"}</a>
+			</p>
+		</section>
+	{/if}
 	<section class="issue">
 
-	{* Display a message if no current issue exists *}
-	{if !$issue}
-		{include file="frontend/components/notification.tpl" type="warning" messageKey="current.noCurrentIssueDesc"}
+		{call_hook name="Templates::Index::journal"}
 
-	{* Display an issue with the Table of Contents *}
-	{else}
-		{include file="frontend/objects/issue_toc.tpl"}
-	{/if}
+		{* Latest issue *}
+		{if $issue}
+			{include file="frontend/objects/issue_toc.tpl"}
+		{/if}
+
 	</section>
+
 </main>
 
 {include file="frontend/components/footer.tpl"}
