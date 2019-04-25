@@ -98,7 +98,7 @@
 			{/capture}
 
 			{if !empty(trim($primaryMenu)) || $currentContext}
-			<nav class="navbar navbar-expand-sm main-header__nav">
+			<nav class="navbar navbar-expand-lg main-header__nav">
 				<button class="navbar-toggler mx-auto hamburger" data-target="#main-menu" data-toggle="collapse"
 				        type="button"
 				        aria-label="Menu" aria-controls="navigation">

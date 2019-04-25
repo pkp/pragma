@@ -87,7 +87,6 @@
 .main-header__logo,
 .main-header__title {
 	display: inline-flex;
-	text-align: center;
 	font-size: 1em;
 	letter-spacing: normal;
 
@@ -97,7 +96,7 @@
 }
 
 .main-header__nav {
-	display: inline-block;
+	width: 100%;
 }
 
 .main-header__nav-item {
@@ -113,4 +112,53 @@
 .main-header__nav-link:active {
 	color: contrast(@contrast-colour);
 	background-color: @contrast-colour;
+}
+
+/* Custom hamburger menu */
+.hamburger {
+	font: inherit;
+	display: inline-block;
+	overflow: visible;
+	margin: 0;
+	padding: 10px;
+	cursor: pointer;
+	color: inherit;
+	border: 0;
+	background-color: #fff;
+	border-radius: 0;
+	height: 40px;
+}
+
+.hamburger__wrapper {
+	position: relative;
+	display: inline-block;
+	width: 30px;
+	height: 20px;
+}
+
+.hamburger__icon {
+	background-color: @contrast-colour;
+	top: 2px;
+	position: absolute;
+	width: 30px;
+	height: 2px;
+	display: block;
+	margin-top: -2px;
+
+	&:before {
+		top: 10px;
+	}
+
+	&:after {
+		top: 20px;
+	}
+
+	&:before, &:after {
+		background-color: @contrast-colour;
+		display: block;
+		content: "";
+		position: absolute;
+		width: 30px;
+		height: 2px;
+	}
 }
