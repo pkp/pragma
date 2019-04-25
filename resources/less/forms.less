@@ -39,6 +39,7 @@ option {
 .form-control {
   padding: 1.15em 0.25em 1.15em 0;
   margin-bottom: 3.5em;
+  background-color: transparent;
   border-radius: 0;
   border: 0;
   border-bottom: 1px solid @contrast-colour;
@@ -46,10 +47,12 @@ option {
   font-family: @font-family-secondary;
   font-size: smaller;
   color: @contrast-colour;
-}
 
-.form-control:focus {
-  box-shadow: unset;
+  &:focus, &:active, &:hover {
+    box-shadow: unset;
+    background-color: transparent;
+    border-color: @secondary-colour;
+  }
 }
 
 .custom-radio .custom-control-input:checked~.custom-control-label::before,
@@ -106,4 +109,19 @@ option {
   background-color: @contrast-colour;
   border-color: @contrast-colour;
   color: @primary-colour;
+}
+
+/* Custom autofill styles */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  border-color: @secondary-colour;
+  -webkit-box-shadow: 0 0 0px 1000px contrast(@secondary-contrast-colour) inset;
+  transition: background-color 5000s ease-in-out 0s;
 }
