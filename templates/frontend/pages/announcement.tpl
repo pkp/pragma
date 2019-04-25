@@ -22,16 +22,16 @@
 						<span>{$announcement->getLocalizedTitle()|escape}</span>
 					</h1>
 				</header>
-				<div class="date text-muted small">
+				<p>
 					{$announcement->getDatePosted()|date_format:$dateFormatShort}
-				</div>
-				<div class="description">
+				</p>
+				<section>
 					{if $announcement->getLocalizedDescription()}
 						{$announcement->getLocalizedDescription()|strip_unsafe_html}
 					{else}
 						{$announcement->getLocalizedDescriptionShort()|strip_unsafe_html}
 					{/if}
-				</div>
+				</section>
 			</article><!-- .obj_announcement_full -->
 
 		</div>
