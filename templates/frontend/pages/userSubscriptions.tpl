@@ -17,7 +17,7 @@
  *}
 {include file="frontend/components/header.tpl" pageTitle="user.subscriptions.mySubscriptions"}
 
-<main class="container main__content" id="pragma_content_main">
+<main class="container main__content" id="main">
 	<div class="row">
 		<div class="offset-md-1 col-md-10 offset-lg-2 col-lg-8">
 			<header class="main__header">
@@ -255,7 +255,7 @@
 				</div>
 			{/if}
 		</div>
-	</div><!-- .row -->
-</main><!-- .main__content -->
+	</div>
+</main>
 
 {include file="frontend/components/footer.tpl"}

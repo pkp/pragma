@@ -22,7 +22,7 @@
 
 {include file="frontend/components/header.tpl" pageTitleTranslated=$currentJournal->getLocalizedName()}
 
-<main class="container main__content">
+<main class="container main__content" id="main">
 	{if $journalDescription}
 		<section class="journal-desc">
 			<h2 class="journal-desc__title">About this journal</h2>

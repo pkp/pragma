@@ -23,7 +23,7 @@
 {/capture}
 {include file="frontend/components/header.tpl" pageTitleTranslated=$pageTitle}
 
-<main class="container main__content" id="pragma_content_main">
+<main class="container main__content" id="main">
 	<header class="main__header">
 		<h1 class="main__title">
 			<span>{$pageTitle}</span>

@@ -31,7 +31,7 @@
 
 <div class="cmp_skip_to_content">
 	<a class="sr-only" href="#pragma_content_header">{translate key="navigation.skip.nav"}</a>
-	<a class="sr-only" href="#pragma_content_main">{translate key="navigation.skip.main"}</a>
+	<a class="sr-only" href="#main">{translate key="navigation.skip.main"}</a>
 	<a class="sr-only" href="#pragma_content_footer">{translate key="navigation.skip.footer"}</a>
 </div>
 
