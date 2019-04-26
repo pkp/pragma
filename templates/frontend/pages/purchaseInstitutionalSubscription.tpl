@@ -23,15 +23,15 @@
 			{if $subscriptionId}
 				{assign var="formPath" value="institutional"|to_array:$subscriptionId}
 			{/if}
-			<form class="cmp_form purchase_subscription" method="post" id="subscriptionForm"
+			<form method="post" id="subscriptionForm"
 			      action="{url op="payPurchaseSubscription" path=$formPath}">
 				{csrf}
 
 				{include file="common/formErrors.tpl"}
 
 				<fieldset>
-					<div class="fields">
-						<div class="form-group subscription_type">
+					<div>
+						<div class="form-group">
 							<label for="typeId">
 								{translate key="user.subscriptions.form.typeId"}
 								<span class="required">*</span>
@@ -47,18 +47,18 @@
 						</div>
 
 
-						<div class="form-group subscription_membership">
+						<div class="form-group">
 							<label for="membership">
 								{translate key="user.subscriptions.form.membership"}
 							</label>
 							<input class="form-control" type="text" name="membership" id="membership" value="{$membership|escape}"
 							       aria-describedby="subscriptionMembershipDescription">
 
-							<small class="form-text text-muted" id="subscriptionMembershipDescription">{translate key="user.subscriptions.form.membershipInstructions"}</small>
+							<small id="subscriptionMembershipDescription">{translate key="user.subscriptions.form.membershipInstructions"}</small>
 						</div>
 
 
-						<div class="form-group subscription_institution">
+						<div class="form-group">
 							<label for="institutionName">
 								{translate key="user.subscriptions.form.institutionName"}
 							</label>
@@ -66,7 +66,7 @@
 						</div>
 
 
-						<div class="form-group subscription_address">
+						<div class="form-group">
 							<label for="institutionMailingAddress">
 								{translate key="user.subscriptions.form.institutionMailingAddress"}
 							</label>
@@ -76,33 +76,31 @@
 				</fieldset>
 
 				<fieldset>
-					<div class="fields">
-						<div class="form-group subscription_domain">
+					<div>
+						<div class="form-group">
 							<label for="domain">
 								{translate key="user.subscriptions.form.domain"}
 							</label>
 							<input class="form-control" type="text" name="domain" id="domain" value="{$domain|escape}" aria-describedby="subscriptionDomainDescription">
-							<small class="form-text text-muted" id="subscriptionDomainDescription">{translate key="user.subscriptions.form.domainInstructions"}</small>
+							<small id="subscriptionDomainDescription">{translate key="user.subscriptions.form.domainInstructions"}</small>
 						</div>
 
-						<div class="subscription_ips">
+						<div>
 							<label>
-						<span class="label">
-							{translate key="user.subscriptions.form.ipRange"}
-						</span>
+								{translate key="user.subscriptions.form.ipRange"}
 								<input type="text" name="ipRanges" id="ipRanges" value="{$ipRanges|escape}"
 								       aria-describedby="subscriptionIPDescription">
 							</label>
-							<small class="form-text text-muted" id="subscriptionIPDescription">{translate key="user.subscriptions.form.ipRangeInstructions"}</small>
+							<small id="subscriptionIPDescription">{translate key="user.subscriptions.form.ipRangeInstructions"}</small>
 						</div>
 					</div>
 				</fieldset>
 
-				<div class="form-group form-group-buttons">
+				<div class="form-group">
 					<button class="btn btn-primary" type="submit">
 						{translate key="common.continue"}
 					</button>
-					<a class="cmp_button_link" href="{url page="user" op="subscriptions"}">
+					<a href="{url page="user" op="subscriptions"}">
 						{translate key="common.cancel"}
 					</a>
 				</div>

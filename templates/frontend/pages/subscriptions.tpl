@@ -23,11 +23,11 @@
 
 			<a name="subscriptionTypes"></a>
 			{if !$individualSubscriptionTypes->wasEmpty()}
-				<div class="subscriptions_institutional">
+				<div>
 					<h3>{translate key="about.subscriptions.individual"}</h3>
 					<p>{translate key="subscriptions.individualDescription"}</p>
-					<table class="table">
-						<thead class="thead-dark">
+					<table>
+						<thead>
 							<tr>
 								<th>{translate key="about.subscriptionTypes.name"}</th>
 								<th>{translate key="about.subscriptionTypes.format"}</th>
@@ -39,10 +39,10 @@
 							{iterate from=individualSubscriptionTypes item=subscriptionType}
 								<tr>
 									<td>
-										<div class="subscription_name">
+										<div>
 											{$subscriptionType->getLocalizedName()|escape}
 										</div>
-										<div class="subscription_description">
+										<div>
 											{$subscriptionType->getLocalizedDescription()|strip_unsafe_html}
 										</div>
 									</td>
@@ -57,8 +57,8 @@
 					</table>
 				</div>
 				{if $isUserLoggedIn}
-					<div class="subscriptions_individual_purchase">
-						<a class="action" href="{url page="user" op="purchaseSubscription" path="individual"}">
+					<div>
+						<a class="btn btn-primary" href="{url page="user" op="purchaseSubscription" path="individual"}">
 							{translate key="user.subscriptions.purchaseNewSubscription"}
 						</a>
 					</div>
@@ -68,8 +68,8 @@
 			{if !$institutionalSubscriptionTypes->wasEmpty()}
 				<h3>{translate key="about.subscriptions.institutional"}</h3>
 				<p>{translate key="subscriptions.institutionalDescription"}</p>
-				<table class="table">
-					<thead class="thead-dark">
+				<table>
+					<thead>
 						<tr>
 							<th>{translate key="about.subscriptionTypes.name"}</th>
 							<th>{translate key="about.subscriptionTypes.format"}</th>
@@ -81,10 +81,10 @@
 						{iterate from=institutionalSubscriptionTypes item=subscriptionType}
 							<tr>
 								<td>
-									<div class="subscription_name">
+									<div>
 										{$subscriptionType->getLocalizedName()|escape}
 									</div>
-									<div class="subscription_description">
+									<div>
 										{$subscriptionType->getLocalizedDescription()|strip_unsafe_html}
 									</div>
 								</td>
@@ -98,8 +98,8 @@
 					</tbody>
 				</table>
 				{if $isUserLoggedIn}
-					<div class="subscriptions_institutional_purchase">
-						<a class="action" href="{url page="user" op="purchaseSubscription" path="institutional"}">
+					<div>
+						<a class="btn btn-primary" href="{url page="user" op="purchaseSubscription" path="institutional"}">
 							{translate key="user.subscriptions.purchaseNewSubscription"}
 						</a>
 					</div>

@@ -22,7 +22,7 @@
 		{capture assign="sectionTitle"}{translate key=$sectionTitleKey}{/capture}
 	{/if}
 
-	<a href="{url page=$page op=$op path=$path anchor=$anchor}" class="cmp_edit_link">
+	<a href="{url page=$page op=$op path=$path anchor=$anchor}">
 		{translate key="common.edit"}
 
 		{* Screen readers need more context *}

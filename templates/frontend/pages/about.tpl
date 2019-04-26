@@ -19,7 +19,7 @@
 				<h1 class="main__title">{translate key="about.aboutContext"}</h1>
 				{include file="frontend/components/editLink.tpl" page="management" op="settings" path="context" anchor="masthead" sectionTitleKey="about.aboutContext"}
 			</header>
-			<div class="content-body">
+			<div>
 				{$currentContext->getLocalizedSetting('description')}
 				<hr>
 				{$currentContext->getLocalizedSetting('about')}

@@ -18,12 +18,12 @@
 					<span>{translate key="user.subscriptions.purchaseIndividualSubscription"}</span>
 				</h1>
 			</header>
-			<form class="cmp_form purchase_subscription" method="post" id="subscriptionForm" action="{url op="payPurchaseSubscription" path="individual"|to_array:$subscriptionId}">
+			<form method="post" id="subscriptionForm" action="{url op="payPurchaseSubscription" path="individual"|to_array:$subscriptionId}">
 				{csrf}
 
 				<fieldset>
-					<div class="fields">
-						<div class="subscription_type form-group">
+					<div>
+						<div class="form-group">
 							<label for="typeId">
 								{translate key="user.subscriptions.form.typeId"}
 							</label>
@@ -33,7 +33,7 @@
 								{/foreach}
 							</select>
 						</div>
-						<div class="subscription_membership form-group">
+						<div class="form-group">
 							<label for="membership">
 								{translate key="user.subscriptions.form.membership"}
 							</label>
@@ -42,7 +42,7 @@
 					</div>
 				</fieldset>
 
-				<div class="form-group form-group-buttons">
+				<div class="form-group">
 					<button class="btn btn-primary" type="submit">
 						{translate key="common.save"}
 					</button>

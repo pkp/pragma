@@ -17,9 +17,7 @@
 					<span>{$title|escape}</span>
 				</h2>
 			</header>
-			<div class="page">
-			    {$content}
-			</div>
+			{$content}
 		</div>
 	</div>
 </main>

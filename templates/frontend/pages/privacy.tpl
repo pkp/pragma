@@ -19,7 +19,7 @@
 					<span>{translate key="manager.setup.privacyStatement"}</span>
 				</h1>
 			</header>
-			<div class="content-body">
+			<div>
 				{$currentContext->getLocalizedSetting('privacyStatement')}
 			</div>
 		</div>

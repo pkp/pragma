@@ -66,8 +66,6 @@
 	{$galley->getGalleyLabel()|escape}
 
 	{if $restricted && $purchaseFee && $purchaseCurrency}
-		<span class="purchase_cost">
-			{translate key="reader.purchasePrice" price=$purchaseFee currency=$purchaseCurrency}
-		</span>
+		{translate key="reader.purchasePrice" price=$purchaseFee currency=$purchaseCurrency}
 	{/if}
 </a>

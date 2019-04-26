@@ -21,7 +21,7 @@
 				</h1>
 				{include file="frontend/components/editLink.tpl" page="management" op="settings" path="website" anchor="information" sectionTitleKey="manager.website.information"}
 			</header>
-			<div class="content-body">
+			<div>
 				{$content|strip_unsafe_html}
 			</div>
 		</div>

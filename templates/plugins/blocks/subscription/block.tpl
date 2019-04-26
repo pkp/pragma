@@ -12,9 +12,9 @@
 	{assign var=individualSubscriptionValid value=$individualSubscription->isValid()}
 	{assign var=subscriptionStatus value=$individualSubscription->getStatus()}
 {/if}
-<div class="pkp_block block_subscription col-md-3">
-	<h2 class="title">{translate key="plugins.block.subscription.blockTitle"}</h2>
-	<div class="content">
+<div class="col-md-3">
+	<h2>{translate key="plugins.block.subscription.blockTitle"}</h2>
+	<div>
 		{if $institutionalSubscription}
 			<p>
 				{translate key="plugins.block.subscription.providedBy" institutionName=$institutionalSubscription->getInstitutionName()|escape}
@@ -23,22 +23,22 @@
 				{translate key="plugins.block.subscription.comingFromIP" ip=$userIP|escape}
 			</p>
 		{elseif $individualSubscription}
-			<p class="subscription_name">
+			<p>
 				{$individualSubscription->getSubscriptionTypeName()|escape}
 			</p>
 			{if $individualSubscription->getMembership()}
-				<p class="subscription_membership">({$individualSubscription->getMembership()|escape})</p>
+				<p>({$individualSubscription->getMembership()|escape})</p>
 			{/if}
 			{if $paymentsEnabled && $acceptSubscriptionPayments && $subscriptionStatus == $smarty.const.SUBSCRIPTION_STATUS_AWAITING_ONLINE_PAYMENT}
-				<p class="subscription_disabled">{translate key="subscriptions.status.awaitingOnlinePayment"}</p>
+				<p>{translate key="subscriptions.status.awaitingOnlinePayment"}</p>
 			{elseif $paymentsEnabled && $acceptSubscriptionPayments && $subscriptionStatus == $smarty.const.SUBSCRIPTION_STATUS_AWAITING_MANUAL_PAYMENT}
-				<p class="subscription_disabled">{translate key="subscriptions.status.awaitingManualPayment"}</p>
+				<p>{translate key="subscriptions.status.awaitingManualPayment"}</p>
 			{elseif $individualSubscription->isNonExpiring()}
-				<p class="subscription_active">{translate key="subscriptionTypes.nonExpiring"}</p>
+				<p>{translate key="subscriptionTypes.nonExpiring"}</p>
 			{elseif $individualSubscription->isExpired()}
-				<p class="subscription_disabled">{translate key="user.subscriptions.expired" date=$individualSubscription->getDateEnd()|date_format:$dateFormatShort}</p>
+				<p>{translate key="user.subscriptions.expired" date=$individualSubscription->getDateEnd()|date_format:$dateFormatShort}</p>
 			{else}
-				<p class="subscription_active">{translate key="user.subscriptions.expires" date=$individualSubscription->getDateEnd()|date_format:$dateFormatShort}</p>
+				<p>{translate key="user.subscriptions.expires" date=$individualSubscription->getDateEnd()|date_format:$dateFormatShort}</p>
 			{/if}
 		{elseif !$userLoggedIn}
 			<p>{translate key="plugins.block.subscription.loginToVerifySubscription"}</p>

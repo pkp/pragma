@@ -28,19 +28,17 @@
 				</p>
 			{/if}
 
-			<form class="cmp_form cmp_form login" id="login" method="post" action="{$loginUrl}">
+			<form id="login" method="post" action="{$loginUrl}">
 				{csrf}
 
 				{if $error}
-					<div class="pkp_form_error">
-						{translate key=$error reason=$reason}
-					</div>
+					{translate key=$error reason=$reason}
 				{/if}
 
 				<input type="hidden" name="source" value="{$source|strip_unsafe_html|escape}"/>
 
-				<fieldset class="fields">
-					<div class="form-group username">
+				<fieldset>
+					<div class="form-group">
 						<label for="username">
 							{translate key="user.username"}
 							<span class="required">*</span>
@@ -52,7 +50,7 @@
 						<input class="form-control" type="text" name="username" id="username" value="{$username|escape}" maxlength="32" required>
 					</div>
 
-					<div class="form-group password">
+					<div class="form-group">
 						<label for="password">
 							{translate key="user.password"}
 							<span class="required">*</span>
@@ -67,21 +65,21 @@
 						</a>
 					</div>
 
-					<div class="custom-control custom-checkbox remember__checkbox">
+					<div class="custom-control custom-checkbox">
 						<input class="custom-control-input" type="checkbox" name="remember" id="remember" value="1" checked="$remember">
 						<label class="custom-control-label" for="remember">
 							{translate key="user.login.rememberUsernameAndPassword"}
 						</label>
 					</div>
 
-					<div class="form-group form-group-buttons">
+					<div class="form-group">
 						<button class="btn btn-primary" type="submit">
 							{translate key="user.login"}
 						</button>
 
 						{if !$disableUserReg}
 							{capture assign="registerUrl"}{url page="user" op="register" source=$source}{/capture}
-							<a href="{$registerUrl}" class="register btn btn-secondary">
+							<a href="{$registerUrl}" class="btn btn-secondary">
 								{translate key="user.login.registerNewAccount"}
 							</a>
 						{/if}

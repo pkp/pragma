@@ -21,31 +21,33 @@
 			<p>
 				{translate key="user.login.registrationComplete.instructions"}
 			</p>
-			<ul class="registration_complete_actions">
+			<ul>
 				{if array_intersect(array(ROLE_ID_MANAGER, ROLE_ID_SUB_EDITOR, ROLE_ID_ASSISTANT, ROLE_ID_REVIEWER), (array)$userRoles)}
-					<li class="view_submissions">
+					<li>
 						<a href="{url page="submissions"}">
 							{translate key="user.login.registrationComplete.manageSubmissions"}
 						</a>
 					</li>
 				{/if}
 				{if $currentContext}
-					<li class="new_submission">
+					<li>
 						<a href="{url page="submission" op="wizard"}">
+							{translate key="user.login.registrationComplete.newSubmission"}
 							{translate key="user.login.registrationComplete.newSubmission"}
 						</a>
 					</li>
 				{/if}
-				<li class="edit_profile">
+				<li>
 					<a href="{url router=$smarty.const.ROUTE_PAGE page="user" op="profile"}">
 						{translate key="user.editMyProfile"}
 					</a>
 				</li>
-				<li class="browse">
+				<li>
 					<a href="{url page="index"}">
 						{translate key="user.login.registrationComplete.continueBrowsing"}
 					</a>
 				</li>
+			</ul>
 			</ul>
 		</div>
 	</div>

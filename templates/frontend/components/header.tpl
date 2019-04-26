@@ -29,7 +29,7 @@
 <body class="page_{$requestedPage|escape|default:"index"} op_{$requestedOp|escape|default:"index"}{if $showingLogo} has_site_logo{/if}{if $immersionIndexType} {$immersionIndexType|escape}{/if}"
       dir="{$currentLocaleLangDir|escape|default:"ltr"}">
 
-<div class="cmp_skip_to_content">
+<div>
 	<a class="sr-only" href="#pragma_content_header">{translate key="navigation.skip.nav"}</a>
 	<a class="sr-only" href="#main">{translate key="navigation.skip.main"}</a>
 	<a class="sr-only" href="#pragma_content_footer">{translate key="navigation.skip.footer"}</a>
@@ -69,19 +69,19 @@
 		{/if}
 
 		{if $displayPageHeaderLogo && is_array($displayPageHeaderLogo)}
-			<a href="{$homeUrl}" class="is_img">
+			<a href="{$homeUrl}">
 				<img src="{$publicFilesDir}/{$displayPageHeaderLogo.uploadName|escape:"url"}" width="{$displayPageHeaderLogo.width|escape}" height="{$displayPageHeaderLogo.height|escape}" {if $displayPageHeaderLogo.altText != ''}alt="{$displayPageHeaderLogo.altText|escape}"{else}alt="{translate key="common.pageHeaderLogo.altText"}"{/if} />
 			</a>
 		{elseif $displayPageHeaderTitle && !$displayPageHeaderLogo && is_string($displayPageHeaderTitle)}
-			<a href="{$homeUrl}" class="is_text">
+			<a href="{$homeUrl}">
 				<span>{$displayPageHeaderTitle}</span>
 			</a>
 		{elseif $displayPageHeaderTitle && !$displayPageHeaderLogo && is_array($displayPageHeaderTitle)}
-			<a href="{$homeUrl}" class="is_img">
+			<a href="{$homeUrl}">
 				<img src="{$publicFilesDir}/{$displayPageHeaderTitle.uploadName|escape:"url"}" alt="{$displayPageHeaderTitle.altText|escape}" width="{$displayPageHeaderTitle.width|escape}" height="{$displayPageHeaderTitle.height|escape}" />
 			</a>
 		{else}
-			<a href="{$homeUrl}" class="is_img">
+			<a href="{$homeUrl}">
 				<img src="{$baseUrl}/templates/images/structure/logo.png" alt="{$applicationName|escape}" title="{$applicationName|escape}" width="180" height="90" />
 			</a>
 		{/if}

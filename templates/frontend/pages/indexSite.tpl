@@ -15,7 +15,7 @@
 		<div class="offset-md-1 col-md-10 offset-lg-2 col-lg-8">
 			<header class="main__header">
 				{if $about}
-					<div class="about_site">
+					<div>
 						{$about|strip_unsafe_html|nl2br}
 					</div>
 				{/if}
@@ -24,20 +24,20 @@
 				</h2>
 			</header>
 
-			<div class="content-body">
+			<div>
 				{if !count($journals)}
 					{translate key="site.noJournals"}
 				{else}
-					<ul class="index-site__journals">
+					<ul>
 						{iterate from=journals item=journal}
 							{capture assign="url"}{url journal=$journal->getPath()}{/capture}
 							{assign var="thumb" value=$journal->getLocalizedSetting('journalThumbnail')}
 							{assign var="description" value=$journal->getLocalizedDescription()}
-							<li{if $thumb} class="has_thumb"{/if}>
+							<li>
 								{if $thumb}
-									<div class="thumb">
-										<a class="img-wrapper" href="{$url|escape}">
-											<img class="img-thumbnail" src="{$journalFilesPath}{$journal->getId()}/{$thumb.uploadName|escape:"url"}"{if $thumb.altText} alt="{$thumb.altText|escape}"{/if}>
+									<div>
+										<a href="{$url|escape}">
+											<img src="{$journalFilesPath}{$journal->getId()}/{$thumb.uploadName|escape:"url"}"{if $thumb.altText} alt="{$thumb.altText|escape}"{/if}>
 										</a>
 									</div>
 								{/if}
@@ -48,24 +48,24 @@
 									</a>
 								</h3>
 								{if $description}
-									<div class="description">
+									<div>
 										{$description|nl2br}
 									</div>
 								{/if}
-								<div class="index-site__links">
+								<p>
 									<a class="btn btn-primary"  href="{$url|escape}">
 										{translate key="site.journalView"}
 									</a>
 									<a class="btn btn-secondary" href="{url|escape journal=$journal->getPath() page="issue" op="current"}">
 										{translate key="site.journalCurrent"}
 									</a>
-								</div>
+								</p>
 							</li>
 						{/iterate}
 					</ul>
 
 					{if $journals->getPageCount() > 0}
-						<div class="cmp_pagination">
+						<div>
 							{page_info iterator=$journals}
 							{page_links anchor="journals" name="journals" iterator=$journals}
 						</div>

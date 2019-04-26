@@ -20,7 +20,7 @@
 				</h1>
 			</header>
 
-			<form class="cmp_form register" id="register" method="post" action="{url op="register"}">
+			<form id="register" method="post" action="{url op="register"}">
 				{csrf}
 
 				{if $source}
@@ -33,10 +33,10 @@
 
 				{* When a user is registering with a specific journal *}
 				{if $currentContext}
-					<fieldset class="consent">
+					<fieldset>
 						<legend>{translate key="plugins.themes.immersion.registration.consent"}</legend>
 						{* Require the user to agree to the terms of the privacy policy *}
-						<div class="custom-control custom-checkbox optin optin-privacy">
+						<div class="custom-control custom-checkbox">
 							<input type="checkbox" class="custom-control-input" name="privacyConsent" id="privacyConsent" value="1"{if $privacyConsent} checked="checked"{/if}>
 							{capture assign="privacyUrl"}{url router=$smarty.const.ROUTE_PAGE page="about" op="privacy"}{/capture}
 
@@ -46,7 +46,7 @@
 						</div>
 
 						{* Ask the user to opt into public email notifications *}
-						<div class="custom-control custom-checkbox optin optin-email">
+						<div class="custom-control custom-checkbox">
 							<input type="checkbox" class="custom-control-input" name="emailConsent" id="emailConsent" value="1"{if $emailConsent} checked="checked"{/if}>
 							<label class="custom-control-label" for="emailConsent">
 								{translate key="user.register.form.emailConsent"}
@@ -62,7 +62,7 @@
 						{/if}
 					{/foreach}
 					{if $userCanRegisterReviewer}
-						<fieldset class="reviewer">
+						<fieldset>
 							{if $userCanRegisterReviewer > 1}
 								<legend>
 									{translate key="user.reviewerPrompt"}
@@ -72,7 +72,7 @@
 								{capture assign="checkboxLocaleKey"}user.reviewerPrompt.optin{/capture}
 							{/if}
 
-							<div id="reviewerOptinGroup" class="custom-control custom-checkbox optin">
+							<div id="reviewerOptinGroup" class="custom-control custom-checkbox">
 								{foreach from=$reviewerUserGroups[$contextId] item=userGroup}
 									{if $userGroup->getPermitSelfRegistration()}
 										{assign var="userGroupId" value=$userGroup->getId()}
@@ -85,7 +85,7 @@
 								{/foreach}
 							</div>
 
-							<div id="reviewerInterests" class="reviewer_interests hidden">
+							<div id="reviewerInterests" class="hidden">
 								{*
 								 * This container will be processed by the tag-it jQuery
 								 * plugin. In order for it to work, your theme will need to
@@ -109,7 +109,7 @@
 								<legend>
 									{translate key="user.interests"}
 								</legend>
-								<ul class="interests tag-it" id="tagitInput" data-field-name="interests[]"
+								<ul class="tag-it" id="tagitInput" data-field-name="interests[]"
 								    data-autocomplete-url="{url|escape router=$smarty.const.ROUTE_PAGE page='user' op='getInterests'}">
 									{foreach from=$interests item=interest}
 										<li>{$interest|escape}</li>
@@ -125,14 +125,14 @@
 				{* When a user is registering for no specific journal, allow them to
 				   enter their reviewer interests *}
 				{if !$currentContext}
-					<fieldset class="reviewer_nocontext_interests">
+					<fieldset>
 						<legend>
 							{translate key="user.register.noContextReviewerInterests"}
 						</legend>
-						<div class="fields">
-							<div class="reviewer_nocontext_interests">
+						<div>
+							<div>
 								{* See comment for .tag-it above *}
-								<ul class="interests tag-it" id="tagitInput" data-field-name="interests[]"
+								<ul class="tag-it" id="tagitInput" data-field-name="interests[]"
 								    data-autocomplete-url="{url|escape router=$smarty.const.ROUTE_PAGE page='user' op='getInterests'}">
 									{foreach from=$interests item=interest}
 										<li>{$interest|escape}</li>
@@ -146,7 +146,7 @@
 				{* recaptcha spam blocker *}
 				{if $reCaptchaHtml}
 					<fieldset class="recaptcha_wrapper">
-						<div class="fields">
+						<div>
 							<div class="recaptcha">
 								{$reCaptchaHtml}
 							</div>

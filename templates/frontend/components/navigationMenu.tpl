@@ -14,7 +14,7 @@
  *}
 
 {if $navigationMenu}
-	<ul id="{$id|escape}" class="{$ulClass|escape} pkp_nav_list{if $id==="navigationPrimary"} navbar-nav mx-auto{/if}">
+	<ul id="{$id|escape}"{if $id==="navigationPrimary"} class="navbar-nav mx-auto"{/if}>
 		{foreach key=field item=navigationMenuItemAssignment from=$navigationMenu->menuTree}
 			{if !$navigationMenuItemAssignment->navigationMenuItem->getIsDisplayed()}
 				{continue}
@@ -29,7 +29,7 @@
 			<li class="{$navigationMenuItemAssignment->navigationMenuItem->getType()|lower} main-header__nav-item{if $hasSubmenu} dropdown{/if} {pragma_item_active item=$navigationMenuItemAssignment->navigationMenuItem}">
 				<a class="{if $id === "navigationUser"}main-header__admin-link{elseif $id === "navigationPrimary"}main-header__nav-link{/if}"
 				   href="{$navigationMenuItemAssignment->navigationMenuItem->getUrl()}" {if $hasSubmenu} role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"{/if}>
-					<span class="main-header__nav-text{if $hasSubmenu} dropdown-toggle{/if}">{$navigationMenuItemAssignment->navigationMenuItem->getLocalizedTitle()}</span>
+					<span class="{if $hasSubmenu}dropdown-toggle {/if}main-header__nav-text">{$navigationMenuItemAssignment->navigationMenuItem->getLocalizedTitle()}</span>
 				</a>
 				{if $hasSubmenu}
 					<ul class="dropdown-menu{if $id==="navigationUser"} dropdown-menu-right{/if}">

@@ -15,19 +15,19 @@
 <footer class="main-footer" id="immersion_content_footer">
 	<div class="container">
 		{if $hasSidebar}
-			<div class="sidebar_wrapper row">
+			<div class="row">
 				{call_hook name="Templates::Common::Sidebar"}
 			</div>
 		{/if}
-		<div class="additional-footer-info row">
+		<div class="row">
 			{if $pageFooter}
-				<div class="user-page-footer col-md-6">
+				<div class="col-md-6">
 					{$pageFooter}
 				</div>
 			{/if}
-			<div class="pkpbrand-wrapper col-md-3{if !$pageFooter} offset-md-9{/if}">
+			<div class="col-md-3{if !$pageFooter} offset-md-9{/if}">
 				<a href="{url page="about" op="aboutThisPublishingSystem"}">
-					<img class="footer-brand-image" alt="{translate key="about.aboutThisPublishingSystem"}" src="{$baseUrl}/{$brandImage}">
+					<img alt="{translate key="about.aboutThisPublishingSystem"}" src="{$baseUrl}/{$brandImage}">
 				</a>
 			</div>
 		</div>

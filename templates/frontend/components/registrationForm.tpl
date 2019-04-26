@@ -16,7 +16,7 @@
  * @uses $email string Email input entry if available
  * @uses $username string Username input entry if available
  *}
-<fieldset class="identity">
+<fieldset>
 	<legend>
 		{translate key="user.profile"}
 	</legend>
@@ -69,14 +69,14 @@
 				</span>
 			</label>
 			<select class="form-control" name="country" id="country" required>
-				<option class="choose-country"></option>
+				<option></option>
 				{html_options options=$countries selected=$country}
 			</select>
 		</div>
 	</div>
 </fieldset>
 
-<fieldset class="login">
+<fieldset>
 	<legend>
 		{translate key="user.login"}
 	</legend>
@@ -107,7 +107,7 @@
 			<label for="password">
 				{translate key="user.password"}
 				<span class="required">*</span>
-				<span class="pkp_screen_reader">
+				<span class="sr-only">
 					{translate key="common.required"}
 				</span>
 			</label>

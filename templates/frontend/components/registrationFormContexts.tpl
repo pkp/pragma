@@ -26,22 +26,22 @@
 		<legend>
 			{translate key="user.register.contextsPrompt"}
 		</legend>
-		<div class="fields">
-			<div id="contextOptinGroup" class="context_optin">
+		<div>
+			<div id="contextOptinGroup">
 				<ul class="registration-context">
 					{foreach from=$contexts item=context}
 						{assign var=contextId value=$context->getId()}
 						{assign var=isSelected value=false}
-						<li class="context">
+						<li>
 							{capture assign="contextUrl"}{url router=$smarty.const.ROUTE_PAGE context=$context->getPath()}{/capture}
 							<a href="{$contextUrl|escape}" class="registration-context__name">
 								{$context->getLocalizedName()|escape}
-							</a class="name">
+							</a>
 							<fieldset class="registration-context__roles">
 								<legend>
 									{translate key="user.register.otherContextRoles"}
 								</legend>
-								<div class="custom-control custom-checkbox context-checkbox">
+								<div class="custom-control custom-checkbox">
 									{foreach from=$readerUserGroups[$contextId] item=userGroup}
 										{if $userGroup->getPermitSelfRegistration()}
 											{assign var="userGroupId" value=$userGroup->getId()}
@@ -55,7 +55,7 @@
 										{/if}
 									{/foreach}
 								</div>
-								<div class="custom-control custom-checkbox context-checkbox">
+								<div class="custom-control custom-checkbox">
 									{foreach from=$reviewerUserGroups[$contextId] item=userGroup}
 										{if $userGroup->getPermitSelfRegistration()}
 											{assign var="userGroupId" value=$userGroup->getId()}
@@ -72,7 +72,7 @@
 							</fieldset>
 							{* Require the user to agree to the terms of the context's privacy policy *}
 							{if !$enableSiteWidePrivacyStatement && $context->getSetting('privacyStatement')}
-								<div class="custom-control custom-checkbox context_privacy {if $isSelected}context_privacy_visible{/if}">
+								<div class="custom-control custom-checkbox {if $isSelected}context_privacy_visible{/if}">
 									<input type="checkbox" class="custom-control-input" name="privacyConsent[{$contextId}]" id="privacyConsent[{$contextId}]" value="1"{if $privacyConsent[$contextId]} checked="checked"{/if}>
 									<label for="privacyConsent[{$contextId}]" class="custom-control-label">
 										{capture assign="privacyUrl"}{url router=$smarty.const.ROUTE_PAGE context=$context->getPath() page="about" op="privacy"}{/capture}

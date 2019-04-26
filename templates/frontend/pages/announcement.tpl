@@ -15,8 +15,7 @@
 	<div class="row">
 		<div class="offset-md-1 col-md-10 offset-lg-2 col-lg-8">
 
-			{* Display book details *}
-			<article class="obj_announcement_full">
+			<article>
 				<header class="main__header">
 					<h1 class="main__title">
 						<span>{$announcement->getLocalizedTitle()|escape}</span>
@@ -25,17 +24,17 @@
 				<p>
 					{$announcement->getDatePosted()|date_format:$dateFormatShort}
 				</p>
-				<section>
+				<div>
 					{if $announcement->getLocalizedDescription()}
 						{$announcement->getLocalizedDescription()|strip_unsafe_html}
 					{else}
 						{$announcement->getLocalizedDescriptionShort()|strip_unsafe_html}
 					{/if}
-				</section>
-			</article><!-- .obj_announcement_full -->
+				</div>
+			</article>
 
 		</div>
-	</div><!-- .row -->
+	</div>
 </main>
 
 {include file="frontend/components/footer.tpl"}

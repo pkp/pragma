@@ -11,23 +11,23 @@
 <html lang="{$currentLocale|replace:"_":"-"}" xml:lang="{$currentLocale|replace:"_":"-"}">
 {capture assign="pageTitleTranslated"}{translate key="article.pageTitle" title=$article->getLocalizedTitle()}{/capture}
 {include file="frontend/components/headerHead.tpl"}
-<body class="pkp_page_{$requestedPage|escape} pkp_op_{$requestedOp|escape}">
+<body class="pkp_op_{$requestedOp|escape}">
 
 	{* Header wrapper *}
 	<header class="main__header html-galley__header">
 
-		<a href="{url page="article" op="view" path=$article->getBestArticleId()}" class="return">
+		<a href="{url page="article" op="view" path=$article->getBestArticleId()}">
 			<span class="sr-only">
 				{translate key="article.return"}
 			</span>
 		</a>
 
-		<a href="{url page="article" op="view" path=$article->getBestArticleId()}" class="title">
+		<a href="{url page="article" op="view" path=$article->getBestArticleId()}">
 			{$article->getLocalizedTitle()|escape}
 		</a>
 	</header>
 
-<div id="htmlContainer" class="galley_view">
+<div id="htmlContainer">
 	<iframe id="htmlGalleyFrame" name="htmlFrame" src="{url page="article" op="download" path=$article->getBestArticleId()|to_array:$galley->getBestGalleyId() inline=true}" allowfullscreen webkitallowfullscreen></iframe>
 </div>
 {call_hook name="Templates::Common::Footer::PageFooter"}

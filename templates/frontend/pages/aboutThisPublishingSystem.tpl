@@ -22,7 +22,7 @@
 				</h1>
 			</header>
 
-			<div class="content-body">
+			<div>
 				<p>
 					{if $currentJournal}
 						{translate key="about.aboutOJSJournal" ojsVersion=$appVersion}

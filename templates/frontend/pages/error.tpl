@@ -18,11 +18,11 @@
 					<span>{translate key=$pageTitle}</span>
 				</h1>
 			</header>
-			<div class="content-body">
+			<div>
 				{translate key=$errorMsg params=$errorParams}
 			</div>
 			{if $backLink}
-				<div class="cmp_back_link">
+				<div>
 					<a href="{$backLink}">{translate key=$backLinkLabel}</a>
 				</div>
 			{/if}

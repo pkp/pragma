@@ -24,7 +24,7 @@
 
 <main class="container main__content" id="main">
 	{if $journalDescription or $announcements}
-	<header class="row index-header">
+	<header class="row">
 		{if $journalDescription}
 			<section class="col-sm-6 journal-desc">
 				<h2 class="metadata">{$displayPageHeaderTitle}</h2>

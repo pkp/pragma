@@ -18,28 +18,26 @@
  *}
 {include file="frontend/components/header.tpl" pageTitle="common.search"}
 
-<div class="container page-search">
-	<div class="page-header">
-		<h1>
-			{if $query}
-				{translate key="plugins.themes.healthSciences.search.resultsFor" query=$query|escape}
-			{elseif $authors}
-				{translate key="plugins.themes.healthSciences.search.resultsFor" query=$authors|escape}
-			{else}
-				{translate key="common.search"}
-			{/if}
-		</h1>
-	</div>
+<div class="container">
+	<h1>
+		{if $query}
+			{translate key="plugins.themes.healthSciences.search.resultsFor" query=$query|escape}
+		{elseif $authors}
+			{translate key="plugins.themes.healthSciences.search.resultsFor" query=$authors|escape}
+		{else}
+			{translate key="common.search"}
+		{/if}
+	</h1>
 	<div class="row justify-content-lg-center">
-		<div class="col-lg-8 search-col-results">
-			<div class="search-results">
+		<div class="col-lg-8">
+			<div>
 
 				{* No results found *}
 				{if $results->wasEmpty()}
 					{if $error}
-						<div class="alert alert-danger" role="alert">{$error|escape}</div>
+						<div role="alert">{$error|escape}</div>
 					{else}
-						<div class="alert alert-info" role="alert">{translate key="search.noResults"}</div>
+						<div role="alert">{translate key="search.noResults"}</div>
 					{/if}
 
 				{* Results pagination *}
@@ -47,47 +45,47 @@
 					{iterate from=results item=result}
 						{include file="frontend/objects/article_summary.tpl" article=$result.publishedArticle journal=$result.journal showDatePublished=true hideGalleys=true}
 					{/iterate}
-					<div class="pagination">
+					<div>
 						{page_info iterator=$results}
 						{page_links anchor="results" iterator=$results name="search" query=$query searchJournal=$searchJournal authors=$authors title=$title abstract=$abstract galleyFullText=$galleyFullText discipline=$discipline subject=$subject type=$type coverage=$coverage indexTerms=$indexTerms dateFromMonth=$dateFromMonth dateFromDay=$dateFromDay dateFromYear=$dateFromYear dateToMonth=$dateToMonth dateToDay=$dateToDay dateToYear=$dateToYear orderBy=$orderBy orderDir=$orderDir}
 					</div>
 				{/if}
 			</div>
 		</div>
-		<div class="col-lg-4 search-col-filters">
-			<div class="search-filters">
+		<div class="col-lg-4">
+			<div>
 				<h2>{translate key="plugins.themes.healthSciences.search.params"}</h2>
-				<form class="form-search" method="post" action="{url op="search"}">
+				<form method="post" action="{url op="search"}">
 					{csrf}
-					<div class="form-group form-group-query">
+					<div class="form-group">
 						<label for="query">
 							{translate key="common.searchQuery"}
 						</label>
 						<input type="text" class="form-control" id="query" name="query" value="{$query|escape}">
 					</div>
-					<div class="form-group form-group-authors">
+					<div class="form-group">
 						<label for="authors">
 							{translate key="search.author"}
 						</label>
 						<input type="text" class="form-control" id="authors" name="authors" value="{$authors|escape}">
 					</div>
-					<div class="form-group form-group-date-from">
+					<div class="form-group">
 						<label for="dateFromYear">
 							{translate key="search.dateFrom"}
 						</label>
-						<div class="form-control-date">
+						<div>
 							{html_select_date class="form-control" prefix="dateFrom" time=$dateFrom start_year=$yearStart end_year=$yearEnd year_empty="" month_empty="" day_empty="" field_order="YMD"}
 						</div>
 					</div>
-					<div class="form-group form-group-date-to">
+					<div class="form-group">
 						<label for="dateToYear">
 							{translate key="search.dateTo"}
 						</label>
-						<div class="form-control-date">
+						<div>
 							{html_select_date class="form-control" prefix="dateTo" time=$dateTo start_year=$yearStart end_year=$yearEnd year_empty="" month_empty="" day_empty="" field_order="YMD"}
 						</div>
 					</div>
-					<div class="form-group form-group-buttons">
+					<div class="form-group">
 						<button class="btn btn-primary" type="submit">{translate key="common.search"}</button>
 					</div>
 				</form>

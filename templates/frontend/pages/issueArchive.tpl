@@ -47,7 +47,7 @@
 			{/foreach}
 
 			{* Pagination *}
-			<div class="issue__pagination col-12">
+			<div class="col-12 issue__pagination">
 				{if $prevPage > 1}
 					{capture assign=prevUrl}{url router=$smarty.const.ROUTE_PAGE page="issue" op="archive" path=$prevPage}{/capture}
 				{elseif $prevPage === 1}

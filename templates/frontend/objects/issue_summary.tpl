@@ -16,24 +16,24 @@
 {assign var=issueCover value=$issue->getLocalizedCoverImageUrl()}
 
 {if $issueCover}
-	<a class="issue-summary__link img-wrapper" href="{url op="view" path=$issue->getBestIssueId()}">
+	<a class="archived-issue__link" href="{url op="view" path=$issue->getBestIssueId()}">
 		<img src="{$issueCover|escape}"{if $issue->getLocalizedCoverImageAltText() != ''} alt="{$issue->getLocalizedCoverImageAltText()|escape}"{/if} class="img-fluid">
 	</a>
 {/if}
 
-<a class="issue-summary__link" href="{url op="view" path=$issue->getBestIssueId()}">
+<a class="archived-issue__link" href="{url op="view" path=$issue->getBestIssueId()}">
 	<h3 class="archived-issue__title">
 		{if $issueTitle}
-			<span>{$issueTitle|escape}</span>
+			{$issueTitle|escape}
 		{else}
-			<span>{$issueSeries|escape}</span>
+			{$issueSeries|escape}
 		{/if}
 	</h3>
 </a>
 {if $issueTitle && $issueSeries}
 	<div class="archived-issue__series">
-		<span>{$issueSeries|escape}</span>
+		{$issueSeries|escape}
 	</div>
 {/if}
 
-<p class="archived-issue__date"><small>{$issue->getDatePublished()|date_format:$dateFormatLong}</small></p>
+<p class="metadata"><small>{$issue->getDatePublished()|date_format:$dateFormatLong}</small></p>

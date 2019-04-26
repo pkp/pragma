@@ -8,9 +8,9 @@
  * Feed plugin navigation sidebar.
  *
  *}
-<div class="pkp_block block_web_feed col-md-3">
+<div class="col-md-3">
 	<h2>{translate key="journal.currentIssue"}</h2>
-	<div class="content">
+	<div>
 		<ul>
 			<li>
 				<a href="{url router=$smarty.const.ROUTE_PAGE page="gateway" op="plugin" path="WebFeedGatewayPlugin"|to_array:"atom"}">
