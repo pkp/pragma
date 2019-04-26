@@ -23,18 +23,37 @@
 {include file="frontend/components/header.tpl" pageTitleTranslated=$currentJournal->getLocalizedName()}
 
 <main class="container main__content" id="main">
-	{if $journalDescription}
-		<section class="journal-desc">
-			<h2 class="journal-desc__title">About this journal</h2>
-			<div class="row">
-				<div class="col-sm-8 journal-desc__content">
-					{$journalDescription|strip_unsafe_html}
-				</div>
-			</div>
-			{capture assign="aboutPageUrl"}{url router=$smarty.const.ROUTE_PAGE page="about"}{/capture}
-			<p><a href="{$aboutPageUrl}" class="btn btn-primary">{translate key="plugins.themes.pragma.more-info"}</a>
-			</p>
-		</section>
+	{if $journalDescription or $announcements}
+	<header class="row index-header">
+		{if $journalDescription}
+			<section class="col-sm-6 journal-desc">
+				<h2 class="issue__meta">{$displayPageHeaderTitle}</h2>
+				<article>
+					<h3 class="journal-desc__title">{translate key="about.aboutContext"}</h3>
+					{$journalDescription|strip_unsafe_html|truncate:450}
+					<p>
+						{capture assign="aboutPageUrl"}{url router=$smarty.const.ROUTE_PAGE page="about"}{/capture}
+						<a href="{$aboutPageUrl}" class="btn btn-primary">{translate key="plugins.themes.pragma.more-info"}</a>
+					</p>
+				</article>
+			</section>
+		{/if}
+		{if $announcements}
+		{* Display only single latest announcement *}
+			<aside class="col-sm-6 announcement-preview">
+				<h2 class="issue__meta">{translate key="announcement.announcements"}</h2>
+				<article>
+					<h3 class="announcement-preview__title">{$announcements[0]->getLocalizedTitle()|escape}</h3>
+					<p class="issue__meta">{$announcements[0]->getDatePosted()|date_format:$dateFormatLong}</p>
+					<p>{$announcements[0]->getLocalizedDescriptionShort()}</p>
+					<p>
+						{capture assign="announcementPageUrl"}{url router=$smarty.const.ROUTE_PAGE page="announcement" op="view" path=$announcements[0]->getId()}{/capture}
+						<a href="{$announcementPageUrl}" class="btn btn-secondary">{translate key="common.more"}</a>
+					</p>
+				</article>
+			</aside>
+		{/if}
+	</header>
 	{/if}
 	<section class="issue">
 

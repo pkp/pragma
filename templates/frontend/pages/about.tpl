@@ -16,12 +16,12 @@
 	<div class="row">
 		<div class="offset-md-1 col-md-10 offset-lg-2 col-lg-8">
 			<header class="main__header">
-				<h1 class="main__title">
-					<span>{translate key="about.aboutContext"}</span>
-				</h1>
+				<h1 class="main__title">{translate key="about.aboutContext"}</h1>
 				{include file="frontend/components/editLink.tpl" page="management" op="settings" path="context" anchor="masthead" sectionTitleKey="about.aboutContext"}
 			</header>
 			<div class="content-body">
+				{$currentContext->getLocalizedSetting('description')}
+				<hr>
 				{$currentContext->getLocalizedSetting('about')}
 			</div>
 		</div>

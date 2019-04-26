@@ -20,7 +20,7 @@
 
 <div class="issue__header-wrapper">
 	<div class="row">
-		<header class="col-sm-6 issue__header">
+		<header class="col-sm-8 issue__header">
 			{if $requestedOp === "index"}
 				<p class="issue__meta">{translate key="journal.currentIssue"}</p>
 			{/if}
@@ -59,18 +59,6 @@
 				{/if}
 			{/strip}
 		</header>
-		{if $requestedPage != "issue" && $announcements}
-			<div class="col-sm-6">
-				<aside class="announcement-preview">
-					<h2 class="issue__meta">{translate key="announcement.announcements"}</h2>
-					<article>
-						<h3 class="announcement-preview__title">{$announcements[0]->getLocalizedTitle()|escape}</h3>
-						<p class="issue__meta">{$announcements[0]->getDatePosted()|date_format:$dateFormatLong}</p>
-						<p>{$announcements[0]->getLocalizedDescriptionShort()}</p>
-					</article>
-				</aside>
-			</div>
-		{/if}
 	</div>
 </div>
 
