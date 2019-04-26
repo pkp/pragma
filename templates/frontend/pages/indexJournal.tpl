@@ -27,7 +27,7 @@
 	<header class="row index-header">
 		{if $journalDescription}
 			<section class="col-sm-6 journal-desc">
-				<h2 class="issue__meta">{$displayPageHeaderTitle}</h2>
+				<h2 class="metadata">{$displayPageHeaderTitle}</h2>
 				<article>
 					<h3 class="journal-desc__title">{translate key="about.aboutContext"}</h3>
 					{$journalDescription|strip_unsafe_html|truncate:450}
@@ -41,10 +41,10 @@
 		{if $announcements}
 		{* Display only single latest announcement *}
 			<aside class="col-sm-6 announcement-preview">
-				<h2 class="issue__meta">{translate key="announcement.announcements"}</h2>
+				<h2 class="metadata">{translate key="announcement.announcements"}</h2>
 				<article>
 					<h3 class="announcement-preview__title">{$announcements[0]->getLocalizedTitle()|escape}</h3>
-					<p class="issue__meta">{$announcements[0]->getDatePosted()|date_format:$dateFormatLong}</p>
+					<p class="metadata">{$announcements[0]->getDatePosted()|date_format:$dateFormatLong}</p>
 					<p>{$announcements[0]->getLocalizedDescriptionShort()}</p>
 					<p>
 						{capture assign="announcementPageUrl"}{url router=$smarty.const.ROUTE_PAGE page="announcement" op="view" path=$announcements[0]->getId()}{/capture}

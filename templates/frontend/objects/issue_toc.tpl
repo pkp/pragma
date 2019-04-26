@@ -22,7 +22,7 @@
 	<div class="row">
 		<header class="col-sm-8 issue__header">
 			{if $requestedOp === "index"}
-				<p class="issue__meta">{translate key="journal.currentIssue"}</p>
+				<p class="metadata">{translate key="journal.currentIssue"}</p>
 			{/if}
 			{strip}
 			<h{if $requestedOp === "issue"}1{else}2{/if} class="issue__title">
@@ -39,7 +39,7 @@
 				{/if}
 				</h1>
 				{if $issue->getDatePublished()}
-					<p class="issue__meta">{translate key="plugins.themes.immersion.issue.published"} {$issue->getDatePublished()|date_format:$dateFormatLong}</p>
+					<p class="metadata">{translate key="plugins.themes.immersion.issue.published"} {$issue->getDatePublished()|date_format:$dateFormatLong}</p>
 				{/if}
 				{if $issue->getLocalizedDescription()}
 					<div class="issue-desc">
