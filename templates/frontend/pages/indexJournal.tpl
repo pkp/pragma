@@ -40,14 +40,14 @@
 		{/if}
 
 		{if $numAnnouncementsHomepage && $announcements|@count}
-		<aside class="col-sm-6 announcement-preview">
+		<aside class="col-sm-6 announcement__content_boxed">
 			<h2 class="metadata">{translate key="announcement.announcements"}</h2>
 			{* Carousel *}
 			<div id="announcementsCarouselControls" class="carousel slide" data-ride="carousel" data-interval="false">
 				<div class="carousel-inner">
 					{foreach name=announcements from=$announcements item=announcement}
 						<article class="carousel-item{if $announcement@first} active{/if}">
-								<h3 class="announcement-preview__title">{$announcement->getLocalizedTitle()|escape}</h3>
+								<h3 class="announcement__title_boxed">{$announcement->getLocalizedTitle()|escape}</h3>
 								<p class="metadata">{$announcement->getDatePosted()|date_format:$dateFormatLong}</p>
 								<p>{$announcement->getLocalizedDescriptionShort()}</p>
 								<p>

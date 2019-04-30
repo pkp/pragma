@@ -17,6 +17,7 @@
 
 			<article>
 				<header class="main__header">
+					<p class="metadata">{translate key="announcement.announcements"}</p>
 					<h1 class="main__title">
 						<span>{$announcement->getLocalizedTitle()|escape}</span>
 					</h1>

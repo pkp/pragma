@@ -27,6 +27,7 @@
 				<article class="announcement">
 					{include file="frontend/objects/announcement_summary.tpl"}
 				</article>
+				{if !$item@last}<hr>{/if}
 			{/foreach}
 		</section>
 	</div>
