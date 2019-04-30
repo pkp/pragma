@@ -12,14 +12,14 @@
  *       sidebars have been configured for thesite.
  *}
 
-<footer class="main-footer" id="immersion_content_footer">
+<footer class="main-footer">
 	<div class="container">
 		{if $hasSidebar}
 			<div class="row">
 				{call_hook name="Templates::Common::Sidebar"}
 			</div>
 		{/if}
-		<div class="row">
+		<div class="row main-footer__block">
 			{if $pageFooter}
 				<div class="col-md-6">
 					{$pageFooter}
