@@ -28,7 +28,7 @@
 	{load_stylesheet context="frontend" stylesheets=$stylesheets}
 	{load_script context="frontend" scripts=$scripts}
 </head>
-<body class="pkp_op_{$requestedOp|escape}">
+<body class="pkp_page_{$requestedPage|escape} pkp_op_{$requestedOp|escape}">
 
 {* Header wrapper *}
 <header class="main__header pdf-galley__header">

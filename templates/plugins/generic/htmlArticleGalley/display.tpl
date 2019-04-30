@@ -11,7 +11,7 @@
 <html lang="{$currentLocale|replace:"_":"-"}" xml:lang="{$currentLocale|replace:"_":"-"}">
 {capture assign="pageTitleTranslated"}{translate key="article.pageTitle" title=$article->getLocalizedTitle()}{/capture}
 {include file="frontend/components/headerHead.tpl"}
-<body class="pkp_op_{$requestedOp|escape}">
+<body class="pkp_page_{$requestedPage|escape} pkp_op_{$requestedOp|escape}">
 
 	{* Header wrapper *}
 	<header class="main__header html-galley__header">
