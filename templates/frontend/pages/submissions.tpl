@@ -44,8 +44,8 @@
 				<div>
 					<h2>
 						{translate key="about.submissionPreparationChecklist"}
-						{include file="frontend/components/editLink.tpl" page="management" op="settings" path="publication" anchor="submissionStage" sectionTitleKey="about.submissionPreparationChecklist"}
 					</h2>
+					{include file="frontend/components/editLink.tpl" page="management" op="settings" path="publication" anchor="submissionStage" sectionTitleKey="about.submissionPreparationChecklist"}
 					{translate key="about.submissionPreparationChecklist.description"}
 					<ul>
 						{foreach from=$submissionChecklist item=checklistItem}
@@ -61,8 +61,8 @@
 				<div id="authorGuidelines">
 					<h2>
 						{translate key="about.authorGuidelines"}
-						{include file="frontend/components/editLink.tpl" page="management" op="settings" path="publication" anchor="submissionStage" sectionTitleKey="about.authorGuidelines"}
 					</h2>
+					{include file="frontend/components/editLink.tpl" page="management" op="settings" path="publication" anchor="submissionStage" sectionTitleKey="about.authorGuidelines"}
 					{$currentContext->getLocalizedSetting('authorGuidelines')}
 				</div>
 			{/if}
@@ -71,8 +71,8 @@
 				<div>
 					<h2>
 						{translate key="about.copyrightNotice"}
-						{include file="frontend/components/editLink.tpl" page="management" op="settings" path="distribution" anchor="permissions" sectionTitleKey="about.copyrightNotice"}
 					</h2>
+					{include file="frontend/components/editLink.tpl" page="management" op="settings" path="distribution" anchor="permissions" sectionTitleKey="about.copyrightNotice"}
 					{$currentContext->getLocalizedSetting('copyrightNotice')}
 				</div>
 			{/if}
@@ -81,8 +81,8 @@
 				<section>
 					<h2>
 						{translate key="about.privacyStatement"}
-						{include file="frontend/components/editLink.tpl" page="management" op="settings" path="publication" anchor="submissionStage" sectionTitleKey="about.privacyStatement"}
 					</h2>
+					{include file="frontend/components/editLink.tpl" page="management" op="settings" path="publication" anchor="submissionStage" sectionTitleKey="about.privacyStatement"}
 					{$currentContext->getLocalizedSetting('privacyStatement')}
 				</section>
 			{/if}
