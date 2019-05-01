@@ -18,11 +18,11 @@
  * @uses $sectionHeading string Tag to use (h2, h3, etc) for section headings
  *}
 
-<div class="container issue__header-wrapper">
+<div class="issue__header-wrapper">
 	<div class="row">
-		<header class="col-sm-6 issue__header">
+		<header class="col-sm-8 issue__header">
 			{if $requestedOp === "index"}
-				<p class="issue__meta">{translate key="journal.currentIssue"}</p>
+				<p class="metadata">{translate key="journal.currentIssue"}</p>
 			{/if}
 			{strip}
 			<h{if $requestedOp === "issue"}1{else}2{/if} class="issue__title">
@@ -35,11 +35,11 @@
 					{/if}
 				{/if}
 				{if $issue->getShowTitle()}
-					<span class="issue__localized_name">{$issue->getLocalizedTitle()|escape}</span>
+					{$issue->getLocalizedTitle()|escape}
 				{/if}
 				</h1>
 				{if $issue->getDatePublished()}
-					<p class="issue__meta">{translate key="plugins.themes.immersion.issue.published"} {$issue->getDatePublished()|date_format:$dateFormatLong}</p>
+					<p class="metadata">{translate key="plugins.themes.immersion.issue.published"} {$issue->getDatePublished()|date_format:$dateFormatLong}</p>
 				{/if}
 				{if $issue->getLocalizedDescription()}
 					<div class="issue-desc">
@@ -48,8 +48,7 @@
 						{if $issueDescription|strlen <= $stringLenght || $requestedPage == 'issue'}
 							{$issueDescription}
 						{else}
-							{$issueDescription|substr:0:$stringLenght|mb_convert_encoding:'UTF-8'|replace:'?':''|trim}
-							<span class="ellipsis">...</span>
+							{$issueDescription|substr:0:$stringLenght|mb_convert_encoding:'UTF-8'|replace:'?':''|trim}…
 							<p>
 								<a class="btn btn-secondary"
 								   href="{url op="view" page="issue" path=$issue->getBestIssueId()}">{translate key="plugins.themes.immersion.issue.fullIssueLink"}</a>
@@ -59,18 +58,6 @@
 				{/if}
 			{/strip}
 		</header>
-		{if $requestedPage != "issue" && $announcements}
-			<div class="col-sm-6">
-				<aside class="announcement-preview">
-					<h2 class="issue__meta">{translate key="announcement.announcements"}</h2>
-					<article>
-						<h3 class="announcement-preview__title">{$announcements[0]->getLocalizedTitle()|escape}</h3>
-						<p class="issue__meta">{$announcements[0]->getDatePosted()|date_format:$dateFormatLong}</p>
-						<p>{$announcements[0]->getLocalizedDescriptionShort()}</p>
-					</article>
-				</aside>
-			</div>
-		{/if}
 	</div>
 </div>
 
@@ -78,23 +65,21 @@
 {foreach name=sections from=$publishedArticles item=section key=sectionNumber}
 	{if $section.articles}
 		<section class="issue-section">
-			<div class="container">
-				{if !$contentTableInserted}
-					<hr/>
-					<h3 class="issue-section__toc-title">Table of contents</h3>
-					{assign var=contentTableInserted value=true}
-				{/if}
-				<header class="issue-section__header">
-					<h3 class="issue-section__title">{$section.title|escape}</h3>
-				</header>
-				<ol class="issue-section__toc">
-					{foreach from=$section.articles item=article}
-						<li class="issue-section__toc-item">
-							{include file="frontend/objects/article_summary.tpl"}
-						</li>
-					{/foreach}
-				</ol>
-			</div>
+			{if !$contentTableInserted}
+				<hr/>
+				<h3 class="issue-section__toc-title">Table of contents</h3>
+				{assign var=contentTableInserted value=true}
+			{/if}
+			<header class="issue-section__header">
+				<h3 class="issue-section__title">{$section.title|escape}</h3>
+			</header>
+			<ol class="issue-section__toc">
+				{foreach from=$section.articles item=article}
+					<li class="issue-section__toc-item">
+						{include file="frontend/objects/article_summary.tpl"}
+					</li>
+				{/foreach}
+			</ol>
 		</section>
 	{/if}
 {/foreach}

@@ -23,7 +23,7 @@
 {/capture}
 {include file="frontend/components/header.tpl" pageTitleTranslated=$pageTitle}
 
-<main class="container main__content" id="pragma_content_main">
+<main class="container main__content" id="main">
 	<header class="main__header">
 		<h1 class="main__title">
 			<span>{$pageTitle}</span>
@@ -47,7 +47,7 @@
 			{/foreach}
 
 			{* Pagination *}
-			<div class="issue__pagination col-12">
+			<div class="col-12 issue__pagination">
 				{if $prevPage > 1}
 					{capture assign=prevUrl}{url router=$smarty.const.ROUTE_PAGE page="issue" op="archive" path=$prevPage}{/capture}
 				{elseif $prevPage === 1}

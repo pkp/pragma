@@ -12,16 +12,16 @@
  *}
 {include file="frontend/components/header.tpl" pageTitle="about.aboutContext"}
 
-<main class="container main__content" id="pragma_content_main">
+<main class="container main__content" id="main">
 	<div class="row">
 		<div class="offset-md-1 col-md-10 offset-lg-2 col-lg-8">
 			<header class="main__header">
-				<h1 class="main__title">
-					<span>{translate key="about.aboutContext"}</span>
-				</h1>
+				<h1 class="main__title">{translate key="about.aboutContext"}</h1>
 				{include file="frontend/components/editLink.tpl" page="management" op="settings" path="context" anchor="masthead" sectionTitleKey="about.aboutContext"}
 			</header>
-			<div class="content-body">
+			<div>
+				{$currentContext->getLocalizedSetting('description')}
+				<hr>
 				{$currentContext->getLocalizedSetting('about')}
 			</div>
 		</div>

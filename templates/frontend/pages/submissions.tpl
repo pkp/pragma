@@ -12,7 +12,7 @@
  *}
 {include file="frontend/components/header.tpl" pageTitle="about.submissions"}
 
-<main class="container main__content" id="pragma_content_main">
+<main class="container main__content" id="main">
 	<div class="row">
 		<div class="offset-md-1 col-md-10 offset-lg-2 col-lg-8">
 			<header class="main__header">
@@ -27,7 +27,7 @@
 					href="{url page="submission" op="wizard"}">{translate key="about.onlineSubmissions.newSubmission"}</a>{/capture}
 				{capture assign="viewSubmissions"}<a
 					href="{url page="submissions"}">{translate key="about.onlineSubmissions.viewSubmissions"}</a>{/capture}
-				<div class="cmp_notification">
+				<div>
 					{translate key="about.onlineSubmissions.submissionActions" newSubmission=$newSubmission viewSubmissions=$viewSubmissions}
 				</div>
 			{else}
@@ -35,17 +35,17 @@
 					href="{url page="login"}">{translate key="about.onlineSubmissions.login"}</a>{/capture}
 				{capture assign="register"}<a
 					href="{url page="user" op="register"}">{translate key="about.onlineSubmissions.register"}</a>{/capture}
-				<div class="cmp_notification">
+				<div>
 					{translate key="about.onlineSubmissions.registrationRequired" login=$login register=$register}
 				</div>
 			{/if}
 
 			{if $submissionChecklist}
-				<div class="submission_checklist">
+				<div>
 					<h2>
 						{translate key="about.submissionPreparationChecklist"}
-						{include file="frontend/components/editLink.tpl" page="management" op="settings" path="publication" anchor="submissionStage" sectionTitleKey="about.submissionPreparationChecklist"}
 					</h2>
+					{include file="frontend/components/editLink.tpl" page="management" op="settings" path="publication" anchor="submissionStage" sectionTitleKey="about.submissionPreparationChecklist"}
 					{translate key="about.submissionPreparationChecklist.description"}
 					<ul>
 						{foreach from=$submissionChecklist item=checklistItem}
@@ -58,36 +58,36 @@
 			{/if}
 
 			{if $currentContext->getLocalizedSetting('authorGuidelines')}
-				<div class="author_guidelines" id="authorGuidelines">
+				<div id="authorGuidelines">
 					<h2>
 						{translate key="about.authorGuidelines"}
-						{include file="frontend/components/editLink.tpl" page="management" op="settings" path="publication" anchor="submissionStage" sectionTitleKey="about.authorGuidelines"}
 					</h2>
+					{include file="frontend/components/editLink.tpl" page="management" op="settings" path="publication" anchor="submissionStage" sectionTitleKey="about.authorGuidelines"}
 					{$currentContext->getLocalizedSetting('authorGuidelines')}
 				</div>
 			{/if}
 
 			{if $currentContext->getLocalizedSetting('copyrightNotice')}
-				<div class="copyright_notice">
+				<div>
 					<h2>
 						{translate key="about.copyrightNotice"}
-						{include file="frontend/components/editLink.tpl" page="management" op="settings" path="distribution" anchor="permissions" sectionTitleKey="about.copyrightNotice"}
 					</h2>
+					{include file="frontend/components/editLink.tpl" page="management" op="settings" path="distribution" anchor="permissions" sectionTitleKey="about.copyrightNotice"}
 					{$currentContext->getLocalizedSetting('copyrightNotice')}
 				</div>
 			{/if}
 
 			{if $currentContext->getLocalizedSetting('privacyStatement')}
-				<div class="privacy_statement">
+				<section>
 					<h2>
 						{translate key="about.privacyStatement"}
-						{include file="frontend/components/editLink.tpl" page="management" op="settings" path="publication" anchor="submissionStage" sectionTitleKey="about.privacyStatement"}
 					</h2>
+					{include file="frontend/components/editLink.tpl" page="management" op="settings" path="publication" anchor="submissionStage" sectionTitleKey="about.privacyStatement"}
 					{$currentContext->getLocalizedSetting('privacyStatement')}
-				</div>
+				</section>
 			{/if}
 		</div>
 	</div> <!-- .row -->
-</main><!-- .main__content -->
+</main>
 
 {include file="frontend/components/footer.tpl"}

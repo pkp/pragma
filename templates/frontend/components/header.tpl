@@ -29,14 +29,13 @@
 <body class="page_{$requestedPage|escape|default:"index"} op_{$requestedOp|escape|default:"index"}{if $showingLogo} has_site_logo{/if}{if $immersionIndexType} {$immersionIndexType|escape}{/if}"
       dir="{$currentLocaleLangDir|escape|default:"ltr"}">
 
-<div class="cmp_skip_to_content">
+<div>
 	<a class="sr-only" href="#pragma_content_header">{translate key="navigation.skip.nav"}</a>
-	<a class="sr-only" href="#pragma_content_main">{translate key="navigation.skip.main"}</a>
+	<a class="sr-only" href="#main">{translate key="navigation.skip.main"}</a>
 	<a class="sr-only" href="#pragma_content_footer">{translate key="navigation.skip.footer"}</a>
 </div>
 
-<header class="main-header"
-        id="pragma_content_header">
+<header class="fixed-top main-header" id="pragma_content_header">
 	<div class="container-fluid">
 		<nav class="main-header__admin{if $localeShow} locale-enabled{else} locale-disabled{/if}">
 
@@ -70,19 +69,19 @@
 		{/if}
 
 		{if $displayPageHeaderLogo && is_array($displayPageHeaderLogo)}
-			<a href="{$homeUrl}" class="is_img">
+			<a href="{$homeUrl}">
 				<img src="{$publicFilesDir}/{$displayPageHeaderLogo.uploadName|escape:"url"}" width="{$displayPageHeaderLogo.width|escape}" height="{$displayPageHeaderLogo.height|escape}" {if $displayPageHeaderLogo.altText != ''}alt="{$displayPageHeaderLogo.altText|escape}"{else}alt="{translate key="common.pageHeaderLogo.altText"}"{/if} />
 			</a>
 		{elseif $displayPageHeaderTitle && !$displayPageHeaderLogo && is_string($displayPageHeaderTitle)}
-			<a href="{$homeUrl}" class="is_text">
+			<a href="{$homeUrl}">
 				<span>{$displayPageHeaderTitle}</span>
 			</a>
 		{elseif $displayPageHeaderTitle && !$displayPageHeaderLogo && is_array($displayPageHeaderTitle)}
-			<a href="{$homeUrl}" class="is_img">
+			<a href="{$homeUrl}">
 				<img src="{$publicFilesDir}/{$displayPageHeaderTitle.uploadName|escape:"url"}" alt="{$displayPageHeaderTitle.altText|escape}" width="{$displayPageHeaderTitle.width|escape}" height="{$displayPageHeaderTitle.height|escape}" />
 			</a>
 		{else}
-			<a href="{$homeUrl}" class="is_img">
+			<a href="{$homeUrl}">
 				<img src="{$baseUrl}/templates/images/structure/logo.png" alt="{$applicationName|escape}" title="{$applicationName|escape}" width="180" height="90" />
 			</a>
 		{/if}
@@ -99,7 +98,7 @@
 			{/capture}
 
 			{if !empty(trim($primaryMenu)) || $currentContext}
-			<nav class="navbar navbar-expand-sm main-header__nav">
+			<nav class="navbar navbar-expand-lg main-header__nav">
 				<button class="navbar-toggler mx-auto hamburger" data-target="#main-menu" data-toggle="collapse"
 				        type="button"
 				        aria-label="Menu" aria-controls="navigation">

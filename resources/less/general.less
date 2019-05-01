@@ -1,11 +1,11 @@
 /**
- * @file resources/less/typography.less
+ * @file resources/less/general.less
  *
  * Copyright (c) 2014-2018 Simon Fraser University
  * Copyright (c) 2003-2018 John Willinsky
  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
  *
- * @brief most site-wide typography
+ * @brief Basic HTML markup styles
  *
  */
 
@@ -25,7 +25,6 @@ h1, h2, h3, h4, h5, h6 {
   font-family: @font-family-secondary;
   font-weight: 700;
   letter-spacing: -0.025em;
-  margin: 3.5rem 0 1.5rem 0;
   color: @secondary-contrast-colour;
 }
 
@@ -33,7 +32,7 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
   text-decoration: none;
 }
 
-p, li, blockquote, cite, dd {
+div, p, li, blockquote, cite, dd {
   font-family: @font-family-primary;
   line-height: 1.5;
   margin-bottom: 1.25rem;
@@ -113,13 +112,12 @@ a:hover {
   text-decoration: none;
 }
 
-address a {
-  border-bottom: 1px solid @contrast-colour;
-  box-shadow: none;
+address a:hover {
+  color: @secondary-colour;
+  text-decoration: none;
 }
 
-address a:hover {
-  color: @contrast-colour;
-  text-decoration: none;
-  background-color: transparent;
+::selection {
+  color: contrast(@contrast-colour);
+  background-color: @secondary-colour;
 }

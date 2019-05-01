@@ -10,7 +10,7 @@
  *}
 {include file="frontend/components/header.tpl"}
 
-<main class="container main__content" id="pragma_content_main">
+<main class="container main__content" id="main">
 	<div class="row">
 		<div class="offset-md-1 col-md-10 offset-lg-2 col-lg-8">
 			<header class="main__header">
@@ -18,11 +18,11 @@
 					<span>{translate key=$pageTitle}</span>
 				</h1>
 			</header>
-			<div class="content-body">
+			<div>
 				{translate key=$errorMsg params=$errorParams}
 			</div>
 			{if $backLink}
-				<div class="cmp_back_link">
+				<div>
 					<a href="{$backLink}">{translate key=$backLinkLabel}</a>
 				</div>
 			{/if}

@@ -8,8 +8,8 @@
  * Sidebar custom block.
  *
  *}
-<div class="pkp_block block_custom col-md-3" id="{$customBlockId|escape}">
-	<div class="content">
+<div class="col-md-3" id="{$customBlockId|escape}">
+	<div>
 		{$customBlockContent}
 	</div>
 </div>

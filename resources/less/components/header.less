@@ -5,7 +5,7 @@
 * Copyright (c) 2003-2018 John Willinsky
 * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
 *
-* @brief Stylesheet for journal-wide header
+* @brief Stylesheet for the page’s main header, <header>
 *
 */
 
@@ -14,7 +14,7 @@
 	font-family: @font-family-secondary;
 	font-weight: 300;
 	font-size: 16px;
-	height: 15vh;
+	height: 125px;
 	background-color: contrast(@contrast-colour);
 }
 
@@ -79,15 +79,9 @@
 	color: @contrast-colour;
 }
 
-.language-toggle {
-	text-align: left;
-	border-bottom: 0;
-}
-
 .main-header__logo,
 .main-header__title {
-	display: inline-block;
-	text-align: center;
+	display: inline-flex;
 	font-size: 1em;
 	letter-spacing: normal;
 
@@ -97,12 +91,15 @@
 }
 
 .main-header__nav {
-	display: inline-block;
+	display: inline-flex;
+}
+
+.main-header__nav-item {
+	margin: 0 0.25vw;
 }
 
 .main-header__nav-link {
 	padding: 0.25em 0.5em;
-	margin: 0 0.25vw;
 }
 
 .main-header__nav-link:hover,
@@ -110,4 +107,53 @@
 .main-header__nav-link:active {
 	color: contrast(@contrast-colour);
 	background-color: @contrast-colour;
+}
+
+/* Custom hamburger menu */
+.hamburger {
+	font: inherit;
+	display: inline-block;
+	overflow: visible;
+	margin: 0;
+	padding: 10px;
+	cursor: pointer;
+	color: inherit;
+	border: 0;
+	background-color: contrast(@contrast-colour);
+	border-radius: 0;
+	height: 40px;
+}
+
+.hamburger__wrapper {
+	position: relative;
+	display: inline-block;
+	width: 30px;
+	height: 20px;
+}
+
+.hamburger__icon {
+	background-color: @contrast-colour;
+	top: 2px;
+	position: absolute;
+	width: 30px;
+	height: 2px;
+	display: block;
+	margin-top: -2px;
+
+	&:before {
+		top: 10px;
+	}
+
+	&:after {
+		top: 20px;
+	}
+
+	&:before, &:after {
+		background-color: @contrast-colour;
+		display: block;
+		content: "";
+		position: absolute;
+		width: 30px;
+		height: 2px;
+	}
 }

@@ -20,7 +20,7 @@
  *}
 {include file="frontend/components/header.tpl" pageTitle="about.contact"}
 
-<main class="container main__content" id="pragma_content_main">
+<main class="container main__content" id="main">
 	<div class="row">
 		<div class="offset-md-1 col-md-10 offset-lg-2 col-lg-8">
 			<header class="main__header">
@@ -31,96 +31,64 @@
 			</header>
 
 			{* Contact section *}
-			<div class="contact_section">
-
-				{if $mailingAddress}
-					<div class="address">
+			{if $mailingAddress}
+				<section>
+					<h2>
+						{translate key="common.mailingAddress"}
+					</h2>
+					<address>
 						{$mailingAddress|nl2br|strip_unsafe_html}
-					</div>
-				{/if}
+					</address>
+				</section>
+			{/if}
 
-				{* Primary contact *}
-				{if $contactTitle || $contactName || $contactAffiliation || $contactPhone || $contactEmail}
-					<div class="contact primary">
-						<h3>
-							{translate key="about.contact.principalContact"}
-						</h3>
-
+			{* Primary contact *}
+			{if $contactTitle || $contactName || $contactAffiliation || $contactPhone || $contactEmail}
+				<section>
+					<h2>
+						{translate key="about.contact.principalContact"}
+					</h2>
+					<address>
 						{if $contactName}
-							<div class="name">
-								{$contactName|escape}
-							</div>
+							<strong>{$contactName|escape}</strong><br>
 						{/if}
-
 						{if $contactTitle}
-							<div class="title">
-								{$contactTitle|escape}
-							</div>
+							{$contactTitle|escape}<br>
 						{/if}
-
 						{if $contactAffiliation}
-							<div class="affiliation">
-								{$contactAffiliation|strip_unsafe_html}
-							</div>
+							{$contactAffiliation|strip_unsafe_html}<br>
 						{/if}
-
 						{if $contactPhone}
-							<div class="phone">
-					<span class="label">
-						{translate key="about.contact.phone"}
-					</span>
-								<span class="value">
-						{$contactPhone|escape}
-					</span>
-							</div>
+							{translate key="about.contact.phone"} <a href="tel:{$contactPhone|escape}">{$contactPhone|escape}</a><br>
 						{/if}
-
 						{if $contactEmail}
-							<div class="email">
-								<a href="mailto:{$contactEmail|escape}">
-									{$contactEmail|escape}
-								</a>
-							</div>
+							{translate key="about.contact.email"} <a href="mailto:{$contactEmail|escape}">{$contactEmail|escape}</a><br>
 						{/if}
-					</div>
-				{/if}
+					</address>
+				</section>
+			{/if}
 
-				{* Technical contact *}
-				{if $supportName || $supportPhone || $supportEmail}
-					<div class="contact support">
-						<h3>
-							{translate key="about.contact.supportContact"}
-						</h3>
-
+			{* Technical contact *}
+			{if $supportName || $supportPhone || $supportEmail}
+				<section>
+					<h2>
+						{translate key="about.contact.supportContact"}
+					</h2>
+					<address>
 						{if $supportName}
-							<div class="name">
-								{$supportName|escape}
-							</div>
+							<strong>{$supportName|escape}</strong><br>
 						{/if}
-
 						{if $supportPhone}
-							<div class="phone">
-								<span class="label">
-									{translate key="about.contact.phone"}
-								</span>
-								<span class="value">
-									{$supportPhone|escape}
-								</span>
-							</div>
+							{translate key="about.contact.phone"} <a href="tel:{$supportPhone|escape}">{$supportPhone|escape}</a><br>
 						{/if}
-
 						{if $supportEmail}
-							<div class="email">
-								<a href="mailto:{$supportEmail|escape}">
-									{$supportEmail|escape}
-								</a>
-							</div>
+							{translate key="about.contact.email"} <a href="mailto:{$supportEmail|escape}">{$supportEmail|escape}</a><br>
 						{/if}
-					</div>
-				{/if}
-			</div>
+					</address>
+				</section>
+			{/if}
 		</div>
-	</div><!-- .row -->
-</main><!-- .main__content -->
+	</div>
+</main>
 
 {include file="frontend/components/footer.tpl"}

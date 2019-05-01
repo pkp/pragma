@@ -10,7 +10,7 @@
  *}
 {include file="frontend/components/header.tpl" pageTitle="user.login.resetPassword"}
 
-<main class="container main__content" id="pragma_content_main">
+<main class="container main__content" id="main">
 	<div class="row">
 		<div class="offset-md-1 col-md-10 offset-lg-2 col-lg-8">
 			<header class="main__header">
@@ -21,17 +21,15 @@
 
 			<p>{translate key="user.login.resetPasswordInstructions"}</p>
 
-			<form class="cmp_form lost_password" id="lostPasswordForm"
+			<form id="lostPasswordForm"
 			      action="{url page="login" op="requestResetPassword"}" method="post">
 				{csrf}
 				{if $error}
-					<div class="pkp_form_error">
-						{translate key=$error}
-					</div>
+					{translate key=$error}
 				{/if}
 
-				<fieldset class="fields">
-					<div class="form-group email">
+				<fieldset>
+					<div class="form-group">
 						<label for="email">
 							{translate key="user.login.registeredEmail"}
 							<span class="required">*</span>
@@ -39,14 +37,14 @@
 						</label>
 						<input class="form-control" type="text" name="email" id="email" value="{$email|escape}" required>
 					</div>
-					<div class="form-group form-group-buttons">
+					<div class="form-group">
 						<button class="btn btn-primary" type="submit">
 							{translate key="user.login.resetPassword"}
 						</button>
 
 						{if !$disableUserReg}
 							{capture assign="registerUrl"}{url page="user" op="register" source=$source}{/capture}
-							<a href="{$registerUrl}" class="register btn btn-secondary">
+							<a href="{$registerUrl}" class="btn btn-secondary">
 								{translate key="user.login.registerNewAccount"}
 							</a>
 						{/if}

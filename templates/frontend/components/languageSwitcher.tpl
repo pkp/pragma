@@ -12,14 +12,14 @@
  * @uses $id string A unique ID for this language toggle
  *}
 
-<ul id="{$id|escape}" class="language-toggle nav nav-tabs">
+<ul id="{$id|escape}" class="nav nav-tabs">
 	<li class="nav-item dropdown">
-		<a class="main-header__lang-link dropdown-toggle" id="languageToggleMenu{$id|escape}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		<a class="dropdown-toggle main-header__lang-link" id="languageToggleMenu{$id|escape}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 			<span class="sr-only">{translate key="plugins.themes.immersion.language.toggle"}</span>
 			{$languageToggleLocales[$currentLocale]|escape}
 		</a>
 
-		<ul class="dropdown-menu dropdown-menu-left" aria-labelledby="languageToggleMenu{$id|escape}">
+		<ul class="dropdown-menu" aria-labelledby="languageToggleMenu{$id|escape}">
 			{foreach from=$languageToggleLocales item=localeName key=localeKey}
 				{if $localeKey !== $currentLocale}
 					<li class="dropdown-item">

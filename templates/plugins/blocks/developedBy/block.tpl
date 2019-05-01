@@ -7,8 +7,8 @@
  *
  * Common site sidebar menu -- "Developed By" block.
  *}
-<div class="pkp_block block_developed_by col-md-3">
-	<div class="content">
+<div class="col-md-3">
+	<div>
 		<a href="http://pkp.sfu.ca/ojs/">
 			{translate key="common.openJournalSystems"}
 		</a>

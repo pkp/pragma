@@ -8,12 +8,12 @@
  * Common site sidebar menu -- language toggle.
  *}
 {if $enableLanguageToggle}
-<div class="pkp_block block_language col-md-3">
-	<h2 class="title">
+<div class="col-md-3">
+	<h2>
 		{translate key="common.language"}
 	</h2>
 
-	<div class="content">
+	<div>
 		<ul>
 			{foreach from=$languageToggleLocales item=localeName key=localeKey}
 				<li class="locale_{$localeKey|escape}{if $localeKey == $currentLocale} current{/if}">
@@ -24,5 +24,5 @@
 			{/foreach}
 		</ul>
 	</div>
-</div><!-- .block_language -->
+</div>
 {/if}

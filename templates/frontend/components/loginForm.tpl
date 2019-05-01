@@ -15,12 +15,12 @@
  * @uses $disableUserReg boolean Can users register for this site?
  *}
 
-<form class="form-login" method="post" action="{$loginUrl}">
+<form method="post" action="{$loginUrl}">
 	{csrf}
 	<input type="hidden" name="source" value="{$source|strip_unsafe_html|escape}"/>
 
 	<fieldset>
-		<div class="form-group form-group-username">
+		<div class="form-group">
 			<label for="usernameModal">
 				{translate key="user.username"}
 				<span class="required" aria-hidden="true">*</span>
@@ -31,7 +31,7 @@
 			<input type="text" class="form-control" name="username" id="usernameModal" value="{$username|escape}"
 			       maxlength="32" required>
 		</div>
-		<div class="form-group form-group-password">
+		<div class="form-group">
 			<label for="passwordModal">
 				{translate key="user.password"}
 				<span class="required" aria-hidden="true">*</span>
@@ -44,8 +44,8 @@
 		</div>
 		<div class="row">
 			<div class="col-md-6">
-				<div class="form-group form-group-forgot">
-					<small class="form-text">
+				<div class="form-group">
+					<small>
 						<a href="{url page="login" op="lostPassword"}">
 							{translate key="user.login.forgotPassword"}
 						</a>
@@ -62,13 +62,13 @@
 				</div>
 			</div>
 		</div>
-		<div class="form-group form-group-buttons">
+		<div class="form-group">
 			<button class="btn btn-primary" type="submit">
 				{translate key="user.login"}
 			</button>
 		</div>
 		{if !$disableUserReg}
-			<div class="form-group form-group-register">
+			<div class="form-group">
 				{translate key="plugins.themes.healthSciences.register.noAccount"}
 				{capture assign=registerUrl}{url page="user" op="register" source=$source}{/capture}
 				<a href="{$registerUrl}">

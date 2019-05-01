@@ -33,7 +33,7 @@
 {* Header wrapper *}
 <header class="main__header pdf-galley__header">
 
-	<div class="pdf-return-article">
+	<div>
 		<a href="{$parentUrl}">
 			←
 			<span class="sr-only">
@@ -46,11 +46,9 @@
 			{$title}
 		</a>
 	</div>
-	<div class="pdf-download-button">
+	<div>
 		<a href="{$pdfUrl}" class="btn btn-primary" download>
-			<span class="label">
 				{translate key="common.download"}
-			</span>
 			<span class="sr-only">
 				{translate key="common.downloadPdf"}
 			</span>
@@ -59,7 +57,7 @@
 
 </header>
 
-<div id="pdfCanvasContainer" class="galley_view">
+<div id="pdfCanvasContainer">
 	<iframe src="{$pluginUrl}/pdf.js/web/viewer.html?file={$pdfUrl|escape:"url"}" width="100%" height="100%" style="min-height: 500px;" allowfullscreen webkitallowfullscreen></iframe>
 </div>
 {call_hook name="Templates::Common::Footer::PageFooter"}
