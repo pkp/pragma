@@ -64,9 +64,9 @@
 {assign var=contentTableInserted value=false}
 {foreach name=sections from=$publishedArticles item=section key=sectionNumber}
 	{if $section.articles}
+		<hr/>
 		<section class="issue-section">
 			{if !$contentTableInserted}
-				<hr/>
 				<h3 class="issue-section__toc-title">Table of contents</h3>
 				{assign var=contentTableInserted value=true}
 			{/if}

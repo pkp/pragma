@@ -85,21 +85,10 @@
 
 	</section>
 
-	{* Additional Homepage Content *}
-	{if $additionalHomeContent}
-		<section class="recent-issues">
-			<hr/>
-			<div class="row">
-				<div class="col-sm-8">
-					{$additionalHomeContent|strip_unsafe_html}
-				</div>
-			</div>
-		</section>
-	{/if}
-
+	{* Recent issues *}
 	{if ($recentIssues && !empty($recentIssues))}
+		<hr/>
 		<section class="recent-issues">
-			<hr/>
 			<h2 class="recent-issues__title">{translate key="plugins.themes.pragma.issues.recent"}</h2>
 			<div class="row">
 				{foreach from=$recentIssues item=recentIssue}
@@ -114,6 +103,18 @@
 		</section>
 	{/if}
 
-</main><!-- .page -->
+	{* Additional Homepage Content *}
+	{if $additionalHomeContent}
+		<hr/>
+		<section class="additional-content">
+			<div class="row">
+				<div class="col-sm-8">
+					{$additionalHomeContent|strip_unsafe_html}
+				</div>
+			</div>
+		</section>
+	{/if}
+
+</main>
 
 {include file="frontend/components/footer.tpl"}
