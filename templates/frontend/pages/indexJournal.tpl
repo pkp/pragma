@@ -89,14 +89,14 @@
 	{if ($recentIssues && !empty($recentIssues))}
 		<hr/>
 		<section class="recent-issues">
-			<h2 class="recent-issues__title">{translate key="plugins.themes.pragma.issues.recent"}</h2>
+			<h3>{translate key="plugins.themes.pragma.issues.recent"}</h3>
 			<div class="row">
 				{foreach from=$recentIssues item=recentIssue}
 					<article class="col-xs-6 col-md-3 recent-issues__item">
-						<h3 class="recent-issues__issue-title">
-							<a href="issue.html">{$recentIssue->getIssueIdentification()}</a>
-						</h3>
-						<p class="recent-issues__meta">{$recentIssue->getDatePublished()|date_format:$dateFormatLong}</p>
+						<h4 class="recent-issues__issue-title">
+							<a href="{url page='issue' op='view' path=$recentIssue->getBestIssueId()}">{$recentIssue->getIssueIdentification()}</a>
+						</h4>
+						<p class="metadata">{$recentIssue->getDatePublished()|date_format:$dateFormatLong}</p>
 					</article>
 				{/foreach}
 			</div>
