@@ -18,47 +18,45 @@
  * @uses $sectionHeading string Tag to use (h2, h3, etc) for section headings
  *}
 
-<div class="issue__header-wrapper">
-	<div class="row">
-		<header class="col-sm-8 issue__header">
-			{if $requestedOp === "index"}
-				<p class="metadata">{translate key="journal.currentIssue"}</p>
+<div class="row">
+	<header class="col-sm-8 issue__header">
+		{if $requestedOp === "index"}
+			<p class="metadata">{translate key="journal.currentIssue"}</p>
+		{/if}
+		{strip}
+		<h{if $requestedOp === "issue"}1{else}2{/if} class="issue__title">
+			{if $issue->getShowVolume() || $issue->getShowNumber()}
+				{if $issue->getShowVolume()|escape}
+					<span class="issue__volume">{translate key="issue.volume"} {$issue->getVolume()|escape}{if $issue->getShowNumber()}, {/if}</span>
+				{/if}
+				{if $issue->getShowNumber()}
+					<span class="issue__number">{translate key="issue.no"}. {$issue->getNumber()|escape}. </span>
+				{/if}
 			{/if}
-			{strip}
-			<h{if $requestedOp === "issue"}1{else}2{/if} class="issue__title">
-				{if $issue->getShowVolume() || $issue->getShowNumber()}
-					{if $issue->getShowVolume()|escape}
-						<span class="issue__volume">{translate key="issue.volume"} {$issue->getVolume()|escape}{if $issue->getShowNumber()}, {/if}</span>
+			{if $issue->getShowTitle()}
+				{$issue->getLocalizedTitle()|escape}
+			{/if}
+			</h1>
+			{if $issue->getDatePublished()}
+				<p class="metadata">{translate key="plugins.themes.immersion.issue.published"} {$issue->getDatePublished()|date_format:$dateFormatLong}</p>
+			{/if}
+			{if $issue->getLocalizedDescription()}
+				<div class="issue-desc">
+					{assign var=stringLenght value=280}
+					{assign var=issueDescription value=$issue->getLocalizedDescription()|strip_unsafe_html}
+					{if $issueDescription|strlen <= $stringLenght || $requestedPage == 'issue'}
+						{$issueDescription}
+					{else}
+						{$issueDescription|substr:0:$stringLenght|mb_convert_encoding:'UTF-8'|replace:'?':''|trim}…
+						<p>
+							<a class="btn btn-secondary"
+							   href="{url op="view" page="issue" path=$issue->getBestIssueId()}">{translate key="plugins.themes.immersion.issue.fullIssueLink"}</a>
+						</p>
 					{/if}
-					{if $issue->getShowNumber()}
-						<span class="issue__number">{translate key="issue.no"}. {$issue->getNumber()|escape}. </span>
-					{/if}
-				{/if}
-				{if $issue->getShowTitle()}
-					{$issue->getLocalizedTitle()|escape}
-				{/if}
-				</h1>
-				{if $issue->getDatePublished()}
-					<p class="metadata">{translate key="plugins.themes.immersion.issue.published"} {$issue->getDatePublished()|date_format:$dateFormatLong}</p>
-				{/if}
-				{if $issue->getLocalizedDescription()}
-					<div class="issue-desc">
-						{assign var=stringLenght value=280}
-						{assign var=issueDescription value=$issue->getLocalizedDescription()|strip_unsafe_html}
-						{if $issueDescription|strlen <= $stringLenght || $requestedPage == 'issue'}
-							{$issueDescription}
-						{else}
-							{$issueDescription|substr:0:$stringLenght|mb_convert_encoding:'UTF-8'|replace:'?':''|trim}…
-							<p>
-								<a class="btn btn-secondary"
-								   href="{url op="view" page="issue" path=$issue->getBestIssueId()}">{translate key="plugins.themes.immersion.issue.fullIssueLink"}</a>
-							</p>
-						{/if}
-					</div>
-				{/if}
-			{/strip}
-		</header>
-	</div>
+				</div>
+			{/if}
+		{/strip}
+	</header>
 </div>
 
 {assign var=contentTableInserted value=false}

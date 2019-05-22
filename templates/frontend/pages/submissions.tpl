@@ -41,7 +41,7 @@
 			{/if}
 
 			{if $submissionChecklist}
-				<div>
+				<section>
 					<h2>
 						{translate key="about.submissionPreparationChecklist"}
 					</h2>
@@ -54,27 +54,27 @@
 							</li>
 						{/foreach}
 					</ul>
-				</div>
+				</section>
 			{/if}
 
 			{if $currentContext->getLocalizedSetting('authorGuidelines')}
-				<div id="authorGuidelines">
+				<section id="authorGuidelines">
 					<h2>
 						{translate key="about.authorGuidelines"}
 					</h2>
 					{include file="frontend/components/editLink.tpl" page="management" op="settings" path="publication" anchor="submissionStage" sectionTitleKey="about.authorGuidelines"}
 					{$currentContext->getLocalizedSetting('authorGuidelines')}
-				</div>
+				</section>
 			{/if}
 
 			{if $currentContext->getLocalizedSetting('copyrightNotice')}
-				<div>
+				<section>
 					<h2>
 						{translate key="about.copyrightNotice"}
 					</h2>
 					{include file="frontend/components/editLink.tpl" page="management" op="settings" path="distribution" anchor="permissions" sectionTitleKey="about.copyrightNotice"}
 					{$currentContext->getLocalizedSetting('copyrightNotice')}
-				</div>
+				</section>
 			{/if}
 
 			{if $currentContext->getLocalizedSetting('privacyStatement')}
