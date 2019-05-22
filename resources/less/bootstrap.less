@@ -1,0 +1,31 @@
+/**
+* @file resources/less/bootstrap.less
+*
+* Copyright (c) 2014-2018 Simon Fraser University
+* Copyright (c) 2003-2018 John Willinsky
+* Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
+*
+* @brief Stylesheet for any Bootstrap overrides
+*
+*/
+
+/** Bootstrap overrides **/
+
+.dropdown-menu {
+  border-radius: 0;
+  border-color: @contrast-colour;
+}
+
+.dropdown-item {
+  padding: .5em;
+
+  &.active,
+  &:active,
+  &:hover {
+    background-color: @primary-colour;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}

@@ -37,7 +37,7 @@
 
 <header class="fixed-top main-header" id="pragma_content_header">
 	<div class="container-fluid">
-		<nav class="main-header__admin{if $localeShow} locale-enabled{else} locale-disabled{/if}">
+		<nav class="main-header__admin main-header__admin{if $localeShow}_locale-enabled{else}_locale-disabled{/if}">
 
 			{* User navigation *}
 			{capture assign="userMenu"}

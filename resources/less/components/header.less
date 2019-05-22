@@ -27,56 +27,26 @@
 
 .main-header li {
 	display: inline-block;
-	font-family: @font-family-secondary;
 }
 
 .main-header a {
 	border: 0;
 	box-shadow: none;
 	text-decoration: none;
-}
-
-.main-header__admin {
-	font-size: smaller;
+	font-family: @font-family-secondary;
 }
 
 .main-header__admin {
 	display: flex;
 	font-size: smaller;
 
-	&.locale-enabled {
+	&_locale-enabled {
 		justify-content: space-between;
 	}
 
-	&.locale-disabled {
+	&_locale-disabled {
 		justify-content: flex-end;
 	}
-}
-
-.main-header__admin ul {
-	text-align: right;
-}
-
-.main-header__admin-link {
-	padding: 0.25em 0.5em;
-	margin-left: 0.5em;
-	color: @contrast-colour
-}
-
-.main-header__admin-link:hover,
-.main-header__admin-link:focus,
-.main-header__admin-link:active {
-	color: @contrast-colour;
-}
-
-.main-header__lang-link {
-	color: @contrast-colour
-}
-
-.main-header__lang-link:hover,
-.main-header__lang-link:focus,
-.main-header__lang-link:active {
-	color: @contrast-colour;
 }
 
 .main-header__logo,
@@ -84,7 +54,7 @@
 	display: inline-flex;
 	font-size: 1em;
 	letter-spacing: normal;
-
+	line-height: 1;
 	font-family: @font-family-secondary;
 	font-weight: 700;
 	margin: 3.5rem 0 1.5rem 0;
