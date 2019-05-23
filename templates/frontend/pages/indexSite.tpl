@@ -14,55 +14,54 @@
 	<div class="row">
 		<div class="offset-md-1 col-md-10 offset-lg-2 col-lg-8">
 			<header class="main__header">
+				<h2 class="main__title">
+					{translate key="journal.journals"}
+				</h2>
 				{if $about}
 					<div>
 						{$about|strip_unsafe_html|nl2br}
 					</div>
 				{/if}
-				<h2 class="main__title">
-					{translate key="journal.journals"}
-				</h2>
 			</header>
 
 			<div>
 				{if !count($journals)}
 					{translate key="site.noJournals"}
 				{else}
-					<ul>
-						{iterate from=journals item=journal}
-							{capture assign="url"}{url journal=$journal->getPath()}{/capture}
-							{assign var="thumb" value=$journal->getLocalizedSetting('journalThumbnail')}
-							{assign var="description" value=$journal->getLocalizedDescription()}
-							<li>
-								{if $thumb}
-									<div>
-										<a href="{$url|escape}">
-											<img src="{$journalFilesPath}{$journal->getId()}/{$thumb.uploadName|escape:"url"}"{if $thumb.altText} alt="{$thumb.altText|escape}"{/if}>
-										</a>
-									</div>
-								{/if}
+					{iterate from=journals item=journal}
+						{capture assign="url"}{url journal=$journal->getPath()}{/capture}
+						{assign var="thumb" value=$journal->getLocalizedSetting('journalThumbnail')}
+						{assign var="description" value=$journal->getLocalizedDescription()}
+						<article>
+							{if $thumb}
+								<div>
+									<a href="{$url|escape}">
+										<img src="{$journalFilesPath}{$journal->getId()}/{$thumb.uploadName|escape:"url"}"{if $thumb.altText} alt="{$thumb.altText|escape}"{/if}>
+									</a>
+								</div>
+							{/if}
 
-								<h3>
-									<a href="{$url|escape}" rel="bookmark">
-										{$journal->getLocalizedName()}
-									</a>
-								</h3>
-								{if $description}
-									<div>
-										{$description|nl2br}
-									</div>
-								{/if}
-								<p>
-									<a class="btn btn-primary"  href="{$url|escape}">
-										{translate key="site.journalView"}
-									</a>
-									<a class="btn btn-secondary" href="{url|escape journal=$journal->getPath() page="issue" op="current"}">
-										{translate key="site.journalCurrent"}
-									</a>
-								</p>
-							</li>
-						{/iterate}
-					</ul>
+							<h3>
+								<a href="{$url|escape}" rel="bookmark">
+									{$journal->getLocalizedName()}
+								</a>
+							</h3>
+							{if $description}
+								<div>
+									{$description|nl2br}
+								</div>
+							{/if}
+							<p>
+								<a class="btn btn-primary"  href="{$url|escape}">
+									{translate key="site.journalView"}
+								</a>
+								<a class="btn btn-secondary" href="{url|escape journal=$journal->getPath() page="issue" op="current"}">
+									{translate key="site.journalCurrent"}
+								</a>
+							</p>
+						</article>
+						{if !$item@last}<hr>{/if}
+					{/iterate}
 
 					{if $journals->getPageCount() > 0}
 						<div>
