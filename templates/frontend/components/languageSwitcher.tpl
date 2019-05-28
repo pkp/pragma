@@ -21,7 +21,7 @@
   <ul class="dropdown-menu" aria-labelledby="languageToggleMenu{$id|escape}">
 		{foreach from=$languageToggleLocales item=localeName key=localeKey}
 			{if $localeKey !== $currentLocale}
-				<li class="dropdown-item">
+				<li class="dropdown-item" lang="{$localeKey|escape}">
 					<a href="{url router=$smarty.const.ROUTE_PAGE page="user" op="setLocale" path=$localeKey source=$smarty.server.REQUEST_URI}">
 						{$localeName|escape}
 					</a>
