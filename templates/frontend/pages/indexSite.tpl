@@ -28,10 +28,13 @@
 				{if !count($journals)}
 					{translate key="site.noJournals"}
 				{else}
+					{assign var="journalKey" value=0}
+					{assign var="countItems" value=count($journals)}
 					{iterate from=journals item=journal}
 						{capture assign="url"}{url journal=$journal->getPath()}{/capture}
 						{assign var="thumb" value=$journal->getLocalizedSetting('journalThumbnail')}
 						{assign var="description" value=$journal->getLocalizedDescription()}
+						{assign var="journalKey" value=$journalKey+1}
 						<article>
 							{if $thumb}
 								<div>
@@ -60,7 +63,7 @@
 								</a>
 							</p>
 						</article>
-						{if !$item@last}<hr>{/if}
+						{if $journalKey < $countItems+1}<hr>{/if}
 					{/iterate}
 
 					{if $journals->getPageCount() > 0}
@@ -72,8 +75,8 @@
 				{/if}
 			</div>
 		</div>
-	</div><!-- .row -->
+	</div>
 
-</main><!-- .page -->
+</main>
 
 {include file="frontend/components/footer.tpl"}
