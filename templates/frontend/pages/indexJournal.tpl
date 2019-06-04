@@ -85,10 +85,28 @@
 
 	</section>
 
+	{* Recent issues *}
+	{if ($recentIssues && !empty($recentIssues))}
+		<hr/>
+		<section class="recent-issues">
+			<h3>{translate key="plugins.themes.pragma.issues.recent"}</h3>
+			<div class="row">
+				{foreach from=$recentIssues item=recentIssue}
+					<article class="col-xs-6 col-md-3 recent-issues__item">
+						<h4 class="recent-issues__issue-title">
+							<a href="{url page='issue' op='view' path=$recentIssue->getBestIssueId()}">{$recentIssue->getIssueIdentification()}</a>
+						</h4>
+						<p class="metadata">{$recentIssue->getDatePublished()|date_format:$dateFormatLong}</p>
+					</article>
+				{/foreach}
+			</div>
+		</section>
+	{/if}
+
 	{* Additional Homepage Content *}
 	{if $additionalHomeContent}
-		<section class="recent-issues">
-			<hr/>
+		<hr/>
+		<section class="additional-content">
 			<div class="row">
 				<div class="col-sm-8">
 					{$additionalHomeContent|strip_unsafe_html}
@@ -97,23 +115,6 @@
 		</section>
 	{/if}
 
-	{if ($recentIssues && !empty($recentIssues))}
-		<section class="recent-issues">
-			<hr/>
-			<h2 class="recent-issues__title">{translate key="plugins.themes.pragma.issues.recent"}</h2>
-			<div class="row">
-				{foreach from=$recentIssues item=recentIssue}
-					<article class="col-xs-6 col-md-3 recent-issues__item">
-						<h3 class="recent-issues__issue-title">
-							<a href="issue.html">{$recentIssue->getIssueIdentification()}</a>
-						</h3>
-						<p class="recent-issues__meta">{$recentIssue->getDatePublished()|date_format:$dateFormatLong}</p>
-					</article>
-				{/foreach}
-			</div>
-		</section>
-	{/if}
-
-</main><!-- .page -->
+</main>
 
 {include file="frontend/components/footer.tpl"}

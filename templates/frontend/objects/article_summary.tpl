@@ -28,7 +28,7 @@
 			</a>
 		</h4>
 		{if $showAuthor}
-			<p class="article__meta">{$article->getAuthorString()|escape}</p>
+			<p class="metadata">{$article->getAuthorString()|escape}</p>
 		{/if}
 		{call_hook name="Templates::Issue::Issue::Article"}
 	</div>

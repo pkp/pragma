@@ -41,11 +41,11 @@
 			{/if}
 
 			{if $submissionChecklist}
-				<div>
+				<section>
+					{include file="frontend/components/editLink.tpl" page="management" op="settings" path="publication" anchor="submissionStage" sectionTitleKey="about.submissionPreparationChecklist"}
 					<h2>
 						{translate key="about.submissionPreparationChecklist"}
 					</h2>
-					{include file="frontend/components/editLink.tpl" page="management" op="settings" path="publication" anchor="submissionStage" sectionTitleKey="about.submissionPreparationChecklist"}
 					{translate key="about.submissionPreparationChecklist.description"}
 					<ul>
 						{foreach from=$submissionChecklist item=checklistItem}
@@ -54,35 +54,35 @@
 							</li>
 						{/foreach}
 					</ul>
-				</div>
+				</section>
 			{/if}
 
 			{if $currentContext->getLocalizedSetting('authorGuidelines')}
-				<div id="authorGuidelines">
+				<section id="authorGuidelines">
+					{include file="frontend/components/editLink.tpl" page="management" op="settings" path="publication" anchor="submissionStage" sectionTitleKey="about.authorGuidelines"}
 					<h2>
 						{translate key="about.authorGuidelines"}
 					</h2>
-					{include file="frontend/components/editLink.tpl" page="management" op="settings" path="publication" anchor="submissionStage" sectionTitleKey="about.authorGuidelines"}
 					{$currentContext->getLocalizedSetting('authorGuidelines')}
-				</div>
+				</section>
 			{/if}
 
 			{if $currentContext->getLocalizedSetting('copyrightNotice')}
-				<div>
+				<section>
+					{include file="frontend/components/editLink.tpl" page="management" op="settings" path="distribution" anchor="permissions" sectionTitleKey="about.copyrightNotice"}
 					<h2>
 						{translate key="about.copyrightNotice"}
 					</h2>
-					{include file="frontend/components/editLink.tpl" page="management" op="settings" path="distribution" anchor="permissions" sectionTitleKey="about.copyrightNotice"}
 					{$currentContext->getLocalizedSetting('copyrightNotice')}
-				</div>
+				</section>
 			{/if}
 
 			{if $currentContext->getLocalizedSetting('privacyStatement')}
 				<section>
+					{include file="frontend/components/editLink.tpl" page="management" op="settings" path="publication" anchor="submissionStage" sectionTitleKey="about.privacyStatement"}
 					<h2>
 						{translate key="about.privacyStatement"}
 					</h2>
-					{include file="frontend/components/editLink.tpl" page="management" op="settings" path="publication" anchor="submissionStage" sectionTitleKey="about.privacyStatement"}
 					{$currentContext->getLocalizedSetting('privacyStatement')}
 				</section>
 			{/if}

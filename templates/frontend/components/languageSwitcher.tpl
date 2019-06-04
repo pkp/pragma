@@ -12,23 +12,21 @@
  * @uses $id string A unique ID for this language toggle
  *}
 
-<ul id="{$id|escape}" class="nav nav-tabs">
-	<li class="nav-item dropdown">
-		<a class="dropdown-toggle main-header__lang-link" id="languageToggleMenu{$id|escape}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-			<span class="sr-only">{translate key="plugins.themes.immersion.language.toggle"}</span>
-			{$languageToggleLocales[$currentLocale]|escape}
-		</a>
+<div class="dropdown">
+  <a class="dropdown-toggle main-header__nav-link" href="#" role="button" id="languageToggleMenu{$id|escape}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		<span class="sr-only">{translate key="plugins.themes.immersion.language.toggle"}</span>
+		{$languageToggleLocales[$currentLocale]|escape}
+  </a>
 
-		<ul class="dropdown-menu" aria-labelledby="languageToggleMenu{$id|escape}">
-			{foreach from=$languageToggleLocales item=localeName key=localeKey}
-				{if $localeKey !== $currentLocale}
-					<li class="dropdown-item">
-						<a class="nav-link" href="{url router=$smarty.const.ROUTE_PAGE page="user" op="setLocale" path=$localeKey source=$smarty.server.REQUEST_URI}">
-							{$localeName|escape}
-						</a>
-					</li>
-				{/if}
-			{/foreach}
-		</ul>
-	</li>
-</ul>
+  <ul class="dropdown-menu" aria-labelledby="languageToggleMenu{$id|escape}">
+		{foreach from=$languageToggleLocales item=localeName key=localeKey}
+			{if $localeKey !== $currentLocale}
+				<li class="dropdown-item">
+					<a href="{url router=$smarty.const.ROUTE_PAGE page="user" op="setLocale" path=$localeKey source=$smarty.server.REQUEST_URI}">
+						{$localeName|escape}
+					</a>
+				</li>
+			{/if}
+		{/foreach}
+  </ul>
+</div>
