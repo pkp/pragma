@@ -46,7 +46,7 @@
 					<h2>
 						{translate key="about.submissionPreparationChecklist"}
 					</h2>
-					{translate key="about.submissionPreparationChecklist.description"}
+					<p>{translate key="about.submissionPreparationChecklist.description"}</p>
 					<ul>
 						{foreach from=$submissionChecklist item=checklistItem}
 							<li>
