@@ -29,6 +29,7 @@
  *   included with published articles.
  * @uses $ccLicenseBadge string An image and text with details about the license
  *}
+
 <article>
 	<header class="row main__header">
 		<div class="col-md-9">
@@ -43,6 +44,20 @@
 				{$article->getLocalizedFullTitle()|escape}
 			</h1>
 
+			{* DOI *}
+			{foreach from=$pubIdPlugins item=pubIdPlugin}
+				{if $pubIdPlugin->getPubIdType() != 'doi'}
+					{continue}
+				{/if}
+				{assign var=pubId value=$article->getStoredPubId($pubIdPlugin->getPubIdType())}
+				{if $pubId}
+					{assign var="doiUrl" value=$pubIdPlugin->getResolvingURL($currentJournal->getId(), $pubId)|escape}
+					<p class="metadata">
+						<a href="{$doiUrl}">{$doiUrl}</a>
+					</p>
+				{/if}
+			{/foreach}
+
 			{* Date published *}
 			{if $article->getDatePublished()}
 				<p class="metadata">
@@ -52,81 +67,59 @@
 
 			{* Authors *}
 			{if $article->getAuthors()}
-				<ul>
-					{foreach from=$article->getAuthors() item=authorString key=authorStringKey}
+				<ul class="metadata">
+					{assign var="authors" value=$article->getAuthors()}
+					{foreach from=$authors name=authors item=authorString key=authorStringKey}
 						{strip}
 							<li>
-								<a href="#author-{$authorStringKey+1}">
+								<a data-toggle="collapse" href="#author-{$authorStringKey}" role="button" aria-expanded="false">
 									<span>{$authorString->getFullName()|escape}</span>
-									<sup class="author-symbol author-plus">&plus;</sup>
-									<sup class="author-symbol author-minus hide">&minus;</sup>
 								</a>
 								{if $authorString->getOrcid()}
 									<a href="{$authorString->getOrcid()|escape}"><img src="{$baseUrl}/{$orcidImage}"></a>
 								{/if}
 							</li>
-						{/strip}
+						{/strip}{if !$smarty.foreach.authors.last}, {/if}
 					{/foreach}
 				</ul>
 
-				{assign var="authorCount" value=$article->getAuthors()|@count}
+				{* Affiliations *}
+				{assign var="authorCount" value=$authors|@count}
 				{assign var="authorBioIndex" value=0}
-				<div class="article-details-authors">
-					{foreach from=$article->getAuthors() item=author key=authorKey}
-						<div class="article-details-author hideAuthor" id="author-{$authorKey+1}">
-							<div class="article-details-author-name small-screen">
-								{$author->getFullName()|escape}
+				{foreach from=$authors item=author key=authorKey}
+					<div class="collapse" id="author-{$authorStringKey}">
+						{if $author->getLocalizedAffiliation()}
+							<div>{$author->getLocalizedAffiliation()|escape}</div>
+						{/if}
+						{if $author->getOrcid()}
+							<div>
+								<a href="{$author->getOrcid()|escape}" target="_blank">
+									{$orcidIcon}
+									{$author->getOrcid()|escape}
+								</a>
 							</div>
-							{if $author->getLocalizedAffiliation()}
-								<div class="article-details-author-affiliation">{$author->getLocalizedAffiliation()|escape}</div>
-							{/if}
-							{if $author->getOrcid()}
-								<div class="article-details-author-orcid">
-									<a href="{$author->getOrcid()|escape}" target="_blank">
-										{$orcidIcon}
-										{$author->getOrcid()|escape}
-									</a>
-								</div>
-							{/if}
-							{if $author->getLocalizedBiography()}
-								<button type="button" class="article-details-bio-toggle" data-toggle="modal" data-target="#authorBiographyModal{$authorKey+1}">
-									{translate key="plugins.themes.healthSciences.article.authorBio"}
-								</button>
-								{* Store author biographies to print as modals in the footer *}
-								{capture append="authorBiographyModalsTemp"}
-									<div
-											class="modal fade"
-											id="authorBiographyModal{$authorKey+1}"
-											tabindex="-1"
-											role="dialog"
-											aria-labelledby="authorBiographyModalTitle{$authorKey+1}"
-											aria-hidden="true"
-									>
-										<div class="modal-dialog" role="document">
-											<div class="modal-content">
-												<div class="modal-header">
-													<div class="modal-title" id="authorBiographyModalTitle{$authorKey+1}">
-														{$author->getFullName()|escape}
-													</div>
-													<button type="button" class="close" data-dismiss="modal" aria-label="{translate|escape key="common.close"}">
-														<span aria-hidden="true">&times;</span>
-													</button>
-												</div>
-												<div class="modal-body">
-													{$author->getLocalizedBiography()|strip_unsafe_html}
-												</div>
-											</div>
-										</div>
-									</div>
-								{/capture}
-							{/if}
-						</div>
-					{/foreach}
-				</div>
+						{/if}
+					</div>
+				{/foreach}
 			{/if}
 		</div>
 
-		<div class="col-md-3">
+		<section class="col-md-3">
+			{* Article or issue cover image *}
+			{if $article->getLocalizedCoverImage() || $issue->getLocalizedCoverImage()}
+				{if $article->getLocalizedCoverImage()}
+					<img class="img-fluid" src="{$article->getLocalizedCoverImageUrl()|escape}"{if $article->getLocalizedCoverImageAltText()} alt="{$article->getLocalizedCoverImageAltText()|escape}"{/if}>
+				{else}
+					<a href="{url page="issue" op="view" path=$issue->getBestIssueId()}">
+						<img class="img-fluid" src="{$issue->getLocalizedCoverImageUrl()|escape}"{if $issue->getLocalizedCoverImageAltText()} alt="{$issue->getLocalizedCoverImageAltText()|escape}"{/if}>
+					</a>
+				{/if}
+			{/if}
+		</section>
+	</header>
+
+	<div class="row" id="mainArticleContent">
+		<aside class="col-lg-3 order-lg-2">
 			{* How to cite *}
 			{if $citation}
 				<section>
@@ -164,75 +157,12 @@
 					</div>
 				</section>
 			{/if}
-		</div>
-	</header>
 
-	<div class="row justify-content-md-center" id="mainArticleContent">
-		<div class="col-lg-3 order-lg-2" id="articleDetailsWrapper">
-			<div class="article-details-sidebar" id="articleDetails">
-
-				{* Article or issue cover image *}
-				{if $article->getLocalizedCoverImage() || $issue->getLocalizedCoverImage()}
-					<section>
-						{if $article->getLocalizedCoverImage()}
-							<img class="img-fluid" src="{$article->getLocalizedCoverImageUrl()|escape}"{if $article->getLocalizedCoverImageAltText()} alt="{$article->getLocalizedCoverImageAltText()|escape}"{/if}>
-						{else}
-							<a href="{url page="issue" op="view" path=$issue->getBestIssueId()}">
-								<img class="img-fluid" src="{$issue->getLocalizedCoverImageUrl()|escape}"{if $issue->getLocalizedCoverImageAltText()} alt="{$issue->getLocalizedCoverImageAltText()|escape}"{/if}>
-							</a>
-						{/if}
-					</section>
-				{/if}
-
-				{* Pass author biographies to a global variable for use in footer.tpl *}
-				{capture name="authorBiographyModals"}
-					{foreach from=$authorBiographyModalsTemp item="modal"}
-						{$modal}
-					{/foreach}
-				{/capture}
-
-				{* Keywords *}
-				{if !empty($keywords[$currentLocale])}
-					<section>
-						<h2>
-							{translate key="article.subject"}
-						</h2>
-						<p>
-							{foreach from=$keywords item=keyword}
-								{foreach name=keywords from=$keyword item=keywordItem}
-									<span>{$keywordItem|escape}</span>{if !$smarty.foreach.keywords.last}<br>{/if}
-								{/foreach}
-							{/foreach}
-						</p>
-					</section>
-				{/if}
-
-				{call_hook name="Templates::Article::Details"}
-			</div>
-		</div>
+			{call_hook name="Templates::Article::Details"}
+		</aside>
 
 		<div class="col-lg-9 order-lg-1" id="articleMainWrapper">
 			<div class="article-details-main" id="articleMain">
-
-				{* Abstract *}
-				{if $article->getLocalizedAbstract()}
-					<section>
-						<h2 class="article-details-heading">{translate key="article.abstract"}</h2>
-						{$article->getLocalizedAbstract()|strip_unsafe_html}
-					</section>
-				{/if}
-
-				{* DOI *}
-				{foreach from=$pubIdPlugins item=pubIdPlugin}
-					{if $pubIdPlugin->getPubIdType() != 'doi'}
-						{continue}
-					{/if}
-					{assign var=pubId value=$article->getStoredPubId($pubIdPlugin->getPubIdType())}
-					{if $pubId}
-						{assign var="doiUrl" value=$pubIdPlugin->getResolvingURL($currentJournal->getId(), $pubId)|escape}
-						<a href="{$doiUrl}">{$doiUrl}</a>
-					{/if}
-				{/foreach}
 
 				{* PubIds (other than DOI; requires plugins) *}
 				{foreach from=$pubIdPlugins item=pubIdPlugin}
@@ -241,7 +171,7 @@
 					{/if}
 					{assign var=pubId value=$article->getStoredPubId($pubIdPlugin->getPubIdType())}
 					{if $pubId}
-						<section>
+						<section class="metadata">
 							<h2>
 								{$pubIdPlugin->getPubIdDisplayType()|escape}
 							</h2>
@@ -258,6 +188,30 @@
 					{/if}
 				{/foreach}
 
+				{* Abstract *}
+				{if $article->getLocalizedAbstract()}
+					<section>
+						<h2>{translate key="article.abstract"}</h2>
+						{$article->getLocalizedAbstract()|strip_unsafe_html}
+					</section>
+				{/if}
+
+				{* Keywords *}
+				{if !empty($keywords[$currentLocale])}
+					<section>
+						<h2>
+							{translate key="article.subject"}
+						</h2>
+						<p>
+							{foreach from=$keywords item=keyword}
+								{foreach name=keywords from=$keyword item=keywordItem}
+									<span>{$keywordItem|escape}</span>{if !$smarty.foreach.keywords.last}, {/if}
+								{/foreach}
+							{/foreach}
+						</p>
+					</section>
+				{/if}
+
 				{* Article galleys *}
 				{if $primaryGalleys}
 					<section>
@@ -270,15 +224,27 @@
 				{* Supplementary galleys *}
 				{if $supplementaryGalleys}
 					<section>
-						<h2 class="article-details-heading">{translate key="plugins.themes.healthSciences.article.supplementaryFiles"}</h2>
+						<h2>{translate key="article.suppFiles"}</h2>
 						{foreach from=$supplementaryGalleys item=galley}
 							{include file="frontend/objects/galley_link.tpl" parent=$article galley=$galley isSupplementary="1"}
 						{/foreach}
 					</section>
 				{/if}
 
+				{* Author biographies *}
+				<section>
+					<h2>{translate key="about.editorialTeam.biography"}</h2>
+					{foreach from=$article->getAuthors() item=author key=authorKey}
+						{if $author->getLocalizedBiography()}
+							<h3>{$author->getFullName()|escape}</h3>
+							<p>{$author->getLocalizedBiography()|strip_unsafe_html}</p>
+						{/if}
+					{/foreach}
+				</section>
+
 				{* References *}
 				{if $parsedCitations->getCount() || $article->getCitations()}
+					<hr>
 					<section>
 						<h2>
 							{translate key="submission.citations"}
