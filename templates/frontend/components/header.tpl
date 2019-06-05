@@ -35,7 +35,7 @@
 	<a class="sr-only" href="#pragma_content_footer">{translate key="navigation.skip.footer"}</a>
 </div>
 
-<header class="fixed-top main-header" id="pragma_content_header">
+<header class="main-header" id="pragma_content_header">
 	<div class="container-fluid">
 		<nav class="main-header__admin main-header__admin{if $localeShow}_locale-enabled{else}_locale-disabled{/if}">
 
