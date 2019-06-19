@@ -34,17 +34,13 @@
 	</div>
 	<div class="col-sm-4">
 		{if !$hideGalleys}
-			<ul class="article__btn-group">
-				{foreach from=$article->getGalleys() item=galley}
-					<li>
-						{assign var="hasArticleAccess" value=$hasAccess}
-						{if ($article->getAccessStatus() == $smarty.const.ARTICLE_ACCESS_OPEN)}
-							{assign var="hasArticleAccess" value=1}
-						{/if}
-						{include file="frontend/objects/galley_link.tpl" parent=$article hasAccess=$hasArticleAccess purchaseFee=$currentJournal->getSetting('purchaseArticleFee') purchaseCurrency=$currentJournal->getSetting('currency')}
-					</li>
-				{/foreach}
-			</ul>
+			{foreach from=$article->getGalleys() item=galley}
+				{assign var="hasArticleAccess" value=$hasAccess}
+				{if ($article->getAccessStatus() == $smarty.const.ARTICLE_ACCESS_OPEN)}
+					{assign var="hasArticleAccess" value=1}
+				{/if}
+				{include file="frontend/objects/galley_link.tpl" parent=$article hasAccess=$hasArticleAccess purchaseFee=$currentJournal->getSetting('purchaseArticleFee') purchaseCurrency=$currentJournal->getSetting('currency')}
+			{/foreach}
 		{/if}
 	</div>
 </article>
