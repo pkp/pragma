@@ -35,9 +35,17 @@
 		<div class="col-md-9">
 			{* Issue title & section *}
 			<p class="metadata">
-				<a href="{url page="issue" op="view" path=$issue->getBestIssueId()}">{$issue->getIssueSeries()|escape}</a>
-				{if $section}<br>{$section->getLocalizedTitle()|escape}</span>{/if}
+				<a href="{url page="issue" op="view" path=$issue->getBestIssueId()}">
+					{$issue->getIssueSeries()|escape}
+					{if $issue->getShowTitle()}
+					<br>
+					{$issue->getLocalizedTitle()|escape}
+					{/if}
+				</a>
 			</p>
+			{if $section}
+				<p class="metadata">{$section->getLocalizedTitle()|escape}</p>
+			{/if}
 
 			{* Article title *}
 			<h1 class="main__title">
@@ -102,6 +110,7 @@
 					</div>
 				{/foreach}
 			{/if}
+
 		</div>
 
 		<section class="col-md-3">
@@ -232,15 +241,14 @@
 				{/if}
 
 				{* Author biographies *}
-				<section>
-					<h2>{translate key="about.editorialTeam.biography"}</h2>
-					{foreach from=$article->getAuthors() item=author key=authorKey}
-						{if $author->getLocalizedBiography()}
-							<h3>{$author->getFullName()|escape}</h3>
+				{foreach from=$article->getAuthors() item=author key=authorKey}
+					{if $author->getLocalizedBiography()}
+						<section>
+							<h2>{$author->getFullName()|escape}</h2>
 							<p>{$author->getLocalizedBiography()|strip_unsafe_html}</p>
-						{/if}
-					{/foreach}
-				</section>
+						</section>
+					{/if}
+				{/foreach}
 
 				{* References *}
 				{if $parsedCitations->getCount() || $article->getCitations()}

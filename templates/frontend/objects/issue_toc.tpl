@@ -19,12 +19,12 @@
  *}
 
 <div class="row">
-	<header class="col-sm-8 issue__header">
+	<header class="col-sm-8 issue">
 		{if $requestedOp === "index"}
 			<p class="metadata">{translate key="journal.currentIssue"}</p>
 		{/if}
 		{strip}
-		<h{if $requestedOp === "issue"}1{else}2{/if} class="issue__title">
+		<h{if $requestedOp === "issue"}1{else}2{/if} class="issue__header">
 			{if $issue->getShowVolume() || $issue->getShowNumber()}
 				{if $issue->getShowVolume()|escape}
 					<span class="issue__volume">{translate key="issue.volume"} {$issue->getVolume()|escape}{if $issue->getShowNumber()}, {/if}</span>
@@ -34,7 +34,7 @@
 				{/if}
 			{/if}
 			{if $issue->getShowTitle()}
-				{$issue->getLocalizedTitle()|escape}
+				<span class="issue__title">{$issue->getLocalizedTitle()|escape}</span>
 			{/if}
 			</h1>
 			{if $issue->getDatePublished()}
