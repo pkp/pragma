@@ -39,7 +39,7 @@
 					{$issue->getIssueSeries()|escape}
 					{if $issue->getShowTitle()}
 					<br>
-					{$issue->getLocalizedTitle()|escape}
+					<strong>{$issue->getLocalizedTitle()|escape}</strong>
 					{/if}
 				</a>
 			</p>
@@ -167,6 +167,27 @@
 				</section>
 			{/if}
 
+			{* Licensing info *}
+			{if $copyright || $licenseUrl}
+				<section>
+					{if $licenseUrl}
+						{if $ccLicenseBadge}
+							{$ccLicenseBadge}
+						{else}
+							<a href="{$licenseUrl|escape}">
+								{if $copyrightHolder}
+									{translate key="submission.copyrightStatement" copyrightHolder=$copyrightHolder|escape copyrightYear=$copyrightYear|escape}
+								{else}
+									{translate key="submission.license"}
+								{/if}
+							</a>
+						{/if}
+					{else}
+						{$copyright}
+					{/if}
+				</section>
+			{/if}
+
 			{call_hook name="Templates::Article::Details"}
 		</aside>
 
@@ -241,14 +262,31 @@
 				{/if}
 
 				{* Author biographies *}
-				{foreach from=$article->getAuthors() item=author key=authorKey}
+				{assign var="hasBiographies" value=0}
+				{foreach from=$article->getAuthors() item=author}
 					{if $author->getLocalizedBiography()}
-						<section>
-							<h2>{$author->getFullName()|escape}</h2>
-							<p>{$author->getLocalizedBiography()|strip_unsafe_html}</p>
-						</section>
+						{assign var="hasBiographies" value=$hasBiographies+1}
 					{/if}
 				{/foreach}
+
+				{if $hasBiographies}
+					<hr>
+					<section>
+						<h2>
+							{if $hasBiographies > 1}
+								{translate key="submission.authorBiographies"}
+							{else}
+								{translate key="submission.authorBiography"}
+							{/if}
+						</h2>
+						{foreach from=$article->getAuthors() item=author}
+							{if $author->getLocalizedBiography()}
+								<h3>{$author->getFullName()|escape}</h3>
+								<p>{$author->getLocalizedBiography()|strip_unsafe_html}</p>
+							{/if}
+						{/foreach}
+					</section>
+				{/if}
 
 				{* References *}
 				{if $parsedCitations->getCount() || $article->getCitations()}
@@ -266,27 +304,6 @@
 								{$article->getCitations()|nl2br}
 							{/if}
 						</ol>
-					</section>
-				{/if}
-
-				{* Licensing info *}
-				{if $copyright || $licenseUrl}
-					<section>
-						{if $licenseUrl}
-							{if $ccLicenseBadge}
-								{$ccLicenseBadge}
-							{else}
-								<a href="{$licenseUrl|escape}">
-									{if $copyrightHolder}
-										{translate key="submission.copyrightStatement" copyrightHolder=$copyrightHolder|escape copyrightYear=$copyrightYear|escape}
-									{else}
-										{translate key="submission.license"}
-									{/if}
-								</a>
-							{/if}
-						{else}
-							{$copyright}
-						{/if}
 					</section>
 				{/if}
 
