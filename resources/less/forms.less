@@ -36,6 +36,11 @@ option {
   padding: 1.15em 0.25em 1.15em 0;
 }
 
+button {
+	&:extend(.btn);
+	&:extend(.btn-secondary);
+}
+
 .form-control {
   padding: 1.15em 0.25em 1.15em 0;
   margin-bottom: 3.5em;
@@ -74,6 +79,7 @@ option {
 }
 
 .btn {
+	cursor: pointer;
   border-radius: 0;
   font-family: @font-family-secondary;
   font-size: smaller;
@@ -103,12 +109,12 @@ option {
   background-color: transparent;
   border: 1px solid @contrast-colour;
   color: @contrast-colour;
-}
 
-.btn-secondary:hover {
-  background-color: @contrast-colour;
-  border-color: @contrast-colour;
-  color: @primary-colour;
+	&:hover, &:active, &:focus {
+	  background-color: @contrast-colour;
+	  border-color: @contrast-colour;
+	  color: @primary-colour;
+	}
 }
 
 /* Custom autofill styles */
