@@ -66,6 +66,26 @@
 				{/if}
 			{/foreach}
 
+			{* PubIds (other than DOI; requires plugins) *}
+			{foreach from=$pubIdPlugins item=pubIdPlugin}
+				{if $pubIdPlugin->getPubIdType() == 'doi'}
+					{continue}
+				{/if}
+				{assign var=pubId value=$article->getStoredPubId($pubIdPlugin->getPubIdType())}
+				{if $pubId}
+					<p class="metadata">
+						<strong>{$pubIdPlugin->getPubIdDisplayType()|escape}</strong>
+						{if $pubIdPlugin->getResolvingURL($currentJournal->getId(), $pubId)|escape}
+							<a id="pub-id::{$pubIdPlugin->getPubIdType()|escape}" href="{$pubIdPlugin->getResolvingURL($currentJournal->getId(), $pubId)|escape}">
+								{$pubIdPlugin->getResolvingURL($currentJournal->getId(), $pubId)|escape}
+							</a>
+						{else}
+							{$pubId|escape}
+						{/if}
+					</p>
+				{/if}
+			{/foreach}
+
 			{* Date published *}
 			{if $article->getDatePublished()}
 				<p class="metadata">
@@ -193,30 +213,6 @@
 
 		<div class="col-lg-9 order-lg-1" id="articleMainWrapper">
 			<div class="article-details-main" id="articleMain">
-
-				{* PubIds (other than DOI; requires plugins) *}
-				{foreach from=$pubIdPlugins item=pubIdPlugin}
-					{if $pubIdPlugin->getPubIdType() == 'doi'}
-						{continue}
-					{/if}
-					{assign var=pubId value=$article->getStoredPubId($pubIdPlugin->getPubIdType())}
-					{if $pubId}
-						<section class="metadata">
-							<h2>
-								{$pubIdPlugin->getPubIdDisplayType()|escape}
-							</h2>
-							<div>
-								{if $pubIdPlugin->getResolvingURL($currentJournal->getId(), $pubId)|escape}
-									<a id="pub-id::{$pubIdPlugin->getPubIdType()|escape}" href="{$pubIdPlugin->getResolvingURL($currentJournal->getId(), $pubId)|escape}">
-										{$pubIdPlugin->getResolvingURL($currentJournal->getId(), $pubId)|escape}
-									</a>
-								{else}
-									{$pubId|escape}
-								{/if}
-							</div>
-						</section>
-					{/if}
-				{/foreach}
 
 				{* Abstract *}
 				{if $article->getLocalizedAbstract()}
