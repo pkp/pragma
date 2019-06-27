@@ -298,15 +298,15 @@
 						<h2>
 							{translate key="submission.citations"}
 						</h2>
-						<ol>
-							{if $parsedCitations->getCount()}
+						{if $parsedCitations->getCount()}
+							<ol>
 								{iterate from=parsedCitations item=parsedCitation}
 									<li>{$parsedCitation->getCitationWithLinks()|strip_unsafe_html}</li>
 								{/iterate}
-							{elseif $article->getCitations()}
-								{$article->getCitations()|nl2br}
-							{/if}
-						</ol>
+							</ol>
+						{elseif $article->getCitations()}
+							<p>{$article->getCitations()|nl2br}</p>
+						{/if}
 					</section>
 				{/if}
 
