@@ -93,16 +93,22 @@
 				</p>
 			{/if}
 
-			{* Authors *}
-			{if $article->getAuthors()}
+			{* Authors & affiliations *}
+			{assign var="authors" value=$article->getAuthors()}
+			{assign var="hasAffiliations" value=0}
+
+			{foreach from=$authors item=author}
+				{if $author->getLocalizedAffiliation()}
+					{assign var="hasAffiliations" value=$hasAffiliations+1}
+				{/if}
+			{/foreach}
+
+			{if $authors}
 				<ul class="metadata">
-					{assign var="authors" value=$article->getAuthors()}
 					{foreach from=$authors name=authors item=authorString key=authorStringKey}
 						{strip}
 							<li>
-								<a data-toggle="collapse" href="#author-{$authorStringKey}" role="button" aria-expanded="false">
-									<span>{$authorString->getFullName()|escape}</span>
-								</a>
+								{$authorString->getFullName()|escape}
 								{if $authorString->getOrcid()}
 									<a href="{$authorString->getOrcid()|escape}"><img src="{$baseUrl}/{$orcidImage}"></a>
 								{/if}
@@ -110,25 +116,26 @@
 						{/strip}{if !$smarty.foreach.authors.last}, {/if}
 					{/foreach}
 				</ul>
+			{/if}
 
-				{* Affiliations *}
-				{assign var="authorCount" value=$authors|@count}
-				{assign var="authorBioIndex" value=0}
-				{foreach from=$authors item=author key=authorKey}
-					<div class="collapse" id="author-{$authorStringKey}">
-						{if $author->getLocalizedAffiliation()}
-							<div>{$author->getLocalizedAffiliation()|escape}</div>
+			{if $hasAffiliations}
+				<p>
+					<button class="btn btn-secondary" type="button" data-toggle="collapse" data-target="#authorAffiliations" aria-expanded="false" aria-controls="authorAffiliations">
+						{if $hasAffiliations > 1}
+							{translate key="user.affiliations"}
+						{else}
+							{translate key="user.affiliation"}
 						{/if}
-						{if $author->getOrcid()}
-							<div>
-								<a href="{$author->getOrcid()|escape}" target="_blank">
-									{$orcidIcon}
-									{$author->getOrcid()|escape}
-								</a>
-							</div>
-						{/if}
+				  </button>
+				</p>
+				<div class="collapse metadata" id="authorAffiliations">
+					{foreach from=$authors item=author}
+					 <div>
+						<strong>{$author->getFullName()|escape}</strong><br>
+					 	{$author->getLocalizedAffiliation()|escape}<br><br>
 					</div>
-				{/foreach}
+					{/foreach}
+				</div>
 			{/if}
 
 		</div>
