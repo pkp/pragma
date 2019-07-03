@@ -10,10 +10,14 @@
  */
 
 body {
-  font-family: @font-family-secondary;
+  font-family: @font-family-primary;
+  line-height: 1.5;
+  font-size: 18px;
+  font-weight: 400;
   color: @contrast-colour;
   font-size: 18px;
   font-weight: 400;
+	word-break: break-word;
   -webkit-font-smoothing: antialiased;
   -webkit-text-size-adjust: none;
   -moz-osx-font-smoothing: grayscale;
@@ -26,16 +30,22 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
   letter-spacing: -0.025em;
   color: @secondary-contrast-colour;
+
+	a {
+		text-decoration: none;
+	}
 }
 
-h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
-  text-decoration: none;
-}
-
-div, p, li, blockquote, cite, dd {
-  font-family: @font-family-primary;
-  line-height: 1.5;
+p, li, blockquote, cite, dd {
   margin-bottom: 1.25rem;
+}
+
+aside {
+	font-size: smaller;
+
+	h1, h2, h3, h4, h5, h6 {
+		font-size: 1rem;
+	}
 }
 
 section {

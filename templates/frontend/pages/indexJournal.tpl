@@ -26,51 +26,55 @@
 	{if $journalDescription or $announcements}
 	<header class="row">
 		{if $journalDescription}
-			<section class="col-sm-6 journal-desc">
-				<h2 class="metadata">{$displayPageHeaderTitle}</h2>
-				<article>
-					<h3 class="journal-desc__title">{translate key="about.aboutContext"}</h3>
-					{$journalDescription|strip_unsafe_html|truncate:450}
-					<p>
-						{capture assign="aboutPageUrl"}{url router=$smarty.const.ROUTE_PAGE page="about"}{/capture}
-						<a href="{$aboutPageUrl}" class="btn btn-primary">{translate key="plugins.themes.pragma.more-info"}</a>
-					</p>
-				</article>
-			</section>
+			<div class="col-sm-6">
+				<section class="journal-desc">
+					<h2 class="metadata">{$displayPageHeaderTitle}</h2>
+					<article>
+						<h3 class="journal-desc__title">{translate key="about.aboutContext"}</h3>
+						{$journalDescription|strip_unsafe_html|truncate:450}
+						<p>
+							{capture assign="aboutPageUrl"}{url router=$smarty.const.ROUTE_PAGE page="about"}{/capture}
+							<a href="{$aboutPageUrl}" class="btn btn-primary">{translate key="plugins.themes.pragma.more-info"}</a>
+						</p>
+					</article>
+				</section>
+			</div>
 		{/if}
 
 		{if $numAnnouncementsHomepage && $announcements|@count}
-		<aside class="col-sm-6 announcement__content_boxed">
-			<h2 class="metadata">{translate key="announcement.announcements"}</h2>
-			{* Carousel *}
-			<div id="announcementsCarouselControls" class="carousel slide" data-ride="carousel" data-interval="false">
-				<div class="carousel-inner">
-					{foreach name=announcements from=$announcements item=announcement}
-						<article class="carousel-item{if $announcement@first} active{/if}">
-								<h3 class="announcement__title_boxed">{$announcement->getLocalizedTitle()|escape}</h3>
-								<p class="metadata">{$announcement->getDatePosted()|date_format:$dateFormatLong}</p>
-								<p>{$announcement->getLocalizedDescriptionShort()}</p>
-								<p>
-									{capture assign="announcementPageUrl"}{url router=$smarty.const.ROUTE_PAGE page="announcement" op="view" path=$announcement->getId()}{/capture}
-									<a href="{$announcementPageUrl}" class="btn btn-secondary">{translate key="common.more"}</a>
+		<div class="col-sm-6">
+			<aside class="announcement__content_boxed">
+				<h2 class="metadata">{translate key="announcement.announcements"}</h2>
+				{* Carousel *}
+				<div id="announcementsCarouselControls" class="carousel slide" data-ride="carousel" data-interval="false">
+					<div class="carousel-inner">
+						{foreach name=announcements from=$announcements item=announcement}
+							<article class="carousel-item{if $announcement@first} active{/if}">
+									<h3 class="announcement__title_boxed">{$announcement->getLocalizedTitle()|escape}</h3>
+									<p class="metadata">{$announcement->getDatePosted()|date_format:$dateFormatLong}</p>
+									<p>{$announcement->getLocalizedDescriptionShort()}</p>
+									<p>
+										{capture assign="announcementPageUrl"}{url router=$smarty.const.ROUTE_PAGE page="announcement" op="view" path=$announcement->getId()}{/capture}
+										<a href="{$announcementPageUrl}" class="btn btn-secondary">{translate key="common.more"}</a>
 
-									{* Carousel controls *}
-									<span class="float-right">
-										<a href="#announcementsCarouselControls" class="btn" role="button" data-slide="prev">
-											<span aria-hidden="true">←</span>
-											<span class="sr-only">{translate key="help.next"}</span>
-										</a>
-										<a href="#announcementsCarouselControls" class="btn" role="button" data-slide="next">
-											<span aria-hidden="true">→</span>
-											<span class="sr-only">{translate key="help.previous"}</span>
-										</a>
-									</span>
-								</p>
-							</article>
-					{/foreach}
+										{* Carousel controls *}
+										<span class="float-right">
+											<a href="#announcementsCarouselControls" class="btn" role="button" data-slide="prev">
+												<span aria-hidden="true">←</span>
+												<span class="sr-only">{translate key="help.next"}</span>
+											</a>
+											<a href="#announcementsCarouselControls" class="btn" role="button" data-slide="next">
+												<span aria-hidden="true">→</span>
+												<span class="sr-only">{translate key="help.previous"}</span>
+											</a>
+										</span>
+									</p>
+								</article>
+						{/foreach}
+					</div>
 				</div>
-			</div>
-		</aside>
+			</aside>
+		</div>
 		{/if}
 	</header>
 	{/if}
