@@ -25,9 +25,9 @@
 					{$pageFooter}
 				</div>
 			{/if}
-			<div class="col-md-3{if !$pageFooter} offset-md-9{/if}">
+			<div class="col-2 col-sm-1 offset-10 offset-sm-11">
 				<a href="{url page="about" op="aboutThisPublishingSystem"}">
-					<img alt="{translate key="about.aboutThisPublishingSystem"}" src="{$baseUrl}/{$brandImage}">
+					<img class="img-fluid" alt="{translate key="about.aboutThisPublishingSystem"}" src="{$baseUrl}/{$brandImage}">
 				</a>
 			</div>
 		</div>
