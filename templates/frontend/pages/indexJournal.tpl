@@ -56,21 +56,20 @@
 									<p>
 										{capture assign="announcementPageUrl"}{url router=$smarty.const.ROUTE_PAGE page="announcement" op="view" path=$announcement->getId()}{/capture}
 										<a href="{$announcementPageUrl}" class="btn btn-secondary">{translate key="common.more"}</a>
-
-										{* Carousel controls *}
-										<span class="float-right">
-											<a href="#announcementsCarouselControls" class="btn" role="button" data-slide="prev">
-												<span aria-hidden="true">←</span>
-												<span class="sr-only">{translate key="help.next"}</span>
-											</a>
-											<a href="#announcementsCarouselControls" class="btn" role="button" data-slide="next">
-												<span aria-hidden="true">→</span>
-												<span class="sr-only">{translate key="help.previous"}</span>
-											</a>
-										</span>
 									</p>
 								</article>
 						{/foreach}
+					</div>
+					{* Carousel controls *}
+					<div class="text-right">
+						<a href="#announcementsCarouselControls" class="btn" role="button" data-slide="prev">
+							<span aria-hidden="true">←</span>
+							<span class="sr-only">{translate key="help.next"}</span>
+						</a>
+						<a href="#announcementsCarouselControls" class="btn" role="button" data-slide="next">
+							<span aria-hidden="true">→</span>
+							<span class="sr-only">{translate key="help.previous"}</span>
+						</a>
 					</div>
 				</div>
 			</aside>
