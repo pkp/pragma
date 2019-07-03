@@ -95,11 +95,12 @@
 
 			{* Authors & affiliations *}
 			{assign var="authors" value=$article->getAuthors()}
-			{assign var="hasAffiliations" value=0}
+			{assign var="hasAffiliations" value=false}
 
 			{foreach from=$authors item=author}
 				{if $author->getLocalizedAffiliation()}
-					{assign var="hasAffiliations" value=$hasAffiliations+1}
+					{assign var="hasAffiliations" value=true}
+					{break}
 				{/if}
 			{/foreach}
 
@@ -265,10 +266,11 @@
 				{/if}
 
 				{* Author biographies *}
-				{assign var="hasBiographies" value=0}
+				{assign var="hasBiographies" value=false}
 				{foreach from=$article->getAuthors() item=author}
 					{if $author->getLocalizedBiography()}
-						{assign var="hasBiographies" value=$hasBiographies+1}
+						{assign var="hasBiographies" value=true}
+						{break}
 					{/if}
 				{/foreach}
 
