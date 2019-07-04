@@ -25,7 +25,7 @@ body {
   background-color: @primary-colour;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1, h2, h3, h4, h5, h6, th {
   font-family: @font-family-secondary;
   font-weight: 700;
   letter-spacing: -0.025em;
@@ -38,6 +38,11 @@ h1, h2, h3, h4, h5, h6 {
 
 p, li, blockquote, cite, dd {
   margin-bottom: 1.25rem;
+}
+
+blockquote {
+	border-left: 2px solid @tertiary-contrast-colour;
+	padding: 0.5em 1.5em;
 }
 
 aside {
@@ -87,11 +92,6 @@ td, th {
 
 li {
   margin-bottom: 0.25em;
-}
-
-blockquote {
-  border-left: 1px solid @contrast-colour;
-  padding-left: 30px;
 }
 
 cite {

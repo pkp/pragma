@@ -49,6 +49,9 @@
 				<div id="announcementsCarouselControls" class="carousel slide" data-ride="carousel" data-interval="false">
 					<div class="carousel-inner">
 						{foreach name=announcements from=$announcements item=announcement}
+							{if $smarty.foreach.announcements.iteration > $numAnnouncementsHomepage}
+								{break}
+							{/if}
 							<article class="carousel-item{if $announcement@first} active{/if}">
 									<h3 class="announcement__title_boxed">{$announcement->getLocalizedTitle()|escape}</h3>
 									<p class="metadata">{$announcement->getDatePosted()|date_format:$dateFormatLong}</p>
@@ -56,22 +59,23 @@
 									<p>
 										{capture assign="announcementPageUrl"}{url router=$smarty.const.ROUTE_PAGE page="announcement" op="view" path=$announcement->getId()}{/capture}
 										<a href="{$announcementPageUrl}" class="btn btn-secondary">{translate key="common.more"}</a>
-
-										{* Carousel controls *}
-										<span class="float-right">
-											<a href="#announcementsCarouselControls" class="btn" role="button" data-slide="prev">
-												<span aria-hidden="true">←</span>
-												<span class="sr-only">{translate key="help.next"}</span>
-											</a>
-											<a href="#announcementsCarouselControls" class="btn" role="button" data-slide="next">
-												<span aria-hidden="true">→</span>
-												<span class="sr-only">{translate key="help.previous"}</span>
-											</a>
-										</span>
 									</p>
 								</article>
 						{/foreach}
 					</div>
+					{if $numAnnouncementsHomepage > 1 && $announcements|@count > 1}
+						{* Carousel controls *}
+						<div class="text-right">
+							<a href="#announcementsCarouselControls" class="btn" role="button" data-slide="prev">
+								<span aria-hidden="true">←</span>
+								<span class="sr-only">{translate key="help.next"}</span>
+							</a>
+							<a href="#announcementsCarouselControls" class="btn" role="button" data-slide="next">
+								<span aria-hidden="true">→</span>
+								<span class="sr-only">{translate key="help.previous"}</span>
+							</a>
+						</div>
+					{/if}
 				</div>
 			</aside>
 		</div>

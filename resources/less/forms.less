@@ -9,7 +9,7 @@
 *
 */
 
-/** Bootstrap form overrides **/
+/* General elements */
 
 label {
   font-family: @font-family-secondary;
@@ -41,7 +41,20 @@ button {
 	&:extend(.btn-secondary);
 }
 
+input {
+	&:extend(.form-control);
+
+	&::placeholder{
+		font-size: smaller;
+		color: fade(@contrast-colour, 75%);
+	}
+}
+
+/** Custom Bootstrap form overrides **/
+
 .form-control {
+	display: block;
+	height: auto;
   padding: 1.15em 0.25em 1.15em 0;
   margin-bottom: 3.5em;
   background-color: transparent;
