@@ -35,8 +35,7 @@
 	<a class="sr-only" href="#pragma_content_footer">{translate key="navigation.skip.footer"}</a>
 </div>
 
-<header class="main-header" id="pragma_content_header">
-	<div class="container-fluid">
+<header class="container-fluid main-header" id="pragma_content_header">
 		<nav class="main-header__admin main-header__admin{if $localeShow}_locale-enabled{else}_locale-disabled{/if}">
 
 			{* User navigation *}
@@ -56,61 +55,62 @@
 
 		</nav>
 
-		{if $requestedOp == 'index'}
-			<h1 class="main-header__title">
-		{else}
-			<div class="main-header__title">
-		{/if}
-
-		{if $currentContext && $multipleContexts}
-			{capture assign="homeUrl"}{url page="index" router=$smarty.const.ROUTE_PAGE}{/capture}
-		{else}
-			{capture assign="homeUrl"}{url context="index" router=$smarty.const.ROUTE_PAGE}{/capture}
-		{/if}
-
-		{if $displayPageHeaderLogo && is_array($displayPageHeaderLogo)}
-			<a href="{$homeUrl}">
-				<img src="{$publicFilesDir}/{$displayPageHeaderLogo.uploadName|escape:"url"}" width="{$displayPageHeaderLogo.width|escape}" height="{$displayPageHeaderLogo.height|escape}" {if $displayPageHeaderLogo.altText != ''}alt="{$displayPageHeaderLogo.altText|escape}"{else}alt="{translate key="common.pageHeaderLogo.altText"}"{/if} />
-			</a>
-		{elseif $displayPageHeaderTitle && !$displayPageHeaderLogo && is_string($displayPageHeaderTitle)}
-			<a href="{$homeUrl}">
-				<span>{$displayPageHeaderTitle}</span>
-			</a>
-		{elseif $displayPageHeaderTitle && !$displayPageHeaderLogo && is_array($displayPageHeaderTitle)}
-			<a href="{$homeUrl}">
-				<img src="{$publicFilesDir}/{$displayPageHeaderTitle.uploadName|escape:"url"}" alt="{$displayPageHeaderTitle.altText|escape}" width="{$displayPageHeaderTitle.width|escape}" height="{$displayPageHeaderTitle.height|escape}" />
-			</a>
-		{else}
-			<a href="{$homeUrl}">
-				<img src="{$baseUrl}/templates/images/structure/logo.png" alt="{$applicationName|escape}" title="{$applicationName|escape}" width="180" height="90" />
-			</a>
-		{/if}
-
-		{if $requestedOp == 'index'}
-			</h1>
-		{else}
-			</div>
-		{/if}
-
-			{* Primary navigation *}
-			{capture assign="primaryMenu"}
-				{load_menu name="primary" id="navigationPrimary" ulClass="pkp_navigation_primary" liClass="profile"}
-			{/capture}
-
-			{if !empty(trim($primaryMenu)) || $currentContext}
-			<nav class="navbar navbar-expand-lg main-header__nav">
-				<button class="navbar-toggler mx-auto hamburger" data-target="#main-menu" data-toggle="collapse"
-				        type="button"
-				        aria-label="Menu" aria-controls="navigation">
-					<span class="hamburger__wrapper">
-		                <span class="hamburger__icon"></span>
-		            </span>
-				</button>
-				<h2 class="sr-only">{translate key="plugins.themes.immersion.mainMenu"}</h2>
-				<div class="collapse navbar-collapse" id="main-menu">
-					{$primaryMenu}
-				</div>
-			</nav>
+		<nav class="navbar navbar-expand-lg main-menu">
+			{if $requestedOp == 'index'}
+				<h1 class="main-menu__title">
+			{else}
+				<div class="main-menu__title">
 			{/if}
-	</div> {* container closing tag *}
+
+			{if $currentContext && $multipleContexts}
+				{capture assign="homeUrl"}{url page="index" router=$smarty.const.ROUTE_PAGE}{/capture}
+			{else}
+				{capture assign="homeUrl"}{url context="index" router=$smarty.const.ROUTE_PAGE}{/capture}
+			{/if}
+
+			{if $displayPageHeaderLogo && is_array($displayPageHeaderLogo)}
+				<a href="{$homeUrl}">
+					<img src="{$publicFilesDir}/{$displayPageHeaderLogo.uploadName|escape:"url"}" width="{$displayPageHeaderLogo.width|escape}" height="{$displayPageHeaderLogo.height|escape}" {if $displayPageHeaderLogo.altText != ''}alt="{$displayPageHeaderLogo.altText|escape}"{else}alt="{translate key="common.pageHeaderLogo.altText"}"{/if} />
+				</a>
+			{elseif $displayPageHeaderTitle && !$displayPageHeaderLogo && is_string($displayPageHeaderTitle)}
+				<a href="{$homeUrl}">
+					<span>{$displayPageHeaderTitle}</span>
+				</a>
+			{elseif $displayPageHeaderTitle && !$displayPageHeaderLogo && is_array($displayPageHeaderTitle)}
+				<a href="{$homeUrl}">
+					<img src="{$publicFilesDir}/{$displayPageHeaderTitle.uploadName|escape:"url"}" alt="{$displayPageHeaderTitle.altText|escape}" width="{$displayPageHeaderTitle.width|escape}" height="{$displayPageHeaderTitle.height|escape}" />
+				</a>
+			{else}
+				<a href="{$homeUrl}">
+					<img src="{$baseUrl}/templates/images/structure/logo.png" alt="{$applicationName|escape}" title="{$applicationName|escape}" width="180" height="90" />
+				</a>
+			{/if}
+
+			{if $requestedOp == 'index'}
+				</h1>
+			{else}
+				</div>
+			{/if}
+
+				{* Primary navigation *}
+				{capture assign="primaryMenu"}
+					{load_menu name="primary" id="navigationPrimary" ulClass="pkp_navigation_primary" liClass="profile"}
+				{/capture}
+
+				{if !empty(trim($primaryMenu)) || $currentContext}
+				<div class="main-menu__nav">
+					<button class="navbar-toggler mx-auto hamburger" data-target="#primaryMenu" data-toggle="collapse"
+					        type="button"
+					        aria-label="Menu" aria-controls="navigation">
+						<span class="hamburger__wrapper">
+			                <span class="hamburger__icon"></span>
+			            </span>
+					</button>
+					<h2 class="sr-only">{translate key="plugins.themes.immersion.mainMenu"}</h2>
+					<div class="collapse navbar-collapse">
+						{$primaryMenu}
+					</div>
+				</div>
+				{/if}
+			</div>
 </header>
