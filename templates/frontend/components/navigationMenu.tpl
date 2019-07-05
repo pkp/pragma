@@ -14,7 +14,7 @@
  *}
 
 {if $navigationMenu}
-	<ul id="{$id|escape}"{if $id==="navigationPrimary"} class="navbar-nav mx-auto"{/if}>
+	<ul id="{$id|escape}"{if $id==="navigationPrimary"} class="navbar-nav"{/if}>
 		{foreach key=field item=navigationMenuItemAssignment from=$navigationMenu->menuTree}
 			{if !$navigationMenuItemAssignment->navigationMenuItem->getIsDisplayed()}
 				{continue}

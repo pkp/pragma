@@ -56,9 +56,9 @@
 /* Primary nav */
 .main-menu {
 	display: flex;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
 	flex-grow: 1;
-	padding: 0.5rem 0;
+	padding: 0;
 	height: 100%;
 }
 
@@ -67,6 +67,7 @@
 	display: inline-flex;
 	margin-right: 1em;
 	margin-top: auto;
+	padding-top: 2em;
 	font-size: 1em;
 	letter-spacing: normal;
 	font-family: @font-family-secondary;
@@ -74,7 +75,6 @@
 }
 
 .main-menu__nav {
-	display: inline-flex;
 	margin-top: auto;
 }
 
@@ -83,23 +83,23 @@
 }
 
 .main-menu__nav-link {
-	padding: 0.25em 0.5em;
-}
+	display: block;
+	padding: 0 0.5em;
 
-.main-menu__nav-link:hover,
-.main-menu__nav-link:focus,
-.main-menu__nav-link:active {
-	color: contrast(@contrast-colour);
-	background-color: @contrast-colour;
+	&:hover,
+	&:focus,
+	&:active {
+		color: contrast(@contrast-colour);
+		background-color: @contrast-colour;
+	}
 }
 
 /* Custom hamburger menu */
 .hamburger {
+	display: inline-flex;
+	margin-top: auto;
 	font: inherit;
-	display: inline-block;
 	overflow: visible;
-	margin: 0;
-	padding: 10px;
 	cursor: pointer;
 	color: inherit;
 	border: 0;

@@ -49,7 +49,7 @@
 			{/if}
 
 			{if !empty(trim($userMenu))}
-				<h2 class="sr-only">{translate key="plugins.themes.immersion.adminMenu"}</h2>
+				<h2 class="sr-only">{translate key="plugins.themes.pragma.adminMenu"}</h2>
 				{$userMenu}
 			{/if}
 
@@ -70,7 +70,8 @@
 
 			{if $displayPageHeaderLogo && is_array($displayPageHeaderLogo)}
 				<a href="{$homeUrl}">
-					<img src="{$publicFilesDir}/{$displayPageHeaderLogo.uploadName|escape:"url"}" width="{$displayPageHeaderLogo.width|escape}" height="{$displayPageHeaderLogo.height|escape}" {if $displayPageHeaderLogo.altText != ''}alt="{$displayPageHeaderLogo.altText|escape}"{else}alt="{translate key="common.pageHeaderLogo.altText"}"{/if} />
+					<img src="{$publicFilesDir}/{$displayPageHeaderLogo.uploadName|escape:"url"}" width="{$displayPageHeaderLogo.width|escape}" height="{$displayPageHeaderLogo.height|escape}" {if $displayPageHeaderLogo.altText != ''}alt="{$displayPageHeaderLogo.altText|escape}"{else}alt="{translate key="common.pageHeaderLogo.altText"}"{/if}
+					class="img-fluid"/>
 				</a>
 			{elseif $displayPageHeaderTitle && !$displayPageHeaderLogo && is_string($displayPageHeaderTitle)}
 				<a href="{$homeUrl}">
@@ -78,11 +79,12 @@
 				</a>
 			{elseif $displayPageHeaderTitle && !$displayPageHeaderLogo && is_array($displayPageHeaderTitle)}
 				<a href="{$homeUrl}">
-					<img src="{$publicFilesDir}/{$displayPageHeaderTitle.uploadName|escape:"url"}" alt="{$displayPageHeaderTitle.altText|escape}" width="{$displayPageHeaderTitle.width|escape}" height="{$displayPageHeaderTitle.height|escape}" />
+					<img src="{$publicFilesDir}/{$displayPageHeaderTitle.uploadName|escape:"url"}" alt="{$displayPageHeaderTitle.altText|escape}" width="{$displayPageHeaderTitle.width|escape}" height="{$displayPageHeaderTitle.height|escape}"
+					class="img-fluid"/>
 				</a>
 			{else}
 				<a href="{$homeUrl}">
-					<img src="{$baseUrl}/templates/images/structure/logo.png" alt="{$applicationName|escape}" title="{$applicationName|escape}" width="180" height="90" />
+					<img src="{$baseUrl}/templates/images/structure/logo.png" alt="{$applicationName|escape}" title="{$applicationName|escape}" width="180" height="90" class="img-fluid"/>
 				</a>
 			{/if}
 
@@ -94,23 +96,22 @@
 
 				{* Primary navigation *}
 				{capture assign="primaryMenu"}
-					{load_menu name="primary" id="navigationPrimary" ulClass="pkp_navigation_primary" liClass="profile"}
+					{load_menu name="primary" id="navigationPrimary" ulClass="pkp_navigation_primary"}
 				{/capture}
 
 				{if !empty(trim($primaryMenu)) || $currentContext}
-				<div class="main-menu__nav">
-					<button class="navbar-toggler mx-auto hamburger" data-target="#primaryMenu" data-toggle="collapse"
-					        type="button"
-					        aria-label="Menu" aria-controls="navigation">
-						<span class="hamburger__wrapper">
-			                <span class="hamburger__icon"></span>
-			            </span>
-					</button>
-					<h2 class="sr-only">{translate key="plugins.themes.immersion.mainMenu"}</h2>
-					<div class="collapse navbar-collapse">
-						{$primaryMenu}
-					</div>
+				<button class="navbar-toggler hamburger" data-target="#mainMenu" data-toggle="collapse"
+				        type="button"
+				        aria-label="Menu" aria-controls="navigation">
+					<span class="hamburger__wrapper">
+		                <span class="hamburger__icon"></span>
+		            </span>
+				</button>
+
+				<div class="collapse navbar-collapse main-menu__nav" id="mainMenu">
+					{$primaryMenu}
 				</div>
 				{/if}
 			</div>
+		</nav>
 </header>
