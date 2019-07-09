@@ -9,7 +9,5 @@
  *
  *}
 <div class="col-md-3" id="{$customBlockId|escape}">
-	<div>
-		{$customBlockContent}
-	</div>
+	{$customBlockContent}
 </div>

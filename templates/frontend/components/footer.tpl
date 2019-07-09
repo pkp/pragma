@@ -18,10 +18,11 @@
 			<div class="row">
 				{call_hook name="Templates::Common::Sidebar"}
 			</div>
+			<hr>
 		{/if}
 		<div class="row main-footer__block">
 			{if $pageFooter}
-				<div class="col-md-6">
+				<div class="col-md-8">
 					{$pageFooter}
 				</div>
 			{/if}
