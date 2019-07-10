@@ -17,7 +17,6 @@
  * @uses $issue Issue Current issue
  * @uses $issueIdentificationString string issue identification that relies on user's settings
  * @uses $lastSectionColor string background color of the last section presented on the index page
- * @uses $immersionAnnouncementsColor string background color of the announcements section
  *}
 
 {include file="frontend/components/header.tpl" pageTitleTranslated=$currentJournal->getLocalizedName()}

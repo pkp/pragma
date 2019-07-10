@@ -34,7 +34,6 @@
 				{* When a user is registering with a specific journal *}
 				{if $currentContext}
 					<fieldset>
-						<legend>{translate key="plugins.themes.immersion.registration.consent"}</legend>
 						{* Require the user to agree to the terms of the privacy policy *}
 						<div class="custom-control custom-checkbox">
 							<input type="checkbox" class="custom-control-input" name="privacyConsent" id="privacyConsent" value="1"{if $privacyConsent} checked="checked"{/if}>
@@ -129,17 +128,13 @@
 						<legend>
 							{translate key="user.register.noContextReviewerInterests"}
 						</legend>
-						<div>
-							<div>
-								{* See comment for .tag-it above *}
-								<ul class="tag-it" id="tagitInput" data-field-name="interests[]"
-								    data-autocomplete-url="{url|escape router=$smarty.const.ROUTE_PAGE page='user' op='getInterests'}">
-									{foreach from=$interests item=interest}
-										<li>{$interest|escape}</li>
-									{/foreach}
-								</ul>
-							</div>
-						</div>
+						{* See comment for .tag-it above *}
+						<ul class="tag-it" id="tagitInput" data-field-name="interests[]"
+						    data-autocomplete-url="{url|escape router=$smarty.const.ROUTE_PAGE page='user' op='getInterests'}">
+							{foreach from=$interests item=interest}
+								<li>{$interest|escape}</li>
+							{/foreach}
+						</ul>
 					</fieldset>
 				{/if}
 
