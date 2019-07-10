@@ -14,7 +14,7 @@
 
 <div class="dropdown">
   <a class="dropdown-toggle main-header__nav-link" href="#" role="button" id="languageToggleMenu{$id|escape}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-		<span class="sr-only">{translate key="plugins.themes.immersion.language.toggle"}</span>
+		<span class="sr-only">{translate key="common.language"}</span>
 		{$languageToggleLocales[$currentLocale]|escape}
   </a>
 
