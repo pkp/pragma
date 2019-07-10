@@ -46,7 +46,6 @@
 								{translate key="common.required"}
 							</span>
 						</label>
-
 						<input class="form-control" type="text" name="username" id="username" value="{$username|escape}" maxlength="32" required>
 					</div>
 
@@ -58,18 +57,14 @@
 								{translate key="common.required"}
 							</span>
 						</label>
-
 						<input class="form-control" type="password" name="password" id="password" value="{$password|escape}" password="true" maxlength="32" required>
-						<a href="{url page="login" op="lostPassword"}">
-							{translate key="user.login.forgotPassword"}
-						</a>
-					</div>
 
-					<div class="custom-control custom-checkbox">
-						<input class="custom-control-input" type="checkbox" name="remember" id="remember" value="1" checked="$remember">
-						<label class="custom-control-label" for="remember">
-							{translate key="user.login.rememberUsernameAndPassword"}
-						</label>
+						<div class="custom-control custom-checkbox">
+							<input class="custom-control-input" type="checkbox" name="remember" id="remember" value="1" checked="$remember">
+							<label class="custom-control-label" for="remember">
+								{translate key="user.login.rememberUsernameAndPassword"}
+							</label>
+						</div>
 					</div>
 
 					<div class="form-group">
@@ -83,6 +78,11 @@
 								{translate key="user.login.registerNewAccount"}
 							</a>
 						{/if}
+
+						<br><br>
+						<a href="{url page="login" op="lostPassword"}">
+							{translate key="user.login.forgotPassword"}
+						</a>
 					</div>
 				</fieldset>
 			</form>
