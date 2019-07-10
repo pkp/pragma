@@ -99,6 +99,29 @@ input {
   border-radius: 0;
 }
 
+// Button-like dropdown menu
+
+.dropdown-menu {
+	border-radius: 0;
+	border-color: @contrast-colour;
+}
+
+.dropdown-item {
+	padding: .5em;
+
+	&.active,
+	&:active,
+	&:hover {
+		background-color: @primary-colour;
+	}
+
+	&:last-child {
+		margin-bottom: 0;
+	}
+}
+
+// Buttons
+
 .btn {
 	cursor: pointer;
   border-radius: 0;
