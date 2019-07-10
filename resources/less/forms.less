@@ -11,9 +11,12 @@
 
 /* General elements */
 
-label {
+form {
   font-family: @font-family-secondary;
   font-size: smaller;
+}
+
+label {
 }
 
 fieldset {
@@ -22,7 +25,6 @@ fieldset {
 
 legend {
   font-weight: 600;
-  font-family: @font-family-secondary;
 }
 
 select {
@@ -52,18 +54,24 @@ input {
 
 /** Custom Bootstrap form overrides **/
 
+.form-group {
+	margin-bottom: 2.5em;
+
+	&:last-of-type {
+		margin-bottom: 0;
+	}
+}
+
 .form-control {
 	display: block;
 	height: auto;
   padding: 1.15em 0.25em 1.15em 0;
-  margin-bottom: 3.5em;
+	margin-bottom: 0.5em;
   background-color: transparent;
   border-radius: 0;
   border: 0;
   border-bottom: 1px solid @contrast-colour;
   border-top: 1px solid @contrast-colour;
-  font-family: @font-family-secondary;
-  font-size: smaller;
   color: @contrast-colour;
 
   &:focus, &:active, &:hover {
@@ -95,7 +103,6 @@ input {
 	cursor: pointer;
   border-radius: 0;
   font-family: @font-family-secondary;
-  font-size: smaller;
   border: 1px solid transparent;
   background-color: transparent;
   text-decoration: none;
