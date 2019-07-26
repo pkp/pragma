@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE locale SYSTEM "../../../../../lib/pkp/dtd/locale.dtd">
+
+<locale name="ar_IQ" full_name="العربية">
+	
+	<!-- Theme description -->
+	<message key="plugins.themes.pragma.name">نمط Pragma</message>
+	<message key="plugins.themes.pragma.description">أحد أنماط نظام المجلات المفتوحة 3</message>
+	
+	<message key="plugins.themes.pragma.more-info">مزيد من المعلومات</message>
+	<message key="plugins.themes.pragma.issues.recent">الأعداد المنشورة حديثاً</message>
+	<message key="plugins.themes.pragma.issue.published">منشورة</message>
+	<message key="plugins.themes.pragma.issue.description">وصف العدد</message>
+	<message key="plugins.themes.pragma.registration.consent">موافقة</message>
+	<message key="plugins.themes.pragma.mainMenu">القائمة الرئيسية</message>
+	<message key="plugins.themes.pragma.language.toggle">تغيير اللغة. اللغة الحالية هي:</message>
+	<message key="plugins.themes.pragma.adminMenu">قائمة المشرف</message>
+	<message key="plugins.themes.pragma.issue.fullIssueLink">معاينة العدد الكامل</message>
+	<message key="plugins.themes.pragma.article.biography">السيرة</message>
+	<message key="plugins.themes.pragma.article.figure">صورة الغلاف</message>
+	<message key="plugins.themes.pragma.authors.browse">التصفح حسب المؤلف</message>
+	<message key="plugins.themes.pragma.author.details">تفاصيل المؤلف</message>
+	
+</locale>
