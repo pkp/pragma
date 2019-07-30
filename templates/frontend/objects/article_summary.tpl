@@ -35,6 +35,12 @@
 	<div class="col-sm-4">
 		{if !$hideGalleys}
 			{foreach from=$article->getGalleys() item=galley}
+				{if $primaryGenreIds}
+					{assign var="file" value=$galley->getFile()}
+					{if !$galley->getRemoteUrl() && !($file && in_array($file->getGenreId(), $primaryGenreIds))}
+						{continue}
+					{/if}
+				{/if}
 				{assign var="hasArticleAccess" value=$hasAccess}
 				{if ($article->getAccessStatus() == $smarty.const.ARTICLE_ACCESS_OPEN)}
 					{assign var="hasArticleAccess" value=1}
