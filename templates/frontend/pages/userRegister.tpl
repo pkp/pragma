@@ -35,23 +35,22 @@
 				{if $currentContext}
 
 				<fieldset class="consent">
-					{if $currentContext->getSetting('privacyStatement')}
-					{* Require the user to agree to the terms of the privacy policy *}
-					<div class="fields">
-						<div class="optin optin-privacy">
-							<label>
-								<input type="checkbox" name="privacyConsent" value="1"{if $privacyConsent} checked="checked"{/if}>
-								{capture assign="privacyUrl"}{url router=$smarty.const.ROUTE_PAGE page="about" op="privacy"}{/capture}
-								{translate key="user.register.form.privacyConsent" privacyUrl=$privacyUrl}
-							</label>
-						</div>
-					</div>
-					{/if}
+					<div class="form-group">
+						{if $currentContext->getSetting('privacyStatement')}
+							{* Require the user to agree to the terms of the privacy policy *}
+							<div class="custom-control custom-checkbox optin optin-privacy">
+								<input type="checkbox" class="custom-control-input" name="privacyConsent" id="privacyConsent" value="1"{if $privacyConsent} checked="checked"{/if}>
+								<label for="privacyConsent" class="custom-control-label">
+									{capture assign="privacyUrl"}{url router=$smarty.const.ROUTE_PAGE page="about" op="privacy"}{/capture}
+									{translate key="user.register.form.privacyConsent" privacyUrl=$privacyUrl}
+								</label>
+							</div>
+						{/if}
 					{* Ask the user to opt into public email notifications *}
-					<div class="fields">
-						<div class="optin optin-email">
-							<label>
-								<input type="checkbox" name="emailConsent" value="1"{if $emailConsent} checked="checked"{/if}>
+
+						<div class="custom-control custom-checkbox optin optin-email">
+							<input type="checkbox" class="custom-control-input" name="emailConsent" id="emailConsent" value="1"{if $emailConsent} checked="checked"{/if}>
+							<label for="emailConsent" class="custom-control-label">
 								{translate key="user.register.form.emailConsent"}
 							</label>
 						</div>
@@ -128,22 +127,22 @@
 
 				{* recaptcha spam blocker *}
 				{if $reCaptchaHtml}
-				<fieldset class="recaptcha_wrapper">
-					<div class="fields">
-						<div class="recaptcha">
-							{$reCaptchaHtml}
+					<fieldset class="recaptcha_wrapper">
+						<div class="fields">
+							<div class="recaptcha">
+								{$reCaptchaHtml}
+							</div>
 						</div>
-					</div>
-				</fieldset>
+					</fieldset>
 				{/if}
 
-				<div class="buttons">
-					<button class="submit" type="submit">
+				<div class="form-group">
+					<button class="btn btn-primary" type="submit">
 						{translate key="user.register"}
 					</button>
 
 					{capture assign="rolesProfileUrl"}{url page="user" op="profile" path="roles"}{/capture}
-					<a href="{url page="login" source=$rolesProfileUrl}" class="login">{translate key="user.login"}</a>
+					<a href="{url page="login" source=$rolesProfileUrl}" class="btn btn-secondary">{translate key="user.login"}</a>
 				</div>
 			</form>
 		</div>
