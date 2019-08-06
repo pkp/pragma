@@ -151,10 +151,6 @@ class PragmaThemePlugin extends ThemePlugin {
 	public function checkCurrentPage($hookname, $args) {
 		$templateMgr = $args[0];
 
-		$request = $this->getRequest();
-		$router = $request->getRouter();
-		$handler = $router->getHandler();
-
 		$templateMgr->registerPlugin('function', 'pragma_item_active', array($this, 'isActiveItem'));
 
 	}
@@ -169,7 +165,24 @@ class PragmaThemePlugin extends ThemePlugin {
 		$emptyMarker = '';
 		$activeMarker = ' active';
 
-		if (!$navigationMenuItem instanceof NavigationMenuItem && $navigationMenuItem->getIsDisplayed()) return $emptyMarker;
+		// Get URL of the current page
+		$request = $this->getRequest();
+		$currentUrl = $request->getCompleteUrl();
+		$currentPage = $request->getRequestedPage();
+
+		if (!($navigationMenuItem instanceof NavigationMenuItem && $navigationMenuItem->getIsDisplayed())) {
+			if (is_string($navigationMenuItem)) {
+				$navigationMenuItemIndex = preg_replace('/index$/', '', $navigationMenuItem);
+				$navigationMenuItemSlash = preg_replace('/\/index$/', '', $navigationMenuItem);
+				if ($navigationMenuItem == $currentUrl || $navigationMenuItemIndex == $currentUrl || $navigationMenuItemSlash == $currentUrl) {
+					return $activeMarker;
+				} else {
+					return $emptyMarker;
+				}
+			} else {
+				return $emptyMarker;
+			}
+		}
 
 		// Do not add an active marker if it's a dropdown menu
 		if ($navigationMenuItem->getIsChildVisible()) return $emptyMarker;
@@ -177,15 +190,11 @@ class PragmaThemePlugin extends ThemePlugin {
 		// Retrieve URL and its components for a menu item
 		$itemUrl = $navigationMenuItem->getUrl();
 
-		// Get URL of the current page
-		$request = $this->getRequest();
-		$currentUrl = $request->getCompleteUrl();
-
 		// Check whether menu item points to the current page
 		switch ($navigationMenuItem->getType()) {
 			case NMI_TYPE_CURRENT:
 				$issue = $smarty->getTemplateVars('issue');
-				if ($issue && $issue->getCurrent()) return $activeMarker;
+				if ($issue && $issue->getCurrent() && $currentPage == "issue") return $activeMarker;
 				break;
 			default:
 				if ($currentUrl === $itemUrl) return $activeMarker;
