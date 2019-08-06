@@ -34,9 +34,11 @@
 						{assign var=isSelected value=false}
 						<li>
 							{capture assign="contextUrl"}{url router=$smarty.const.ROUTE_PAGE context=$context->getPath()}{/capture}
-							<a href="{$contextUrl|escape}" class="registration-context__name">
-								{$context->getLocalizedName()|escape}
-							</a>
+							<h4>
+								<a href="{$contextUrl|escape}" class="registration-context__name">
+									{$context->getLocalizedName()|escape}
+								</a>
+							</h4>
 							<fieldset class="registration-context__roles">
 								<legend>
 									{translate key="user.register.otherContextRoles"}
