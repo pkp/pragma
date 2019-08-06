@@ -21,31 +21,21 @@
 		{translate key="user.profile"}
 	</legend>
 	<div class="row">
-		<div class="col-sm-4 form-group">
-			<label for="firstName">
-				{translate key="user.firstName"}
+		<div class="col-sm-6 form-group">
+			<label for="givenName">
+				{translate key="user.givenName"}
 				<span class="required">*</span>
 				<span class="sr-only">
 					{translate key="common.required"}
 				</span>
 			</label>
-			<input type="text" class="form-control" name="firstName" id="firstName" value="{$firstName|escape}" maxlength="40" required>
+			<input type="text" class="form-control" name="givenName" id="givenName" value="{$givenName|escape}" maxlength="255" required>
 		</div>
-		<div class="col-sm-4 form-group">
-			<label for="middleName">
-				{translate key="user.middleName"}
+		<div class="col-sm-6 form-group">
+			<label for="familyName">
+				{translate key="user.familyName"}
 			</label>
-			<input type="text" class=form-control name="middleName" id="middleName" value="{$middleName|escape}" maxlength="40">
-		</div>
-		<div class="col-sm-4 form-group">
-			<label for="lastName">
-				{translate key="user.lastName"}
-				<span class="required">*</span>
-				<span class="sr-only">
-					{translate key="common.required"}
-				</span>
-			</label>
-			<input type="text" class="form-control" name="lastName" id="lastName" value="{$lastName|escape}" maxlength="40" required>
+			<input type="text" class=form-control name="familyName" id="familyName" value="{$familyName|escape}" maxlength="255">
 		</div>
 	</div>
 	<div class="row">
@@ -57,7 +47,7 @@
 					{translate key="common.required"}
 				</span>
 			</label>
-			<input type="text" class="form-control" name="affiliation[{$primaryLocale|escape}]" id="affiliation" value="{$affiliation.$primaryLocale|escape}" required>
+			<input type="text" class="form-control" name="affiliation" id="affiliation" value="{$affiliation|escape}" required>
 		</div>
 
 		<div class="col-sm-6 form-group">
