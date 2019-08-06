@@ -95,7 +95,7 @@
 		</legend>
 		<div class="reviewer_nocontext_interests">
 			{* See comment for .tag-it above *}
-			<ul class="interests tag-it" data-field-name="interests[]" data-autocomplete-url="{url|escape router=$smarty.const.ROUTE_PAGE page='user' op='getInterests'}">
+			<ul id="tagitInput" class="interests tag-it" data-field-name="interests[]" data-autocomplete-url="{url|escape router=$smarty.const.ROUTE_PAGE page='user' op='getInterests'}">
 				{foreach from=$interests item=interest}
 					<li>{$interest|escape}</li>
 				{/foreach}

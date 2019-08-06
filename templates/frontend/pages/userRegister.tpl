@@ -75,20 +75,21 @@
 					{else}
 					{capture assign="checkboxLocaleKey"}user.reviewerPrompt.optin{/capture}
 					{/if}
-					<div class="fields">
-						<div id="reviewerOptinGroup" class="optin">
+					<div class="form-group">
+						<div id="reviewerOptinGroup" class="custom-control custom-checkbox optin">
 							{foreach from=$reviewerUserGroups[$contextId] item=userGroup}
 							{if $userGroup->getPermitSelfRegistration()}
-							<label>
-								{assign var="userGroupId" value=$userGroup->getId()}
-								<input type="checkbox" name="reviewerGroup[{$userGroupId}]" value="1"{if in_array($userGroupId, $userGroupIds)} checked="checked"{/if}>
+
+							{assign var="userGroupId" value=$userGroup->getId()}
+							<input type="checkbox" class="custom-control-input" id="checkbox-reviewer-interests" name="reviewerGroup[{$userGroupId}]" value="1"{if in_array($userGroupId, $userGroupIds)} checked="checked"{/if}>
+							<label for="checkbox-reviewer-interests" class="custom-control-label">
 								{translate key=$checkboxLocaleKey userGroup=$userGroup->getLocalizedName()}
 							</label>
 							{/if}
 							{/foreach}
 						</div>
 
-						<div id="reviewerInterests" class="reviewer_interests">
+						<div id="reviewerInterests" class="reviewer_interests hidden">
 							{*
 							* This container will be processed by the tag-it jQuery
 							* plugin. In order for it to work, your theme will need to
@@ -112,7 +113,7 @@
 							<div class="label">
 								{translate key="user.interests"}
 							</div>
-							<ul class="interests tag-it" data-field-name="interests[]" data-autocomplete-url="{url|escape router=$smarty.const.ROUTE_PAGE page='user' op='getInterests'}">
+							<ul id="tagitInput" class="interests tag-it" data-field-name="interests[]" data-autocomplete-url="{url|escape router=$smarty.const.ROUTE_PAGE page='user' op='getInterests'}">
 								{foreach from=$interests item=interest}
 								<li>{$interest|escape}</li>
 								{/foreach}
