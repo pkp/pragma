@@ -24,6 +24,12 @@
 <main class="container main__content" id="main">
 	{if $journalDescription or $announcements}
 	<header class="row">
+		{if $homepageImage}
+		<figure class="col-12">
+			<img src="{$publicFilesDir}/{$homepageImage.uploadName|escape:'url'}" class="img-fluid"/>
+			<hr/>
+		</figure>
+		{/if}
 		{if $journalDescription}
 			<div class="col-sm-6">
 				<section class="journal-desc">
