@@ -16,7 +16,6 @@
  *       homepage
  * @uses $issue Issue Current issue
  * @uses $issueIdentificationString string issue identification that relies on user's settings
- * @uses $lastSectionColor string background color of the last section presented on the index page
  *}
 
 {include file="frontend/components/header.tpl" pageTitleTranslated=$currentJournal->getLocalizedName()}
@@ -25,10 +24,14 @@
 	{if $journalDescription or $announcements}
 	<header class="row">
 		{if $homepageImage}
-		<figure class="col-12">
-			<img src="{$publicFilesDir}/{$homepageImage.uploadName|escape:'url'}" class="img-fluid"/>
-			<hr/>
+		<figure style="background-color: {$primaryColor};">
+			<img src="{$publicFilesDir}/{$homepageImage.uploadName|escape:'url'}"
+					 class="img-fluid"
+					 style="mix-blend-mode: luminosity;"
+			/>
+			<hr>
 		</figure>
+		<hr/>
 		{/if}
 		{if $journalDescription}
 			<div class="col-sm-6">

@@ -25,6 +25,8 @@ class PragmaThemePlugin extends ThemePlugin {
 			'default' => '#A8DCDD',
 		));
 
+		$primaryColor = $this->getOption('primaryColor');
+
 		$additionalLessVariables = [];
 		if ($this->getOption('primaryColor') !== '#A8DCDD') {
 			$additionalLessVariables[] = '@primary-colour:' . $this->getOption('primaryColor') . ';';
@@ -87,6 +89,7 @@ class PragmaThemePlugin extends ThemePlugin {
 
 		$request = $this->getRequest();
 		$journal = $request->getJournal();
+		$primaryColor = $this->getOption('primaryColor');
 
 		if (!defined('SESSION_DISABLE_INIT')) {
 
@@ -112,7 +115,8 @@ class PragmaThemePlugin extends ThemePlugin {
 			$templateMgr->assign(array(
 				'languageToggleLocales' => $locales,
 				'loginUrl' => $loginUrl,
-				'orcidImageUrl' => $orcidImageUrl
+				'orcidImageUrl' => $orcidImageUrl,
+				'primaryColor' => $primaryColor,
 			));
 		}
 	}
