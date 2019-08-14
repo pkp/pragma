@@ -109,17 +109,25 @@ input {
 // Button-like dropdown menu
 
 .dropdown-menu {
+	padding: 0;
 	border-radius: 0;
 	border: 0;
 	background-color: contrast(@contrast-colour);
 }
 
 .dropdown-item {
-	padding: .5em;
+	font-family: @font-family-secondary;
+
+	a {
+		display: block;
+		padding: 0.75em 0.5em;
+		text-decoration: none;
+	}
 
 	&.active,
 	&:active,
-	&:hover {
+	&:hover,
+	&:focus {
 		background-color: @primary-colour;
 	}
 
