@@ -1,12 +1,12 @@
 {**
- * plugins/generic/htmlArticleGalley/display.tpl
- *
- * Copyright (c) 2014-2018 Simon Fraser University
- * Copyright (c) 2003-2018 John Willinsky
- * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
- *
- * Embedded viewing of a HTML galley.
- *}
+* plugins/generic/htmlArticleGalley/display.tpl
+*
+* Copyright (c) 2014-2018 Simon Fraser University
+* Copyright (c) 2003-2018 John Willinsky
+* Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
+*
+* Embedded viewing of a HTML galley.
+*}
 <!DOCTYPE html>
 <html lang="{$currentLocale|replace:"_":"-"}" xml:lang="{$currentLocale|replace:"_":"-"}">
 {capture assign="pageTitleTranslated"}{translate key="article.pageTitle" title=$article->getLocalizedTitle()}{/capture}
@@ -32,26 +32,26 @@
 
 	{include file="frontend/components/footer.tpl"}
 
-{* Default style if CSS isn't attached to the HTML Galley *}
-{if $boolEmbeddedCss === false}
+	{* Default style if CSS isn't attached to the HTML Galley *}
+	{if $boolEmbeddedCss === false}
 	<script type="text/javascript">{literal}
-        window.onload = function() {
-            var iframe = document.getElementById('htmlGalleyFrame');
-            var insideFrame = iframe.contentDocument || iframe.contentWindow.document;
-            var headNode = insideFrame.getElementsByTagName('head')[0];
+	window.onload = function() {
+		var iframe = document.getElementById('htmlGalleyFrame');
+		var insideFrame = iframe.contentDocument || iframe.contentWindow.document;
+		var headNode = insideFrame.getElementsByTagName('head')[0];
 
-            // Loading CSS stylesheet
+		// Loading CSS stylesheet
 
-            var linkElement = document.createElement('link');
-            linkElement.type = 'text/css';
-            linkElement.rel = 'stylesheet';
-            linkElement.href = "{/literal}{$themePath|escape:"javascript"}{literal}/templates/plugins/generic/htmlArticleGalley/css/default.css";
-            headNode.appendChild(linkElement);
+		var linkElement = document.createElement('link');
+		linkElement.type = 'text/css';
+		linkElement.rel = 'stylesheet';
+		linkElement.href = "{/literal}{$themePath|escape:"javascript"}{literal}/templates/plugins/generic/htmlArticleGalley/css/default.css";
+		headNode.appendChild(linkElement);
 
-        };
+	};
 
-		{/literal}</script>
+	{/literal}</script>
 
-{/if}
+	{/if}
 </body>
 </html>
