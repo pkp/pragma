@@ -10,27 +10,27 @@
 <!DOCTYPE html>
 <html lang="{$currentLocale|replace:"_":"-"}" xml:lang="{$currentLocale|replace:"_":"-"}">
 {capture assign="pageTitleTranslated"}{translate key="article.pageTitle" title=$article->getLocalizedTitle()}{/capture}
-{include file="frontend/components/headerHead.tpl"}
+{include file="frontend/components/header.tpl"}
+
 <body class="pkp_page_{$requestedPage|escape} pkp_op_{$requestedOp|escape}">
 
-	{* Header wrapper *}
-	<header class="main__header html-galley__header">
+	<main class="container html-galley">
+		<div class="row">
+			<header class="offset-md-2 col-md-8 html-galley__header">
+				<a href="{url page="article" op="view" path=$article->getBestArticleId()}" class="metadata">
+					&larr; {translate key="article.return"}
+				</a>
+			</header>
 
-		<a href="{url page="article" op="view" path=$article->getBestArticleId()}">
-			<span class="sr-only">
-				{translate key="article.return"}
-			</span>
-		</a>
+			<div id="htmlContainer" class="offset-md-2 col-md-8 html-galley__content">
+				<iframe id="htmlGalleyFrame" name="htmlFrame" src="{url page="article" op="download" path=$article->getBestArticleId()|to_array:$galley->getBestGalleyId() inline=true}" allowfullscreen webkitallowfullscreen></iframe>
+			</div>
+		</div>
+	</main>
 
-		<a href="{url page="article" op="view" path=$article->getBestArticleId()}">
-			{$article->getLocalizedTitle()|escape}
-		</a>
-	</header>
+	{call_hook name="Templates::Common::Footer::PageFooter"}
 
-<div id="htmlContainer">
-	<iframe id="htmlGalleyFrame" name="htmlFrame" src="{url page="article" op="download" path=$article->getBestArticleId()|to_array:$galley->getBestGalleyId() inline=true}" allowfullscreen webkitallowfullscreen></iframe>
-</div>
-{call_hook name="Templates::Common::Footer::PageFooter"}
+	{include file="frontend/components/footer.tpl"}
 
 {* Default style if CSS isn't attached to the HTML Galley *}
 {if $boolEmbeddedCss === false}
