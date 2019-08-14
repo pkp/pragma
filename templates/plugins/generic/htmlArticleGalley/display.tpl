@@ -14,15 +14,19 @@
 
 <body class="pkp_page_{$requestedPage|escape} pkp_op_{$requestedOp|escape}">
 
-	<main class="container html-galley">
+	<main class="container galley">
 		<div class="row">
-			<header class="offset-md-2 col-md-8 html-galley__header">
-				<a href="{url page="article" op="view" path=$article->getBestArticleId()}" class="metadata">
-					&larr; {translate key="article.return"}
-				</a>
+			<header class="offset-md-2 col-md-8 galley__header">
+				<p>
+					<a href="{url page="article" op="view" path=$article->getBestArticleId()}" class="btn btn-secondary">
+						&larr; {translate key="article.return"}
+					</a>
+				</p>
+
+				<h1>{$article->getLocalizedTitle()}</h1>
 			</header>
 
-			<div id="htmlContainer" class="offset-md-2 col-md-8 html-galley__content">
+			<div id="htmlContainer" class="offset-md-2 col-md-8 galley__content">
 				<iframe id="htmlGalleyFrame" name="htmlFrame" src="{url page="article" op="download" path=$article->getBestArticleId()|to_array:$galley->getBestGalleyId() inline=true}" allowfullscreen webkitallowfullscreen></iframe>
 			</div>
 		</div>
