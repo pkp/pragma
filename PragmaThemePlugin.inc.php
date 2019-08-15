@@ -28,8 +28,8 @@ class PragmaThemePlugin extends ThemePlugin {
 		$primaryColor = $this->getOption('primaryColor');
 
 		$additionalLessVariables = [];
-		if ($this->getOption('primaryColor') !== '#A8DCDD') {
-			$additionalLessVariables[] = '@primary-colour:' . $this->getOption('primaryColor') . ';';
+		if ($primaryColor !== '#A8DCDD') {
+			$additionalLessVariables[] = '@primary-colour:' . $primaryColor . ';';
 			$additionalLessVariables[] = '@secondary-colour: darken(@primary-colour, 50%);';
 		}
 
