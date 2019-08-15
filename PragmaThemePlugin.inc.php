@@ -57,6 +57,10 @@ class PragmaThemePlugin extends ThemePlugin {
 		// Adding scripts (JQuery, Popper, Bootstrap, JQuery UI, Tag-it, Theme's JS)
 		$this->addScript('app-js', 'resources/dist/app.min.js');
 
+		// Styles for HTML galleys
+		$this->addStyle('htmlGalley', 'resources/less/import.less', array('contexts' => 'htmlGalley'));
+		$this->modifyStyle('htmlGalley', array('addLessVariables' => join($additionalLessVariables)));
+
 		HookRegistry::register ('TemplateManager::display', array($this, 'addSiteWideData'));
 		HookRegistry::register ('TemplateManager::display', array($this, 'addIndexJournalData'));
 		HookRegistry::register ('TemplateManager::display', array($this, 'checkCurrentPage'));
