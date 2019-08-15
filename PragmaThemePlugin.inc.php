@@ -36,9 +36,9 @@ class PragmaThemePlugin extends ThemePlugin {
 		// Update contrast colour based on primary colour
 		if ($this->isColourDark($this->getOption('primaryColor'))) {
 			$additionalLessVariables[] = '
-				@contrast-colour: rgba(255, 255, 255, 0.85);
-				@secondary-contrast-colour: rgba(255, 255, 255, 0.65);
-				@tertiary-contrast-colour: rgba(255, 255, 255, 0.45);
+				@contrast-colour: rgba(255, 255, 255, 0.95);
+				@secondary-contrast-colour: rgba(255, 255, 255, 0.75);
+				@tertiary-contrast-colour: rgba(255, 255, 255, 0.65);
 			';
 		}
 
@@ -58,6 +58,10 @@ class PragmaThemePlugin extends ThemePlugin {
 
 		// Adding scripts (JQuery, Popper, Bootstrap, JQuery UI, Tag-it, Theme's JS)
 		$this->addScript('app-js', 'resources/dist/app.min.js');
+
+		// Styles for HTML galleys
+		$this->addStyle('htmlGalley', 'resources/less/import.less', array('contexts' => 'htmlGalley'));
+		$this->modifyStyle('htmlGalley', array('addLessVariables' => join($additionalLessVariables)));
 
 		HookRegistry::register ('TemplateManager::display', array($this, 'addSiteWideData'));
 		HookRegistry::register ('TemplateManager::display', array($this, 'addIndexJournalData'));
