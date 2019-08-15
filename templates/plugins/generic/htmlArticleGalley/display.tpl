@@ -23,7 +23,7 @@
 					</a>
 				</p>
 
-				<h1>{$article->getLocalizedTitle()}</h1>
+				<h1>{$article->getLocalizedTitle()|escape}</h1>
 			</header>
 
 			<div id="htmlContainer" class="offset-md-2 col-md-8 galley__content">

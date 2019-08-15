@@ -51,7 +51,7 @@
 						</span>
 					</a>
 				</p>
-				<h1>{$article->getLocalizedTitle()}</h1>
+				<h1>{$article->getLocalizedTitle()|escape}</h1>
 			</header>
 
 			<div id="pdfCanvasContainer" class="offset-lg-1 col-lg-10 galley__content">
