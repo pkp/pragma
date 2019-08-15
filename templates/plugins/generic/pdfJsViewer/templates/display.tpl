@@ -54,7 +54,7 @@
 				<h1>{$article->getLocalizedTitle()|escape}</h1>
 			</header>
 
-			<div id="pdfCanvasContainer" class="offset-lg-1 col-lg-10 galley__content">
+			<div id="pdfCanvasContainer" class="offset-lg-1 col-lg-10 galley__content" style="overflow: visible; -webkit-overflow-scrolling: touch;">
 				<iframe src="{$pluginUrl}/pdf.js/web/viewer.html?file={$pdfUrl|escape:"url"}" width="100%" height="100%" style="min-height: 500px;" allowfullscreen webkitallowfullscreen></iframe>
 			</div>
 		</div>
