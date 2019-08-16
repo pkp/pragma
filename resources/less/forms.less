@@ -16,11 +16,12 @@ form {
   font-size: smaller;
 }
 
-label {
-}
-
 fieldset {
-  margin: 50px 0;
+  margin-bottom: 2.5rem;
+
+	> fieldset legend {
+		font-size: 1rem;
+	}
 }
 
 legend {
@@ -72,7 +73,7 @@ input {
 .form-control {
 	display: block;
 	height: auto;
-  padding: 1.15em 0.25em 1.15em 0;
+  padding: 1.15em 0.25em 1.15em 0.15em;
 	margin-bottom: 0.5em;
   background-color: transparent;
   border-radius: 0;
@@ -197,14 +198,15 @@ input {
 /* Custom autofill styles */
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
-input:-webkit-autofill:focus
+input:-webkit-autofill:focus,
 textarea:-webkit-autofill,
 textarea:-webkit-autofill:hover
 textarea:-webkit-autofill:focus,
 select:-webkit-autofill,
 select:-webkit-autofill:hover,
 select:-webkit-autofill:focus {
-  border-color: @secondary-colour;
-  -webkit-box-shadow: 0 0 0px 1000px contrast(@secondary-contrast-colour) inset;
+  border-color: @secondary-contrast-colour;
   transition: background-color 5000s ease-in-out 0s;
+  -webkit-box-shadow: 0 0 0px 1000px @secondary-contrast-colour inset;
+	-webkit-text-fill-color: @primary-colour;
 }
