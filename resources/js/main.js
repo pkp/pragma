@@ -1,7 +1,9 @@
 // initiating tag-it
 
 $(document).ready(function() {
-	$("#tagitInput").tagit();
+	$("#tagitInput").tagit({
+		autocomplete: {disabled: true}
+	});
 });
 
 (function () {
@@ -23,14 +25,14 @@ $(document).ready(function() {
 
 (function () {
 	var searchSelects = $('.search__form .search__select');
-	
+
 	if (!searchSelects.length) return false;
-	
+
 	searchSelects.wrap("<div class='select__wrapper col'></div>");
 })();
 
 (function($) {
-	
+
 	// Open login modal when nav menu links clicked
 	$('.nmi_type_user_login').click(function() {
 		$('#loginModal').modal();
@@ -42,14 +44,14 @@ $(document).ready(function() {
 // Article detail page: authors
 
 (function ($) {
-	
+
 	// Show author affiliation under authors list (for large screen only)
 	var authorString = $('.author-string__href');
 	$(authorString).click(function(event) {
 		event.preventDefault();
 		var elementId = $(this).attr('href').replace('#', '');
 		$('.article-details__author').each(function () {
-			
+
 			// Show only targeted author's affiliation on click
 			if ($(this).attr('id') === elementId && $(this).hasClass('hidden')) {
 				$(this).removeClass('hidden');
@@ -57,7 +59,7 @@ $(document).ready(function() {
 				$(this).addClass('hidden');
 			}
 		});
-		
+
 		// Add specifiers to the clicked author's link
 		$(authorString).each(function () {
 			if ($(this).attr('href') === ('#' + elementId) && !$(this).hasClass('active')){
@@ -76,15 +78,15 @@ $(document).ready(function() {
 // Not display the menu if all items are inaccessible
 
 (function ($) {
-	
+
 	var navPrimary = $('#navigationPrimary');
-	
+
 	if (!navPrimary.length) return false;
-	
+
 	if (!navPrimary.children().length > 0) {
 		$('.main-header__nav').addClass('hidden');
 	}
-	
+
 })(jQuery);
 
 // Toggle display of consent checkboxes in site-wide registration
