@@ -42,6 +42,9 @@ class PragmaThemePlugin extends ThemePlugin {
 			';
 		}
 
+		$themeUrl = $this->getPluginPath();
+		$additionalLessVariables[] = "@themeUrl: '$themeUrl';";
+
 		// Add navigation menu areas for this theme
 		$this->addMenuArea(array('primary', 'user'));
 
