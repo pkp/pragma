@@ -18,7 +18,7 @@
 	font-weight: 300;
 	font-size: 16px;
 	min-height: 125px;
-	background-color: contrast(@contrast-colour);
+	background-color: @contrast-colour;
 }
 
 .main-header ul {
@@ -39,6 +39,7 @@
 	box-shadow: none;
 	text-decoration: none;
 	font-family: @font-family-secondary;
+	color: contrast(@contrast-colour);
 }
 
 /* User nav */
@@ -87,12 +88,13 @@
 .main-menu__nav-link {
 	display: block;
 	padding: 0 0.5em;
+	color: contrast(@contrast-colour);
 
 	&:hover,
 	&:focus,
 	&:active {
-		color: contrast(@contrast-colour);
-		background-color: @contrast-colour;
+		color: @contrast-colour;
+		background-color: contrast(@contrast-colour);
 	}
 }
 
@@ -105,7 +107,7 @@
 	cursor: pointer;
 	color: inherit;
 	border: 0;
-	background-color: contrast(@contrast-colour);
+	background-color: @contrast-colour;
 	border-radius: 0;
 	height: 40px;
 }
@@ -118,7 +120,7 @@
 }
 
 .hamburger__icon {
-	background-color: @contrast-colour;
+	background-color: contrast(@contrast-colour);
 	top: 2px;
 	position: absolute;
 	width: 30px;
@@ -135,7 +137,7 @@
 	}
 
 	&:before, &:after {
-		background-color: @contrast-colour;
+		background-color: contrast(@contrast-colour);
 		display: block;
 		content: "";
 		position: absolute;
