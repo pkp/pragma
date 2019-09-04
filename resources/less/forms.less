@@ -70,6 +70,17 @@ input {
 	}
 }
 
+.form-row {
+	margin-left: 0;
+	margin-right: 0;
+
+	select, input {
+		&:not(:last-child) {
+			border-right: 0;
+		}
+	}
+}
+
 .form-control {
 	display: block;
 	height: auto;
