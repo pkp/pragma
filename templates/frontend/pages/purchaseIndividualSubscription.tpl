@@ -21,8 +21,8 @@
 			<form method="post" id="subscriptionForm" action="{url op="payPurchaseSubscription" path="individual"|to_array:$subscriptionId}">
 				{csrf}
 
-				<fieldset>
-					<div>
+				<fieldset class="row">
+					<div class="col-sm-8 col-md-6">
 						<div class="form-group">
 							<label for="typeId">
 								{translate key="user.subscriptions.form.typeId"}
