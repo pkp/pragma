@@ -29,8 +29,8 @@
 
 				{include file="common/formErrors.tpl"}
 
-				<fieldset>
-					<div>
+				<fieldset class="row">
+					<div class="col-sm-8 col-md-6">
 						<div class="form-group">
 							<label for="typeId">
 								{translate key="user.subscriptions.form.typeId"}
@@ -75,8 +75,8 @@
 					</div>
 				</fieldset>
 
-				<fieldset>
-					<div>
+				<fieldset class="row">
+					<div class="col-sm-8 col-md-6">
 						<div class="form-group">
 							<label for="domain">
 								{translate key="user.subscriptions.form.domain"}
@@ -86,11 +86,10 @@
 						</div>
 
 						<div>
-							<label>
+							<label for="ipRanges">
 								{translate key="user.subscriptions.form.ipRange"}
-								<input type="text" name="ipRanges" id="ipRanges" value="{$ipRanges|escape}"
-								       aria-describedby="subscriptionIPDescription">
 							</label>
+							<input class="form-control" type="text" name="ipRanges" id="ipRanges" value="{$ipRanges|escape}" aria-describedby="subscriptionIPDescription">
 							<small id="subscriptionIPDescription">{translate key="user.subscriptions.form.ipRangeInstructions"}</small>
 						</div>
 					</div>
@@ -100,7 +99,7 @@
 					<button class="btn btn-primary" type="submit">
 						{translate key="common.continue"}
 					</button>
-					<a href="{url page="user" op="subscriptions"}">
+					<a class="btn btn-secondary" href="{url page="user" op="subscriptions"}">
 						{translate key="common.cancel"}
 					</a>
 				</div>

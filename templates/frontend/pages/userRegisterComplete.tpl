@@ -33,7 +33,6 @@
 					<li>
 						<a href="{url page="submission" op="wizard"}">
 							{translate key="user.login.registrationComplete.newSubmission"}
-							{translate key="user.login.registrationComplete.newSubmission"}
 						</a>
 					</li>
 				{/if}

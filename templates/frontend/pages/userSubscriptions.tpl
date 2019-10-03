@@ -29,7 +29,7 @@
 			{include file="frontend/components/subscriptionContact.tpl"}
 
 			{if $paymentsEnabled}
-				<div>
+				<section>
 					<h3>{translate key="user.subscriptions.subscriptionStatus"}</h3>
 					<p>{translate key="user.subscriptions.statusInformation"}</p>
 					<table>
@@ -58,11 +58,11 @@
 						</tr>
 						</tbody>
 					</table>
-				</div>
+				</section>
 			{/if}
 
 			{if $individualSubscriptionTypesExist}
-				<div>
+				<section>
 					<h3>{translate key="user.subscriptions.individualSubscriptions"}</h3>
 					<p>{translate key="subscriptions.individualDescription"}</p>
 					{if $userIndividualSubscription}
@@ -145,11 +145,11 @@
 							</a>
 						</p>
 					{/if}
-				</div>
+				</section>
 			{/if}
 
 			{if $institutionalSubscriptionTypesExist}
-				<div>
+				<section>
 					<h3>{translate key="user.subscriptions.institutionalSubscriptions"}</h3>
 					<p>
 						{translate key="subscriptions.institutionalDescription"}
@@ -246,7 +246,7 @@
 							</a>
 						{/if}
 					</p>
-				</div>
+				</section>
 			{/if}
 		</div>
 	</div>

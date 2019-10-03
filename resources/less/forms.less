@@ -70,16 +70,26 @@ input {
 	}
 }
 
+.form-row {
+	margin-left: 0;
+	margin-right: 0;
+
+	select, input {
+		&:not(:last-child) {
+			border-right: 0;
+		}
+	}
+}
+
 .form-control {
 	display: block;
 	height: auto;
-  padding: 1.15em 0.25em 1.15em 0.15em;
+  padding: 0.75em;
 	margin-bottom: 0.5em;
   background-color: transparent;
   border-radius: 0;
   border: 0;
-  border-bottom: 1px solid @contrast-colour;
-  border-top: 1px solid @contrast-colour;
+  border: 1px solid @contrast-colour;
   color: @contrast-colour;
 
   &:focus, &:active, &:hover {
@@ -136,26 +146,29 @@ input {
 	border-radius: 0;
 	border: 0;
 	background-color: contrast(@contrast-colour);
-}
 
-.dropdown-item {
-	font-family: @font-family-secondary;
+	.dropdown-item {
+		padding: 0;
+		font-family: @font-family-secondary;
 
-	a {
-		display: block;
-		padding: 0.75em 0.5em;
-		text-decoration: none;
-	}
+		a {
+			display: block;
+			padding: 1rem 2rem;
+			text-decoration: none;
+			color: @contrast-colour;
 
-	&.active,
-	&:active,
-	&:hover,
-	&:focus {
-		background-color: @primary-colour;
-	}
+			&.active,
+			&:active,
+			&:hover,
+			&:focus {
+				background-color: @contrast-colour;
+				color: contrast(@contrast-colour);
+			}
+		}
 
-	&:last-child {
-		margin-bottom: 0;
+		&:last-child {
+			margin-bottom: 0;
+		}
 	}
 }
 
