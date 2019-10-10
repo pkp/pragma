@@ -63,7 +63,7 @@
 							<article class="carousel-item{if $announcement@first} active{/if}">
 									<h3 class="announcement__title_boxed">{$announcement->getLocalizedTitle()|escape}</h3>
 									<p class="metadata">{$announcement->getDatePosted()|date_format:$dateFormatLong}</p>
-									<p>{$announcement->getLocalizedDescriptionShort()}</p>
+									<p>{$announcement->getLocalizedDescriptionShort()|strip_unsafe_html}</p>
 									<p>
 										{capture assign="announcementPageUrl"}{url router=$smarty.const.ROUTE_PAGE page="announcement" op="view" path=$announcement->getId()}{/capture}
 										<a href="{$announcementPageUrl}" class="btn btn-secondary">{translate key="common.more"}</a>
@@ -110,7 +110,7 @@
 				{foreach from=$recentIssues item=recentIssue}
 					<article class="col-xs-6 col-md-3 recent-issues__item">
 						<h4 class="recent-issues__issue-title">
-							<a href="{url page='issue' op='view' path=$recentIssue->getBestIssueId()}">{$recentIssue->getIssueIdentification()}</a>
+							<a href="{url page='issue' op='view' path=$recentIssue->getBestIssueId()}">{$recentIssue->getIssueIdentification()|strip_unsafe_html}</a>
 						</h4>
 						<p class="metadata">{$recentIssue->getDatePublished()|date_format:$dateFormatLong}</p>
 					</article>

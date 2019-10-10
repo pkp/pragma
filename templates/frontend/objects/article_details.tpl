@@ -315,7 +315,7 @@
 								{/iterate}
 							</ol>
 						{elseif $article->getCitations()}
-							<p>{$article->getCitations()|nl2br}</p>
+							<p>{$article->getCitations()|strip_unsafe_html|nl2br}</p>
 						{/if}
 					</section>
 				{/if}

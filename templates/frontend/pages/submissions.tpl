@@ -50,7 +50,7 @@
 					<ul>
 						{foreach from=$submissionChecklist item=checklistItem}
 							<li>
-								{$checklistItem.content|nl2br}
+								{$checklistItem.content|strip_unsafe_html|nl2br}
 							</li>
 						{/foreach}
 					</ul>
