@@ -2,11 +2,11 @@
 <!DOCTYPE locale SYSTEM "../../../../../lib/pkp/dtd/locale.dtd">
 
 <locale name="en_US" full_name="U.S. English">
-	
+
 	<!-- Theme description -->
 	<message key="plugins.themes.pragma.name">Pragma Theme</message>
 	<message key="plugins.themes.pragma.description">The Theme For OJS 3</message>
-	
+
 	<message key="plugins.themes.pragma.more-info">More info</message>
 	<message key="plugins.themes.pragma.issues.recent">Recently published issues</message>
 	<message key="plugins.themes.pragma.issue.published">Published</message>
@@ -20,5 +20,6 @@
 	<message key="plugins.themes.pragma.article.figure">Cover image</message>
 	<message key="plugins.themes.pragma.authors.browse">Browse by Author</message>
 	<message key="plugins.themes.pragma.author.details">Author Details</message>
-	
+	<message key="plugins.themes.pragma.search.resultsFor"><![CDATA[Search Results for <em>{$query}</em>]]></message>
+
 </locale>
