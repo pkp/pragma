@@ -17,19 +17,6 @@
 {include file="frontend/components/header.tpl" pageTitleTranslated=$issueIdentification}
 
 <main class="container main__content" id="main">
-	{if $journalDescription}
-		<section class="journal-desc">
-			<h2 class="journal-desc__title">About this journal</h2>
-			<div class="row">
-				<div class="col-sm-8 journal-desc__content">
-					{$journalDescription|strip_unsafe_html}
-				</div>
-			</div>
-			{capture assign="aboutPageUrl"}{url router=$smarty.const.ROUTE_PAGE page="about"}{/capture}
-			<p><a href="{$aboutPageUrl}" class="btn btn-primary">{translate key="plugins.themes.pragma.more-info"}</a>
-			</p>
-		</section>
-	{/if}
 	<section class="issue">
 
 		{call_hook name="Templates::Index::journal"}
