@@ -30,11 +30,11 @@
 					<span class="issue__volume">{translate key="issue.volume"} {$issue->getVolume()|escape}{if $issue->getShowNumber()}, {/if}</span>
 				{/if}
 				{if $issue->getShowNumber()}
-					<span class="issue__number">{translate key="issue.no"}. {$issue->getNumber()|escape}. </span>
+					<span class="issue__number">{translate key="issue.no"} {$issue->getNumber()|escape}. </span>
 				{/if}
 			{/if}
 			{if $issue->getShowTitle()}
-				<span class="issue__title">{$issue->getLocalizedTitle()|escape}</span>
+				<br/><span class="issue__title">{$issue->getLocalizedTitle()|escape}</span>
 			{/if}
 			</h1>
 			{if $issue->getDatePublished()}
