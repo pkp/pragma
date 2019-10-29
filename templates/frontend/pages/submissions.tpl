@@ -86,6 +86,30 @@
 					{$currentContext->getLocalizedSetting('privacyStatement')}
 				</section>
 			{/if}
+
+			{if $sections}
+				<section>
+					{include file="frontend/components/editLink.tpl" page="management" op="settings" path="context" anchor="sections" sectionTitleKey="about.sectionPolicies"}
+					<h2>
+						{translate key="section.sections"}
+					</h2>
+					{foreach from=$sections item="section"}
+						<section>
+							<h3>{$section->getLocalizedTitle()|escape}</h3>
+							{if $section->getLocalizedPolicy()}
+								{$section->getLocalizedPolicy()}
+							{/if}
+							{if $isUserLoggedIn}
+								{capture assign="sectionSubmissionUrl"}{url page="submission" op="wizard" sectionId=$section->getId()}{/capture}
+								<p>
+									{translate key="about.onlineSubmissions.submitToSection" name=$section->getLocalizedTitle() url=$sectionSubmissionUrl}
+								</p>
+							{/if}
+						</section>
+					{/foreach}
+				</section>
+			{/if}
+
 		</div>
 	</div> <!-- .row -->
 </main>
