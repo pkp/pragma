@@ -30,15 +30,15 @@
 					<span class="issue__volume">{translate key="issue.volume"} {$issue->getVolume()|escape}{if $issue->getShowNumber()}, {/if}</span>
 				{/if}
 				{if $issue->getShowNumber()}
-					<span class="issue__number">{translate key="issue.no"}. {$issue->getNumber()|escape}. </span>
+					<span class="issue__number">{translate key="issue.no"} {$issue->getNumber()|escape}. </span>
 				{/if}
 			{/if}
 			{if $issue->getShowTitle()}
-				<span class="issue__title">{$issue->getLocalizedTitle()|escape}</span>
+				<br/><span class="issue__title">{$issue->getLocalizedTitle()|escape}</span>
 			{/if}
 			</h1>
 			{if $issue->getDatePublished()}
-				<p class="metadata">{translate key="plugins.themes.immersion.issue.published"} {$issue->getDatePublished()|date_format:$dateFormatLong}</p>
+				<p class="metadata">{translate key="submissions.published"} {$issue->getDatePublished()|date_format:$dateFormatLong}</p>
 			{/if}
 			{if $issue->getLocalizedDescription()}
 				<div class="issue-desc">
@@ -50,7 +50,7 @@
 						{$issueDescription|substr:0:$stringLenght|mb_convert_encoding:'UTF-8'|replace:'?':''|trim}…
 						<p>
 							<a class="btn btn-secondary"
-							   href="{url op="view" page="issue" path=$issue->getBestIssueId()}">{translate key="plugins.themes.immersion.issue.fullIssueLink"}</a>
+							   href="{url op="view" page="issue" path=$issue->getBestIssueId()}">{translate key="issue.fullIssue"}</a>
 						</p>
 					{/if}
 				</div>

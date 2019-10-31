@@ -8,7 +8,7 @@
  * Site index page.
  *
  *}
-{include file="frontend/components/header.tpl" immersionIndexType="indexSite"}
+{include file="frontend/components/header.tpl"}
 
 <main class="container main__content" id="main">
 	<div class="row">
