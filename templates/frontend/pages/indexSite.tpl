@@ -25,7 +25,7 @@
 			</header>
 
 			<div>
-				{if !count($journals)}
+				{if $journals->wasEmpty()}
 					{translate key="site.noJournals"}
 				{else}
 					{assign var="journalKey" value=0}
@@ -65,13 +65,6 @@
 						</article>
 						{if $journalKey < $countItems+1}<hr>{/if}
 					{/iterate}
-
-					{if $journals->getPageCount() > 0}
-						<div>
-							{page_info iterator=$journals}
-							{page_links anchor="journals" name="journals" iterator=$journals}
-						</div>
-					{/if}
 				{/if}
 			</div>
 		</div>
