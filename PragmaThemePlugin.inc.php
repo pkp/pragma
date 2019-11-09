@@ -19,22 +19,21 @@ class PragmaThemePlugin extends ThemePlugin {
 	public function init() {
 		/* Additional theme options */
 		// Change theme primary color
-		$this->addOption('primaryColor', 'colour', array(
-			'label' => 'plugins.themes.pragma.option.primaryColor.label',
-			'description' => 'plugins.themes.pragma.option.primaryColor.description',
+		$this->addOption('baseColour', 'colour', array(
+			'label' => 'plugins.themes.default.option.colour.label',
 			'default' => '#A8DCDD',
 		));
 
-		$primaryColor = $this->getOption('primaryColor');
+		$baseColour = $this->getOption('baseColour');
 
 		$additionalLessVariables = [];
-		if ($primaryColor !== '#A8DCDD') {
-			$additionalLessVariables[] = '@primary-colour:' . $primaryColor . ';';
+		if ($baseColour !== '#A8DCDD') {
+			$additionalLessVariables[] = '@primary-colour:' . $baseColour . ';';
 			$additionalLessVariables[] = '@secondary-colour: darken(@primary-colour, 50%);';
 		}
 
 		// Update contrast colour based on primary colour
-		if ($this->isColourDark($this->getOption('primaryColor'))) {
+		if ($this->isColourDark($this->getOption('baseColour'))) {
 			$additionalLessVariables[] = '
 				@contrast-colour: rgba(255, 255, 255, 0.95);
 				@secondary-contrast-colour: rgba(255, 255, 255, 0.75);
@@ -96,7 +95,7 @@ class PragmaThemePlugin extends ThemePlugin {
 
 		$request = $this->getRequest();
 		$journal = $request->getJournal();
-		$primaryColor = $this->getOption('primaryColor');
+		$baseColour = $this->getOption('baseColour');
 
 		if (!defined('SESSION_DISABLE_INIT')) {
 
@@ -123,7 +122,7 @@ class PragmaThemePlugin extends ThemePlugin {
 				'languageToggleLocales' => $locales,
 				'loginUrl' => $loginUrl,
 				'orcidImageUrl' => $orcidImageUrl,
-				'primaryColor' => $primaryColor,
+				'baseColour' => $baseColour,
 			));
 		}
 	}
