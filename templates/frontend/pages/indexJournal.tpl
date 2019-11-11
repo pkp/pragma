@@ -24,7 +24,7 @@
 	{if $journalDescription or $announcements}
 	<header class="row">
 		{if $homepageImage}
-		<figure style="background-color: {$primaryColor};">
+		<figure style="background-color: {$baseColour};">
 			<img src="{$publicFilesDir}/{$homepageImage.uploadName|escape:'url'}"
 					 class="img-fluid"
 					 style="mix-blend-mode: luminosity;"
