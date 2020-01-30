@@ -32,6 +32,17 @@
 
 <article>
 	<header class="row main__header">
+		{* Notification that this is an old version *}
+		{if $currentPublication->getId() !== $publication->getId()}
+		<div role="alert">
+			{capture assign="latestVersionUrl"}{url page="article" op="view" path=$article->getBestId()}{/capture}
+			{translate key="submission.outdatedVersion"
+				datePublished=$publication->getData('datePublished')|date_format:$dateFormatShort
+				urlRecentVersion=$latestVersionUrl|escape
+			}
+		</div>
+		{/if}
+		
 		<div class="col-md-9">
 			{* Issue title & section *}
 			<p class="metadata">
