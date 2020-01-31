@@ -42,7 +42,7 @@
 			}
 		</div>
 		{/if}
-		
+
 		<div class="col-md-9">
 			{* Issue title & section *}
 			<p class="metadata">
@@ -98,9 +98,16 @@
 			{/foreach}
 
 			{* Date published *}
-			{if $article->getDatePublished()}
+			{if $publication->getData('datePublished')}
 				<p class="metadata">
-					{translate key="plugins.themes.healthSciences.currentIssuePublished" date=$article->getDatePublished()|date_format:$dateFormatLong}
+					{translate key="submissions.published"}
+					{* If this is the original version *}
+					{if $firstPublication->getID() === $publication->getId()}
+						{$firstPublication->getData('datePublished')|date_format:$dateFormatShort}
+					{* If this is an updated version *}
+					{else}
+						{translate key="submission.updatedOn" datePublished=$firstPublication->getData('datePublished')|date_format:$dateFormatShort dateUpdated=$publication->getData('datePublished')|date_format:$dateFormatShort}
+					{/if}
 				</p>
 			{/if}
 
