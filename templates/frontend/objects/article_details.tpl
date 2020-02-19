@@ -60,7 +60,7 @@
 
 			{* Article title *}
 			<h1 class="main__title">
-				{$article->getLocalizedFullTitle()|escape}
+				{$publication->getLocalizedFullTitle()|escape}
 			</h1>
 
 			{* DOI *}
@@ -112,7 +112,7 @@
 			{/if}
 
 			{* Authors & affiliations *}
-			{assign var="authors" value=$article->getAuthors()}
+			{assign var="authors" value=$publication->getData('authors')}
 			{assign var="hasAffiliations" value=false}
 
 			{foreach from=$authors item=author}
@@ -161,12 +161,21 @@
 
 		<section class="col-md-3">
 			{* Article or issue cover image *}
-			{if $article->getLocalizedCoverImage() || $issue->getLocalizedCoverImage()}
-				{if $article->getLocalizedCoverImage()}
-					<img class="img-fluid" src="{$article->getLocalizedCoverImageUrl()|escape}"{if $article->getLocalizedCoverImageAltText()} alt="{$article->getLocalizedCoverImageAltText()|escape}"{/if}>
+			{if $publication->getLocalizedData('coverImage') || ($issue && $issue->getLocalizedCoverImage())}
+				{if $publication->getLocalizedData('coverImage')}
+					{assign var="coverImage" value=$publication->getLocalizedData('coverImage')}
+					<img
+						class="img-fluid"
+						src="{$publication->getLocalizedCoverImageUrl($article->getData('contextId'))|escape}"
+						alt="{$coverImage.altText|escape|default:''}"
+					>
 				{else}
 					<a href="{url page="issue" op="view" path=$issue->getBestIssueId()}">
-						<img class="img-fluid" src="{$issue->getLocalizedCoverImageUrl()|escape}"{if $issue->getLocalizedCoverImageAltText()} alt="{$issue->getLocalizedCoverImageAltText()|escape}"{/if}>
+						<img
+							class="img-fluid"
+							src="{$issue->getLocalizedCoverImageUrl()|escape}"
+							alt="{$issue->getLocalizedCoverImageAltText()|escape|default:''}"
+						>
 					</a>
 				{/if}
 			{/if}
@@ -272,10 +281,10 @@
 			<div class="article-details-main" id="articleMain">
 
 				{* Abstract *}
-				{if $article->getLocalizedAbstract()}
+				{if $publication->getLocalizedData('abstract')}
 					<section>
 						<h2>{translate key="article.abstract"}</h2>
-						{$article->getLocalizedAbstract()|strip_unsafe_html}
+						{$publication->getLocalizedData('abstract')|strip_unsafe_html}
 					</section>
 				{/if}
 
@@ -316,7 +325,7 @@
 
 				{* Author biographies *}
 				{assign var="hasBiographies" value=false}
-				{foreach from=$article->getAuthors() item=author}
+				{foreach from=$publication->getData('authors') item=author}
 					{if $author->getLocalizedBiography()}
 						{assign var="hasBiographies" value=true}
 						{break}
@@ -333,7 +342,7 @@
 								{translate key="submission.authorBiography"}
 							{/if}
 						</h2>
-						{foreach from=$article->getAuthors() item=author}
+						{foreach from=$publication->getData('authors') item=author}
 							{if $author->getLocalizedBiography()}
 								<h3>{$author->getFullName()|escape}</h3>
 								<p>{$author->getLocalizedBiography()|strip_unsafe_html}</p>
@@ -343,20 +352,20 @@
 				{/if}
 
 				{* References *}
-				{if $parsedCitations->getCount() || $article->getCitations()}
+				{if $parsedCitations || $publication->getData('citationsRaw')}
 					<hr>
 					<section>
 						<h2>
 							{translate key="submission.citations"}
 						</h2>
-						{if $parsedCitations->getCount()}
+						{if $parsedCitations}
 							<ol>
-								{iterate from=parsedCitations item=parsedCitation}
-									<li>{$parsedCitation->getCitationWithLinks()|strip_unsafe_html}</li>
-								{/iterate}
+								{foreach from=$parsedCitations item="parsedCitation"}
+									<li>{$parsedCitation->getCitationWithLinks()|strip_unsafe_html} {call_hook name="Templates::Article::Details::Reference" citation=$parsedCitation}</li>
+								{/foreach}
 							</ol>
-						{elseif $article->getCitations()}
-							<p>{$article->getCitations()|strip_unsafe_html|nl2br}</p>
+						{else}
+							<p>{$publication->getData('citationsRaw')|nl2br}</p>
 						{/if}
 					</section>
 				{/if}

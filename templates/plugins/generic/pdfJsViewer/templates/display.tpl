@@ -52,6 +52,12 @@
 					</a>
 				</p>
 				<h1>{$article->getLocalizedTitle()|escape}</h1>
+
+				{if !$isLatestPublication}
+					<div role="alert">
+						{translate key="submission.outdatedVersion" datePublished=$galleyPublication->getData('datePublished')|date_format:$dateFormatLong urlRecentVersion=$parentUrl}
+					</div>
+				{/if}
 			</header>
 
 			<div id="pdfCanvasContainer" class="offset-lg-1 col-lg-10 galley__content" style="overflow: visible; -webkit-overflow-scrolling: touch;">

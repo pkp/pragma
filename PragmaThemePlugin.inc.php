@@ -19,8 +19,8 @@ class PragmaThemePlugin extends ThemePlugin {
 	public function init() {
 		/* Additional theme options */
 		// Change theme primary color
-		$this->addOption('baseColour', 'colour', array(
-			'label' => 'plugins.themes.default.option.colour.label',
+		$this->addOption('baseColour', 'FieldColor', array(
+			'label' => __('plugins.themes.default.option.colour.label'),
 			'default' => '#A8DCDD',
 		));
 
