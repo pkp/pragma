@@ -111,7 +111,7 @@
 							<li>
 								{$authorString->getFullName()|escape}
 								{if $authorString->getOrcid()}
-									<a href="{$authorString->getOrcid()|escape}"><img src="{$baseUrl}/{$orcidImage}"></a>
+									<a href="{$authorString->getOrcid()|escape}"><img src="{$baseUrl}/{$orcidImageUrl}"></a>
 								{/if}
 							</li>
 						{/strip}{if !$smarty.foreach.authors.last}, {/if}
