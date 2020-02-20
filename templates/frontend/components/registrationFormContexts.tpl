@@ -103,7 +103,7 @@
 
 	{* Require the user to agree to the terms of the privacy policy *}
 	<div class="form-group">
-	{if $siteWidePrivacyStatement && $enableSiteWidePrivacyStatement}
+	{if $siteWidePrivacyStatement}
 		<div class="custom-control custom-checkbox optin optin-privacy">
 			<input type="checkbox" class="custom-control-input" name="privacyConsent[{$smarty.const.CONTEXT_ID_NONE}]" id="privacyConsent[{$smarty.const.CONTEXT_ID_NONE}]" value="1"{if $privacyConsent[$smarty.const.CONTEXT_ID_NONE]} checked="checked"{/if}>
 			<label for="privacyConsent[{$smarty.const.CONTEXT_ID_NONE}]" class="custom-control-label">
