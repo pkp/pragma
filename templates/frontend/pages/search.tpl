@@ -37,10 +37,10 @@
 			{capture name="searchFormUrl"}{url op="search" escape=false}{/capture}
 			{$smarty.capture.searchFormUrl|parse_url:$smarty.const.PHP_URL_QUERY|parse_str:$formUrlParameters}
 			<form class="cmp_form" method="get" action="{$smarty.capture.searchFormUrl|strtok:"?"|escape}">
-				{csrf}
 				{foreach from=$formUrlParameters key=paramKey item=paramValue}
 					<input type="hidden" name="{$paramKey|escape}" value="{$paramValue|escape}"/>
 				{/foreach}
+
 				<div class="form-group">
 					<label for="query">
 						{translate key="common.searchQuery"}
