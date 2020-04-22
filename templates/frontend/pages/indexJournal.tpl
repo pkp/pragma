@@ -36,7 +36,7 @@
 		{if $journalDescription}
 			<div class="col-sm-6">
 				<section class="journal-desc">
-					<h2 class="metadata">{$displayPageHeaderTitle}</h2>
+					<h2 class="metadata">{$displayPageHeaderTitle|escape}</h2>
 					<article>
 						<h3 class="journal-desc__title">{translate key="about.aboutContext"}</h3>
 						{$journalDescription|strip_unsafe_html|truncate:450}
