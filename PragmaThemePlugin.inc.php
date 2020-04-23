@@ -160,8 +160,10 @@ class PragmaThemePlugin extends ThemePlugin {
 	 */
 	public function checkCurrentPage($hookname, $args) {
 		$templateMgr = $args[0];
-
-		$templateMgr->registerPlugin('function', 'pragma_item_active', array($this, 'isActiveItem'));
+		// TODO check the issue with multiple calls of the hook on settings/website
+		if (!isset($templateMgr->registered_plugins["function"]["pragma_item_active"])) {
+			$templateMgr->registerPlugin('function', 'pragma_item_active', array($this, 'isActiveItem'));
+		}
 
 	}
 
