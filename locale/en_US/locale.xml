@@ -5,7 +5,7 @@
 
 	<!-- Theme description -->
 	<message key="plugins.themes.pragma.name">Pragma Theme</message>
-	<message key="plugins.themes.pragma.description">The Theme For OJS 3</message>
+	<message key="plugins.themes.pragma.description">A minimalist OJS theme inspired by early periodicals’ tables of contents featuring a bold use of a monochromatic colour palette.</message>
 
 	<message key="plugins.themes.pragma.more-info">More info</message>
 	<message key="plugins.themes.pragma.issues.recent">Recently published issues</message>
