@@ -28,7 +28,7 @@
 			</header>
 
 			<section>
-				{foreach from=$publishedArticles item=article}
+				{foreach from=$publishedSubmissions item=article}
 					{assign var=issueId value=$article->getIssueId()}
 					{assign var=issue value=$issues[$issueId]}
 					{assign var=issueUnavailable value=$issuesUnavailable.$issueId}

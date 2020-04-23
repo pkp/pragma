@@ -60,7 +60,7 @@
 </div>
 
 {assign var=contentTableInserted value=false}
-{foreach name=sections from=$publishedArticles item=section key=sectionNumber}
+{foreach name=sections from=$publishedSubmissions item=section key=sectionNumber}
 	{if $section.articles}
 		<hr/>
 		<section class="issue-section">
