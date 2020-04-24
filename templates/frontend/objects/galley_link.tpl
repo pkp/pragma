@@ -21,51 +21,58 @@
 
 {* Override the $currentJournal context if desired *}
 {if $journalOverride}
-	{assign var="currentJournal" value=$journalOverride}
+    {assign var="currentJournal" value=$journalOverride}
 {/if}
 
 {* Determine galley type and URL op *}
 {if $galley->isPdfGalley()}
-	{assign var="type" value="pdf"}
+    {assign var="type" value="pdf"}
 {else}
-	{assign var="type" value="file"}
+    {assign var="type" value="file"}
 {/if}
 
 {* Get page and parentId for URL *}
 {if $parent instanceOf Issue}
-	{assign var="page" value="issue"}
-	{assign var="parentId" value=$parent->getBestIssueId()}
+    {assign var="page" value="issue"}
+    {assign var="parentId" value=$parent->getBestIssueId()}
+    {assign var="path" value=$parentId|to_array:$galley->getBestGalleyId()}
 {else}
-	{assign var="page" value="article"}
-	{assign var="parentId" value=$parent->getBestArticleId()}
+    {assign var="page" value="article"}
+    {assign var="parentId" value=$parent->getBestArticleId()}
+    {if $publication && $publication->getId() !== $parent->getCurrentPublication()->getId()}
+        {assign var="path" value=$parentId|to_array:"version":$publication->getId():$galley->getBestGalleyId()}
+    {else}
+        {assign var="path" value=$parentId|to_array:$galley->getBestGalleyId()}
+    {/if}
 {/if}
 
 {* Get user access flag *}
 {if !$hasAccess}
-	{if $restrictOnlyPdf && $type=="pdf"}
-		{assign var=restricted value="1"}
-	{elseif !$restrictOnlyPdf}
-		{assign var=restricted value="1"}
-	{/if}
+    {if $restrictOnlyPdf && $type=="pdf"}
+        {assign var=restricted value="1"}
+    {elseif !$restrictOnlyPdf}
+        {assign var=restricted value="1"}
+    {/if}
 {/if}
 
 {* Don't be frightened. This is just a link *}
-<a class="{if $isSupplementary}btn btn-secondary galley_supplementary{else}btn btn-secondary{/if} {$type|escape}{if $restricted} restricted{/if}" href="{url page=$page op="view" path=$parentId|to_array:$galley->getBestGalleyId()}">
+<a class="{if $isSupplementary}btn btn-secondary galley_supplementary{else}btn btn-secondary{/if} {$type|escape}{if $restricted} restricted{/if}"
+   href="{url page=$page op="view" path=$path}">
 
-	{* Add some screen reader text to indicate if a galley is restricted *}
-	{if $restricted}
+    {* Add some screen reader text to indicate if a galley is restricted *}
+    {if $restricted}
 		<span class="sr-only">
 			{if $purchaseArticleEnabled}
-				{translate key="reader.subscriptionOrFeeAccess"}
-			{else}
-				{translate key="reader.subscriptionAccess"}
-			{/if}
+                {translate key="reader.subscriptionOrFeeAccess"}
+            {else}
+                {translate key="reader.subscriptionAccess"}
+            {/if}
 		</span>
-	{/if}
+    {/if}
 
-	{$galley->getGalleyLabel()|escape}
+    {$galley->getGalleyLabel()|escape}
 
-	{if $restricted && $purchaseFee && $purchaseCurrency}
-		{translate key="reader.purchasePrice" price=$purchaseFee currency=$purchaseCurrency}
-	{/if}
+    {if $restricted && $purchaseFee && $purchaseCurrency}
+        {translate key="reader.purchasePrice" price=$purchaseFee currency=$purchaseCurrency}
+    {/if}
 </a>
