@@ -15,7 +15,7 @@
 		<div class="offset-md-1 col-md-10 offset-lg-2 col-lg-8">
 			<header class="main__header">
 				<h2 class="main__title">
-					{translate key="journal.journals"}
+					{translate key="context.contexts"}
 				</h2>
 				{if $about}
 					<div>
@@ -39,7 +39,7 @@
 							{if $thumb}
 								<div>
 									<a href="{$url|escape}">
-										<img src="{$journalFilesPath}{$journal->getId()}/{$thumb.uploadName|escape:"url"}"{if $thumb.altText} alt="{$thumb.altText|escape}"{/if} class="img-fluid">
+										<img src="{$journalFilesPath}{$journal->getId()}/{$thumb.uploadName|escape:"url"}"{if $thumb.altText} alt="{$thumb.altText|escape|default:''}"{/if} class="img-fluid">
 									</a>
 								</div>
 							{/if}
