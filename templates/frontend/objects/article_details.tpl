@@ -365,7 +365,7 @@
 								{/foreach}
 							</ol>
 						{else}
-							<p>{$publication->getData('citationsRaw')|nl2br}</p>
+							<p>{$publication->getData('citationsRaw')|escape|nl2br}</p>
 						{/if}
 					</section>
 				{/if}
