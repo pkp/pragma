@@ -1,23 +1,52 @@
 // initiating tag-it
 
-$(document).ready(function() {
-	$("#tagitInput").tagit({
-		autocomplete: {disabled: true}
+$("#tagitInput").each(function() {
+	var autocomplete_url = $(this).data("autocomplete-url");
+	$(this).tagit({
+		fieldName: $(this).data("field-name"),
+		allowSpaces: false,
+		autocomplete: {
+			source: function(request, response) {
+				$.ajax({
+					url: autocomplete_url,
+					data: {term: request.term},
+					dataType: "json",
+					success: function(jsonData) {
+						if (jsonData.status === true) {
+							response(jsonData.content);
+						}
+					}
+				});
+			}
+		}
 	});
 });
 
 (function () {
-	var checkbox = document.getElementById("checkbox-reviewer-interests");
-	if (checkbox != null) {
-		checkbox.onclick = function () {
-			var tagitInput = document.getElementById("reviewerInterests");
-			if (checkbox.checked === true) {
-				tagitInput.classList.remove("hidden");
-			} else {
-				tagitInput.classList.add("hidden");
+	function isReviewerSelected() {
+		var group = $("#reviewerOptinGroup").find("input");
+		var is_checked = false;
+		group.each(function() {
+			if ($(this).is(":checked")) {
+				is_checked = true;
+				return false;
 			}
+		});
+		
+		return is_checked;
+	}
+	
+	function reviewerInterestsToggle() {
+		var is_checked = isReviewerSelected();
+		if (is_checked) {
+			$("#reviewerInterests").removeClass("hidden");
+		} else {
+			$("#reviewerInterests").addClass("hidden");
 		}
 	}
+	
+	reviewerInterestsToggle();
+	$("#reviewerOptinGroup input").click(reviewerInterestsToggle);
 })();
 
 
