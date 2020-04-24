@@ -1,0 +1,57 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2020-04-24T08:36:12+00:00\n"
+"PO-Revision-Date: 2020-04-24T08:36:12+00:00\n"
+"Language: \n"
+
+msgid "plugins.themes.pragma.name"
+msgstr "Pragma-Theme"
+
+msgid "plugins.themes.pragma.description"
+msgstr "Das Theme für OJS 3"
+
+msgid "plugins.themes.pragma.more-info"
+msgstr "Weitere Informationen"
+
+msgid "plugins.themes.pragma.issues.recent"
+msgstr "Letzte Ausgaben"
+
+msgid "plugins.themes.pragma.issue.published"
+msgstr "Veröffentlicht"
+
+msgid "plugins.themes.pragma.issue.description"
+msgstr "Beschreibung der Ausgabe"
+
+msgid "plugins.themes.pragma.registration.consent"
+msgstr "Zustimmung"
+
+msgid "plugins.themes.pragma.mainMenu"
+msgstr "Hauptmenü"
+
+msgid "plugins.themes.pragma.language.toggle"
+msgstr "Sprache ändern. Aktuell ausgewählte Sprache ist:"
+
+msgid "plugins.themes.pragma.adminMenu"
+msgstr "Administrationsmenü"
+
+msgid "plugins.themes.pragma.issue.fullIssueLink"
+msgstr "Komplette Ausgabe sehen"
+
+msgid "plugins.themes.pragma.article.biography"
+msgstr "Biografie"
+
+msgid "plugins.themes.pragma.article.figure"
+msgstr "Titelbild"
+
+msgid "plugins.themes.pragma.authors.browse"
+msgstr "Nach Autor/in blättern"
+
+msgid "plugins.themes.pragma.author.details"
+msgstr "Autor/innendetails"

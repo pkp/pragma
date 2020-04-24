@@ -1,0 +1,57 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2020-04-24T08:36:25+00:00\n"
+"PO-Revision-Date: 2020-04-24T08:36:25+00:00\n"
+"Language: \n"
+
+msgid "plugins.themes.pragma.name"
+msgstr "Tema Pragma"
+
+msgid "plugins.themes.pragma.description"
+msgstr "Tema para OJS 3"
+
+msgid "plugins.themes.pragma.more-info"
+msgstr "Más información"
+
+msgid "plugins.themes.pragma.issues.recent"
+msgstr "Números recientes"
+
+msgid "plugins.themes.pragma.issue.published"
+msgstr "Publicado"
+
+msgid "plugins.themes.pragma.issue.description"
+msgstr "Descripción del número"
+
+msgid "plugins.themes.pragma.registration.consent"
+msgstr "Autorización"
+
+msgid "plugins.themes.pragma.mainMenu"
+msgstr "Menú principal"
+
+msgid "plugins.themes.pragma.language.toggle"
+msgstr "Cambia el idioma. El idioma actual es:"
+
+msgid "plugins.themes.pragma.adminMenu"
+msgstr "Menú Administración"
+
+msgid "plugins.themes.pragma.issue.fullIssueLink"
+msgstr "Ver el número completo"
+
+msgid "plugins.themes.pragma.article.biography"
+msgstr "Biografía"
+
+msgid "plugins.themes.pragma.article.figure"
+msgstr "Imagen de portada"
+
+msgid "plugins.themes.pragma.authors.browse"
+msgstr "Navegar por autores/as"
+
+msgid "plugins.themes.pragma.author.details"
+msgstr "Información del Autor/a"
