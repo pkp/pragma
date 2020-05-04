@@ -29,9 +29,8 @@
 					 class="img-fluid"
 					 style="mix-blend-mode: luminosity;"
 			/>
-			<hr>
+			<hr/>
 		</figure>
-		<hr/>
 		{/if}
 		{if $journalDescription}
 			<div class="col-sm-6">
