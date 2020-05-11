@@ -373,10 +373,6 @@
 				{call_hook name="Templates::Article::Main"}
 			</div>
 		</div>
-
-		<div class="col-lg-12 order-lg-3 article-footer-hook">
-			{call_hook name="Templates::Article::Footer::PageFooter"}
-		</div>
-
+    
 	</div>
 </article>
