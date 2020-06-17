@@ -62,7 +62,7 @@
 							{translate key="about.contact.phone"} <a href="tel:{$contactPhone|escape}">{$contactPhone|escape}</a><br>
 						{/if}
 						{if $contactEmail}
-							{translate key="about.contact.email"} <a href="mailto:{$contactEmail|escape}">{$contactEmail|escape}</a><br>
+							{translate key="about.contact.email"} {mailto address=$contactEmail encode='javascript'}<br>
 						{/if}
 					</address>
 				</section>
@@ -82,7 +82,7 @@
 							{translate key="about.contact.phone"} <a href="tel:{$supportPhone|escape}">{$supportPhone|escape}</a><br>
 						{/if}
 						{if $supportEmail}
-							{translate key="about.contact.email"} <a href="mailto:{$supportEmail|escape}">{$supportEmail|escape}</a><br>
+							{translate key="about.contact.email"} {mailto address=$supportEmail encode='javascript'}<br>
 						{/if}
 					</address>
 				</section>
