@@ -62,12 +62,9 @@
 				<div class="main-menu__title">
 			{/if}
 
-			{if $currentContext && $multipleContexts}
-				{capture assign="homeUrl"}{url page="index" router=$smarty.const.ROUTE_PAGE}{/capture}
-			{else}
-				{capture assign="homeUrl"}{url context="index" router=$smarty.const.ROUTE_PAGE}{/capture}
-			{/if}
-
+			{capture assign="homeUrl"}
+				{url page="index" router=$smarty.const.ROUTE_PAGE}
+			{/capture}
 			{if $displayPageHeaderLogo && is_array($displayPageHeaderLogo)}
 				<a href="{$homeUrl}">
 					<img src="{$publicFilesDir}/{$displayPageHeaderLogo.uploadName|escape:"url"}" width="{$displayPageHeaderLogo.width|escape}" height="{$displayPageHeaderLogo.height|escape}" {if $displayPageHeaderLogo.altText != ''}alt="{$displayPageHeaderLogo.altText|escape}"{else}alt="{translate key="common.pageHeaderLogo.altText"}"{/if}
