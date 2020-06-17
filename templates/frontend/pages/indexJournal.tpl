@@ -25,7 +25,7 @@
 	<header class="row">
 		{if $homepageImage}
 		<figure style="background-color: {$baseColour};">
-			<img src="{$publicFilesDir}/{$homepageImage.uploadName|escape:'url'}"
+			<img src="{$publicFilesDir}/{$homepageImage.uploadName|escape:'url'}"{if $homepageImage.altText} alt="{$homepageImage.altText|escape}"{/if}
 					 class="img-fluid"
 					 style="mix-blend-mode: luminosity;"
 			/>
