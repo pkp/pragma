@@ -13,6 +13,7 @@
     "gulp-sourcemaps": "^2.6.4",
     "jquery": "3.4.1",
     "jquery-ui-dist": "^1.12.1",
+    "merge-stream": "^2.0.0",
     "popper.js": "^1.14.7",
     "tag-it": "^2.0.0"
   }
