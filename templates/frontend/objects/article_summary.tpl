@@ -21,7 +21,7 @@
 {/if}
 
 <article class="row article">
-	<div  class="col-sm-8">
+	<div class="col-sm-{if $requestedPage == "catalog"}12{else}8{/if}">
 		<h4 class="article__title">
 			<a {if $journal}href="{url journal=$journal->getPath() page="article" op="view" path=$articlePath}"{else}href="{url page="article" op="view" path=$articlePath}"{/if}>
 				{$article->getLocalizedFullTitle()|escape}
