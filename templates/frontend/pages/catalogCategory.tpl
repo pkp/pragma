@@ -23,77 +23,75 @@
 	<div class="row">
 		<section class="offset-md-1 col-md-10 offset-lg-2 col-lg-8 catalog-category__toc">
 
-            {* Count of articles in this category *}
+			{* Count of articles in this category *}
 			<div class="article_count">
-                {translate key="catalog.browseTitles" numTitles=$total}
+				{translate key="catalog.browseTitles" numTitles=$total}
 			</div>
 
-            {* Image and description *}
-            {assign var="image" value=$category->getImage()}
-            {assign var="description" value=$category->getLocalizedDescription()|strip_unsafe_html}
+			{* Image and description *}
+			{assign var="image" value=$category->getImage()}
+			{assign var="description" value=$category->getLocalizedDescription()|strip_unsafe_html}
 			<div class="about_section{if $image} has_image{/if}{if $description} has_description{/if}">
-                {if $image}
-					<div class="cover"
-					     href="{url router=$smarty.const.ROUTE_PAGE page="catalog" op="fullSize" type="category" id=$category->getId()}">
-						<img src="{url router=$smarty.const.ROUTE_PAGE page="catalog" op="thumbnail" type="category" id=$category->getId()}"
-						     alt="null"/>
+				{if $image}
+					<div class="cover" href="{url router=$smarty.const.ROUTE_PAGE page="catalog" op="fullSize" type="category" id=$category->getId()}">
+						<img src="{url router=$smarty.const.ROUTE_PAGE page="catalog" op="thumbnail" type="category" id=$category->getId()}" alt="null"/>
 					</div>
-                {/if}
+				{/if}
 				<div class="description">
-                    {$description|strip_unsafe_html}
+					{$description|strip_unsafe_html}
 				</div>
 			</div>
 
-            {if !$subcategories->wasEmpty()}
+				{if !$subcategories->wasEmpty()}
 				<nav class="subcategories" role="navigation">
 					<h2>
-                        {translate key="catalog.category.subcategories"}
+						{translate key="catalog.category.subcategories"}
 					</h2>
 					<ul>
-                        {iterate from=subcategories item=subcategory}
+							{iterate from=subcategories item=subcategory}
 							<li>
 								<a href="{url op="category" path=$subcategory->getPath()}">
-                                    {$subcategory->getLocalizedTitle()|escape}
+									{$subcategory->getLocalizedTitle()|escape}
 								</a>
 							</li>
-                        {/iterate}
+							{/iterate}
 					</ul>
 				</nav>
             {/if}
 
 			<h2 class="title">
-                {translate key="catalog.category.heading"}
+				{translate key="catalog.category.heading"}
 			</h2>
 
-            {* No published titles in this category *}
-            {if empty($publishedSubmissions)}
+			{* No published titles in this category *}
+			{if empty($publishedSubmissions)}
 				<p>{translate key="catalog.category.noItems"}</p>
-            {else}
+			{else}
 				<ul class="cmp_article_list articles">
-                    {foreach from=$publishedSubmissions item=article}
+					{foreach from=$publishedSubmissions item=article}
 						<li>
-                            {include file="frontend/objects/article_summary.tpl" article=$article hideGalleys=true}
+							{include file="frontend/objects/article_summary.tpl" article=$article hideGalleys=true}
 						</li>
-                    {/foreach}
+					{/foreach}
 				</ul>
-                {* Pagination *}
-                {if $prevPage > 1}
-                    {capture assign=prevUrl}{url router=$smarty.const.ROUTE_PAGE page="catalog" op="category" path=$category->getPath()|to_array:$prevPage}{/capture}
-                {elseif $prevPage === 1}
-                    {capture assign=prevUrl}{url router=$smarty.const.ROUTE_PAGE page="catalog" op="category" path=$category->getPath()}{/capture}
-                {/if}
-                {if $nextPage}
-                    {capture assign=nextUrl}{url router=$smarty.const.ROUTE_PAGE page="catalog" op="category" path=$category->getPath()|to_array:$nextPage}{/capture}
-                {/if}
-                {include
-                file="frontend/components/pagination.tpl"
-                prevUrl=$prevUrl
-                nextUrl=$nextUrl
-                showingStart=$showingStart
-                showingEnd=$showingEnd
-                total=$total
-                }
-            {/if}
+				{* Pagination *}
+				{if $prevPage > 1}
+					{capture assign=prevUrl}{url router=$smarty.const.ROUTE_PAGE page="catalog" op="category" path=$category->getPath()|to_array:$prevPage}{/capture}
+				{elseif $prevPage === 1}
+					{capture assign=prevUrl}{url router=$smarty.const.ROUTE_PAGE page="catalog" op="category" path=$category->getPath()}{/capture}
+				{/if}
+				{if $nextPage}
+					{capture assign=nextUrl}{url router=$smarty.const.ROUTE_PAGE page="catalog" op="category" path=$category->getPath()|to_array:$nextPage}{/capture}
+				{/if}
+				{include
+					file="frontend/components/pagination.tpl"
+					prevUrl=$prevUrl
+					nextUrl=$nextUrl
+					showingStart=$showingStart
+					showingEnd=$showingEnd
+					total=$total
+				}
+			{/if}
 		</section>
 	</div>
 </main><!-- .page -->
