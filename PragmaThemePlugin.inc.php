@@ -137,17 +137,19 @@ class PragmaThemePlugin extends ThemePlugin {
 
 		if ($template !== 'frontend/pages/indexJournal.tpl') return false;
 
-		$request = $this->getRequest();
-		$journal = $request->getJournal();
-		$issueDao = DAORegistry::getDAO('IssueDAO');
+		$recentIssuesIterator = Services::get('issue')->getMany([
+			'contextId' => $this->getRequest()->getContext()->getId(),
+			'isPublished' => true,
+			'count' => 4
+		]);
 
-		import('lib.pkp.classes.db.DBResultRange');
-		$range = new DBResultRange(4, 1);
-		$recentIssuesObject = $issueDao->getIssues($journal->getId(), $range);
-
-		$recentIssues = array();
-		while ($recentIssue = $recentIssuesObject->next()) {
-			$recentIssues[] = $recentIssue;
+		// Exclude the current issue from the list
+		$recentIssuesAll = iterator_to_array($recentIssuesIterator);
+		$recentIssues = [];
+		foreach ($recentIssuesAll as $issue) {
+			if (!$issue->getCurrent()) {
+				$recentIssues[] = $issue;
+			}
 		}
 
 		$templateMgr->assign('recentIssues', $recentIssues);
