@@ -45,7 +45,7 @@
 					<label for="query">
 						{translate key="common.searchQuery"}
 					</label>
-					<input type="text" class="form-control" id="query" name="query" value="{$query|escape}" placeholder="{translate key='common.keywords'}">
+					<input type="search" class="form-control" id="query" name="query" value="{$query|escape}" placeholder="{translate key='common.keywords'}">
 				</div>
 				<div class="form-group">
 					<label for="authors">

@@ -35,7 +35,7 @@
 							<span class="required">*</span>
 							<span class="sr-only">{translate key="common.required"}</span>
 						</label>
-						<input class="form-control" type="text" name="email" id="email" value="{$email|escape}" required>
+						<input class="form-control" type="email" name="email" id="email" value="{$email|escape}" required>
 					</div>
 					<div class="form-group">
 						<button class="btn btn-primary" type="submit">
