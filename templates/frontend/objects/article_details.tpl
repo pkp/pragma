@@ -184,28 +184,28 @@
 
 	<div class="row" id="mainArticleContent">
 		<aside class="col-lg-3 order-lg-2">
-      {* Display other versions *}
-      {if $publication->getData('datePublished')}
-        {if count($article->getPublishedPublications()) > 1}
-  				<section>
-  					<h2>{translate key="submission.versions"}</h2>
-  					<ul>
-  					{foreach from=array_reverse($article->getPublishedPublications()) item=iPublication}
-  						{capture assign="name"}{translate key="submission.versionIdentity" datePublished=$iPublication->getData('datePublished')|date_format:$dateFormatShort version=$iPublication->getData('version')}{/capture}
-  						<li>
-  							{if $iPublication->getId() === $publication->getId()}
-  								{$name}
-  							{elseif $iPublication->getId() === $currentPublication->getId()}
-  								<a href="{url page="article" op="view" path=$article->getBestId()}">{$name}</a>
-  							{else}
-  								<a href="{url page="article" op="view" path=$article->getBestId()|to_array:"version":$iPublication->getId()}">{$name}</a>
-  							{/if}
-  						</li>
-  					{/foreach}
-  					</ul>
-  				</section>
-        {/if}
-      {/if}
+      	{* Display other versions *}
+			{if $publication->getData('datePublished')}
+				{if count($article->getPublishedPublications()) > 1}
+					<section>
+						<h2>{translate key="submission.versions"}</h2>
+						<ul>
+							{foreach from=array_reverse($article->getPublishedPublications()) item=iPublication}
+								{capture assign="name"}{translate key="submission.versionIdentity" datePublished=$iPublication->getData('datePublished')|date_format:$dateFormatShort version=$iPublication->getData('version')}{/capture}
+								<li>
+									{if $iPublication->getId() === $publication->getId()}
+										{$name}
+									{elseif $iPublication->getId() === $currentPublication->getId()}
+										<a href="{url page="article" op="view" path=$article->getBestId()}">{$name}</a>
+									{else}
+										<a href="{url page="article" op="view" path=$article->getBestId()|to_array:"version":$iPublication->getId()}">{$name}</a>
+									{/if}
+								</li>
+							{/foreach}
+						</ul>
+					</section>
+				{/if}
+			{/if}
 
 			{* How to cite *}
 			{if $citation}
@@ -373,6 +373,6 @@
 				{call_hook name="Templates::Article::Main"}
 			</div>
 		</div>
-    
+
 	</div>
 </article>
