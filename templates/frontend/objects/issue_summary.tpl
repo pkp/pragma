@@ -17,7 +17,7 @@
 
 {if $issueCover}
 	<a class="archived-issue__link" href="{url op="view" path=$issue->getBestIssueId()}">
-		<img src="{$issueCover|escape}"{if $issue->getLocalizedCoverImageAltText() != ''} alt="{$issue->getLocalizedCoverImageAltText()|escape}"{/if} class="img-fluid">
+		<img src="{$issueCover|escape}" alt="{$issue->getLocalizedCoverImageAltText()|escape|default:''}" class="img-fluid">
 	</a>
 {/if}
 

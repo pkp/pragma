@@ -22,8 +22,14 @@
 		{capture assign="sectionTitle"}{translate key=$sectionTitleKey}{/capture}
 	{/if}
 
+	{if $anchor}
+		{capture assign="editLinkUrl"}{url page=$page op=$op path=$path anchor=$anchor}{/capture}
+	{else}
+		{capture assign="editLinkUrl"}{url page=$page op=$op path=$path}{/capture}
+	{/if}
+
 	<small class="float-right">
-		<a href="{url page=$page op=$op path=$path anchor=$anchor}" class="btn btn-primary" target="_blank">
+		<a href="{$editLinkUrl}" class="btn btn-primary" target="_blank">
 			{translate key="common.edit"}
 			{* Screen readers need more context *}
 			<span class="sr-only">

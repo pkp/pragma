@@ -57,33 +57,33 @@
 				</section>
 			{/if}
 
-			{if $currentContext->getLocalizedSetting('authorGuidelines')}
+			{if $currentContext->getLocalizedData('authorGuidelines')}
 				<section id="authorGuidelines">
 					{include file="frontend/components/editLink.tpl" page="management" op="settings" path="workflow" anchor="submission" sectionTitleKey="about.authorGuidelines"}
 					<h2>
 						{translate key="about.authorGuidelines"}
 					</h2>
-					{$currentContext->getLocalizedSetting('authorGuidelines')}
+					{$currentContext->getLocalizedData('authorGuidelines')}
 				</section>
 			{/if}
 
-			{if $currentContext->getLocalizedSetting('copyrightNotice')}
+			{if $currentContext->getLocalizedData('copyrightNotice')}
 				<section>
 					{include file="frontend/components/editLink.tpl" page="management" op="settings" path="distribution" anchor="license" sectionTitleKey="about.copyrightNotice"}
 					<h2>
 						{translate key="about.copyrightNotice"}
 					</h2>
-					{$currentContext->getLocalizedSetting('copyrightNotice')}
+					{$currentContext->getLocalizedData('copyrightNotice')}
 				</section>
 			{/if}
 
-			{if $currentContext->getLocalizedSetting('privacyStatement')}
+			{if $currentContext->getLocalizedData('privacyStatement')}
 				<section>
 					{include file="frontend/components/editLink.tpl" page="management" op="settings" path="website" anchor="setup" sectionTitleKey="about.privacyStatement"}
 					<h2>
 						{translate key="about.privacyStatement"}
 					</h2>
-					{$currentContext->getLocalizedSetting('privacyStatement')}
+					{$currentContext->getLocalizedData('privacyStatement')}
 				</section>
 			{/if}
 
@@ -97,7 +97,7 @@
 						<section>
 							<h3>{$section->getLocalizedTitle()|escape}</h3>
 							{if $section->getLocalizedPolicy()}
-								{$section->getLocalizedPolicy()}
+								{$section->getLocalizedPolicy()|escape}
 							{/if}
 							{if $isUserLoggedIn}
 								{capture assign="sectionSubmissionUrl"}{url page="submission" op="wizard" sectionId=$section->getId()}{/capture}

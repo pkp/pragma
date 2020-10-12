@@ -86,9 +86,10 @@
 				{if $pubId}
 					<p class="metadata">
 						<strong>{$pubIdPlugin->getPubIdDisplayType()|escape}</strong>
-						{if $pubIdPlugin->getResolvingURL($currentJournal->getId(), $pubId)|escape}
-							<a id="pub-id::{$pubIdPlugin->getPubIdType()|escape}" href="{$pubIdPlugin->getResolvingURL($currentJournal->getId(), $pubId)|escape}">
-								{$pubIdPlugin->getResolvingURL($currentJournal->getId(), $pubId)|escape}
+						{assign var="pubIdUrl" value=$pubIdPlugin->getResolvingURL($currentJournal->getId(), $pubId)|escape}
+						{if $pubIdUrl}
+							<a id="pub-id::{$pubIdPlugin->getPubIdType()|escape}" href="{$pubIdUrl}">
+								{$pubIdUrl}
 							</a>
 						{else}
 							{$pubId|escape}
@@ -312,7 +313,7 @@
 				{if $primaryGalleys}
 					<section>
 						{foreach from=$primaryGalleys item=galley}
-							{include file="frontend/objects/galley_link.tpl" parent=$article galley=$galley purchaseFee=$currentJournal->getSetting('purchaseArticleFee') purchaseCurrency=$currentJournal->getSetting('currency')}
+							{include file="frontend/objects/galley_link.tpl" parent=$article publication=$publication galley=$galley purchaseFee=$currentJournal->getData('purchaseArticleFee') purchaseCurrency=$currentJournal->getData('currency')}
 						{/foreach}
 					</section>
 				{/if}
@@ -322,7 +323,7 @@
 					<section>
 						<h2>{translate key="article.suppFiles"}</h2>
 						{foreach from=$supplementaryGalleys item=galley}
-							{include file="frontend/objects/galley_link.tpl" parent=$article galley=$galley isSupplementary="1"}
+							{include file="frontend/objects/galley_link.tpl" parent=$article publication=$publication galley=$galley isSupplementary="1"}
 						{/foreach}
 					</section>
 				{/if}

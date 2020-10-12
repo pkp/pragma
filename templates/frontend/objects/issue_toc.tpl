@@ -24,7 +24,7 @@
 			<p class="metadata">{translate key="journal.currentIssue"}</p>
 		{/if}
 		{strip}
-		<h{if $requestedOp === "issue"}1{else}2{/if} class="issue__header">
+		{capture name="issueMetadata"}
 			{if $issue->getShowVolume() || $issue->getShowNumber()}
 				{if $issue->getShowVolume()}
 					<span class="issue__volume">{translate key="issue.volume"} {$issue->getVolume()|escape}{if $issue->getShowNumber()}, {/if}</span>
@@ -36,25 +36,36 @@
 			{if $issue->getShowTitle()}
 				<br/><span class="issue__title">{$issue->getLocalizedTitle()|escape}</span>
 			{/if}
+		{/capture}
+
+		{if $requestedPage === "issue" && $smarty.capture.issueMetadata|trim !== ""}
+			<h1 class="issue__header">
+				{$smarty.capture.issueMetadata}
 			</h1>
-			{if $issue->getDatePublished()}
-				<p class="metadata">{translate key="submissions.published"} {$issue->getDatePublished()|date_format:$dateFormatLong}</p>
-			{/if}
-			{if $issue->getLocalizedDescription()}
-				<div class="issue-desc">
-					{assign var=stringLenght value=280}
-					{assign var=issueDescription value=$issue->getLocalizedDescription()|strip_unsafe_html}
-					{if $issueDescription|strlen <= $stringLenght || $requestedPage == 'issue'}
-						{$issueDescription}
-					{else}
-						{$issueDescription|substr:0:$stringLenght|mb_convert_encoding:'UTF-8'|replace:'?':''|trim}…
-						<p>
-							<a class="btn btn-secondary"
-							   href="{url op="view" page="issue" path=$issue->getBestIssueId()}">{translate key="issue.fullIssue"}</a>
-						</p>
-					{/if}
-				</div>
-			{/if}
+		{elseif $smarty.capture.issueMetadata|trim !== ""}
+			<h2 class="issue__title">
+				{$smarty.capture.issueMetadata}
+			</h2>
+		{/if}
+
+		{if $issue->getDatePublished()}
+			<p class="metadata">{translate key="submissions.published"} {$issue->getDatePublished()|date_format:$dateFormatLong}</p>
+		{/if}
+		{if $issue->getLocalizedDescription()}
+			<div class="issue-desc">
+				{assign var=stringLenght value=280}
+				{assign var=issueDescription value=$issue->getLocalizedDescription()|strip_unsafe_html}
+				{if $issueDescription|strlen <= $stringLenght || $requestedPage == 'issue'}
+					{$issueDescription}
+				{else}
+					{$issueDescription|substr:0:$stringLenght|mb_convert_encoding:'UTF-8'|replace:'?':''|trim}…
+					<p>
+						<a class="btn btn-secondary"
+						   href="{url op="view" page="issue" path=$issue->getBestIssueId()}">{translate key="issue.fullIssue"}</a>
+					</p>
+				{/if}
+			</div>
+		{/if}
 		{/strip}
 	</header>
 </div>
