@@ -218,6 +218,20 @@
 				{/if}
 			{/if}
 
+			{* Categories article is in *}
+			{if $categories}
+				<section>
+					<h2>{translate key="category.category"}</h2>
+					<ul>
+						{foreach from=$categories item=category}
+							<li>
+								<a href="{url router=$smarty.const.ROUTE_PAGE page="catalog" op="category" path=$category->getPath()|escape}">{$category->getLocalizedTitle()|escape}</a>
+							</li>
+						{/foreach}
+					</ul>
+				</section>
+			{/if}
+
 			{* How to cite *}
 			{if $citation}
 				<section>
