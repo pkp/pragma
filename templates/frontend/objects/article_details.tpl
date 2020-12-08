@@ -158,7 +158,11 @@
 					{foreach from=$authors item=author}
 					 <div>
 						<strong>{$author->getFullName()|escape}</strong><br>
-					 	{$author->getLocalizedAffiliation()|escape}<br><br>
+						{$author->getLocalizedAffiliation()|escape}
+						{if $author->getData('rorId')}
+							<a class="article__rorImage" href="{$author->getData('rorId')|escape}">{$rorIdIcon}</a>
+						{/if}
+						<br><br>
 					</div>
 					{/foreach}
 				</div>
