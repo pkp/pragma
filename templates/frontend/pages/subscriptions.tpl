@@ -22,7 +22,7 @@
 			{include file="frontend/components/subscriptionContact.tpl"}
 
 			<a name="subscriptionTypes"></a>
-			{if !$individualSubscriptionTypes->wasEmpty()}
+			{if $individualSubscriptionTypes|@count}
 				<section>
 					<h3>{translate key="about.subscriptions.individual"}</h3>
 					<p>{translate key="subscriptions.individualDescription"}</p>
@@ -36,7 +36,7 @@
 							</tr>
 						</thead>
 						<tbody>
-							{iterate from=individualSubscriptionTypes item=subscriptionType}
+							{foreach from=$individualSubscriptionTypes item=subscriptionType}
 								<tr>
 									<td>
 										<div>
@@ -52,7 +52,7 @@
 										&nbsp;({$subscriptionType->getCurrencyStringShort()|escape})
 									</td>
 								</tr>
-							{/iterate}
+							{/foreach}
 						</tbody>
 					</table>
 
@@ -66,11 +66,11 @@
 				</section>
 			{/if}
 
-			{if !$individualSubscriptionTypes->wasEmpty() && !$institutionalSubscriptionTypes->wasEmpty()}
+			{if $individualSubscriptionTypes|@count && $institutionalSubscriptionTypes|@count}
 			<hr>
 			{/if}
 
-			{if !$institutionalSubscriptionTypes->wasEmpty()}
+			{if $institutionalSubscriptionTypes|@count}
 				<section>
 					<h3>{translate key="about.subscriptions.institutional"}</h3>
 					<p>{translate key="subscriptions.institutionalDescription"}</p>
@@ -84,7 +84,7 @@
 							</tr>
 						</thead>
 						<tbody>
-							{iterate from=institutionalSubscriptionTypes item=subscriptionType}
+							{foreach from=$institutionalSubscriptionTypes item=subscriptionType}
 								<tr>
 									<td>
 										<div>
@@ -100,7 +100,7 @@
 										&nbsp;({$subscriptionType->getCurrencyStringShort()|escape})
 									</td>
 								</tr>
-							{/iterate}
+							{/foreach}
 						</tbody>
 					</table>
 					{if $isUserLoggedIn}

@@ -6,6 +6,7 @@
  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
  *
  * Site index page.
+ * @uses $journals array of Journal objects
  *
  *}
 {include file="frontend/components/header.tpl"}
@@ -25,12 +26,12 @@
 			</header>
 
 			<div>
-				{if $journals->wasEmpty()}
+				{if !$journals|@count}
 					{translate key="site.noJournals"}
 				{else}
 					{assign var="journalKey" value=0}
 					{assign var="countItems" value=count($journals)}
-					{iterate from=journals item=journal}
+					{foreach from=$journals item=journal}
 						{capture assign="url"}{url journal=$journal->getPath()}{/capture}
 						{assign var="thumb" value=$journal->getLocalizedSetting('journalThumbnail')}
 						{assign var="description" value=$journal->getLocalizedDescription()}
@@ -64,7 +65,7 @@
 							</p>
 						</article>
 						{if $journalKey < $countItems+1}<hr>{/if}
-					{/iterate}
+					{/foreach}
 				{/if}
 			</div>
 		</div>
