@@ -12,7 +12,7 @@
 {strip}
 	{* Determine whether a logo or title string is being displayed *}
 	{assign var="showingLogo" value=true}
-	{if $displayPageHeaderTitle && !$displayPageHeaderLogo && is_string($displayPageHeaderTitle)}
+	{if !$displayPageHeaderLogo}
 		{assign var="showingLogo" value=false}
 	{/if}
 	{assign var="localeShow" value=false}
@@ -29,13 +29,13 @@
 <body class="page_{$requestedPage|escape|default:"index"} op_{$requestedOp|escape|default:"index"}{if $showingLogo} has_site_logo{/if}"
       dir="{$currentLocaleLangDir|escape|default:"ltr"}">
 
-<div>
-	<a class="sr-only" href="#pragma_content_header">{translate key="navigation.skip.nav"}</a>
-	<a class="sr-only" href="#main">{translate key="navigation.skip.main"}</a>
-	<a class="sr-only" href="#pragma_content_footer">{translate key="navigation.skip.footer"}</a>
-</div>
+	<div>
+		<a class="sr-only" href="#pragma_content_header">{translate key="navigation.skip.nav"}</a>
+		<a class="sr-only" href="#main">{translate key="navigation.skip.main"}</a>
+		<a class="sr-only" href="#pragma_content_footer">{translate key="navigation.skip.footer"}</a>
+	</div>
 
-<header class="container-fluid main-header" id="pragma_content_header">
+	<header class="container-fluid main-header" id="pragma_content_header">
 		<nav class="main-header__admin main-header__admin{if $localeShow}_locale-enabled{else}_locale-disabled{/if}">
 
 			{* User navigation *}
@@ -65,19 +65,14 @@
 			{capture assign="homeUrl"}
 				{url page="index" router=$smarty.const.ROUTE_PAGE}
 			{/capture}
-			{if $displayPageHeaderLogo && is_array($displayPageHeaderLogo)}
+			{if $displayPageHeaderLogo}
 				<a href="{$homeUrl}">
 					<img src="{$publicFilesDir}/{$displayPageHeaderLogo.uploadName|escape:"url"}" width="{$displayPageHeaderLogo.width|escape}" height="{$displayPageHeaderLogo.height|escape}" {if $displayPageHeaderLogo.altText != ''}alt="{$displayPageHeaderLogo.altText|escape}"{else}alt="{translate key="common.pageHeaderLogo.altText"}"{/if}
 					class="img-fluid"/>
 				</a>
-			{elseif $displayPageHeaderTitle && !$displayPageHeaderLogo && is_string($displayPageHeaderTitle)}
+			{elseif $displayPageHeaderTitle}
 				<a href="{$homeUrl}">
 					<span>{$displayPageHeaderTitle|escape}</span>
-				</a>
-			{elseif $displayPageHeaderTitle && !$displayPageHeaderLogo && is_array($displayPageHeaderTitle)}
-				<a href="{$homeUrl}">
-					<img src="{$publicFilesDir}/{$displayPageHeaderTitle.uploadName|escape:"url"}" alt="{$displayPageHeaderTitle.altText|escape}" width="{$displayPageHeaderTitle.width|escape}" height="{$displayPageHeaderTitle.height|escape}"
-					class="img-fluid"/>
 				</a>
 			{else}
 				<a href="{$homeUrl}">
@@ -91,24 +86,23 @@
 				</div>
 			{/if}
 
-				{* Primary navigation *}
-				{capture assign="primaryMenu"}
-					{load_menu name="primary" id="navigationPrimary" ulClass="pkp_navigation_primary"}
-				{/capture}
+			{* Primary navigation *}
+			{capture assign="primaryMenu"}
+				{load_menu name="primary" id="navigationPrimary" ulClass="pkp_navigation_primary"}
+			{/capture}
 
-				{if !empty(trim($primaryMenu)) || $currentContext}
+			{if !empty(trim($primaryMenu)) || $currentContext}
 				<button class="navbar-toggler hamburger" data-target="#mainMenu" data-toggle="collapse"
-				        type="button"
-				        aria-label="Menu" aria-controls="navigation">
+						type="button"
+						aria-label="Menu" aria-controls="navigation">
 					<span class="hamburger__wrapper">
-		                <span class="hamburger__icon"></span>
-		            </span>
+						<span class="hamburger__icon"></span>
+					</span>
 				</button>
 
 				<div class="collapse navbar-collapse main-menu__nav" id="mainMenu">
 					{$primaryMenu}
 				</div>
-				{/if}
-			</div>
+			{/if}
 		</nav>
-</header>
+	</header>
