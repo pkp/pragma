@@ -19,17 +19,10 @@
 *}
 <!DOCTYPE html>
 <html lang="{$currentLocale|replace:"_":"-"}" xml:lang="{$currentLocale|replace:"_":"-"}">
-<head>
-	<meta http-equiv="Content-Type" content="text/html; charset={$defaultCharset|escape}" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>{translate key="article.pageTitle" title=$title|escape}</title>
+{capture assign="pageTitleTranslated"}{translate key="article.pageTitle" title=$article->getLocalizedTitle()|escape}{/capture}
+{include file="frontend/components/header.tpl"}
 
-	{load_header context="frontend" headers=$headers}
-	{load_stylesheet context="frontend" stylesheets=$stylesheets}
-	{load_script context="frontend" scripts=$scripts}
-</head>
 <body class="pkp_page_{$requestedPage|escape} pkp_op_{$requestedOp|escape}">
-	{include file="frontend/components/header.tpl"}
 
 	<main class="container galley">
 		<div class="row">
