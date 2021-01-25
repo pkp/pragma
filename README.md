@@ -1,6 +1,6 @@
 # Pragma
 
-An official theme for OJS 3.2+. 
+An official theme for OJS 3.2+.
 
 ## Installation
 This theme can be installed through the **Plugin Gallery** in Open Journal Systems. If it's not available in the plugin gallery, you may need to update Open Journal Systems to a compatible version. The theme also can be installed manually by picking up and downloading the correspondent version from a [release page](https://github.com/pkp/pragma/releases).
@@ -17,3 +17,8 @@ This theme can be installed through the **Plugin Gallery** in Open Journal Syste
 9. Login into the OJS admin dashboard, activate the plugin and enable the theme.
 
 Note that the master branch may contain code that will not be shipped to the stable release.
+
+# License
+This theme is released under the GPL license.
+
+The Alegreya and Spectral fonts are distributed under the terms of the [Open Font License](https://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=OFL).
