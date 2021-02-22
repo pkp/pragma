@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2021-02-20 14:54+0000\n"
+"PO-Revision-Date: 2021-02-23 17:54+0000\n"
 "Last-Translator: Primož Svetek <primoz.svetek@gmail.com>\n"
 "Language-Team: Slovenian <http://translate.pkp.sfu.ca/projects/plugins/"
 "pragma/sl_SI/>\n"
@@ -14,3 +14,50 @@ msgstr ""
 
 msgid "plugins.themes.pragma.name"
 msgstr "Pragma tema"
+
+msgid "plugins.themes.pragma.search.resultsFor"
+msgstr "Rezultat iskanja za <em>{$query}</em>"
+
+msgid "plugins.themes.pragma.author.details"
+msgstr "Išči po podrobnostih"
+
+msgid "plugins.themes.pragma.authors.browse"
+msgstr "Išči po avtorju"
+
+msgid "plugins.themes.pragma.article.figure"
+msgstr "Slika naslovnice"
+
+msgid "plugins.themes.pragma.article.biography"
+msgstr "Biografija"
+
+msgid "plugins.themes.pragma.issue.fullIssueLink"
+msgstr "Poglej celotno številko"
+
+msgid "plugins.themes.pragma.adminMenu"
+msgstr "Administratorski meni"
+
+msgid "plugins.themes.pragma.language.toggle"
+msgstr "Spremeni jezik. Trenutno izbrani jezik je:"
+
+msgid "plugins.themes.pragma.mainMenu"
+msgstr "Glavni meni"
+
+msgid "plugins.themes.pragma.registration.consent"
+msgstr "Soglasje"
+
+msgid "plugins.themes.pragma.issue.description"
+msgstr "Opis številke"
+
+msgid "plugins.themes.pragma.issue.published"
+msgstr "Objavljeno"
+
+msgid "plugins.themes.pragma.issues.recent"
+msgstr "Nedavno objavljene številke"
+
+msgid "plugins.themes.pragma.more-info"
+msgstr "Več informacij"
+
+msgid "plugins.themes.pragma.description"
+msgstr ""
+"Minimalistična OJS tema, ki je navdihnjena s kazali prvih periodičnih "
+"publikacij in poudarjeno uporablja monokromatsko barvno paleto."
