@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2021-04-01 11:55+0000\n"
+"PO-Revision-Date: 2021-04-08 09:55+0000\n"
 "Last-Translator: Dimitri Gogelia <dimitri.gogelia@iliauni.edu.ge>\n"
 "Language-Team: Georgian <http://translate.pkp.sfu.ca/projects/plugins/pragma/"
 "ka_GE/>\n"
@@ -19,3 +19,44 @@ msgstr "გამოქვეყნებული"
 
 msgid "plugins.themes.pragma.mainMenu"
 msgstr "მთვარი მენიუ"
+
+msgid "plugins.themes.pragma.name"
+msgstr "თემა Pragma"
+
+msgid "plugins.themes.pragma.description"
+msgstr ""
+"მინიმალისტური OJS თემა შთაგონებულია ადრეული პერიოდული გამოცემების ცხრილების "
+"შინაარსით, რომელშიც მონოქრომატული ფერის პალიტრის თამამი გამოყენება."
+
+msgid "plugins.themes.pragma.issues.recent"
+msgstr "ბოლოს გამოქვეყნებული ნომრები"
+
+msgid "plugins.themes.pragma.issue.description"
+msgstr "გამოცემის აღწერა"
+
+msgid "plugins.themes.pragma.registration.consent"
+msgstr "თანმხობა"
+
+msgid "plugins.themes.pragma.language.toggle"
+msgstr "ენის შეცვლა. ამჟამინდელი ენა:"
+
+msgid "plugins.themes.pragma.adminMenu"
+msgstr "ადმინისტრატორის მენიუ"
+
+msgid "plugins.themes.pragma.issue.fullIssueLink"
+msgstr "იხილეთ სრული ნომერი"
+
+msgid "plugins.themes.pragma.article.biography"
+msgstr "ბიოგრაფია"
+
+msgid "plugins.themes.pragma.article.figure"
+msgstr "ყდის სურათი"
+
+msgid "plugins.themes.pragma.authors.browse"
+msgstr "ავტორთა სიის დათვალიერება"
+
+msgid "plugins.themes.pragma.author.details"
+msgstr "ავტორის დეტალები"
+
+msgid "plugins.themes.pragma.search.resultsFor"
+msgstr "ძებნის შედეგები <em>{$query}</em>"
