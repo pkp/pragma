@@ -97,7 +97,7 @@
 						<section>
 							<h3>{$section->getLocalizedTitle()|escape}</h3>
 							{if $section->getLocalizedPolicy()}
-								{$section->getLocalizedPolicy()|escape}
+								{$section->getLocalizedPolicy()}
 							{/if}
 							{if $isUserLoggedIn}
 								{capture assign="sectionSubmissionUrl"}{url page="submission" op="wizard" sectionId=$section->getId()}{/capture}
