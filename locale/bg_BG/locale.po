@@ -1,7 +1,7 @@
 # Cyril Kamburov <cc@intermedia.bg>, 2022.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2022-04-01 09:51+0000\n"
+"PO-Revision-Date: 2022-04-03 12:57+0000\n"
 "Last-Translator: Cyril Kamburov <cc@intermedia.bg>\n"
 "Language-Team: Bulgarian <http://translate.pkp.sfu.ca/projects/plugins/"
 "pragma/bg_BG/>\n"
@@ -19,3 +19,45 @@ msgstr ""
 
 msgid "plugins.themes.pragma.name"
 msgstr "Тема Pragma"
+
+msgid "plugins.themes.pragma.search.resultsFor"
+msgstr "Резултати от търсенето за <em>{$query}</em>"
+
+msgid "plugins.themes.pragma.author.details"
+msgstr "Информация за автора"
+
+msgid "plugins.themes.pragma.authors.browse"
+msgstr "Преглед по автор"
+
+msgid "plugins.themes.pragma.article.figure"
+msgstr "Обложка"
+
+msgid "plugins.themes.pragma.article.biography"
+msgstr "Биография"
+
+msgid "plugins.themes.pragma.issue.fullIssueLink"
+msgstr "Преглед на целия брой"
+
+msgid "plugins.themes.pragma.adminMenu"
+msgstr "Административно меню"
+
+msgid "plugins.themes.pragma.language.toggle"
+msgstr "Смяна на езика. Текущият език е:"
+
+msgid "plugins.themes.pragma.mainMenu"
+msgstr "Главно меню"
+
+msgid "plugins.themes.pragma.registration.consent"
+msgstr "Съгласие"
+
+msgid "plugins.themes.pragma.issue.description"
+msgstr "Описание на броя"
+
+msgid "plugins.themes.pragma.issue.published"
+msgstr "Публикуван"
+
+msgid "plugins.themes.pragma.issues.recent"
+msgstr "Наскоро публикувани броеве"
+
+msgid "plugins.themes.pragma.more-info"
+msgstr "Повече информация"
