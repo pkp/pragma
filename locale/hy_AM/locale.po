@@ -2,7 +2,7 @@
 # Tigran Zargaryan <tigran@flib.sci.am>, 2022.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2022-07-03 06:31+0000\n"
+"PO-Revision-Date: 2022-08-05 23:36+0000\n"
 "Last-Translator: Tigran Zargaryan <tigran@flib.sci.am>\n"
 "Language-Team: Armenian <http://translate.pkp.sfu.ca/projects/plugins/pragma/"
 "hy_AM/>\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 3.9.1\n"
+"X-Generator: Weblate 4.13.1\n"
 
 msgid "plugins.themes.pragma.search.resultsFor"
 msgstr "Որոնման արդյունքներ <em>{$query}</em> համար"
@@ -35,7 +35,7 @@ msgid "plugins.themes.pragma.adminMenu"
 msgstr "Ադմինի ընտրացանկ"
 
 msgid "plugins.themes.pragma.language.toggle"
-msgstr "Փոխեք լեզուն։ Ներկայիս լեզուն է."
+msgstr "Փոխեք լեզուն։ Ներկայիս լեզուն է:"
 
 msgid "plugins.themes.pragma.mainMenu"
 msgstr "Հիմնական ընտրացանկ"
