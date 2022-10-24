@@ -35,6 +35,7 @@
 		<aside class="col-md-4">
 			<h2 class="sr-only">{translate key="search.advancedFilters"}</h2>
 			{capture name="searchFormUrl"}{url op="search" escape=false}{/capture}
+			{assign var=formUrlParameters value=[]}{* Prevent Smarty warning *}
 			{$smarty.capture.searchFormUrl|parse_url:$smarty.const.PHP_URL_QUERY|parse_str:$formUrlParameters}
 			<form class="cmp_form" method="get" action="{$smarty.capture.searchFormUrl|strtok:"?"|escape}">
 				{foreach from=$formUrlParameters key=paramKey item=paramValue}
