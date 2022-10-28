@@ -176,7 +176,7 @@ describe('Theme plugin tests', function() {
 		cy.get('label[for="privacyConsent"]').click();
 		cy.get('label[for="checkbox-reviewer-interests"]').click();
 		cy.get('#tagitInput input').type('psychotherapy,neuroscience,neurobiology', {delay: 0});
-		cy.get('button[type="submit"]').contains('Register').click();
+		cy.get('button[type="submit"]').contains('Register').click().click();
 		cy.get('a').contains('View Submissions').click();
 		cy.url().should('include', 'submissions');
 	});
