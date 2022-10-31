@@ -19,7 +19,7 @@
 *}
 <!DOCTYPE html>
 <html lang="{$currentLocale|replace:"_":"-"}" xml:lang="{$currentLocale|replace:"_":"-"}">
-{capture assign="pageTitleTranslated"}{translate key="article.pageTitle" title=$article->getLocalizedTitle()|escape}{/capture}
+{capture assign="pageTitleTranslated"}{translate key="article.pageTitle" title=$title|escape}{/capture}
 {include file="frontend/components/header.tpl"}
 
 <body class="pkp_page_{$requestedPage|escape} pkp_op_{$requestedOp|escape}">
@@ -44,7 +44,7 @@
 						</span>
 					</a>
 				</p>
-				<h1>{$article->getLocalizedTitle()|escape}</h1>
+				<h1>{$title|escape}</h1>
 
 				{if !$isLatestPublication}
 					<div role="alert">
