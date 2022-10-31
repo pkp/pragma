@@ -67,8 +67,21 @@
 			</div>
 		{/if}
 		{/strip}
+
 	</header>
 </div>
+
+{if $issueGalleys}
+	<section class="issue-galleys">
+		<hr/>
+		<h2 class="issue-galleys__title">
+			{translate key="issue.fullIssue"}
+		</h2>
+		{foreach from=$issueGalleys item=galley}
+			{include file="frontend/objects/galley_link.tpl" parent=$issue labelledBy="issueTocGalleyLabel" purchaseFee=$currentJournal->getData('purchaseIssueFee') purchaseCurrency=$currentJournal->getData('currency')}
+		{/foreach}
+	</section>
+{/if}
 
 {assign var=contentTableInserted value=false}
 {foreach name=sections from=$publishedSubmissions item=section key=sectionNumber}
