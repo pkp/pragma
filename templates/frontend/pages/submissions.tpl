@@ -40,26 +40,9 @@
 				</div>
 			{/if}
 
-			{if $submissionChecklist}
-				<section>
-					{include file="frontend/components/editLink.tpl" page="management" op="settings" path="workflow" anchor="submission/submissionChecklist" sectionTitleKey="about.submissionPreparationChecklist"}
-					<h2>
-						{translate key="about.submissionPreparationChecklist"}
-					</h2>
-					<p>{translate key="about.submissionPreparationChecklist.description"}</p>
-					<ul>
-						{foreach from=$submissionChecklist item=checklistItem}
-							<li>
-								{$checklistItem.content|strip_unsafe_html|nl2br}
-							</li>
-						{/foreach}
-					</ul>
-				</section>
-			{/if}
-
 			{if $currentContext->getLocalizedData('authorGuidelines')}
 				<section id="authorGuidelines">
-					{include file="frontend/components/editLink.tpl" page="management" op="settings" path="workflow" anchor="submission/authorGuidelines" sectionTitleKey="about.authorGuidelines"}
+					{include file="frontend/components/editLink.tpl" page="management" op="settings" path="workflow" anchor="submission/instructions" sectionTitleKey="about.authorGuidelines"}
 					<h2>
 						{translate key="about.authorGuidelines"}
 					</h2>
@@ -67,9 +50,19 @@
 				</section>
 			{/if}
 
+			{if $submissionChecklist}
+				<section>
+					{include file="frontend/components/editLink.tpl" page="management" op="settings" path="workflow" anchor="submission/instructions" sectionTitleKey="about.submissionPreparationChecklist"}
+					<h2>
+						{translate key="about.submissionPreparationChecklist"}
+					</h2>
+					{$submissionChecklist}
+				</section>
+			{/if}
+
 			{if $currentContext->getLocalizedData('copyrightNotice')}
 				<section>
-					{include file="frontend/components/editLink.tpl" page="management" op="settings" path="workflow" anchor="submission/authorGuidelines" sectionTitleKey="about.copyrightNotice"}
+					{include file="frontend/components/editLink.tpl" page="management" op="settings" path="workflow" anchor="submission/instructions" sectionTitleKey="about.copyrightNotice"}
 					<h2>
 						{translate key="about.copyrightNotice"}
 					</h2>
