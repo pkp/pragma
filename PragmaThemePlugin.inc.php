@@ -13,6 +13,10 @@
  * @brief Pragma theme
  */
 
+use APP\facades\Repo;
+use APP\issue\Collector;
+use APP\services\NavigationMenuService;
+
 import('lib.pkp.classes.plugins.ThemePlugin');
 class PragmaThemePlugin extends ThemePlugin {
 
@@ -131,20 +135,26 @@ class PragmaThemePlugin extends ThemePlugin {
 
 		if ($template !== 'frontend/pages/indexJournal.tpl') return false;
 
-		$recentIssuesIterator = Services::get('issue')->getMany([
-			'contextId' => $this->getRequest()->getContext()->getId(),
-			'isPublished' => true,
-			'count' => 4
-		]);
+        $contextId = $this->getRequest()->getContext()->getId();
+
+        $recentIssuesWithCurrent = Repo::issue()->getCollector()
+            ->filterByContextIds([$contextId])
+            ->filterByPublished(true)
+            ->limit(4)
+            ->orderBy(Collector::ORDERBY_PUBLISHED_ISSUES)
+            ->getMany();
+
+        $currentIssue = Repo::issue()->getCurrent($contextId);
 
 		// Exclude the current issue from the list
-		$recentIssuesAll = iterator_to_array($recentIssuesIterator);
 		$recentIssues = [];
-		foreach ($recentIssuesAll as $issue) {
-			if (!$issue->getCurrent()) {
-				$recentIssues[] = $issue;
-			}
-		}
+        if ($currentIssue) {
+            foreach ($recentIssuesWithCurrent as $issue) {
+                if ($issue->getId() !== $currentIssue->getId()) {
+                    $recentIssues[] = $issue;
+                }
+            }
+        }
 
 		$templateMgr->assign('recentIssues', $recentIssues);
 	}
@@ -199,10 +209,11 @@ class PragmaThemePlugin extends ThemePlugin {
 		$itemUrl = $navigationMenuItem->getUrl();
 
 		// Check whether menu item points to the current page
+        $currentIssue = Repo::issue()->getCurrent($request->getContext()->getId());
 		switch ($navigationMenuItem->getType()) {
-			case NMI_TYPE_CURRENT:
+			case NavigationMenuService::NMI_TYPE_CURRENT:
 				$issue = $smarty->getTemplateVars('issue');
-				if ($issue && $issue->getCurrent() && $currentPage == "issue") return $activeMarker;
+				if ($issue && ($issue->getId() === $currentIssue->getId()) && $currentPage == "issue") return $activeMarker;
 				break;
 			default:
 				if ($currentUrl === $itemUrl) return $activeMarker;
