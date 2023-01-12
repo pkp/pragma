@@ -21,10 +21,10 @@
 
 	<fieldset>
 		<div class="form-group">
-			<label for="usernameModal">
+			<label for="usernameModal" class="form-label">
 				{translate key="user.username"}
 				<span class="required" aria-hidden="true">*</span>
-				<span class="sr-only">
+				<span class="visually-hidden">
 					{translate key="common.required"}
 				</span>
 			</label>
@@ -32,20 +32,20 @@
 			       maxlength="32" required>
 		</div>
 		<div class="form-group">
-			<label for="passwordModal">
+			<label for="passwordModal" class="form-label">
 				{translate key="user.password"}
 				<span class="required" aria-hidden="true">*</span>
-				<span class="sr-only">
+				<span class="visually-hidden">
 					{translate key="common.required"}
 				</span>
 			</label>
 			<input type="password" class="form-control" name="password" id="passwordModal" value="{$password|default:""|escape}"
 			       maxlength="32" required>
 
-			<div class="custom-control custom-checkbox">
-				<input type="checkbox" class="custom-control-input" name="remember" id="rememberModal" value="1"
+			<div class="form-check">
+				<input type="checkbox" class="form-check-input" name="remember" id="rememberModal" value="1"
 				       checked="$remember">
-				<label for="rememberModal" class="custom-control-label">
+				<label for="rememberModal" class="form-check-label">
 						{translate key="user.login.rememberUsernameAndPassword"}
 				</label>
 			</div>

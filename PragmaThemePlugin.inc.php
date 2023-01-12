@@ -3,8 +3,8 @@
 /**
  * @file plugins/themes/pragma/PragmaThemePlugin.inc.php
  *
- * Copyright (c) 2014-2020 Simon Fraser University
- * Copyright (c) 2003-2020 John Willinsky
+ * Copyright (c) 2014-2022 Simon Fraser University
+ * Copyright (c) 2003-2022 John Willinsky
  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
  *
  * @class PragmaThemePlugin
@@ -16,8 +16,7 @@
 use APP\facades\Repo;
 use APP\issue\Collector;
 use APP\services\NavigationMenuService;
-
-import('lib.pkp.classes.plugins.ThemePlugin');
+use PKP\plugins\ThemePlugin;
 class PragmaThemePlugin extends ThemePlugin {
 
 	public function init() {
@@ -59,13 +58,13 @@ class PragmaThemePlugin extends ThemePlugin {
 		// Adding scripts (JQuery, Popper, Bootstrap, JQuery UI, Tag-it, Theme's JS)
 		$this->addScript('app-js', 'resources/dist/app.min.js');
 
-		// Styles for HTML galleys
+		// Styles for HTML galleys
 		$this->addStyle('htmlGalley', 'resources/less/import.less', array('contexts' => 'htmlGalley'));
 		$this->modifyStyle('htmlGalley', array('addLessVariables' => join("\n", $additionalLessVariables)));
 
-		HookRegistry::register ('TemplateManager::display', array($this, 'addSiteWideData'));
-		HookRegistry::register ('TemplateManager::display', array($this, 'addIndexJournalData'));
-		HookRegistry::register ('TemplateManager::display', array($this, 'checkCurrentPage'));
+		HookRegistry::add('TemplateManager::display', array($this, 'addSiteWideData'));
+		HookRegistry::add('TemplateManager::display', array($this, 'addIndexJournalData'));
+		HookRegistry::add('TemplateManager::display', array($this, 'checkCurrentPage'));
 	}
 
 	/**
@@ -209,16 +208,16 @@ class PragmaThemePlugin extends ThemePlugin {
 		$itemUrl = $navigationMenuItem->getUrl();
 
 		// Check whether menu item points to the current page
-        $currentIssue = Repo::issue()->getCurrent($request->getContext()->getId());
-		switch ($navigationMenuItem->getType()) {
-			case NavigationMenuService::NMI_TYPE_CURRENT:
+		$context = $request->getContext();
+		if ($context) {
+			$currentIssue = Repo::issue()->getCurrent($context->getId());
+			if ($navigationMenuItem->getType() === NavigationMenuService::NMI_TYPE_CURRENT) {
 				$issue = $smarty->getTemplateVars('issue');
 				if ($issue && ($issue->getId() === $currentIssue->getId()) && $currentPage == "issue") return $activeMarker;
-				break;
-			default:
-				if ($currentUrl === $itemUrl) return $activeMarker;
-				break;
+			}
 		}
+
+		if ($currentUrl === $itemUrl) return $activeMarker;
 
 		return $emptyMarker;
 	}

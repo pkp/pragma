@@ -32,7 +32,7 @@
 		<a href="{$editLinkUrl}" class="btn btn-primary" target="_blank">
 			{translate key="common.edit"}
 			{* Screen readers need more context *}
-			<span class="sr-only">
+			<span class="visually-hidden">
 				{translate key="help.goToEditPage" sectionTitle=$sectionTitle}
 			</span>
 		</a>

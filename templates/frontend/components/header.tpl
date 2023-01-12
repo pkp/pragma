@@ -30,9 +30,9 @@
       dir="{$currentLocaleLangDir|escape|default:"ltr"}">
 
 	<div>
-		<a class="sr-only" href="#pragma_content_header">{translate key="navigation.skip.nav"}</a>
-		<a class="sr-only" href="#main">{translate key="navigation.skip.main"}</a>
-		<a class="sr-only" href="#pragma_content_footer">{translate key="navigation.skip.footer"}</a>
+		<a class="visually-hidden" href="#pragma_content_header">{translate key="navigation.skip.nav"}</a>
+		<a class="visually-hidden" href="#main">{translate key="navigation.skip.main"}</a>
+		<a class="visually-hidden" href="#pragma_content_footer">{translate key="navigation.skip.footer"}</a>
 	</div>
 
 	<header class="container-fluid main-header" id="pragma_content_header">
@@ -49,7 +49,7 @@
 			{/if}
 
 			{if !empty(trim($userMenu))}
-				<h2 class="sr-only">{translate key="plugins.themes.pragma.adminMenu"}</h2>
+				<h2 class="visually-hidden">{translate key="plugins.themes.pragma.adminMenu"}</h2>
 				{$userMenu}
 			{/if}
 
@@ -92,7 +92,7 @@
 			{/capture}
 
 			{if !empty(trim($primaryMenu)) || $currentContext}
-				<button class="navbar-toggler hamburger" data-target="#mainMenu" data-toggle="collapse"
+				<button class="navbar-toggler hamburger" data-bs-target="#mainMenu" data-bs-toggle="collapse"
 						type="button"
 						aria-label="Menu" aria-controls="navigation">
 					<span class="hamburger__wrapper">

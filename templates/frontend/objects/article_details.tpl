@@ -146,7 +146,7 @@
 
 			{if $hasAffiliations}
 				<p>
-					<button class="btn btn-secondary" type="button" data-toggle="collapse" data-target="#authorAffiliations" aria-expanded="false" aria-controls="authorAffiliations">
+					<button class="btn btn-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#authorAffiliations" aria-expanded="false" aria-controls="authorAffiliations">
 						{if $hasAffiliations > 1}
 							{translate key="user.affiliations"}
 						{else}
@@ -241,7 +241,7 @@
 						{$citation}
 					</div>
 					<div class="dropdown">
-						<button class="btn btn-primary dropdown-toggle" type="button" id="cslCitationFormatsButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-csl-dropdown="true">
+						<button class="btn btn-primary dropdown-toggle" type="button" id="cslCitationFormatsButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-csl-dropdown="true">
 							{translate key="submission.howToCite.citationFormats"}
 						</button>
 						<ul class="dropdown-menu" aria-labelledby="cslCitationFormatsButton">

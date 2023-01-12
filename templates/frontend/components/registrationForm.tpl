@@ -25,7 +25,7 @@
 			<label for="givenName">
 				{translate key="user.givenName"}
 				<span class="required">*</span>
-				<span class="sr-only">
+				<span class="visually-hidden">
 					{translate key="common.required"}
 				</span>
 			</label>
@@ -43,7 +43,7 @@
 			<label for="affiliation">
 				{translate key="user.affiliation"}
 				<span class="required">*</span>
-				<span class="sr-only">
+				<span class="visually-hidden">
 					{translate key="common.required"}
 				</span>
 			</label>
@@ -54,7 +54,7 @@
 			<label for="country">
 				{translate key="common.country"}
 				<span class="required">*</span>
-				<span class="sr-only">
+				<span class="visually-hidden">
 					{translate key="common.required"}
 				</span>
 			</label>
@@ -75,7 +75,7 @@
 			<label for="email">
 				{translate key="user.email"}
 				<span class="required">*</span>
-				<span class="sr-only">
+				<span class="visually-hidden">
 					{translate key="common.required"}
 				</span>
 			</label>
@@ -85,7 +85,7 @@
 			<label for="username">
 				{translate key="user.username"}
 				<span class="required">*</span>
-				<span class="sr-only">
+				<span class="visually-hidden">
 					{translate key="common.required"}
 				</span>
 			</label>
@@ -97,7 +97,7 @@
 			<label for="password">
 				{translate key="user.password"}
 				<span class="required">*</span>
-				<span class="sr-only">
+				<span class="visually-hidden">
 					{translate key="common.required"}
 				</span>
 			</label>
@@ -107,7 +107,7 @@
 			<label for="password">
 				{translate key="user.repeatPassword"}
 				<span class="required">*</span>
-				<span class="sr-only">
+				<span class="visually-hidden">
 					{translate key="common.required"}
 				</span>
 			</label>
