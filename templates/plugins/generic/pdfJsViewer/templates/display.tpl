@@ -39,7 +39,7 @@
 
 					<a href="{$pdfUrl}" class="btn btn-primary float-right" download>
 						{translate key="common.download"}
-						<span class="sr-only">
+						<span class="visually-hidden">
 							{translate key="common.downloadPdf"}
 						</span>
 					</a>

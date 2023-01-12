@@ -33,7 +33,7 @@
 
 	<div class="row justify-content-lg-center">
 		<aside class="col-md-4">
-			<h2 class="sr-only">{translate key="search.advancedFilters"}</h2>
+			<h2 class="visually-hidden">{translate key="search.advancedFilters"}</h2>
 			{capture name="searchFormUrl"}{url op="search" escape=false}{/capture}
 			{assign var=formUrlParameters value=[]}{* Prevent Smarty warning *}
 			{$smarty.capture.searchFormUrl|parse_url:$smarty.const.PHP_URL_QUERY|parse_str:$formUrlParameters}
@@ -59,7 +59,7 @@
 						{translate key="search.dateFrom"}
 					</label>
 					<div class="form-row">
-						{html_select_date class="col form-control" prefix="dateFrom" time=$dateFrom start_year=$yearStart end_year=$yearEnd year_empty="{translate key='common.year'}" month_empty="{translate key='common.month'}" day_empty="{translate key='common.day'}" field_order="YMD"}
+						{html_select_date class="form-control" prefix="dateFrom" time=$dateFrom start_year=$yearStart end_year=$yearEnd year_empty="{translate key='common.year'}" month_empty="{translate key='common.month'}" day_empty="{translate key='common.day'}" field_order="YMD"}
 					</div>
 				</div>
 				<div class="form-group">
@@ -67,7 +67,7 @@
 						{translate key="search.dateTo"}
 					</label>
 					<div class="form-row">
-						{html_select_date class="col form-control" prefix="dateTo" time=$dateTo start_year=$yearStart end_year=$yearEnd year_empty="{translate key='common.year'}" month_empty="{translate key='common.month'}" day_empty="{translate key='common.day'}" field_order="YMD"}
+						{html_select_date class="form-control" prefix="dateTo" time=$dateTo start_year=$yearStart end_year=$yearEnd year_empty="{translate key='common.year'}" month_empty="{translate key='common.month'}" day_empty="{translate key='common.day'}" field_order="YMD"}
 					</div>
 				</div>
 				<div class="form-group">

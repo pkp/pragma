@@ -42,7 +42,7 @@
 						<label for="username">
 							{translate key="user.username"}
 							<span class="required">*</span>
-							<span class="sr-only">
+							<span class="visually-hidden">
 								{translate key="common.required"}
 							</span>
 						</label>
@@ -53,15 +53,15 @@
 						<label for="password">
 							{translate key="user.password"}
 							<span class="required">*</span>
-							<span class="sr-only">
+							<span class="visually-hidden">
 								{translate key="common.required"}
 							</span>
 						</label>
 						<input class="form-control" type="password" name="password" id="password" value="{$password|default:""|escape}" password="true" maxlength="32" required>
 
-						<div class="custom-control custom-checkbox">
-							<input class="custom-control-input" type="checkbox" name="remember" id="remember" value="1" checked="$remember">
-							<label class="custom-control-label" for="remember">
+						<div class="form-check">
+							<input class="form-check-input" type="checkbox" name="remember" id="remember" value="1" checked="$remember">
+							<label class="form-check-label" for="remember">
 								{translate key="user.login.rememberUsernameAndPassword"}
 							</label>
 						</div>

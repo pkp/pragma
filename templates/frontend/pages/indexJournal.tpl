@@ -53,7 +53,7 @@
 			<aside class="announcement__content_boxed">
 				<h2 class="metadata">{translate key="announcement.announcements"}</h2>
 				{* Carousel *}
-				<div id="announcementsCarouselControls" class="carousel slide" data-ride="carousel" data-interval="false">
+				<div id="announcementsCarouselControls" class="carousel slide" data-bs-ride="carousel" data-bs-interval="false">
 					<div class="carousel-inner">
 						{foreach name=announcements from=$announcements item=announcement}
 							{if $smarty.foreach.announcements.iteration > $numAnnouncementsHomepage}
@@ -73,13 +73,13 @@
 					{if $numAnnouncementsHomepage > 1 && $announcements|@count > 1}
 						{* Carousel controls *}
 						<div class="text-right">
-							<a href="#announcementsCarouselControls" class="btn" role="button" data-slide="prev">
+							<a href="#announcementsCarouselControls" class="btn" role="button" data-bs-slide="prev">
 								<span aria-hidden="true">←</span>
-								<span class="sr-only">{translate key="help.next"}</span>
+								<span class="visually-hidden">{translate key="help.next"}</span>
 							</a>
-							<a href="#announcementsCarouselControls" class="btn" role="button" data-slide="next">
+							<a href="#announcementsCarouselControls" class="btn" role="button" data-bs-slide="next">
 								<span aria-hidden="true">→</span>
-								<span class="sr-only">{translate key="help.previous"}</span>
+								<span class="visually-hidden">{translate key="help.previous"}</span>
 							</a>
 						</div>
 					{/if}

@@ -1,5 +1,5 @@
 var gulp = require('gulp');
-var sass = require('gulp-sass');
+var sass = require('gulp-sass')(require('sass'));
 var concat = require('gulp-concat');
 var minifyCSS = require('gulp-csso');
 var sourcemaps = require('gulp-sourcemaps');
@@ -8,11 +8,7 @@ var merge = require('merge-stream');
 
 gulp.task('sass', function() {
 	return gulp
-		.src([
-			'node_modules/bootstrap/scss/bootstrap.scss',
-			'node_modules/jquery-ui-dist/jquery-ui.min.css',
-			'node_modules/tag-it/css/jquery.tagit.css'
-		])
+		.src(['node_modules/bootstrap/scss/bootstrap.scss'])
 		.pipe(sass())
 		.pipe(concat('app.min.css'))
 		.pipe(minifyCSS())
@@ -22,11 +18,8 @@ gulp.task('sass', function() {
 gulp.task('scripts', function() {
 	return gulp
 		.src([
-			'node_modules/jquery/dist/jquery.js',
-			'node_modules/popper.js/dist/umd/popper.js',
+			'node_modules/@popperjs/core/dist/umd/popper.js',
 			'node_modules/bootstrap/dist/js/bootstrap.js',
-			'node_modules/jquery-ui-dist/jquery-ui.min.js',
-			'resources/js/tag-it.min.js',
 			'resources/js/main.js'
 		])
 		.pipe(sourcemaps.init())
@@ -53,12 +46,4 @@ gulp.task('build', gulp.series('sass', 'scripts', 'compress'));
 
 gulp.task('watch', function() {
 	return gulp.watch('resources/js/**/*.js', gulp.series('scripts', 'compress'));
-});
-
-// Keeping merge for copying future dependant files
-gulp.task('copyFiles', function() {
-	var jqueryuiImages = gulp
-		.src('node_modules/jquery-ui-dist/images/ui-icons_444444_256x240.png')
-		.pipe(gulp.dest('resources/images'));
-	return merge(jqueryuiImages);
 });
