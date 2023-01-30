@@ -1,0 +1,62 @@
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2021-04-15 12:55+0000\n"
+"Last-Translator: Viveka Svensson <viveka.svensson@lnu.se>\n"
+"Language-Team: Swedish <http://translate.pkp.sfu.ca/projects/plugins/pragma/"
+"sv_SE/>\n"
+"Language: sv_SE\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 3.9.1\n"
+
+msgid "plugins.themes.pragma.search.resultsFor"
+msgstr "Sökresultat för  <em>{$query}</em>"
+
+msgid "plugins.themes.pragma.author.details"
+msgstr "Information om författare"
+
+msgid "plugins.themes.pragma.authors.browse"
+msgstr "Bläddra bland författare"
+
+msgid "plugins.themes.pragma.article.figure"
+msgstr "Omslagsbild"
+
+msgid "plugins.themes.pragma.article.biography"
+msgstr "Biografi"
+
+msgid "plugins.themes.pragma.issue.fullIssueLink"
+msgstr "Se hela numret"
+
+msgid "plugins.themes.pragma.adminMenu"
+msgstr "Administrations meny"
+
+msgid "plugins.themes.pragma.language.toggle"
+msgstr "Ändra språket. Nuvarande språk är:"
+
+msgid "plugins.themes.pragma.mainMenu"
+msgstr "Huvudmeny"
+
+msgid "plugins.themes.pragma.registration.consent"
+msgstr "Medgivande"
+
+msgid "plugins.themes.pragma.issue.description"
+msgstr "Nummerbeskrivning"
+
+msgid "plugins.themes.pragma.issue.published"
+msgstr "Publicerad"
+
+msgid "plugins.themes.pragma.issues.recent"
+msgstr "Nyligen publicerade nummer"
+
+msgid "plugins.themes.pragma.more-info"
+msgstr "Mer information"
+
+msgid "plugins.themes.pragma.description"
+msgstr ""
+"Ett minimalistiskt OJS tema som är inspirerad av tidiga tidskrifters "
+"innehållsförteckning med fri användning av en enfärgad färgskala."
+
+msgid "plugins.themes.pragma.name"
+msgstr "Pragma tema"

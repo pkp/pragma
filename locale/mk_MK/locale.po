@@ -1,0 +1,62 @@
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2021-03-09 11:56+0000\n"
+"Last-Translator: Mirko Spiroski <mspiroski@id-press.eu>\n"
+"Language-Team: Macedonian <http://translate.pkp.sfu.ca/projects/plugins/"
+"pragma/mk_MK/>\n"
+"Language: mk_MK\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n==1 || n%10==1 ? 0 : 1;\n"
+"X-Generator: Weblate 3.9.1\n"
+
+msgid "plugins.themes.pragma.search.resultsFor"
+msgstr "Пребарајте низ резултатите за <em>{$query}</em>"
+
+msgid "plugins.themes.pragma.author.details"
+msgstr "Детали за авторот"
+
+msgid "plugins.themes.pragma.authors.browse"
+msgstr "Пребарувајте според автор"
+
+msgid "plugins.themes.pragma.article.figure"
+msgstr "Насловна слика"
+
+msgid "plugins.themes.pragma.article.biography"
+msgstr "Биографија"
+
+msgid "plugins.themes.pragma.issue.fullIssueLink"
+msgstr "Видете го целосното издание"
+
+msgid "plugins.themes.pragma.adminMenu"
+msgstr "Административно мени"
+
+msgid "plugins.themes.pragma.language.toggle"
+msgstr "Сменете го јазикот. Тековниот јазик е :"
+
+msgid "plugins.themes.pragma.mainMenu"
+msgstr "Главно мени"
+
+msgid "plugins.themes.pragma.registration.consent"
+msgstr "Согласност"
+
+msgid "plugins.themes.pragma.issue.description"
+msgstr "Опис на издание"
+
+msgid "plugins.themes.pragma.issue.published"
+msgstr "Објавено"
+
+msgid "plugins.themes.pragma.issues.recent"
+msgstr "Неодамна објвени изданија"
+
+msgid "plugins.themes.pragma.more-info"
+msgstr "Повеќе информации"
+
+msgid "plugins.themes.pragma.description"
+msgstr ""
+"Минималистички OJS мотив инспириран од содржини на раните периодични "
+"списанија кои содржат смела употреба на монохроматска палета на бои."
+
+msgid "plugins.themes.pragma.name"
+msgstr "Прагма мотив (тема)"

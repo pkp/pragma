@@ -1,0 +1,65 @@
+# Artashes Mirzoyan <amirzoyan@sci.am>, 2022.
+# Tigran Zargaryan <tigran@flib.sci.am>, 2022.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2022-08-05 23:36+0000\n"
+"Last-Translator: Tigran Zargaryan <tigran@flib.sci.am>\n"
+"Language-Team: Armenian <http://translate.pkp.sfu.ca/projects/plugins/pragma/"
+"hy_AM/>\n"
+"Language: hy_AM\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 4.13.1\n"
+
+msgid "plugins.themes.pragma.search.resultsFor"
+msgstr "Որոնման արդյունքներ <em>{$query}</em> համար"
+
+msgid "plugins.themes.pragma.author.details"
+msgstr "Հեղինակային մանրամասներ"
+
+msgid "plugins.themes.pragma.authors.browse"
+msgstr "Թերթիր ըստ հեղինակի"
+
+msgid "plugins.themes.pragma.article.figure"
+msgstr "Շապիկի պատկեր"
+
+msgid "plugins.themes.pragma.article.biography"
+msgstr "Կենսագրություն"
+
+msgid "plugins.themes.pragma.issue.fullIssueLink"
+msgstr "Տես ամբողջական թողարկումը"
+
+msgid "plugins.themes.pragma.adminMenu"
+msgstr "Ադմինի ընտրացանկ"
+
+msgid "plugins.themes.pragma.language.toggle"
+msgstr "Փոխեք լեզուն։ Ներկայիս լեզուն է:"
+
+msgid "plugins.themes.pragma.mainMenu"
+msgstr "Հիմնական ընտրացանկ"
+
+msgid "plugins.themes.pragma.registration.consent"
+msgstr "Համաձայնություն"
+
+msgid "plugins.themes.pragma.issue.description"
+msgstr "Թողարկման նկարագրություն"
+
+msgid "plugins.themes.pragma.issue.published"
+msgstr "Հրատարակվել է"
+
+msgid "plugins.themes.pragma.issues.recent"
+msgstr "Վերջերս հրապարակված համարները"
+
+msgid "plugins.themes.pragma.more-info"
+msgstr "Լրացուցիչ տեղեկություններ"
+
+msgid "plugins.themes.pragma.description"
+msgstr ""
+"Մինիմալիստական OJS թեմա՝ ոգեշնչված վաղ պարբերականների բովանդակության "
+"աղյուսակներից, որոնք ներկայացնում են մոնոխրոմատիկ գունապնակի համարձակ "
+"օգտագործումը:"
+
+msgid "plugins.themes.pragma.name"
+msgstr "Թեմա Pragma"

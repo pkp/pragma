@@ -1,0 +1,63 @@
+# Cyril Kamburov <cc@intermedia.bg>, 2022.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2022-04-03 12:57+0000\n"
+"Last-Translator: Cyril Kamburov <cc@intermedia.bg>\n"
+"Language-Team: Bulgarian <http://translate.pkp.sfu.ca/projects/plugins/"
+"pragma/bg_BG/>\n"
+"Language: bg_BG\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 3.9.1\n"
+
+msgid "plugins.themes.pragma.description"
+msgstr ""
+"Минималистична OJS тема, вдъхновена от съдържанието на ранните периодични "
+"издания, включващо използване на монохроматична цветова палитра."
+
+msgid "plugins.themes.pragma.name"
+msgstr "Тема Pragma"
+
+msgid "plugins.themes.pragma.search.resultsFor"
+msgstr "Резултати от търсенето за <em>{$query}</em>"
+
+msgid "plugins.themes.pragma.author.details"
+msgstr "Информация за автора"
+
+msgid "plugins.themes.pragma.authors.browse"
+msgstr "Преглед по автор"
+
+msgid "plugins.themes.pragma.article.figure"
+msgstr "Обложка"
+
+msgid "plugins.themes.pragma.article.biography"
+msgstr "Биография"
+
+msgid "plugins.themes.pragma.issue.fullIssueLink"
+msgstr "Преглед на целия брой"
+
+msgid "plugins.themes.pragma.adminMenu"
+msgstr "Административно меню"
+
+msgid "plugins.themes.pragma.language.toggle"
+msgstr "Смяна на езика. Текущият език е:"
+
+msgid "plugins.themes.pragma.mainMenu"
+msgstr "Главно меню"
+
+msgid "plugins.themes.pragma.registration.consent"
+msgstr "Съгласие"
+
+msgid "plugins.themes.pragma.issue.description"
+msgstr "Описание на броя"
+
+msgid "plugins.themes.pragma.issue.published"
+msgstr "Публикуван"
+
+msgid "plugins.themes.pragma.issues.recent"
+msgstr "Наскоро публикувани броеве"
+
+msgid "plugins.themes.pragma.more-info"
+msgstr "Повече информация"

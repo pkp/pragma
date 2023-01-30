@@ -1,0 +1,62 @@
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2021-03-12 09:54+0000\n"
+"Last-Translator: Real Academia Galega <reacagal@gmail.com>\n"
+"Language-Team: Galician <http://translate.pkp.sfu.ca/projects/plugins/pragma/"
+"gl_ES/>\n"
+"Language: gl_ES\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 3.9.1\n"
+
+msgid "plugins.themes.pragma.search.resultsFor"
+msgstr "Procurar resultados por <em>{$query}</em>"
+
+msgid "plugins.themes.pragma.author.details"
+msgstr "Información do autor/a"
+
+msgid "plugins.themes.pragma.authors.browse"
+msgstr "Navegar por autor/a"
+
+msgid "plugins.themes.pragma.article.figure"
+msgstr "Imaxe da portada"
+
+msgid "plugins.themes.pragma.article.biography"
+msgstr "Biografía"
+
+msgid "plugins.themes.pragma.issue.fullIssueLink"
+msgstr "Ver o número completo"
+
+msgid "plugins.themes.pragma.adminMenu"
+msgstr "Menú de administración"
+
+msgid "plugins.themes.pragma.language.toggle"
+msgstr "Cambia o idioma. A lingua actual é:"
+
+msgid "plugins.themes.pragma.mainMenu"
+msgstr "Menú principal"
+
+msgid "plugins.themes.pragma.registration.consent"
+msgstr "Consentimento"
+
+msgid "plugins.themes.pragma.issue.description"
+msgstr "Descrición do número"
+
+msgid "plugins.themes.pragma.issue.published"
+msgstr "Publicado"
+
+msgid "plugins.themes.pragma.issues.recent"
+msgstr "Números publicados recentemente"
+
+msgid "plugins.themes.pragma.more-info"
+msgstr "Máis información"
+
+msgid "plugins.themes.pragma.description"
+msgstr ""
+"Un tema minimalista de OJS inspirado nas táboas de contido das primeiras "
+"publicacións periódicas cun uso atrevido dunha paleta de cores monocromática."
+
+msgid "plugins.themes.pragma.name"
+msgstr "Tema Pragma"

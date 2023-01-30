@@ -1,0 +1,62 @@
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2021-03-06 04:03+0000\n"
+"Last-Translator: Jordi LC <jordi.lacruz@uab.cat>\n"
+"Language-Team: Catalan <http://translate.pkp.sfu.ca/projects/plugins/pragma/"
+"ca_ES/>\n"
+"Language: ca_ES\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 3.9.1\n"
+
+msgid "plugins.themes.pragma.search.resultsFor"
+msgstr "Cercar resultats per <em>{$query}</em>"
+
+msgid "plugins.themes.pragma.author.details"
+msgstr "Informació de l'autor/a"
+
+msgid "plugins.themes.pragma.authors.browse"
+msgstr "Navegar per autors/ores"
+
+msgid "plugins.themes.pragma.article.figure"
+msgstr "Imatge de portada"
+
+msgid "plugins.themes.pragma.article.biography"
+msgstr "Biografia"
+
+msgid "plugins.themes.pragma.issue.fullIssueLink"
+msgstr "Veure el número complet"
+
+msgid "plugins.themes.pragma.adminMenu"
+msgstr "Menú d'administració"
+
+msgid "plugins.themes.pragma.language.toggle"
+msgstr "Canviar l'idioma. L'idioma actual és:"
+
+msgid "plugins.themes.pragma.mainMenu"
+msgstr "Menú principal"
+
+msgid "plugins.themes.pragma.registration.consent"
+msgstr "Autorització"
+
+msgid "plugins.themes.pragma.issue.description"
+msgstr "Descripció del número"
+
+msgid "plugins.themes.pragma.issue.published"
+msgstr "Publicat"
+
+msgid "plugins.themes.pragma.issues.recent"
+msgstr "Números publicats recentment"
+
+msgid "plugins.themes.pragma.more-info"
+msgstr "Més informació"
+
+msgid "plugins.themes.pragma.description"
+msgstr ""
+"Un tema minimalista per a OJS inspirat en els sumaris de les revistes "
+"antigues que fa un ús atrevit d'una paleta de colors monocromàtica."
+
+msgid "plugins.themes.pragma.name"
+msgstr "Tema Pragma"
