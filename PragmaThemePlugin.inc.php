@@ -27,6 +27,27 @@ class PragmaThemePlugin extends ThemePlugin {
 			'default' => '#A8DCDD',
 		));
 
+		// Add usage stats display options
+		$this->addOption('displayStats', 'FieldOptions', [
+			'type' => 'radio',
+			'label' => __('plugins.themes.pragma.option.displayStats.label'),
+			'options' => [
+				[
+					'value' => 'none',
+					'label' => __('plugins.themes.pragma.option.displayStats.none'),
+				],
+				[
+					'value' => 'bar',
+					'label' => __('plugins.themes.pragma.option.displayStats.bar'),
+				],
+				[
+					'value' => 'line',
+					'label' => __('plugins.themes.pragma.option.displayStats.line'),
+				],
+			],
+			'default' => 'none',
+		]);
+
 		$baseColour = $this->getOption('baseColour');
 
 		$additionalLessVariables = [];
