@@ -58,3 +58,24 @@ msgstr "Author Details"
 
 msgid "plugins.themes.pragma.search.resultsFor"
 msgstr "Search Results for <em>{$query}</em>"
+
+msgid "plugins.themes.pragma.option.displayStats.label"
+msgstr "Usage statistics display options"
+
+msgid "plugins.themes.pragma.option.displayStats.none"
+msgstr "Do not display submission usage statistics chart for reader."
+
+msgid "plugins.themes.pragma.option.displayStats.bar"
+msgstr "Use bar type of the chart for usage statistics display."
+
+msgid "plugins.themes.pragma.option.displayStats.line"
+msgstr "Use line type of the chart for usage statistics display."
+
+msgid "plugins.themes.pragma.displayStats.monthInitials"
+msgstr "Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec"
+
+msgid "plugins.themes.pragma.displayStats.downloads"
+msgstr "Downloads"
+
+msgid "plugins.themes.pragma.displayStats.noStats"
+msgstr "Download data is not yet available."
