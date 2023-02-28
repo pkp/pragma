@@ -40,7 +40,7 @@
 {else}
     {assign var="page" value="article"}
     {assign var="parentId" value=$parent->getBestArticleId()}
-    {if $publication && $publication->getId() !== $parent->getCurrentPublication()->getId()}
+    {if $publication && $publication->getId() !== $parent->getData('currentPublicationId')}
         {assign var="path" value=$parentId|to_array:"version":$publication->getId():$galley->getBestGalleyId()}
     {else}
         {assign var="path" value=$parentId|to_array:$galley->getBestGalleyId()}
@@ -56,7 +56,6 @@
     {/if}
 {/if}
 
-{* Don't be frightened. This is just a link *}
 <a class="{if $isSupplementary}btn btn-secondary galley_supplementary{else}btn btn-secondary{/if} {$type|escape}{if $restricted} restricted{/if}"
    href="{url page=$page op="view" path=$path}">
 

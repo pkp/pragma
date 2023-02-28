@@ -16,8 +16,9 @@
  * @uses $primaryGenreIds array List of file genre ids for primary file types
  *}
 {assign var=articlePath value=$article->getBestArticleId()}
+{assign var="publication" value=$article->getCurrentPublication()}
 
-{if (!$section.hideAuthor && $article->getHideAuthor() == $smarty.const.AUTHOR_TOC_DEFAULT) || $article->getHideAuthor() == $smarty.const.AUTHOR_TOC_SHOW}
+{if (!$section.hideAuthor && $publication->getData('hideAuthor') == \APP\submission\Submission::AUTHOR_TOC_DEFAULT) || $publication->getData('hideAuthor') == \APP\submission\Submission::AUTHOR_TOC_SHOW}
 	{assign var="showAuthor" value=true}
 {/if}
 
@@ -25,11 +26,15 @@
 	<div class="col-sm-{if $requestedPage == "catalog"}12{else}8{/if}">
 		<h4 class="article__title">
 			<a {if $journal}href="{url journal=$journal->getPath() page="article" op="view" path=$articlePath}"{else}href="{url page="article" op="view" path=$articlePath}"{/if}>
-				{$article->getLocalizedFullTitle()|escape}
+				{$publication->getLocalizedTitle(null, 'html')|strip_unsafe_html}
+				{assign var=localizedSubtitle value=$publication->getLocalizedSubtitle(null, 'html')|strip_unsafe_html}
+				{if $localizedSubtitle}
+					<span class="article__subtitle">{$localizedSubtitle}</span>
+				{/if}
 			</a>
 		</h4>
 		{if $showAuthor}
-			<p class="metadata">{$article->getCurrentPublication()->getAuthorString($authorUserGroups)|escape}</p>
+			<p class="metadata">{$publication->getAuthorString($authorUserGroups)|escape}</p>
 		{/if}
 		{call_hook name="Templates::Issue::Issue::Article"}
 	</div>
@@ -43,10 +48,10 @@
 					{/if}
 				{/if}
 				{assign var="hasArticleAccess" value=$hasAccess}
-				{if $currentContext->getSetting('publishingMode') == $smarty.const.PUBLISHING_MODE_OPEN || $article->getCurrentPublication()->getData('accessStatus') == $smarty.const.ARTICLE_ACCESS_OPEN}
+				{if $currentContext->getSetting('publishingMode') == \APP\journal\Journal::PUBLISHING_MODE_OPEN || $publication->getData('accessStatus') == \APP\submission\Submission::ARTICLE_ACCESS_OPEN}
 					{assign var="hasArticleAccess" value=1}
 				{/if}
-				{include file="frontend/objects/galley_link.tpl" parent=$article hasAccess=$hasArticleAccess purchaseFee=$currentJournal->getSetting('purchaseArticleFee') purchaseCurrency=$currentJournal->getSetting('currency')}
+				{include file="frontend/objects/galley_link.tpl" parent=$article publication=$publication hasAccess=$hasArticleAccess purchaseFee=$currentJournal->getSetting('purchaseArticleFee') purchaseCurrency=$currentJournal->getSetting('currency')}
 			{/foreach}
 		{/if}
 	</div>

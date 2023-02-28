@@ -60,8 +60,14 @@
 
 			{* Article title *}
 			<h1 class="main__title">
-				{$publication->getLocalizedFullTitle()|escape}
+				{$publication->getLocalizedTitle(null, 'html')|strip_unsafe_html}
 			</h1>
+
+			{if $publication->getLocalizedData('subtitle')}
+				<h2 class="subtitle">
+					{$publication->getLocalizedSubTitle(null, 'html')|strip_unsafe_html}
+				</h2>
+			{/if}
 
 			{* DOI *}
 			{foreach from=$pubIdPlugins item=pubIdPlugin}
