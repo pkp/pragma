@@ -1,14 +1,14 @@
-# M. Ali <vorteem@gmail.com>, 2022.
+# M. Ali <vorteem@gmail.com>, 2022, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-04-24T08:35:58+00:00\n"
-"PO-Revision-Date: 2022-10-01 05:01+0000\n"
+"PO-Revision-Date: 2023-04-05 04:48+0000\n"
 "Last-Translator: M. Ali <vorteem@gmail.com>\n"
 "Language-Team: Arabic <http://translate.pkp.sfu.ca/projects/plugins/pragma/"
-"ar_IQ/>\n"
-"Language: ar_IQ\n"
+"ar/>\n"
+"Language: ar\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -65,3 +65,24 @@ msgstr "تفاصيل المؤلف"
 
 msgid "plugins.themes.pragma.search.resultsFor"
 msgstr "نتائج البحث عن <em>{$query}</em>"
+
+msgid "plugins.themes.pragma.option.displayStats.none"
+msgstr "لا تعرض إحصائيات استعمال طلبات التقديم للقارئ."
+
+msgid "plugins.themes.pragma.option.displayStats.line"
+msgstr "استعمال النشرة الإحصائية من نوع خطوط لعرض إحصائيات الاستعمال."
+
+msgid "plugins.themes.pragma.displayStats.monthInitials"
+msgstr "كا2 شبا آذا نيس أيا حزي تمو آب أيل تش1 تش2 كا1"
+
+msgid "plugins.themes.pragma.displayStats.downloads"
+msgstr "التنزيلات"
+
+msgid "plugins.themes.pragma.displayStats.noStats"
+msgstr "تنزيل البيانات ليس متاحًا بعد."
+
+msgid "plugins.themes.pragma.option.displayStats.label"
+msgstr "خيارات عرض إحصائيات الاستعمال"
+
+msgid "plugins.themes.pragma.option.displayStats.bar"
+msgstr "استعمال النشرة الإحصائية من نوع أعمدة لعرض إحصائيات الاستعمال."
