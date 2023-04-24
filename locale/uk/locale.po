@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-04-24T08:49:23+00:00\n"
-"PO-Revision-Date: 2023-04-24 10:30+0000\n"
+"PO-Revision-Date: 2023-04-26 13:49+0000\n"
 "Last-Translator: Petro Bilous <petrobilous@ukr.net>\n"
 "Language-Team: Ukrainian <http://translate.pkp.sfu.ca/projects/plugins/"
 "pragma/uk/>\n"
@@ -17,13 +17,16 @@ msgstr ""
 "X-Generator: Weblate 4.13.1\n"
 
 msgid "plugins.themes.pragma.name"
-msgstr "Прагма"
+msgstr "Тема \"Pragma\""
 
 msgid "plugins.themes.pragma.description"
-msgstr "Мінімалістична тема для OJS з дизайном, натхненим змістом ранніх періодичних видань, який містив потужне використання монохромної палітри кольорів."
+msgstr ""
+"Мінімалістична тема для OJS із дизайном, натхненим змістом ранніх "
+"періодичних видань, який містив потужне використання монохромної палітри "
+"кольорів."
 
 msgid "plugins.themes.pragma.more-info"
-msgstr "Більше"
+msgstr "Більше інформації"
 
 msgid "plugins.themes.pragma.issues.recent"
 msgstr "Нещодавно опубліковані випуски"
@@ -41,22 +44,22 @@ msgid "plugins.themes.pragma.mainMenu"
 msgstr "Головне меню"
 
 msgid "plugins.themes.pragma.language.toggle"
-msgstr "Змінити мову. Зараз встановлена мова:"
+msgstr "Змінити мову. Поточна мова:"
 
 msgid "plugins.themes.pragma.adminMenu"
-msgstr "Адмін меню"
+msgstr "Адмінменю"
 
 msgid "plugins.themes.pragma.issue.fullIssueLink"
-msgstr "Переглянути повний випуск"
+msgstr "Переглянути весь випуск"
 
 msgid "plugins.themes.pragma.article.biography"
 msgstr "Біографія"
 
 msgid "plugins.themes.pragma.article.figure"
-msgstr "Обкладинка статті"
+msgstr "Зображення обкладинки"
 
 msgid "plugins.themes.pragma.authors.browse"
-msgstr "Знайти за автором"
+msgstr "Переглянути за автором"
 
 msgid "plugins.themes.pragma.author.details"
 msgstr "Детальніше про автора"
