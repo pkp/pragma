@@ -1,29 +1,32 @@
-# Petro Bilous <petrobilous@ukr.net>, 2022.
+# Petro Bilous <petrobilous@ukr.net>, 2022, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-04-24T08:49:23+00:00\n"
-"PO-Revision-Date: 2022-02-22 11:06+0000\n"
+"PO-Revision-Date: 2023-04-26 13:49+0000\n"
 "Last-Translator: Petro Bilous <petrobilous@ukr.net>\n"
 "Language-Team: Ukrainian <http://translate.pkp.sfu.ca/projects/plugins/"
-"pragma/uk_UA/>\n"
-"Language: uk_UA\n"
+"pragma/uk/>\n"
+"Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<="
-"4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 3.9.1\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 4.13.1\n"
 
 msgid "plugins.themes.pragma.name"
-msgstr "Прагма"
+msgstr "Тема \"Pragma\""
 
 msgid "plugins.themes.pragma.description"
-msgstr "Мінімалістична тема для OJS з дизайном, натхненим змістом ранніх періодичних видань, який містив потужне використання монохромної палітри кольорів."
+msgstr ""
+"Мінімалістична тема для OJS із дизайном, натхненим змістом ранніх "
+"періодичних видань, який містив потужне використання монохромної палітри "
+"кольорів."
 
 msgid "plugins.themes.pragma.more-info"
-msgstr "Більше"
+msgstr "Більше інформації"
 
 msgid "plugins.themes.pragma.issues.recent"
 msgstr "Нещодавно опубліковані випуски"
@@ -41,25 +44,50 @@ msgid "plugins.themes.pragma.mainMenu"
 msgstr "Головне меню"
 
 msgid "plugins.themes.pragma.language.toggle"
-msgstr "Змінити мову. Зараз встановлена мова:"
+msgstr "Змінити мову. Поточна мова:"
 
 msgid "plugins.themes.pragma.adminMenu"
-msgstr "Адмін меню"
+msgstr "Адмінменю"
 
 msgid "plugins.themes.pragma.issue.fullIssueLink"
-msgstr "Переглянути повний випуск"
+msgstr "Переглянути весь випуск"
 
 msgid "plugins.themes.pragma.article.biography"
 msgstr "Біографія"
 
 msgid "plugins.themes.pragma.article.figure"
-msgstr "Обкладинка статті"
+msgstr "Зображення обкладинки"
 
 msgid "plugins.themes.pragma.authors.browse"
-msgstr "Знайти за автором"
+msgstr "Переглянути за автором"
 
 msgid "plugins.themes.pragma.author.details"
 msgstr "Детальніше про автора"
 
 msgid "plugins.themes.pragma.search.resultsFor"
 msgstr "Результати пошуку для <em>{$query}</em>"
+
+msgid "plugins.themes.pragma.option.displayStats.label"
+msgstr "Параметри відображення статистики використання"
+
+msgid "plugins.themes.pragma.option.displayStats.bar"
+msgstr ""
+"Використовувати стовпчиковий тип діаграми для відображення статистики "
+"використання."
+
+msgid "plugins.themes.pragma.displayStats.downloads"
+msgstr "Завантажування"
+
+msgid "plugins.themes.pragma.displayStats.noStats"
+msgstr "Дані завантажень поки не доступні."
+
+msgid "plugins.themes.pragma.displayStats.monthInitials"
+msgstr "Січ Лют Бер Кві Тра Чер Лип Сер Вер Жов Лис Гру"
+
+msgid "plugins.themes.pragma.option.displayStats.none"
+msgstr "Не відображати читачеві статистику використання подання."
+
+msgid "plugins.themes.pragma.option.displayStats.line"
+msgstr ""
+"Використовувати лінійний тип діаграми для відображення статистики "
+"використання."
