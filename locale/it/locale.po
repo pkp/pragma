@@ -14,7 +14,6 @@ msgid "plugins.themes.pragma.name"
 msgstr "Pragma Theme"
 
 msgid "plugins.themes.pragma.description"
-msgstr "A minimalist OJS theme inspired by early periodicals’ tables of contents featuring a bold use of a monochromatic colour palette."
 msgstr "Un tema OJS minimalista ispirato ai sommari dei primi periodici che facevano largo uso di una palette di colori monocromatica."
 
 msgid "plugins.themes.pragma.more-info"
