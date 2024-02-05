@@ -15,7 +15,7 @@
 		<div class="offset-md-1 col-md-10 offset-lg-2 col-lg-8">
 			<header class="main__header">
 				<h1 class="main__title">
-					<span>{translate key="user.subscriptions.purchaseIndividualSubscription"}</span>
+					<span>{translate key=$pageTitle}</span>
 				</h1>
 			</header>
 
