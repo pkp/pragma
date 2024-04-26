@@ -1,11 +1,12 @@
 # Marc Bria <marc.bria@gmail.com>, 2023.
+# Jordi LC <jordi.lacruz@uab.cat>, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-04-24T08:36:25+00:00\n"
-"PO-Revision-Date: 2023-04-26 13:49+0000\n"
-"Last-Translator: Marc Bria <marc.bria@gmail.com>\n"
+"PO-Revision-Date: 2024-04-26 12:23+0000\n"
+"Last-Translator: Jordi LC <jordi.lacruz@uab.cat>\n"
 "Language-Team: Spanish <http://translate.pkp.sfu.ca/projects/plugins/pragma/"
 "es/>\n"
 "Language: es\n"
@@ -13,7 +14,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.13.1\n"
+"X-Generator: Weblate 4.18.2\n"
 
 msgid "plugins.themes.pragma.name"
 msgstr "Tema Pragma"
@@ -42,7 +43,7 @@ msgid "plugins.themes.pragma.mainMenu"
 msgstr "Menú principal"
 
 msgid "plugins.themes.pragma.language.toggle"
-msgstr "Cambia el idioma. El idioma actual es:"
+msgstr "Cambiar el idioma. El idioma actual es:"
 
 msgid "plugins.themes.pragma.adminMenu"
 msgstr "Menú de administración"
