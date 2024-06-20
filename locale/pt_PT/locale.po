@@ -2,7 +2,7 @@
 # José Carvalho <jcarvalho@keep.pt>, 2023.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2023-06-01 08:49+0000\n"
+"PO-Revision-Date: 2023-06-13 07:49+0000\n"
 "Last-Translator: José Carvalho <jcarvalho@keep.pt>\n"
 "Language-Team: Portuguese (Portugal) <http://translate.pkp.sfu.ca/projects/"
 "plugins/pragma/pt_PT/>\n"
@@ -80,3 +80,6 @@ msgstr "Downloads"
 
 msgid "plugins.themes.pragma.displayStats.noStats"
 msgstr "Os dados de download ainda não estão disponíveis."
+
+msgid "plugins.themes.pragma.option.displayStats.line"
+msgstr "Use o gráfico de linha para exibição de estatísticas de uso."
