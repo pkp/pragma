@@ -1,8 +1,8 @@
 {**
  * templates/frontend/pages/userLogin.tpl
  *
- * Copyright (c) 2014-2020 Simon Fraser University
- * Copyright (c) 2003-2020 John Willinsky
+ * Copyright (c) 2014-2024 Simon Fraser University
+ * Copyright (c) 2003-2024 John Willinsky
  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
  *
  * User login form.
@@ -66,6 +66,18 @@
 							</label>
 						</div>
 					</div>
+
+					{* recaptcha spam blocker *}
+					{if $recaptchaPublicKey}
+						<fieldset class="recaptcha_wrapper">
+							<div class="fields">
+								<div class="recaptcha">
+									<div class="g-recaptcha" data-sitekey="{$recaptchaPublicKey|escape}">
+									</div><label for="g-recaptcha-response" style="display:none;" hidden>Recaptcha response</label>
+								</div>
+							</div>
+						</fieldset>
+					{/if}
 
 					<div class="form-group">
 						<button class="btn btn-primary" type="submit">
