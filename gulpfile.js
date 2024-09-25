@@ -4,7 +4,6 @@ var concat = require('gulp-concat');
 var minifyCSS = require('gulp-csso');
 var sourcemaps = require('gulp-sourcemaps');
 var minify = require('gulp-minify');
-var merge = require('merge-stream');
 
 gulp.task('sass', function() {
 	return gulp
