@@ -1,0 +1,11 @@
+pragma/.gitignore
+pragma/.github
+pragma/cypress
+pragma/exclusions.txt
+pragma/gulpfile.js
+pragma/node_modules
+pragma/package.json
+pragma/package-lock.json
+pragma/resources/js
+pragma/resources/dist/app.js
+pragma/resources/dist/app-debug.js
