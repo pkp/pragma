@@ -16,11 +16,11 @@ This theme can be installed through the **Plugin Gallery** in Open Journal Syste
 4. Resolve dependencies: `npm install`. Gulp config file is inside a theme root folder `gulpfile.js`.
 5. To compile external SCSS, concatenate styles and minify: `gulp sass`. The result CSS path is `resources/dist/app.min.css`. The theme's own styles are compiled automatically by OJS's theme API.
 6. To concatenate and minify javascript: `gulp scripts` and `gulp compress`. The result Javascript file path is `resources/dist/app.min.js`. Run `gulp watch` to view javascript changes inside `resources/js` folder in real time.
-7. To compile and minify all at once: `gulp compileAll`.
+7. To compile and minify all at once: `gulp build`.
 8. Copy the plugin's folder to `plugins/themes` directory starting from the OJS installation root folder.
 9. Login into the OJS admin dashboard, activate the plugin and enable the theme.
 
-Note that the master branch may contain code that will not be shipped to the stable release.
+Note that the main branch may contain code that will not be shipped to the stable release.
 
 # License
 This theme is released under the GPL license.
