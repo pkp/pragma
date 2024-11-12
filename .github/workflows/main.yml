@@ -28,4 +28,3 @@ jobs:
          branch: main
          repository: pkp
          plugin: true
-
