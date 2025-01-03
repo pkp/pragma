@@ -1,8 +1,8 @@
 {**
  * templates/frontend/objects/announcement_summary.tpl
  *
- * Copyright (c) 2014-2020 Simon Fraser University
- * Copyright (c) 2003-2020 John Willinsky
+ * Copyright (c) 2014-2025 Simon Fraser University
+ * Copyright (c) 2003-2025 John Willinsky
  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
  *
  * @brief Display a summary view of an announcement
@@ -15,21 +15,21 @@
 {/if}
 
 <{$heading}>
-	<a href="{url router=$smarty.const.ROUTE_PAGE page="announcement" op="view" path=$announcement->getId()}">
-		{$announcement->getLocalizedTitle()|escape}
+	<a href="{url router=$smarty.const.ROUTE_PAGE page="announcement" op="view" path=$announcement->id}">
+		{$announcement->getLocalizedData('title')|escape}
 	</a>
 </{$heading}>
 <div class="announcement__date">
-	{$announcement->getDatePosted()|date_format:$dateFormatShort}
+	{$announcement->datePosted|date_format:$dateFormatShort}
 </div>
 <div class="announcement__desc">
-	{$announcement->getLocalizedDescriptionShort()|strip_unsafe_html}
+	{$announcement->getLocalizedData('descriptionShort')|strip_unsafe_html}
 </div>
-<a href="{url router=$smarty.const.ROUTE_PAGE page="announcement" op="view" path=$announcement->getId()}" class="btn btn-secondary">
+<a href="{url router=$smarty.const.ROUTE_PAGE page="announcement" op="view" path=$announcement->id}" class="btn btn-secondary">
 	<span aria-hidden="true" role="presentation">
 		{translate key="common.readMore"}
 	</span>
 	<span class="visually-hidden">
-		{translate key="common.readMoreWithTitle" title=$announcement->getLocalizedTitle()|escape}
+		{translate key="common.readMoreWithTitle" title=$announcement->getLocalizedData('title')|escape}
 	</span>
 </a>
