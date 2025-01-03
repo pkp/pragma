@@ -14,7 +14,7 @@
  * Templates::Article::Main
  * Templates::Article::Details
  *
- * @uses $article Article This article
+ * @uses $article Submission This article
  * @uses $publication Publication The publication being displayed
  * @uses $firstPublication Publication The first published version of this article
  * @uses $currentPublication Publication The most recently published version of this article
@@ -129,14 +129,16 @@
 						{strip}
 							<li>
 								{$authorString->getFullName()|escape}
-								{if $authorString->getOrcid()}
-									<a href="{$authorString->getOrcid()|escape}">
-										{if $orcidIcon}
-											{$orcidIcon}
-										{else}
-											<img src="{$baseUrl}/{$orcidImageUrl}">
-										{/if}
-									</a>
+								{if $authorString->getData('orcid')}
+                                    {if $author->getData('orcidAccessToken')}
+                                        <a href="{$authorString->getOrcid()|escape}">
+                                        {if $orcidIcon}
+                                            {$orcidIcon}
+                                        {else}
+                                            <img src="{$baseUrl}/{$orcidImageUrl}">
+                                        {/if}
+                                        </a>
+                                    {/if}
 								{/if}
 							</li>
 						{/strip}{if !$smarty.foreach.authors.last}, {/if}

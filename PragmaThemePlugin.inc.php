@@ -133,7 +133,7 @@ class PragmaThemePlugin extends ThemePlugin {
 			$orcidImageUrl = $this->getPluginPath() . '/templates/images/orcid.png';
 
 			if ($request->getContext()) {
-				$templateMgr->assign('pragmaHomepageImage', $journal->getLocalizedSetting('homepageImage'));
+				$templateMgr->assign('pragmaHomepageImage', $journal->getLocalizedData('homepageImage'));
 			}
 
 			$templateMgr->assign(array(
