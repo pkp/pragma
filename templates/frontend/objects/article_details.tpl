@@ -131,7 +131,7 @@
 								{$authorString->getFullName()|escape}
 								{if $authorString->getData('orcid')}
                                     {if $author->getData('orcidAccessToken')}
-                                        <a href="{$authorString->getOrcid()|escape}">
+                                        <a href="{$authorString->getData('orcid')|escape}">
                                         {if $orcidIcon}
                                             {$orcidIcon}
                                         {else}
@@ -154,7 +154,7 @@
 						{else}
 							{translate key="user.affiliation"}
 						{/if}
-				  </button>
+				    </button>
 				</p>
 				<div class="collapse metadata" id="authorAffiliations">
 					{foreach from=$authors item=author}
@@ -165,7 +165,7 @@
 							<a class="article__rorImage" href="{$author->getData('rorId')|escape}">{$rorIdIcon}</a>
 						{/if}
 						<br><br>
-					</div>
+                     </div>
 					{/foreach}
 				</div>
 			{/if}

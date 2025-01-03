@@ -39,11 +39,16 @@
     {assign var="path" value=$parentId|to_array:$galley->getBestGalleyId()}
 {else}
     {assign var="page" value="article"}
-    {assign var="parentId" value=$parent->getBestArticleId()}
-    {if $publication && $publication->getId() !== $parent->getData('currentPublicationId')}
-        {assign var="path" value=$parentId|to_array:"version":$publication->getId():$galley->getBestGalleyId()}
+    {if $publication}
+        {if $publication->getId() !== $parent->getData('currentPublicationId')}
+            {* Get a versioned link if we have an older publication *}
+            {assign var="path" value=$parent->getBestId()|to_array:"version":$publication->getId():$galley->getBestGalleyId()}
+        {else}
+            {assign var="parentId" value=$publication->getData('urlPath')|default:$article->getId()}
+            {assign var="path" value=$parentId|to_array:$galley->getBestGalleyId()}
+        {/if}
     {else}
-        {assign var="path" value=$parentId|to_array:$galley->getBestGalleyId()}
+        {assign var="path" value=$parent->getBestId()|to_array:$galley->getBestGalleyId()}
     {/if}
 {/if}
 

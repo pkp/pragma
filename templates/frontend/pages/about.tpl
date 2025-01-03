@@ -20,9 +20,9 @@
 				{include file="frontend/components/editLink.tpl" page="management" op="settings" path="context" anchor="masthead" sectionTitleKey="about.aboutContext"}
 			</header>
 			<div>
-				{$currentContext->getLocalizedSetting('description')}
+				{$currentContext->getLocalizedData('description')}
 				<hr>
-				{$currentContext->getLocalizedSetting('about')}
+				{$currentContext->getLocalizedData('about')}
 			</div>
 		</div>
 	</div>
