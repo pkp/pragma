@@ -130,15 +130,13 @@
 							<li>
 								{$authorString->getFullName()|escape}
 								{if $authorString->getData('orcid')}
-                                    {if $author->getData('orcidAccessToken')}
-                                        <a href="{$authorString->getData('orcid')|escape}">
-                                        {if $orcidIcon}
+                                    <a href="{$authorString->getData('orcid')|escape}">
+                                        {if $authorString->hasVerifiedOrcid()}
                                             {$orcidIcon}
                                         {else}
-                                            <img src="{$baseUrl}/{$orcidImageUrl}">
+                                            {$orcidUnauthenticatedIcon}
                                         {/if}
-                                        </a>
-                                    {/if}
+                                    </a>
 								{/if}
 							</li>
 						{/strip}{if !$smarty.foreach.authors.last}, {/if}
