@@ -139,7 +139,7 @@
                                     </a>
 								{/if}
 							</li>
-						{/strip}{if !$smarty.foreach.authors.last}, {/if}
+						{/strip}{if !$smarty.foreach.authors.last}{translate key="common.commaListSeparator"}{/if}
 					{/foreach}
 				</ul>
 			{/if}
@@ -281,7 +281,7 @@
 						</h2>
 						<p>
 							{foreach name=keywords from=$publication->getLocalizedData('keywords') item=keyword}
-								<span>{$keyword|escape}</span>{if !$smarty.foreach.keywords.last}, {/if}
+								<span>{$keyword|escape}</span>{if !$smarty.foreach.keywords.last}{translate key="common.commaListSeparator"}{/if}
 							{/foreach}
 						</p>
 					</section>
