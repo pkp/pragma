@@ -55,7 +55,7 @@ describe('Theme plugin tests', function() {
 	});
 
 	it('Visits front-end theme pages', function() {
-		cy.visit('');
+		cy.visit(path);
 		cy.visit(path + '/issue/current');
 		cy.visit(path + '/issue/archive');
 		cy.visit(path + '/issue/view/1');
@@ -81,7 +81,7 @@ describe('Theme plugin tests', function() {
 		cy.get('#theme [role="status"]').contains('Saved');
 
 		// Populate journal summary
-		cy.get('.app__navItem').contains('Journal').click();
+		cy.get('nav').contains('Journal').click();
 		cy.get('#masthead-button').click();
 		cy.setTinyMceContent('masthead-description-control-en', journalDescription);
 		cy.get('#masthead button').contains('Save').click();
@@ -193,7 +193,7 @@ describe('Theme plugin tests', function() {
 		cy.get('#reviewerInterests input').type('psychotherapy,neuroscience,neurobiology', {delay: 0});
 		cy.get('button[type="submit"]').contains('Register').focus().click();
 		cy.get('a').contains('View Submissions').click();
-		cy.url().should('include', 'submissions');
+		cy.url().should('include', 'dashboard');
 	});
 
 	it('Log in/Log out', function() {
