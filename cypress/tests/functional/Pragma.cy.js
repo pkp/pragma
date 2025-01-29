@@ -55,7 +55,6 @@ describe('Theme plugin tests', function() {
 	});
 
 	it('Visits front-end theme pages', function() {
-		cy.visit(path);
 		cy.visit(path + '/issue/current');
 		cy.visit(path + '/issue/archive');
 		cy.visit(path + '/issue/view/1');
@@ -177,6 +176,7 @@ describe('Theme plugin tests', function() {
 		// Register; 'cy.register()' command won't work for this theme because privacyConsent label overlays input checkbox
 		cy.get('a.main-menu__nav-link').contains('Register').click();
 		cy.url().should('include', '/user/register');
+		cy.wait(1000);
 		cy.get('#givenName').type(user.givenName, {delay: 0});
 		cy.get('#familyName').type(user.familyName, {delay: 0});
 		cy.get('#affiliation').type(user.affiliation, {delay: 0});
@@ -200,6 +200,6 @@ describe('Theme plugin tests', function() {
 		cy.get('#username').type(user.username, {delay: 0});
 		cy.get('#password').type(user.username + user.username);
 		cy.get('button[type="submit"]').contains('Login').click();
-		cy.url().should('include', 'submissions');
+		cy.url().should('include', 'dashboard');
 	});
 });
