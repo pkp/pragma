@@ -37,7 +37,9 @@ describe('Theme plugin tests', function() {
 	it('Enables and selects the theme', function() {
 		cy.login('admin', 'admin', 'publicknowledge');
 
-		cy.get('.app__nav a').contains('Website').click();
+        	cy.get('nav').contains('Settings').click();
+        	// Ensure submenu item click despite animation
+        	cy.get('nav').contains('Website').click({ force: true });
 		cy.get('button[id="plugins-button"]').click();
 
 		// Find and enable the plugin
@@ -60,7 +62,7 @@ describe('Theme plugin tests', function() {
 		cy.visit(path + '/article/view/1');
 		cy.visit(path + '/article/view/1/1');
 		cy.visit(path + '/about');
-		cy.visit(path + '/about/editorialTeam');
+		cy.visit(path + '/about/editorialMasthead');
 		cy.visit(path + '/about/submissions');
 		cy.visit(path + '/about/contact');
 		cy.visit(path + '/about/privacy');
