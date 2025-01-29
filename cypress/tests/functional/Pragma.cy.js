@@ -108,7 +108,7 @@ describe('Theme plugin tests', function() {
 			cy.get('button').contains('OK').click();
 		});
 		cy.waitJQuery();
-		cy.visit('/index.php/publicknowledge/workflow/access/1');
+		cy.visit('/index.php/publicknowledge/workflow/access/17');
 		cy.waitJQuery();
 		cy.get(`[data-cy="active-modal"] nav a:contains('Title & Abstract')`).click();
 		cy.get('button').contains('Create New Version').click();
@@ -133,16 +133,16 @@ describe('Theme plugin tests', function() {
 		cy.wait(2000);
 
 		// Visit front-end pages
-		cy.visit(path + '/article/view/1');
+		cy.visit(path + '/article/view/17');
 		cy.get('.main__title').invoke('text').then((text) => {
 			expect(text).to.include('version 2');
 		});
 		cy.get('section h2').contains('Versions').next('ul').children().should('have.length', 2);
-		cy.visit(path + '/article/view/1/version/1');
+		cy.visit(path + '/article/view/17/version/1');
 		cy.get('.main__title').invoke('text').then((text) => {
 			expect(text).not.to.include('version 2');
 		});
-		cy.visit(path + '/article/view/1/version/1/1');
+		cy.visit(path + '/article/view/17/version/1/1');
 		cy.visit(path + '/catalog/category/first-category');
 		cy.get('.article_count').contains('1 Items');
 		cy.get('.cmp_article_list').children().should('have.length', 1);
