@@ -10,7 +10,7 @@
 describe('Theme plugin tests', function() {
 	const journalPath = 'publicknowledge';
 	const index = 'index.php';
-	const path = '/' + index + '/' + journalPath;
+	const path = '/' + index + '/' + journalPath + '/en';
 
 	const date = new Date();
 	const day = date.getDate() + '';
@@ -55,7 +55,7 @@ describe('Theme plugin tests', function() {
 	});
 
 	it('Visits front-end theme pages', function() {
-		cy.visit(' ');
+		cy.visit('');
 		cy.visit(path + '/issue/current');
 		cy.visit(path + '/issue/archive');
 		cy.visit(path + '/issue/view/1');
