@@ -108,31 +108,28 @@ describe('Theme plugin tests', function() {
 			cy.get('button').contains('OK').click();
 		});
 		cy.waitJQuery();
-		cy.get('nav a').contains('Submissions').click();
-		cy.get('button').contains('Archived').click();
-		cy.get('.listPanel__item').first().within(() => {
-			cy.get('.listPanel__item--submission__id').contains('1');
-			cy.get('a span').contains('View').click();
-		});
+		cy.visit('/index.php/publicknowledge/workflow/access/1');
 		cy.waitJQuery();
-		cy.get('button').contains('Publication').click();
-		cy.get('.pkpButton').contains('Create New Version').click();
-		cy.get('#modals-container .pkpButton').contains('Yes').click();
+		cy.get(`[data-cy="active-modal"] nav a:contains('Title & Abstract')`).click();
+		cy.get('button').contains('Create New Version').click();
+		cy.contains('Are you sure you want to create a new version?');
+		cy.get('div[role=dialog]:contains("Create New Version")').get('button').contains('Yes').click();
+
 		cy.wait(2000); // wait for a new version init
 
-		cy.get('#issue-button').click();
+		cy.get(`[data-cy="active-modal"] nav a:contains('Issue')`).click();
 		cy.get('.pkpFormField--options__optionLabel').contains('First category').click();
-		cy.get('#issue button').contains('Save').click();
-		cy.get('#issue [role="status"]').contains('Saved');
+		cy.get('button').contains('Save').click();
+		cy.get('[role="status"]').contains('Saved');
 
-		cy.get('#titleAbstract-button').click();
+		cy.get(`[data-cy="active-modal"] nav a:contains('Title & Abstract')`).click();
 		cy.getTinyMceContent('titleAbstract-title-control-en').then((content) => {
 			cy.setTinyMceContent('titleAbstract-title-control-en', content + ' - version 2');
 		});
-		cy.get('#titleAbstract .pkpButton').contains('Save').click();
-		cy.get('#titleAbstract [role="status"]').contains('Saved');
-		cy.get('#publication .pkpButton').contains('Publish').click();
-		cy.get('.pkp_modal .pkpButton').contains('Publish').click();
+		cy.get('button').contains('Save').click();
+		cy.get('[role="status"]').contains('Saved');
+		cy.get('button').contains('Publish').click();
+		cy.get('.pkpWorkflow__publishModal button').contains('Publish').click();
 		cy.wait(2000);
 
 		// Visit front-end pages
