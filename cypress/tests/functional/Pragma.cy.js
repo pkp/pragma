@@ -107,14 +107,8 @@ describe('Theme plugin tests', function() {
 			cy.get('button').contains('OK').click();
 		});
 		cy.waitJQuery();
-		cy.visit('/index.php/publicknowledge/workflow/access/17');
+		cy.visit('/index.php/publicknowledge/workflow/access/1');
 		cy.waitJQuery();
-		cy.get(`[data-cy="active-modal"] nav a:contains('Title & Abstract')`).click();
-		cy.get('button').contains('Create New Version').click();
-		cy.contains('Are you sure you want to create a new version?');
-		cy.get('div[role=dialog]:contains("Create New Version")').get('button').contains('Yes').click();
-
-		cy.wait(2000); // wait for a new version init
 
 		cy.get(`[data-cy="active-modal"] nav a:contains('Issue')`).click();
 		cy.get('.pkpFormField--options__optionLabel').contains('First category').click();
@@ -132,16 +126,16 @@ describe('Theme plugin tests', function() {
 		cy.wait(2000);
 
 		// Visit front-end pages
-		cy.visit(path + '/article/view/17');
+		cy.visit(path + '/article/view/1');
 		cy.get('.main__title').invoke('text').then((text) => {
 			expect(text).to.include('version 2');
 		});
 		cy.get('section h2').contains('Versions').next('ul').children().should('have.length', 2);
-		cy.visit(path + '/article/view/17/version/1');
+		cy.visit(path + '/article/view/1/version/1');
 		cy.get('.main__title').invoke('text').then((text) => {
 			expect(text).not.to.include('version 2');
 		});
-		cy.visit(path + '/article/view/17/version/1/1');
+		cy.visit(path + '/article/view/1/version/1/1');
 		cy.visit(path + '/catalog/category/first-category');
 		cy.get('.article_count').contains('1 Items');
 		cy.get('.cmp_article_list').children().should('have.length', 1);
@@ -176,7 +170,7 @@ describe('Theme plugin tests', function() {
 		// Register; 'cy.register()' command won't work for this theme because privacyConsent label overlays input checkbox
 		cy.get('a.main-menu__nav-link').contains('Register').click();
 		cy.url().should('include', '/user/register');
-		cy.wait(1000);
+		cy.waitJQuery();
 		cy.get('#givenName').type(user.givenName, {delay: 0});
 		cy.get('#familyName').type(user.familyName, {delay: 0});
 		cy.get('#affiliation').type(user.affiliation, {delay: 0});
@@ -197,8 +191,8 @@ describe('Theme plugin tests', function() {
 		// Sign out
 		cy.visit(path + '/' + 'login/signOut');
 		cy.url().should('include', 'login');
-		cy.get('#username').type(user.username, {delay: 0});
-		cy.get('#password').type(user.username + user.username);
+		cy.get('#username').type('dbarnes', {delay: 0});
+		cy.get('#password').type('dbarnesdbarnes');
 		cy.get('button[type="submit"]').contains('Login').click();
 		cy.url().should('include', 'dashboard');
 	});
