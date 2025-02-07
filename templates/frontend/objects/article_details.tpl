@@ -14,7 +14,7 @@
  * Templates::Article::Main
  * Templates::Article::Details
  *
- * @uses $article Article This article
+ * @uses $article Submission This article
  * @uses $publication Publication The publication being displayed
  * @uses $firstPublication Publication The first published version of this article
  * @uses $currentPublication Publication The most recently published version of this article
@@ -117,7 +117,7 @@
 			{assign var="hasAffiliations" value=false}
 
 			{foreach from=$authors item=author}
-				{if $author->getLocalizedAffiliation()}
+				{if count($author->getAffiliations()) > 0}
 					{assign var="hasAffiliations" value=true}
 					{break}
 				{/if}
@@ -129,17 +129,17 @@
 						{strip}
 							<li>
 								{$authorString->getFullName()|escape}
-								{if $authorString->getOrcid()}
-									<a href="{$authorString->getOrcid()|escape}">
-										{if $orcidIcon}
-											{$orcidIcon}
-										{else}
-											<img src="{$baseUrl}/{$orcidImageUrl}">
-										{/if}
-									</a>
+								{if $authorString->getData('orcid')}
+                                    <a href="{$authorString->getData('orcid')|escape}">
+                                        {if $authorString->hasVerifiedOrcid()}
+                                            {$orcidIcon}
+                                        {else}
+                                            {$orcidUnauthenticatedIcon}
+                                        {/if}
+                                    </a>
 								{/if}
 							</li>
-						{/strip}{if !$smarty.foreach.authors.last}, {/if}
+						{/strip}{if !$smarty.foreach.authors.last}{translate key="common.commaListSeparator"}{/if}
 					{/foreach}
 				</ul>
 			{/if}
@@ -152,18 +152,21 @@
 						{else}
 							{translate key="user.affiliation"}
 						{/if}
-				  </button>
+				    </button>
 				</p>
 				<div class="collapse metadata" id="authorAffiliations">
 					{foreach from=$authors item=author}
 					 <div>
-						<strong>{$author->getFullName()|escape}</strong><br>
-						{$author->getLocalizedAffiliation()|escape}
-						{if $author->getData('rorId')}
-							<a class="article__rorImage" href="{$author->getData('rorId')|escape}">{$rorIdIcon}</a>
-						{/if}
+						 <strong>{$author->getFullName()|escape}</strong><br>
+						 {foreach name="affiliations" from=$author->getAffiliations() item="affiliation"}
+							 {$affiliation->getLocalizedName()|escape}
+							 {if $affiliation->getRor()}
+								 <a class="article__rorImage" href="{$affiliation->getRor()|escape}">{$rorIdIcon}</a>
+							 {/if}
+							 {if !$smarty.foreach.affiliations.last}{translate key="common.commaListSeparator"}{/if}
+						 {/foreach}
 						<br><br>
-					</div>
+                     </div>
 					{/foreach}
 				</div>
 			{/if}
@@ -281,7 +284,7 @@
 						</h2>
 						<p>
 							{foreach name=keywords from=$publication->getLocalizedData('keywords') item=keyword}
-								<span>{$keyword|escape}</span>{if !$smarty.foreach.keywords.last}, {/if}
+								<span>{$keyword|escape}</span>{if !$smarty.foreach.keywords.last}{translate key="common.commaListSeparator"}{/if}
 							{/foreach}
 						</p>
 					</section>

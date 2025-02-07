@@ -60,14 +60,14 @@
 								{break}
 							{/if}
 							<article class="carousel-item{if $announcement@first} active{/if}">
-									<h3 class="announcement__title_boxed">{$announcement->getLocalizedTitle()|escape}</h3>
-									<p class="metadata">{$announcement->getDatePosted()|date_format:$dateFormatLong}</p>
-									<p>{$announcement->getLocalizedDescriptionShort()|strip_unsafe_html}</p>
-									<p>
-										{capture assign="announcementPageUrl"}{url router=$smarty.const.ROUTE_PAGE page="announcement" op="view" path=$announcement->getId()}{/capture}
-										<a href="{$announcementPageUrl}" class="btn btn-secondary">{translate key="common.more"}</a>
-									</p>
-								</article>
+                                <h3 class="announcement__title_boxed">{$announcement->getLocalizedData('title')|escape}</h3>
+                                <p class="metadata">{$announcement->datePosted|date_format:$dateFormatLong}</p>
+                                <p>{$announcement->getLocalizedData('descriptionShort')|strip_unsafe_html}</p>
+                                <p>
+                                    {capture assign="announcementPageUrl"}{url router=$smarty.const.ROUTE_PAGE page="announcement" op="view" path=$announcement->id}{/capture}
+                                    <a href="{$announcementPageUrl}" class="btn btn-secondary">{translate key="common.more"}</a>
+                                </p>
+                            </article>
 						{/foreach}
 					</div>
 					{if $numAnnouncementsHomepage > 1 && $announcements|@count > 1}
