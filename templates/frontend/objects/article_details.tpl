@@ -117,7 +117,7 @@
 			{assign var="hasAffiliations" value=false}
 
 			{foreach from=$authors item=author}
-				{if $author->getLocalizedAffiliation()}
+				{if count($author->getAffiliations()) > 0}
 					{assign var="hasAffiliations" value=true}
 					{break}
 				{/if}
@@ -157,11 +157,14 @@
 				<div class="collapse metadata" id="authorAffiliations">
 					{foreach from=$authors item=author}
 					 <div>
-						<strong>{$author->getFullName()|escape}</strong><br>
-						{$author->getLocalizedAffiliation()|escape}
-						{if $author->getData('rorId')}
-							<a class="article__rorImage" href="{$author->getData('rorId')|escape}">{$rorIdIcon}</a>
-						{/if}
+						 <strong>{$author->getFullName()|escape}</strong><br>
+						 {foreach name="affiliations" from=$author->getAffiliations() item="affiliation"}
+							 {$affiliation->getLocalizedName()|escape}
+							 {if $affiliation->getRor()}
+								 <a class="article__rorImage" href="{$affiliation->getRor()|escape}">{$rorIdIcon}</a>
+							 {/if}
+							 {if !$smarty.foreach.affiliations.last}{translate key="common.commaListSeparator"}{/if}
+						 {/foreach}
 						<br><br>
                      </div>
 					{/foreach}
