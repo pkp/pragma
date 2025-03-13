@@ -9,8 +9,8 @@
  *}
 <div class="col-md-3">
 	<div>
-		<a href="http://pkp.sfu.ca/ojs/">
-			{translate key="common.openJournalSystems"}
+		<a href="https://pkp.sfu.ca/ojs/">
+			{translate key="common.software"}
 		</a>
 	</div>
 </div>
