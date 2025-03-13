@@ -45,15 +45,17 @@
 
 		<div class="col-md-9">
 			{* Issue title & section *}
-			<p class="metadata">
-				<a href="{url page="issue" op="view" path=$issue->getBestIssueId()}">
-					{$issue->getIssueSeries()|escape}
-					{if $issue->getShowTitle()}
-					<br>
-					<strong>{$issue->getLocalizedTitle()|escape}</strong>
-					{/if}
-				</a>
-			</p>
+			{if $issue}
+				<p class="metadata">
+					<a href="{url page="issue" op="view" path=$issue->getBestIssueId()}">
+						{$issue->getIssueSeries()|escape}
+						{if $issue->getShowTitle()}
+							<br>
+							<strong>{$issue->getLocalizedTitle()|escape}</strong>
+						{/if}
+					</a>
+				</p>
+			{/if}
 			{if $section}
 				<p class="metadata">{$section->getLocalizedTitle()|escape}</p>
 			{/if}
