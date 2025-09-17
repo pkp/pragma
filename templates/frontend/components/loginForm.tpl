@@ -49,6 +49,21 @@
 						{translate key="user.login.rememberUsernameAndPassword"}
 				</label>
 			</div>
+
+			{* recaptcha spam blocker *}
+			{if $recaptchaPublicKey}
+				<div class="form-group">
+					<fieldset class="recaptcha_wrapper">
+						<div class="fields">
+							<div class="recaptcha">
+								<div class="g-recaptcha" data-sitekey="{$recaptchaPublicKey|escape}" data-theme="dark">
+								</div><label for="g-recaptcha-response" style="display:none;" hidden>Recaptcha response</label>
+							</div>
+						</div>
+					</fieldset>
+				</div>
+			{/if}
+
 		</div>
 		<div class="form-group">
 			<button class="btn btn-primary" type="submit">
