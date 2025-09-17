@@ -51,7 +51,7 @@
 			</div>
 
 			{* recaptcha spam blocker *}
-			{if $recaptchaPublicKey}
+			{if $recaptchaPublicKey && Config::getVar('captcha', 'captcha_on_login')}
 				<div class="form-group">
 					<fieldset class="recaptcha_wrapper">
 						<div class="fields">

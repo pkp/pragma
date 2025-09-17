@@ -97,16 +97,16 @@ class PragmaThemePlugin extends ThemePlugin {
 	 * @return bool
 	 */
 	public function initializeTemplate($hookname, $args) {
-		$templateMgr = $args[0];
+		/** @var TemplateManager $templateMgr */
+		[$templateMgr] = $args;
 		// The login link displays the login form in a modal, therefore the reCAPTCHA must be available for all frontend routes
 		$isCaptchaEnabled = Config::getVar('captcha', 'recaptcha') && Config::getVar('captcha', 'captcha_on_login');
 		if ($isCaptchaEnabled) {
-			$templateMgr->addJavaScript(
-				'recaptcha',
-				'https://www.recaptcha.net/recaptcha/api.js?hl=' . substr(Locale::getLocale(), 0, 2)
-			);
+			$locale = substr(Locale::getLocale(), 0, 2);
+			$templateMgr->addJavaScript('recaptcha', "https://www.recaptcha.net/recaptcha/api.js?hl={$locale}");
 			$templateMgr->assign('recaptchaPublicKey', Config::getVar('captcha', 'recaptcha_public_key'));
 		}
+
 		return false;
 	}
 
