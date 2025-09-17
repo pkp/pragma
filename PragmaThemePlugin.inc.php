@@ -18,6 +18,7 @@ use APP\issue\Collector;
 use APP\services\NavigationMenuService;
 use PKP\config\Config;
 use PKP\facades\Locale;
+use PKP\form\validation\FormValidatorAltcha;
 use PKP\navigationMenu\NavigationMenuItem;
 use PKP\plugins\ThemePlugin;
 
@@ -100,7 +101,7 @@ class PragmaThemePlugin extends ThemePlugin
     public function initializeTemplate(string $hookname, array $args): bool
     {
         $templateMgr = $args[0];
-        // The login link displays the login form in a modal, therefore the reCAPTCHA must be available for all frontend routes
+        // The login link displays the login form in a modal, therefore the reCAPTCHA/ALTCHA must be available for all frontend routes
         $isCaptchaEnabled = Config::getVar('captcha', 'recaptcha') && Config::getVar('captcha', 'captcha_on_login');
         if ($isCaptchaEnabled) {
             $templateMgr->addJavaScript(
@@ -108,6 +109,12 @@ class PragmaThemePlugin extends ThemePlugin
                 'https://www.recaptcha.net/recaptcha/api.js?hl=' . substr(Locale::getLocale(), 0, 2)
             );
             $templateMgr->assign('recaptchaPublicKey', Config::getVar('captcha', 'recaptcha_public_key'));
+        }
+
+        $altchaEnabled = Config::getVar('captcha', 'altcha') && Config::getVar('captcha', 'altcha_on_login');
+        if ($altchaEnabled) {
+            FormValidatorAltcha::addAltchaJavascript($templateMgr);
+            FormValidatorAltcha::insertFormChallenge($templateMgr);
         }
 
         return false;
@@ -140,7 +147,7 @@ class PragmaThemePlugin extends ThemePlugin
         $templateMgr = $args[0];
 
         $request = $this->getRequest();
-        $journal = $request->getJournal();
+        $journal = $request->getContext();
         $baseColour = $this->getOption('baseColour');
 
         if (!defined('SESSION_DISABLE_INIT')) {
