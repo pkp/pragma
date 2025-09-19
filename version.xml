@@ -32,5 +32,5 @@
 	<lazy-load>1</lazy-load>
 
 	<!-- The class name of the plugin. See index.php -->
-	<class>PragmaThemePlugin</class>
+	<class>PragmaPlugin</class>
 </version>

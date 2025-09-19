@@ -43,7 +43,7 @@ describe('Theme plugin tests', function() {
 		cy.get('button[id="plugins-button"]').click();
 
 		// Find and enable the plugin
-		cy.get('input[id^="select-cell-pragmathemeplugin-enabled"]').click();
+		cy.get('input[id^="select-cell-pragmaplugin-enabled"]').click();
 		cy.get('div:contains(\'The plugin "Pragma Theme" has been enabled.\')');
 		cy.reload();
 

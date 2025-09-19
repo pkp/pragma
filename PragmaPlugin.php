@@ -1,17 +1,19 @@
 <?php
 
 /**
- * @file plugins/themes/pragma/PragmaThemePlugin.inc.php
+ * @file plugins/themes/pragma/PragmaPlugin.php
  *
  * Copyright (c) 2014-2025 Simon Fraser University
  * Copyright (c) 2003-2025 John Willinsky
  * Distributed under the GNU GPL v3. For full terms see the file docs/COPYING.
  *
- * @class PragmaThemePlugin
+ * @class PragmaPlugin
  * @ingroup plugins_themes_pragma
  *
  * @brief Pragma theme
  */
+
+namespace APP\plugins\themes\pragma;
 
 use APP\facades\Repo;
 use APP\issue\Collector;
@@ -22,7 +24,7 @@ use PKP\form\validation\FormValidatorAltcha;
 use PKP\navigationMenu\NavigationMenuItem;
 use PKP\plugins\ThemePlugin;
 
-class PragmaThemePlugin extends ThemePlugin
+class PragmaPlugin extends ThemePlugin
 {
     public function init()
     {
@@ -284,3 +286,6 @@ class PragmaThemePlugin extends ThemePlugin
         return $emptyMarker;
     }
 }
+
+class_alias(PragmaPlugin::class, 'PragmaThemePlugin');
+class_alias(PragmaPlugin::class, 'APP\plugins\themes\pragma\PragmaThemePlugin');
