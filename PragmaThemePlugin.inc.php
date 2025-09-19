@@ -17,6 +17,8 @@ use APP\facades\Repo;
 use APP\issue\Collector;
 use APP\services\NavigationMenuService;
 use PKP\config\Config;
+use PKP\facades\Locale;
+use PKP\form\validation\FormValidatorAltcha;
 use PKP\navigationMenu\NavigationMenuItem;
 use PKP\plugins\ThemePlugin;
 
@@ -63,10 +65,10 @@ class PragmaThemePlugin extends ThemePlugin
         // Update contrast colour based on primary colour
         if ($this->isColourDark($this->getOption('baseColour'))) {
             $additionalLessVariables[] = '
-				@contrast-colour: rgba(255, 255, 255, 0.95);
-				@secondary-contrast-colour: rgba(255, 255, 255, 0.75);
-				@tertiary-contrast-colour: rgba(255, 255, 255, 0.65);
-			';
+                @contrast-colour: rgba(255, 255, 255, 0.95);
+                @secondary-contrast-colour: rgba(255, 255, 255, 0.75);
+                @tertiary-contrast-colour: rgba(255, 255, 255, 0.65);
+            ';
         }
 
         $themeUrl = $this->getPluginPath();
@@ -87,9 +89,35 @@ class PragmaThemePlugin extends ThemePlugin
         $this->addStyle('htmlGalley', 'resources/less/import.less', ['contexts' => 'htmlGalley']);
         $this->modifyStyle('htmlGalley', ['addLessVariables' => join("\n", $additionalLessVariables)]);
 
+        HookRegistry::add('TemplateManager::display', [$this, 'initializeTemplate']);
         HookRegistry::add('TemplateManager::display', [$this, 'addSiteWideData']);
         HookRegistry::add('TemplateManager::display', [$this, 'addIndexJournalData']);
         HookRegistry::add('TemplateManager::display', [$this, 'checkCurrentPage']);
+    }
+
+    /**
+     * Initialize Template
+     */
+    public function initializeTemplate(string $hookname, array $args): bool
+    {
+        $templateMgr = $args[0];
+        // The login link displays the login form in a modal, therefore the reCAPTCHA/ALTCHA must be available for all frontend routes
+        $isCaptchaEnabled = Config::getVar('captcha', 'recaptcha') && Config::getVar('captcha', 'captcha_on_login');
+        if ($isCaptchaEnabled) {
+            $templateMgr->addJavaScript(
+                'recaptcha',
+                'https://www.recaptcha.net/recaptcha/api.js?hl=' . substr(Locale::getLocale(), 0, 2)
+            );
+            $templateMgr->assign('recaptchaPublicKey', Config::getVar('captcha', 'recaptcha_public_key'));
+        }
+
+        $altchaEnabled = Config::getVar('captcha', 'altcha') && Config::getVar('captcha', 'altcha_on_login');
+        if ($altchaEnabled) {
+            FormValidatorAltcha::addAltchaJavascript($templateMgr);
+            FormValidatorAltcha::insertFormChallenge($templateMgr);
+        }
+
+        return false;
     }
 
     /**
@@ -119,7 +147,7 @@ class PragmaThemePlugin extends ThemePlugin
         $templateMgr = $args[0];
 
         $request = $this->getRequest();
-        $journal = $request->getJournal();
+        $journal = $request->getContext();
         $baseColour = $this->getOption('baseColour');
 
         if (!defined('SESSION_DISABLE_INIT')) {
