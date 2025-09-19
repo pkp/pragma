@@ -40,7 +40,7 @@
 								{* Require the user to agree to the terms of the privacy policy *}
 								<div class="form-check optin optin-privacy">
 									<input type="checkbox" class="form-check-input" name="privacyConsent" id="privacyConsent"
-										   value="1"{if $privacyConsent} checked="checked"{/if}>
+										value="1"{if $privacyConsent} checked="checked"{/if}>
 									<label for="privacyConsent" class="form-check-label">
 										{capture assign="privacyUrl"}{url router=$smarty.const.ROUTE_PAGE page="about" op="privacy"}{/capture}
 										{translate key="user.register.form.privacyConsent" privacyUrl=$privacyUrl}
@@ -51,7 +51,7 @@
 
 							<div class="form-check optin optin-email">
 								<input type="checkbox" class="form-check-input" name="emailConsent" id="emailConsent"
-									   value="1"{if $emailConsent} checked="checked"{/if}>
+									value="1"{if $emailConsent} checked="checked"{/if}>
 								<label for="emailConsent" class="form-check-label">
 									{translate key="user.register.form.emailConsent"}
 								</label>
@@ -84,10 +84,10 @@
 
 											{assign var="userGroupId" value=$userGroup->id}
 											<input type="checkbox"
-												   class="form-check-input"
-												   id="checkbox-reviewer-interests"
-												   name="reviewerGroup[{$userGroupId}]"
-												   value="1"{if in_array($userGroupId, $userGroupIds)} checked="checked"{/if}>
+												class="form-check-input"
+												id="checkbox-reviewer-interests"
+												name="reviewerGroup[{$userGroupId}]"
+												value="1"{if in_array($userGroupId, $userGroupIds)} checked="checked"{/if}>
 											<label for="checkbox-reviewer-interests" class="form-check-label">
 												{translate key=$checkboxLocaleKey userGroup=$userGroup->getLocalizedData('name')}
 											</label>

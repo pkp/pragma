@@ -27,7 +27,7 @@
 {if !$pageTitleTranslated}{capture assign="pageTitleTranslated"}{translate key=$pageTitle}{/capture}{/if}
 {include file="frontend/components/headerHead.tpl"}
 <body class="page_{$requestedPage|escape|default:"index"} op_{$requestedOp|escape|default:"index"}{if $showingLogo} has_site_logo{/if}"
-      dir="{$currentLocaleLangDir|escape|default:"ltr"}">
+	dir="{$currentLocaleLangDir|escape|default:"ltr"}">
 
 	<div>
 		<a class="visually-hidden" href="#pragma_content_header">{translate key="navigation.skip.nav"}</a>

@@ -11,61 +11,61 @@
 {include file="frontend/components/header.tpl"}
 
 <main class="container main__content" id="main">
-    <div class="row">
-        <div class="offset-md-1 col-md-10 offset-lg-2 col-lg-8">
-            <header class="main__header">
-                <h1 class="main__title">
-                    <span>{translate key="orcid.verify.title"}</span>
-                </h1>
-            </header>
-            <div class="description">
-                {if $verifySuccess}
-                    <p>
-                        <span class="orcid">
-                            <a href="{$orcid|escape}" target="_blank">{$orcidIcon}{$orcid|escape}</a>
-                        </span>
-                    </p>
-                    <p class="orcid-success">
-                        {translate key="orcid.verify.success"}
-                    </p>
-                    {if $sendSubmission}
-                        {if $sendSubmissionSuccess}
-                            <p class="orcid-success">
-                                {translate key="orcid.verify.sendSubmissionToOrcid.success"}
-                            </p>
-                        {else}
-                            <p class="orcid-failure">
-                                {translate key="orcid.verify.sendSubmissionToOrcid.failure"}
-                            </p>
-                        {/if}
-                    {elseif $submissionNotPublished}
-                        {translate key="orcid.verify.sendSubmissionToOrcid.notpublished"}
-                    {/if}
-                    <p class='orcid-redirect'>
-                        {translate key="orcid.verify.success.redirect" contextName=$contextName}
-                    </p>
-                {else}
-                    <p class="orcid-failure">
-                        {if $orcidAPIError}
-                            {$orcidAPIError}
-                        {/if}
-                        {if $invalidClient}
-                            {translate key="orcid.invalidClient"}
-                        {elseif $duplicateOrcid}
-                            {translate key="orcid.verify.duplicateOrcid"}
-                        {elseif $denied}
-                            {translate key="orcid.authDenied"}
-                        {elseif $authFailure}
-                            {translate key="orcid.authFailure"}
-                        {else}
-                            {translate key="orcid.verify.failure"}
-                        {/if}
-                    </p>
-                    {translate key="orcid.failure.contact"}
-                {/if}
-            </div>
-        </div>
-    </div>
+	<div class="row">
+		<div class="offset-md-1 col-md-10 offset-lg-2 col-lg-8">
+			<header class="main__header">
+				<h1 class="main__title">
+					<span>{translate key="orcid.verify.title"}</span>
+				</h1>
+			</header>
+			<div class="description">
+				{if $verifySuccess}
+					<p>
+						<span class="orcid">
+							<a href="{$orcid|escape}" target="_blank">{$orcidIcon}{$orcid|escape}</a>
+						</span>
+					</p>
+					<p class="orcid-success">
+						{translate key="orcid.verify.success"}
+					</p>
+					{if $sendSubmission}
+						{if $sendSubmissionSuccess}
+							<p class="orcid-success">
+								{translate key="orcid.verify.sendSubmissionToOrcid.success"}
+							</p>
+						{else}
+							<p class="orcid-failure">
+								{translate key="orcid.verify.sendSubmissionToOrcid.failure"}
+							</p>
+						{/if}
+					{elseif $submissionNotPublished}
+						{translate key="orcid.verify.sendSubmissionToOrcid.notpublished"}
+					{/if}
+					<p class='orcid-redirect'>
+						{translate key="orcid.verify.success.redirect" contextName=$contextName}
+					</p>
+				{else}
+					<p class="orcid-failure">
+						{if $orcidAPIError}
+							{$orcidAPIError}
+						{/if}
+						{if $invalidClient}
+							{translate key="orcid.invalidClient"}
+						{elseif $duplicateOrcid}
+							{translate key="orcid.verify.duplicateOrcid"}
+						{elseif $denied}
+							{translate key="orcid.authDenied"}
+						{elseif $authFailure}
+							{translate key="orcid.authFailure"}
+						{else}
+							{translate key="orcid.verify.failure"}
+						{/if}
+					</p>
+					{translate key="orcid.failure.contact"}
+				{/if}
+			</div>
+		</div>
+	</div>
 </main>
 
 {include file="frontend/components/footer.tpl"}

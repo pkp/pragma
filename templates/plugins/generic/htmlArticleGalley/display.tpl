@@ -16,7 +16,7 @@
 
 <main class="container galley">
 
-    {capture assign="articleUrl"}{url page="article" op="view" path=$article->getBestId()}{/capture}
+	{capture assign="articleUrl"}{url page="article" op="view" path=$article->getBestId()}{/capture}
 
 	<div class="row">
 		<header class="offset-md-2 col-md-8 galley__header">
@@ -28,26 +28,26 @@
 
 			<h1>{$article->getLocalizedTitle()|escape}</h1>
 
-            {if !$isLatestPublication}
+			{if !$isLatestPublication}
 				<div class="galley_view_notice">
 					<div class="galley_view_notice_message" role="alert">
-                        {translate key="submission.outdatedVersion" datePublished=$galleyPublication->getData('datePublished')|date_format:$dateFormatLong urlRecentVersion=$articleUrl}
+						{translate key="submission.outdatedVersion" datePublished=$galleyPublication->getData('datePublished')|date_format:$dateFormatLong urlRecentVersion=$articleUrl}
 					</div>
 				</div>
-                {capture assign="htmlUrl"}
-                    {url page="article" op="download" path=$article->getBestId()|to_array:'version':$galleyPublication->getId():$galley->getBestGalleyId() inline=true}
-                {/capture}
-            {else}
-                {capture assign="htmlUrl"}
-                    {url page="article" op="download" path=$article->getBestId()|to_array:$galley->getBestGalleyId() inline=true}
-                {/capture}
-            {/if}
+				{capture assign="htmlUrl"}
+					{url page="article" op="download" path=$article->getBestId()|to_array:'version':$galleyPublication->getId():$galley->getBestGalleyId() inline=true}
+				{/capture}
+			{else}
+				{capture assign="htmlUrl"}
+					{url page="article" op="download" path=$article->getBestId()|to_array:$galley->getBestGalleyId() inline=true}
+				{/capture}
+			{/if}
 		</header>
 
 		<div id="htmlContainer" class="offset-md-2 col-md-8 galley__content"
-		     style="overflow:visible;-webkit-overflow-scrolling:touch">
+			style="overflow:visible;-webkit-overflow-scrolling:touch">
 			<iframe id="htmlGalleyFrame" name="htmlFrame" src="{$htmlUrl}" allowfullscreen
-			        webkitallowfullscreen></iframe>
+				webkitallowfullscreen></iframe>
 		</div>
 	</div>
 </main>

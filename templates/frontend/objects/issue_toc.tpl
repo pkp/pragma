@@ -61,7 +61,7 @@
 					{$issueDescription|substr:0:$stringLenght|mb_convert_encoding:'UTF-8'|replace:'?':''|trim}…
 					<p>
 						<a class="btn btn-secondary"
-						   href="{url op="view" page="issue" path=$issue->getBestIssueId()}">{translate key="issue.fullIssue"}</a>
+							href="{url op="view" page="issue" path=$issue->getBestIssueId()}">{translate key="issue.fullIssue"}</a>
 					</p>
 				{/if}
 			</div>

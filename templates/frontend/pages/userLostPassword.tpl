@@ -22,7 +22,7 @@
 			<p>{translate key="user.login.resetPasswordInstructions"}</p>
 
 			<form id="lostPasswordForm"
-			      action="{url page="login" op="requestResetPassword"}" method="post">
+				action="{url page="login" op="requestResetPassword"}" method="post">
 				{csrf}
 				{if $error}
 					{translate key=$error}

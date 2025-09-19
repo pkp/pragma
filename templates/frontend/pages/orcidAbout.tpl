@@ -11,35 +11,35 @@
 {include file="frontend/components/header.tpl"}
 
 <main class="container main__content" id="main">
-    <div class="row">
-        <div class="offset-md-1 col-md-10 offset-lg-2 col-lg-8">
-            <header class="main__header">
-                <h1 class="main__title">
-                    <span>{translate key="orcid.about.title"}</span>
-                </h1>
-            </header>
+	<div class="row">
+		<div class="offset-md-1 col-md-10 offset-lg-2 col-lg-8">
+			<header class="main__header">
+				<h1 class="main__title">
+					<span>{translate key="orcid.about.title"}</span>
+				</h1>
+			</header>
 
-            <div class="page-content">
-                <p class="description">
-                    {translate key="orcid.about.orcidExplanation"}
-                </p>
-                <h2>{translate key="orcid.about.howAndWhy.title"}</h2>
-                {if $isMemberApi}
-                    <p class="description">
-                        {translate key="orcid.about.howAndWhyMemberAPI"}
-                    </p>
-                {else}
-                    <p class="description">
-                        {translate key="orcid.about.howAndWhyPublicAPI"}
-                    </p>
-                {/if}
-                <h2>{translate key="orcid.about.display.title"}</h2>
-                <p class="description">
-                    {translate key="orcid.about.display"}
-                </p>
-            </div>
-        </div>
-    </div>
+			<div class="page-content">
+				<p class="description">
+					{translate key="orcid.about.orcidExplanation"}
+				</p>
+				<h2>{translate key="orcid.about.howAndWhy.title"}</h2>
+				{if $isMemberApi}
+					<p class="description">
+						{translate key="orcid.about.howAndWhyMemberAPI"}
+					</p>
+				{else}
+					<p class="description">
+						{translate key="orcid.about.howAndWhyPublicAPI"}
+					</p>
+				{/if}
+				<h2>{translate key="orcid.about.display.title"}</h2>
+				<p class="description">
+					{translate key="orcid.about.display"}
+				</p>
+			</div>
+		</div>
+	</div>
 </main>
 
 {include file="frontend/components/footer.tpl"}

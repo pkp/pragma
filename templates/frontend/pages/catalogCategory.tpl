@@ -57,7 +57,7 @@
 						{/foreach}
 					</ul>
 				</nav>
-            {/if}
+			{/if}
 
 			<h2 class="title">
 				{translate key="catalog.category.heading"}

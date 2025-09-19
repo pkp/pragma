@@ -28,7 +28,7 @@
 			{/if}
 			<li class="{$navigationMenuItemAssignment->navigationMenuItem->getType()|lower} main-menu__nav-item{if $hasSubmenu} dropdown{/if} {pragma_item_active item=$navigationMenuItemAssignment->navigationMenuItem}">
 				<a class="main-menu__nav-link"
-				   href="{$navigationMenuItemAssignment->navigationMenuItem->getUrl()}" {if $hasSubmenu} role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"{/if}>
+					href="{$navigationMenuItemAssignment->navigationMenuItem->getUrl()}" {if $hasSubmenu} role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"{/if}>
 					<span{if $hasSubmenu} class="dropdown-toggle"{/if}>{$navigationMenuItemAssignment->navigationMenuItem->getLocalizedTitle()}</span>
 				</a>
 				{if $hasSubmenu}

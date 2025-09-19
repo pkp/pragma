@@ -13,12 +13,12 @@
  *}
 
 <div class="dropdown">
-  <a class="dropdown-toggle main-header__nav-link" href="#" role="button" id="languageToggleMenu{$id|escape}" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	<a class="dropdown-toggle main-header__nav-link" href="#" role="button" id="languageToggleMenu{$id|escape}" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 		<span class="visually-hidden">{translate key="common.language"}</span>
 		{$languageToggleLocales[$currentLocale]|escape}
-  </a>
+	</a>
 
-  <ul class="dropdown-menu" aria-labelledby="languageToggleMenu{$id|escape}">
+	<ul class="dropdown-menu" aria-labelledby="languageToggleMenu{$id|escape}">
 		{foreach from=$languageToggleLocales item=localeName key=localeKey}
 			{if $localeKey !== $currentLocale}
 				<li class="dropdown-item" lang="{$localeKey|escape}">
@@ -28,5 +28,5 @@
 				</li>
 			{/if}
 		{/foreach}
-  </ul>
+	</ul>
 </div>

@@ -22,62 +22,62 @@
 
 {* Override the $currentJournal context if desired *}
 {if $journalOverride}
-    {assign var="currentJournal" value=$journalOverride}
+	{assign var="currentJournal" value=$journalOverride}
 {/if}
 
 {* Determine galley type and URL op *}
 {if $galley->isPdfGalley()}
-    {assign var="type" value="pdf"}
+	{assign var="type" value="pdf"}
 {else}
-    {assign var="type" value="file"}
+	{assign var="type" value="file"}
 {/if}
 
 {* Get page and parentId for URL *}
 {if $parent instanceOf Issue}
-    {assign var="page" value="issue"}
-    {assign var="parentId" value=$parent->getBestIssueId()}
-    {assign var="path" value=$parentId|to_array:$galley->getBestGalleyId()}
+	{assign var="page" value="issue"}
+	{assign var="parentId" value=$parent->getBestIssueId()}
+	{assign var="path" value=$parentId|to_array:$galley->getBestGalleyId()}
 {else}
-    {assign var="page" value="article"}
-    {if $publication}
-        {if $publication->getId() !== $parent->getData('currentPublicationId')}
-            {* Get a versioned link if we have an older publication *}
-            {assign var="path" value=$parent->getBestId()|to_array:"version":$publication->getId():$galley->getBestGalleyId()}
-        {else}
-            {assign var="parentId" value=$publication->getData('urlPath')|default:$article->getId()}
-            {assign var="path" value=$parentId|to_array:$galley->getBestGalleyId()}
-        {/if}
-    {else}
-        {assign var="path" value=$parent->getBestId()|to_array:$galley->getBestGalleyId()}
-    {/if}
+	{assign var="page" value="article"}
+	{if $publication}
+		{if $publication->getId() !== $parent->getData('currentPublicationId')}
+			{* Get a versioned link if we have an older publication *}
+			{assign var="path" value=$parent->getBestId()|to_array:"version":$publication->getId():$galley->getBestGalleyId()}
+		{else}
+			{assign var="parentId" value=$publication->getData('urlPath')|default:$article->getId()}
+			{assign var="path" value=$parentId|to_array:$galley->getBestGalleyId()}
+		{/if}
+	{else}
+		{assign var="path" value=$parent->getBestId()|to_array:$galley->getBestGalleyId()}
+	{/if}
 {/if}
 
 {* Get user access flag *}
 {if !$hasAccess}
-    {if $restrictOnlyPdf && $type=="pdf"}
-        {assign var=restricted value="1"}
-    {elseif !$restrictOnlyPdf}
-        {assign var=restricted value="1"}
-    {/if}
+	{if $restrictOnlyPdf && $type=="pdf"}
+		{assign var=restricted value="1"}
+	{elseif !$restrictOnlyPdf}
+		{assign var=restricted value="1"}
+	{/if}
 {/if}
 
 <a class="{if $isSupplementary}btn btn-secondary galley_supplementary{else}btn btn-secondary{/if} {$type|escape}{if $restricted} restricted{/if}"
-   href="{url page=$page op="view" path=$path}">
+	href="{url page=$page op="view" path=$path}">
 
-    {* Add some screen reader text to indicate if a galley is restricted *}
-    {if $restricted}
+	{* Add some screen reader text to indicate if a galley is restricted *}
+	{if $restricted}
 		<span class="visually-hidden">
 			{if $purchaseArticleEnabled}
-                {translate key="reader.subscriptionOrFeeAccess"}
-            {else}
-                {translate key="reader.subscriptionAccess"}
-            {/if}
+				{translate key="reader.subscriptionOrFeeAccess"}
+			{else}
+				{translate key="reader.subscriptionAccess"}
+			{/if}
 		</span>
-    {/if}
+	{/if}
 
-    {$galley->getGalleyLabel()|escape}
+	{$galley->getGalleyLabel()|escape}
 
-    {if $restricted && $purchaseFee && $purchaseCurrency}
-        {translate key="reader.purchasePrice" price=$purchaseFee currency=$purchaseCurrency}
-    {/if}
+	{if $restricted && $purchaseFee && $purchaseCurrency}
+		{translate key="reader.purchasePrice" price=$purchaseFee currency=$purchaseCurrency}
+	{/if}
 </a>

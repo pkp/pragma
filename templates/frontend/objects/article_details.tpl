@@ -132,13 +132,13 @@
 							<li>
 								{$authorString->getFullName()|escape}
 								{if $authorString->getData('orcid')}
-                                    <a href="{$authorString->getData('orcid')|escape}">
-                                        {if $authorString->hasVerifiedOrcid()}
-                                            {$orcidIcon}
-                                        {else}
-                                            {$orcidUnauthenticatedIcon}
-                                        {/if}
-                                    </a>
+									<a href="{$authorString->getData('orcid')|escape}">
+										{if $authorString->hasVerifiedOrcid()}
+											{$orcidIcon}
+										{else}
+											{$orcidUnauthenticatedIcon}
+										{/if}
+									</a>
 								{/if}
 							</li>
 						{/strip}{if !$smarty.foreach.authors.last}{translate key="common.commaListSeparator"}{/if}
@@ -154,21 +154,21 @@
 						{else}
 							{translate key="user.affiliation"}
 						{/if}
-				    </button>
+					</button>
 				</p>
 				<div class="collapse metadata" id="authorAffiliations">
 					{foreach from=$authors item=author}
-					 <div>
-						 <strong>{$author->getFullName()|escape}</strong><br>
-						 {foreach name="affiliations" from=$author->getAffiliations() item="affiliation"}
-							 {$affiliation->getLocalizedName()|escape}
-							 {if $affiliation->getRor()}
-								 <a class="article__rorImage" href="{$affiliation->getRor()|escape}">{$rorIdIcon}</a>
-							 {/if}
-							 {if !$smarty.foreach.affiliations.last}{translate key="common.commaListSeparator"}{/if}
-						 {/foreach}
-						<br><br>
-                     </div>
+						<div>
+							<strong>{$author->getFullName()|escape}</strong><br>
+							{foreach name="affiliations" from=$author->getAffiliations() item="affiliation"}
+								{$affiliation->getLocalizedName()|escape}
+								{if $affiliation->getRor()}
+									<a class="article__rorImage" href="{$affiliation->getRor()|escape}">{$rorIdIcon}</a>
+								{/if}
+								{if !$smarty.foreach.affiliations.last}{translate key="common.commaListSeparator"}{/if}
+							{/foreach}
+							<br><br>
+						</div>
 					{/foreach}
 				</div>
 			{/if}
@@ -200,7 +200,7 @@
 
 	<div class="row" id="mainArticleContent">
 		<aside class="col-lg-3 order-lg-2">
-      	{* Display other versions *}
+		{* Display other versions *}
 			{if $publication->getData('datePublished')}
 				{if count($article->getPublishedPublications()) > 1}
 					<section>
