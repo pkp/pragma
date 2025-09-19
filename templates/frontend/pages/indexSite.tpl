@@ -56,7 +56,7 @@
 								</div>
 							{/if}
 							<p>
-								<a class="btn btn-primary"  href="{$url|escape}">
+								<a class="btn btn-primary" href="{$url|escape}">
 									{translate key="site.journalView"}
 								</a>
 								<a class="btn btn-secondary" href="{url|escape journal=$journal->getPath() page="issue" op="current"}">

@@ -17,16 +17,16 @@
  * @uses $primaryGalleys array List of article galleys that are not supplementary or dependent
  * @uses $supplementaryGalleys array List of article galleys that are supplementary
  *}
- {include file="frontend/components/header.tpl" pageTitleTranslated=$article->getLocalizedData('title')|escape}
+{include file="frontend/components/header.tpl" pageTitleTranslated=$article->getLocalizedData('title')|escape}
 
- <main class="container main__content" id="main">
-   <div class="row">
-     <div class="offset-md-1 col-md-10">
-       {* Show article overview *}
-       {include file="frontend/objects/article_details.tpl"}
-       {call_hook name="Templates::Article::Footer::PageFooter"}
-     </div>
-   </div>
- </main>
+<main class="container main__content" id="main">
+	<div class="row">
+		<div class="offset-md-1 col-md-10">
+			{* Show article overview *}
+			{include file="frontend/objects/article_details.tpl"}
+			{call_hook name="Templates::Article::Footer::PageFooter"}
+		</div>
+	</div>
+</main>
 
 {include file="frontend/components/footer.tpl"}

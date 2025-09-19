@@ -12,7 +12,7 @@ msgstr ""
 "X-Generator: Weblate 3.9.1\n"
 
 msgid "plugins.themes.pragma.search.resultsFor"
-msgstr "Sökresultat för  <em>{$query}</em>"
+msgstr "Sökresultat för <em>{$query}</em>"
 
 msgid "plugins.themes.pragma.author.details"
 msgstr "Information om författare"

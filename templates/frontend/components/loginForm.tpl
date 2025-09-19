@@ -29,7 +29,7 @@
 				</span>
 			</label>
 			<input type="text" class="form-control" name="username" id="usernameModal" value="{$username|default:""|escape}"
-			       maxlength="32" required>
+				maxlength="32" required>
 		</div>
 		<div class="form-group">
 			<label for="passwordModal" class="form-label">
@@ -40,19 +40,19 @@
 				</span>
 			</label>
 			<input type="password" class="form-control" name="password" id="passwordModal" value="{$password|default:""|escape}"
-			       maxlength="32" required>
+				maxlength="32" required>
 
 			<div class="form-check">
 				<input type="checkbox" class="form-check-input" name="remember" id="rememberModal" value="1"
-				       checked="$remember">
+					checked="$remember">
 				<label for="rememberModal" class="form-check-label">
-						{translate key="user.login.rememberUsernameAndPassword"}
+					{translate key="user.login.rememberUsernameAndPassword"}
 				</label>
 			</div>
 		</div>
 
 		{* recaptcha spam blocker *}
-		{if $recaptchaPublicKey}
+		{if $recaptchaPublicKey && \PKP\config\Config::getVar('captcha', 'captcha_on_login')}
 			<div class="form-group">
 				<fieldset class="recaptcha_wrapper">
 					<div class="fields">

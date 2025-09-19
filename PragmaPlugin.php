@@ -1,28 +1,36 @@
 <?php
 
 /**
- * @file plugins/themes/pragma/PragmaThemePlugin.inc.php
+ * @file plugins/themes/pragma/PragmaPlugin.php
  *
  * Copyright (c) 2014-2025 Simon Fraser University
  * Copyright (c) 2003-2025 John Willinsky
  * Distributed under the GNU GPL v3. For full terms see the file docs/COPYING.
  *
- * @class PragmaThemePlugin
+ * @class PragmaPlugin
  * @ingroup plugins_themes_pragma
  *
  * @brief Pragma theme
  */
 
+namespace APP\plugins\themes\pragma;
+
 use APP\facades\Repo;
 use APP\issue\Collector;
 use APP\services\NavigationMenuService;
+use APP\template\TemplateManager;
 use PKP\config\Config;
+use PKP\core\PKPSessionGuard;
+use PKP\facades\Locale;
+use PKP\form\validation\FormValidatorAltcha;
 use PKP\navigationMenu\NavigationMenuItem;
+use PKP\plugins\Hook;
 use PKP\plugins\ThemePlugin;
+use Smarty_Internal_Template;
 
-class PragmaThemePlugin extends ThemePlugin
+class PragmaPlugin extends ThemePlugin
 {
-    public function init()
+    public function init(): void
     {
         /* Additional theme options */
         // Change theme primary color
@@ -36,18 +44,9 @@ class PragmaThemePlugin extends ThemePlugin
             'type' => 'radio',
             'label' => __('plugins.themes.pragma.option.displayStats.label'),
             'options' => [
-                [
-                    'value' => 'none',
-                    'label' => __('plugins.themes.pragma.option.displayStats.none'),
-                ],
-                [
-                    'value' => 'bar',
-                    'label' => __('plugins.themes.pragma.option.displayStats.bar'),
-                ],
-                [
-                    'value' => 'line',
-                    'label' => __('plugins.themes.pragma.option.displayStats.line'),
-                ],
+                ['value' => 'none', 'label' => __('plugins.themes.pragma.option.displayStats.none')],
+                ['value' => 'bar', 'label' => __('plugins.themes.pragma.option.displayStats.bar')],
+                ['value' => 'line', 'label' => __('plugins.themes.pragma.option.displayStats.line')],
             ],
             'default' => 'none',
         ]);
@@ -63,10 +62,10 @@ class PragmaThemePlugin extends ThemePlugin
         // Update contrast colour based on primary colour
         if ($this->isColourDark($this->getOption('baseColour'))) {
             $additionalLessVariables[] = '
-				@contrast-colour: rgba(255, 255, 255, 0.95);
-				@secondary-contrast-colour: rgba(255, 255, 255, 0.75);
-				@tertiary-contrast-colour: rgba(255, 255, 255, 0.65);
-			';
+                @contrast-colour: rgba(255, 255, 255, 0.95);
+                @secondary-contrast-colour: rgba(255, 255, 255, 0.75);
+                @tertiary-contrast-colour: rgba(255, 255, 255, 0.65);
+            ';
         }
 
         $themeUrl = $this->getPluginPath();
@@ -78,18 +77,44 @@ class PragmaThemePlugin extends ThemePlugin
         // Adding styles (JQuery UI, Bootstrap, Tag-it)
         $this->addStyle('app-css', 'resources/dist/app.min.css');
         $this->addStyle('stylesheet', 'resources/less/import.less');
-        $this->modifyStyle('stylesheet', ['addLessVariables' => join("\n", $additionalLessVariables)]);
+        $this->modifyStyle('stylesheet', ['addLessVariables' => implode("\n", $additionalLessVariables)]);
 
         // Adding scripts (JQuery, Popper, Bootstrap, JQuery UI, Tag-it, Theme's JS)
         $this->addScript('app-js', 'resources/dist/app.min.js');
 
         // Styles for HTML galleys
         $this->addStyle('htmlGalley', 'resources/less/import.less', ['contexts' => 'htmlGalley']);
-        $this->modifyStyle('htmlGalley', ['addLessVariables' => join("\n", $additionalLessVariables)]);
+        $this->modifyStyle('htmlGalley', ['addLessVariables' => implode("\n", $additionalLessVariables)]);
 
-        HookRegistry::add('TemplateManager::display', [$this, 'addSiteWideData']);
-        HookRegistry::add('TemplateManager::display', [$this, 'addIndexJournalData']);
-        HookRegistry::add('TemplateManager::display', [$this, 'checkCurrentPage']);
+        Hook::add('TemplateManager::display', $this->initializeTemplate(...));
+        Hook::add('TemplateManager::display', $this->addSiteWideData(...));
+        Hook::add('TemplateManager::display', $this->addIndexJournalData(...));
+        Hook::add('TemplateManager::display', $this->checkCurrentPage(...));
+    }
+
+    /**
+     * Initialize Template
+     *
+     * @param array{TemplateManager,string,string} $args TemplateManager, &template, &output
+     */
+    public function initializeTemplate(string $hookName, array $args): bool
+    {
+        [$templateMgr] = $args;
+        // The login link displays the login form in a modal, therefore the reCAPTCHA/ALTCHA must be available for all frontend routes
+        $isCaptchaEnabled = Config::getVar('captcha', 'recaptcha') && Config::getVar('captcha', 'captcha_on_login');
+        if ($isCaptchaEnabled) {
+            $locale = substr(Locale::getLocale(), 0, 2);
+            $templateMgr->addJavaScript('recaptcha', "https://www.recaptcha.net/recaptcha/api.js?hl={$locale}");
+            $templateMgr->assign('recaptchaPublicKey', Config::getVar('captcha', 'recaptcha_public_key'));
+        }
+
+        $isAltchaEnabled = Config::getVar('captcha', 'altcha') && Config::getVar('captcha', 'altcha_on_login');
+        if ($isAltchaEnabled) {
+            FormValidatorAltcha::addAltchaJavascript($templateMgr);
+            FormValidatorAltcha::insertFormChallenge($templateMgr);
+        }
+
+        return Hook::CONTINUE;
     }
 
     /**
@@ -111,54 +136,54 @@ class PragmaThemePlugin extends ThemePlugin
     }
 
     /**
-     * @param $hookname string
-     * @param $args array
+     * Add site wide data to the template
+     *
+     * @param array{TemplateManager,string,string} $args TemplateManager, &template, &output
      */
-    public function addSiteWideData($hookname, $args)
+    public function addSiteWideData(string $hookName, array $args): bool
     {
-        $templateMgr = $args[0];
+        [$templateMgr] = $args;
 
         $request = $this->getRequest();
-        $journal = $request->getJournal();
+        $journal = $request->getContext();
         $baseColour = $this->getOption('baseColour');
 
-        if (!defined('SESSION_DISABLE_INIT')) {
-            // Check locales
-            if ($journal) {
-                $locales = $journal->getSupportedLocaleNames();
-            } else {
-                $locales = $request->getSite()->getSupportedLocaleNames();
-            }
-
-            // Load login form
-            $loginUrl = $request->url(null, 'login', 'signIn');
-            if (Config::getVar('security', 'force_login_ssl')) {
-                $loginUrl = preg_replace('/^http:/u', 'https:', $loginUrl);
-            }
-
-            if ($request->getContext()) {
-                $templateMgr->assign('pragmaHomepageImage', $journal->getLocalizedData('homepageImage'));
-            }
-
-            $templateMgr->assign([
-                'languageToggleLocales' => $locales,
-                'loginUrl' => $loginUrl,
-                'baseColour' => $baseColour,
-            ]);
+        if (PKPSessionGuard::isSessionDisable()) {
+            return Hook::CONTINUE;
         }
+
+        // Check locales
+        $locales = $journal ? $journal->getSupportedLocaleNames() : $request->getSite()->getSupportedLocaleNames();
+
+        // Load login form
+        $loginUrl = $request->url(null, 'login', 'signIn');
+        if (Config::getVar('security', 'force_login_ssl')) {
+            $loginUrl = preg_replace('/^http:/u', 'https:', $loginUrl);
+        }
+
+        if ($request->getContext()) {
+            $templateMgr->assign('pragmaHomepageImage', $journal->getLocalizedData('homepageImage'));
+        }
+
+        $templateMgr->assign([
+            'languageToggleLocales' => $locales,
+            'loginUrl' => $loginUrl,
+            'baseColour' => $baseColour,
+        ]);
+        return Hook::CONTINUE;
     }
 
     /**
-     * @param $hookname string
-     * @param $args array
+     * Add index journal data to the template
+     *
+     * @param array{TemplateManager,string,string} $args TemplateManager, &template, &output
      */
-    public function addIndexJournalData($hookname, $args)
+    public function addIndexJournalData(string $hookName, array $args): bool
     {
-        $templateMgr = $args[0];
-        $template = $args[1];
+        [$templateMgr, $template] = $args;
 
         if ($template !== 'frontend/pages/indexJournal.tpl') {
-            return false;
+            return Hook::CONTINUE;
         }
 
         $contextId = $this->getRequest()->getContext()->getId();
@@ -183,28 +208,31 @@ class PragmaThemePlugin extends ThemePlugin
         }
 
         $templateMgr->assign('recentIssues', $recentIssues);
+        return Hook::CONTINUE;
     }
 
 
     /**
-     * @param $hookname string
-     * @param $args array
+     * Check current page
+     *
+     * @param array{TemplateManager,string,string} $args TemplateManager, &template, &output
      */
-    public function checkCurrentPage($hookname, $args)
+    public function checkCurrentPage(string $hookName, array $args): bool
     {
-        $templateMgr = $args[0];
+        [$templateMgr] = $args;
         // TODO check the issue with multiple calls of the hook on settings/website
         if (!isset($templateMgr->registered_plugins["function"]["pragma_item_active"])) {
-            $templateMgr->registerPlugin('function', 'pragma_item_active', [$this, 'isActiveItem']);
+            $templateMgr->registerPlugin('function', 'pragma_item_active', $this->isActiveItem(...));
         }
+        return Hook::CONTINUE;
     }
 
     /**
-     * @param $params array
-     * @param $smarty Smarty_Internal_Template
-     * @return string
+     * Check if the item is active
+     *
+     * @param array{item: NavigationMenuItem} $params
      */
-    public function isActiveItem($params, $smarty)
+    public function isActiveItem(array $params, Smarty_Internal_Template $smarty)
     {
         $navigationMenuItem = $params['item'];
         $emptyMarker = '';
@@ -216,17 +244,15 @@ class PragmaThemePlugin extends ThemePlugin
         $currentPage = $request->getRequestedPage();
 
         if (!($navigationMenuItem instanceof NavigationMenuItem && $navigationMenuItem->getIsDisplayed())) {
-            if (is_string($navigationMenuItem)) {
-                $navigationMenuItemIndex = preg_replace('/index$/', '', $navigationMenuItem);
-                $navigationMenuItemSlash = preg_replace('/\/index$/', '', $navigationMenuItem);
-                if ($navigationMenuItem == $currentUrl || $navigationMenuItemIndex == $currentUrl || $navigationMenuItemSlash == $currentUrl) {
-                    return $activeMarker;
-                } else {
-                    return $emptyMarker;
-                }
-            } else {
+            if (!is_string($navigationMenuItem)) {
                 return $emptyMarker;
             }
+
+            $navigationMenuItemIndex = preg_replace('/index$/', '', $navigationMenuItem);
+            $navigationMenuItemSlash = preg_replace('/\/index$/', '', $navigationMenuItem);
+            return $navigationMenuItem == $currentUrl || $navigationMenuItemIndex == $currentUrl || $navigationMenuItemSlash == $currentUrl
+                ? $activeMarker
+                : $emptyMarker;
         }
 
         // Do not add an active marker if it's a dropdown menu
@@ -256,3 +282,6 @@ class PragmaThemePlugin extends ThemePlugin
         return $emptyMarker;
     }
 }
+
+class_alias(PragmaPlugin::class, 'PragmaThemePlugin');
+class_alias(PragmaPlugin::class, 'APP\plugins\themes\pragma\PragmaThemePlugin');
