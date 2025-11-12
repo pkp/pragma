@@ -12,6 +12,6 @@
  *
  */
 
-require_once('PragmaThemePlugin.inc.php');
+require_once('PragmaThemePlugin.php');
 
 return new PragmaThemePlugin();
