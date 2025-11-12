@@ -13,12 +13,15 @@
  * @brief Pragma theme
  */
 
+namespace APP\plugins\themes\pragma;
+
 use APP\facades\Repo;
 use APP\issue\Collector;
 use APP\services\NavigationMenuService;
 use PKP\config\Config;
 use PKP\navigationMenu\NavigationMenuItem;
 use PKP\plugins\ThemePlugin;
+use PKP\plugins\Hook;
 
 class PragmaThemePlugin extends ThemePlugin
 {
@@ -53,6 +56,7 @@ class PragmaThemePlugin extends ThemePlugin
         ]);
 
         $baseColour = $this->getOption('baseColour');
+        if (!preg_match('/^#[0-9a-fA-F]{1,6}$/', (string) $baseColour)) $baseColour = '#A8DCDD'; // pkp/pkp-lib#11974
 
         $additionalLessVariables = [];
         if ($baseColour !== '#A8DCDD') {
@@ -61,7 +65,7 @@ class PragmaThemePlugin extends ThemePlugin
         }
 
         // Update contrast colour based on primary colour
-        if ($this->isColourDark($this->getOption('baseColour'))) {
+        if ($this->isColourDark($baseColour)) {
             $additionalLessVariables[] = '
 				@contrast-colour: rgba(255, 255, 255, 0.95);
 				@secondary-contrast-colour: rgba(255, 255, 255, 0.75);
@@ -87,9 +91,9 @@ class PragmaThemePlugin extends ThemePlugin
         $this->addStyle('htmlGalley', 'resources/less/import.less', ['contexts' => 'htmlGalley']);
         $this->modifyStyle('htmlGalley', ['addLessVariables' => join("\n", $additionalLessVariables)]);
 
-        HookRegistry::add('TemplateManager::display', [$this, 'addSiteWideData']);
-        HookRegistry::add('TemplateManager::display', [$this, 'addIndexJournalData']);
-        HookRegistry::add('TemplateManager::display', [$this, 'checkCurrentPage']);
+        Hook::add('TemplateManager::display', $this->addSiteWideData(...));
+        Hook::add('TemplateManager::display', $this->addIndexJournalData(...));
+        Hook::add('TemplateManager::display', $this->checkCurrentPage(...));
     }
 
     /**
@@ -110,6 +114,13 @@ class PragmaThemePlugin extends ThemePlugin
         return __('plugins.themes.pragma.description');
     }
 
+    /** @see ThemePlugin::saveOption */
+    public function saveOption($name, $value, $contextId = null) {
+        // Validate the base colour setting value.
+        if ($name == 'baseColour' && !preg_match('/^#[0-9a-fA-F]{1,6}$/', $value)) $value = null; // pkp/pkp-lib#11974
+        parent::saveOption($name, $value, $contextId);
+    }
+
     /**
      * @param $hookname string
      * @param $args array
@@ -121,6 +132,7 @@ class PragmaThemePlugin extends ThemePlugin
         $request = $this->getRequest();
         $journal = $request->getJournal();
         $baseColour = $this->getOption('baseColour');
+        if (!preg_match('/^#[0-9a-fA-F]{1,6}$/', (string) $baseColour)) $baseColour = '#A8DCDD'; // pkp/pkp-lib#11974
 
         if (!defined('SESSION_DISABLE_INIT')) {
             // Check locales
@@ -255,4 +267,8 @@ class PragmaThemePlugin extends ThemePlugin
 
         return $emptyMarker;
     }
+}
+
+if (!PKP_STRICT_MODE) {
+    class_alias('\APP\plugins\themes\pragma\PragmaThemePlugin', '\PragmaThemePlugin');
 }
