@@ -109,7 +109,7 @@
 				{include file="frontend/components/registrationFormContexts.tpl"}
 
 				{* recaptcha spam blocker *}
-				{if $recaptchaPublicKey}
+				{if $recaptchaPublicKey && \PKP\config\Config::getVar('captcha', 'captcha_on_register')}
 					<fieldset class="recaptcha_wrapper">
 						<div class="fields">
 							<div class="recaptcha">
