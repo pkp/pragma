@@ -295,7 +295,7 @@
 						{else}
 							<a href="{$licenseUrl|escape}">
 								{if $copyrightHolder}
-									{translate key="submission.copyrightStatement" copyrightHolder=$copyrightHolder|escape copyrightYear=$copyrightYear|escape}
+									{translate|escape key="submission.copyrightStatement" copyrightHolder=$copyrightHolder|escape copyrightYear=$copyrightYear|escape}
 								{else}
 									{translate key="submission.license"}
 								{/if}
