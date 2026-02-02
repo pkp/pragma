@@ -45,6 +45,7 @@
 
 		<div class="col-md-9">
 			{* Issue title & section *}
+            {if $issue}
 			<p class="metadata">
 				<a href="{url page="issue" op="view" path=$issue->getBestIssueId()}">
 					{$issue->getIssueSeries()|escape}
@@ -54,6 +55,7 @@
 					{/if}
 				</a>
 			</p>
+            {/if}
 			{if $section}
 				<p class="metadata">{$section->getLocalizedTitle()|escape}</p>
 			{/if}
@@ -180,7 +182,7 @@
 						src="{$publication->getLocalizedCoverImageUrl($article->getData('contextId'))|escape}"
 						alt="{$coverImage.altText|escape|default:''}"
 					>
-				{else}
+				{elseif $issue}
 					<a href="{url page="issue" op="view" path=$issue->getBestIssueId()}">
 						<img
 							class="img-fluid"
