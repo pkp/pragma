@@ -185,7 +185,7 @@
 						src="{$publication->getLocalizedCoverImageUrl($article->getData('contextId'))|escape}"
 						alt="{$coverImage.altText|escape|default:''}"
 					>
-				{else}
+				{elseif $issue}
 					<a href="{url page="issue" op="view" path=$issue->getBestIssueId()}">
 						<img
 							class="img-fluid"
