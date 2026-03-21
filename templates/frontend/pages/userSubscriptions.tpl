@@ -170,7 +170,7 @@
 							</tr>
 							</thead>
 							<tbody>
-								{iterate from=userInstitutionalSubscriptions item=userInstitutionalSubscription}
+								{foreach from=$userInstitutionalSubscriptions item=userInstitutionalSubscription}
 									<tr>
 										<td>{$userInstitutionalSubscription->getSubscriptionTypeName()|escape}</td>
 										<td>{$userInstitutionalSubscription->getInstitutionName()|escape}</td>
@@ -231,7 +231,7 @@
 											</td>
 										{/if}
 									</tr>
-								{/iterate}
+								{/foreach}
 							</tbody>
 						</table>
 					{/if}
