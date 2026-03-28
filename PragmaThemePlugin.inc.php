@@ -243,7 +243,7 @@ class PragmaThemePlugin extends ThemePlugin {
 			$currentIssue = Repo::issue()->getCurrent($context->getId());
 			if ($navigationMenuItem->getType() === NavigationMenuService::NMI_TYPE_CURRENT) {
 				$issue = $smarty->getTemplateVars('issue');
-				if ($issue && ($issue->getId() === $currentIssue->getId()) && $currentPage == "issue") return $activeMarker;
+				if ($issue && $currentIssue && ($issue->getId() === $currentIssue->getId()) && $currentPage == "issue") return $activeMarker;
 			}
 		}
 
