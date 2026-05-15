@@ -28,10 +28,21 @@
  * @uses $licenseUrl string URL to license. Only assigned if license should be
  *   included with published articles.
  * @uses $ccLicenseBadge string An image and text with details about the license
+ *
+ * @hook Templates::Article::Main []
+ * @hook Templates::Article::Details []
+ * @hook Templates::Article::Details::Reference []
  *}
 
 <article>
 	<header class="row main__header">
+		{* Indicate if this is only a preview *}
+		{if $publication->getData('status') !== PKP\submission\PKPSubmission::STATUS_PUBLISHED}
+			<div role="alert">
+				{capture assign="submissionUrl"}{url page="dashboard" op="editorial" workflowSubmissionId=$article->getId()}{/capture}
+				{translate key="submission.viewingPreview" url=$submissionUrl}
+			</div>
+		{/if}
 		{* Notification that this is an old version *}
 		{if $currentPublication->getId() !== $publication->getId()}
 		<div role="alert">
@@ -237,6 +248,15 @@
 				</section>
 			{/if}
 
+			{* Data Availability Statement *}
+			{assign 'dataAvailability' $publication->getLocalizedData('dataAvailability')}
+			{if $dataAvailability}
+				<section>
+					<h2>{translate key="submission.dataAvailability"}</h2>
+					<p>{$dataAvailability|strip_unsafe_html}</p>
+				</section>
+			{/if}
+
 			{* Licensing info *}
 			{assign 'licenseTerms' $currentContext->getLocalizedData('licenseTerms')}
 			{assign 'copyrightHolder' $publication->getLocalizedData('copyrightHolder')}
@@ -286,7 +306,7 @@
 						</h2>
 						<p>
 							{foreach name=keywords from=$publication->getLocalizedData('keywords') item=keyword}
-								<span>{$keyword|escape}</span>{if !$smarty.foreach.keywords.last}{translate key="common.commaListSeparator"}{/if}
+								<span>{$keyword.name|escape}</span>{if !$smarty.foreach.keywords.last}{translate key="common.commaListSeparator"}{/if}
 							{/foreach}
 						</p>
 					</section>
@@ -340,13 +360,13 @@
 				{/if}
 
 				{* References *}
-				{if $parsedCitations || $publication->getData('citationsRaw')}
+				{if count($parsedCitations) || (string) $publication->getData('citationsRaw')}
 					<hr>
 					<section>
 						<h2>
 							{translate key="submission.citations"}
 						</h2>
-						{if $parsedCitations}
+						{if count($parsedCitations)}
 							<ol>
 								{foreach from=$parsedCitations item="parsedCitation"}
 									<li>{$parsedCitation->getCitationWithLinks()|strip_unsafe_html} {call_hook name="Templates::Article::Details::Reference" citation=$parsedCitation}</li>
