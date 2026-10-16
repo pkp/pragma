@@ -77,25 +77,20 @@
 			</h1>
 
 			{* DOI *}
-			{foreach from=$pubIdPlugins item=pubIdPlugin}
-				{if $pubIdPlugin->getPubIdType() != 'doi'}
-					{continue}
-				{/if}
-				{assign var=pubId value=$article->getStoredPubId($pubIdPlugin->getPubIdType())}
-				{if $pubId}
-					{assign var="doiUrl" value=$pubIdPlugin->getResolvingURL($currentJournal->getId(), $pubId)|escape}
-					<p class="metadata">
-						<a href="{$doiUrl}">{$doiUrl}</a>
-					</p>
-				{/if}
-			{/foreach}
+			{assign var=doiObject value=$article->getCurrentPublication()->getData('doiObject')}
+			{if $doiObject}
+				{assign var="doiUrl" value=$doiObject->getData('resolvingUrl')|escape}
+				<p class="metadata">
+					<a href="{$doiUrl}">{$doiUrl}</a>
+				</p>
+			{/if}
 
 			{* PubIds (other than DOI; requires plugins) *}
 			{foreach from=$pubIdPlugins item=pubIdPlugin}
 				{if $pubIdPlugin->getPubIdType() == 'doi'}
 					{continue}
 				{/if}
-				{assign var=pubId value=$article->getStoredPubId($pubIdPlugin->getPubIdType())}
+				{assign var=pubId value=$publication->getStoredPubId($pubIdPlugin->getPubIdType())}
 				{if $pubId}
 					<p class="metadata">
 						<strong>{$pubIdPlugin->getPubIdDisplayType()|escape}</strong>
@@ -171,12 +166,16 @@
 					{foreach from=$authors item=author}
 					 <div>
 						 <strong>{$author->getFullName()|escape}</strong><br>
+						 {assign var="renderedAffiliation" value=false}
 						 {foreach name="affiliations" from=$author->getAffiliations() item="affiliation"}
-							 {$affiliation->getLocalizedName()|escape}
-							 {if $affiliation->getRor()}
-								 <a class="article__rorImage" href="{$affiliation->getRor()|escape}">{$rorIdIcon}</a>
+							 {if $affiliation->getLocalizedName() || $affiliation->getRor()}
+								 {if $renderedAffiliation}{translate key="common.commaListSeparator"}{/if}
+								 {if $affiliation->getLocalizedName()}{$affiliation->getLocalizedName()|escape}{/if}
+								 {if $affiliation->getRor()}
+									 <a class="article__rorImage" href="{$affiliation->getRor()|escape}">{$rorIdIcon|trim}</a>
+								 {/if}
+								 {assign var="renderedAffiliation" value=true}
 							 {/if}
-							 {if !$smarty.foreach.affiliations.last}{translate key="common.commaListSeparator"}{/if}
 						 {/foreach}
 						<br><br>
                      </div>
@@ -241,7 +240,7 @@
 					<ul>
 						{foreach from=$categories item=category}
 							<li>
-								<a href="{url router=$smarty.const.ROUTE_PAGE page="catalog" op="category" path=$category->getPath()|escape}">{$category->getLocalizedTitle()|escape}</a>
+								<a href="{url router=PKP\core\PKPApplication::ROUTE_PAGE page="catalog" op="category" path=$category->getPath()|escape}">{$category->getLocalizedTitle()|escape}</a>
 							</li>
 						{/foreach}
 					</ul>
@@ -251,9 +250,9 @@
 			{* Data Availability Statement *}
 			{assign 'dataAvailability' $publication->getLocalizedData('dataAvailability')}
 			{if $dataAvailability}
-				<section>
+				<section id="data-availability-statement">
 					<h2>{translate key="submission.dataAvailability"}</h2>
-					<p>{$dataAvailability|strip_unsafe_html}</p>
+					{$dataAvailability|strip_unsafe_html}
 				</section>
 			{/if}
 

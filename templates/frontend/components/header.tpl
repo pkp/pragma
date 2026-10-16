@@ -63,11 +63,11 @@
 			{/if}
 
 			{capture assign="homeUrl"}
-				{url page="index" router=$smarty.const.ROUTE_PAGE}
+				{url page="index" router=PKP\core\PKPApplication::ROUTE_PAGE}
 			{/capture}
 			{if $displayPageHeaderLogo}
 				<a href="{$homeUrl}">
-					<img src="{$publicFilesDir}/{$displayPageHeaderLogo.uploadName|escape:"url"}" width="{$displayPageHeaderLogo.width|escape}" height="{$displayPageHeaderLogo.height|escape}" {if $displayPageHeaderLogo.altText != ''}alt="{$displayPageHeaderLogo.altText|escape}"{else}alt="{translate key="common.pageHeaderLogo.altText"}"{/if}
+					<img src="{$publicFilesDir}/{$displayPageHeaderLogo.uploadName|escape:"url"}" width="{$displayPageHeaderLogo.width|escape}" height="{$displayPageHeaderLogo.height|escape}" {if $displayPageHeaderLogo.altText != ''}alt="{$displayPageHeaderLogo.altText|escape}"{/if}
 					class="img-fluid"/>
 				</a>
 			{elseif $displayPageHeaderTitle}
@@ -94,7 +94,7 @@
 			{if !empty(trim($primaryMenu)) || $currentContext}
 				<button class="navbar-toggler hamburger" data-bs-target="#mainMenu" data-bs-toggle="collapse"
 						type="button"
-						aria-label="Menu" aria-controls="navigation">
+						aria-label="{translate|escape key="plugins.themes.pragma.mainMenu"}" aria-controls="navigation">
 					<span class="hamburger__wrapper">
 						<span class="hamburger__icon"></span>
 					</span>

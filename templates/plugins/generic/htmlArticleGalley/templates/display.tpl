@@ -1,20 +1,16 @@
 {**
-* plugins/generic/htmlArticleGalley/display.tpl
+* plugins/generic/htmlArticleGalley/templates/display.tpl
 *
-* Copyright (c) 2014-2020 Simon Fraser University
-* Copyright (c) 2003-2020 John Willinsky
+* Copyright (c) 2014-2026 Simon Fraser University
+* Copyright (c) 2003-2026 John Willinsky
 * Distributed under the GNU GPL v3. For full terms see the file docs/COPYING.
 *
 * Embedded viewing of a HTML galley.
 *}
-<!DOCTYPE html>
-<html lang="{$currentLocale|replace:"_":"-"}" xml:lang="{$currentLocale|replace:"_":"-"}">
-{capture assign="pageTitleTranslated"}{translate key="article.pageTitle" title=$article->getCurrentPublication()->getLocalizedTitle()|escape}{/capture}
+{capture assign="pageTitleTranslated"}{translate key="article.pageTitle" title=$article->getCurrentPublication()->getLocalizedFullTitle(null, 'html')|strip_unsafe_html}{/capture}
 {include file="frontend/components/header.tpl"}
 
-<body class="pkp_page_{$requestedPage|escape} pkp_op_{$requestedOp|escape}">
-
-<main class="container galley">
+<main class="container galley" id="main">
 
     {capture assign="articleUrl"}{url page="article" op="view" path=$article->getBestId()}{/capture}
 
@@ -26,7 +22,7 @@
 				</a>
 			</p>
 
-			<h1>{$article->getCurrentPublication()->getLocalizedTitle()|escape}</h1>
+			<h1>{$article->getCurrentPublication()->getLocalizedTitle(null, 'html')|strip_unsafe_html}</h1>
 
             {if !$isLatestPublication}
 				<div class="galley_view_notice">
@@ -35,25 +31,21 @@
 					</div>
 				</div>
                 {capture assign="htmlUrl"}
-                    {url page="article" op="download" path=$article->getBestId()|to_array:'version':$galleyPublication->getId():$galley->getBestGalleyId() inline=true}
+                    {url page="article" op="download" path=$article->getBestId()|to_array:'version':$galleyPublication->getId():$galley->getBestGalleyId():$submissionFile->getId() inline=true}
                 {/capture}
             {else}
                 {capture assign="htmlUrl"}
-                    {url page="article" op="download" path=$article->getBestId()|to_array:$galley->getBestGalleyId() inline=true}
+                    {url page="article" op="download" path=$article->getBestId()|to_array:$galley->getBestGalleyId():$submissionFile->getId() inline=true}
                 {/capture}
             {/if}
 		</header>
 
 		<div id="htmlContainer" class="offset-md-2 col-md-8 galley__content"
 		     style="overflow:visible;-webkit-overflow-scrolling:touch">
-			<iframe id="htmlGalleyFrame" name="htmlFrame" src="{$htmlUrl}" allowfullscreen
+			<iframe id="htmlGalleyFrame" name="htmlFrame" src="{$htmlUrl}" title="{translate key="submission.representationOfTitle" representation=$galley->getLabel()|escape title=$galleyPublication->getLocalizedFullTitle(null)|escape}" allowfullscreen
 			        webkitallowfullscreen></iframe>
 		</div>
 	</div>
 </main>
 
-{call_hook name="Templates::Common::Footer::PageFooter"}
-
 {include file="frontend/components/footer.tpl"}
-</body>
-</html>

@@ -40,7 +40,7 @@
 						<h3 class="journal-desc__title">{translate key="about.aboutContext"}</h3>
 						{$journalDescription|strip_unsafe_html|truncate:450}
 						<p>
-							{capture assign="aboutPageUrl"}{url router=$smarty.const.ROUTE_PAGE page="about"}{/capture}
+							{capture assign="aboutPageUrl"}{url router=PKP\core\PKPApplication::ROUTE_PAGE page="about"}{/capture}
 							<a href="{$aboutPageUrl}" class="btn btn-primary">{translate key="plugins.themes.pragma.more-info"}</a>
 						</p>
 					</article>
@@ -64,7 +64,7 @@
                                 <p class="metadata">{$announcement->datePosted|date_format:$dateFormatLong}</p>
                                 <p>{$announcement->getLocalizedData('descriptionShort')|strip_unsafe_html}</p>
                                 <p>
-                                    {capture assign="announcementPageUrl"}{url router=$smarty.const.ROUTE_PAGE page="announcement" op="view" path=$announcement->id}{/capture}
+                                    {capture assign="announcementPageUrl"}{url router=PKP\core\PKPApplication::ROUTE_PAGE page="announcement" op="view" path=$announcement->id}{/capture}
                                     <a href="{$announcementPageUrl}" class="btn btn-secondary">{translate key="common.more"}</a>
                                 </p>
                             </article>

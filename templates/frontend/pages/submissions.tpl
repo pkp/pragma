@@ -22,22 +22,28 @@
 			</header>
 
 			{* Login/register prompt *}
-			{if $isUserLoggedIn}
-				{capture assign="newSubmission"}<a
-					href="{url page="submission" op="wizard"}">{translate key="about.onlineSubmissions.newSubmission"}</a>{/capture}
-				{capture assign="viewSubmissions"}<a
-					href="{url page="submissions"}">{translate key="about.onlineSubmissions.viewSubmissions"}</a>{/capture}
+			{if $sections|@count == 0 || $currentContext->getData('disableSubmissions')}
 				<div>
-					{translate key="about.onlineSubmissions.submissionActions" newSubmission=$newSubmission viewSubmissions=$viewSubmissions}
+					{translate key="author.submit.notAccepting"}
 				</div>
 			{else}
-				{capture assign="login"}<a
-					href="{url page="login"}">{translate key="about.onlineSubmissions.login"}</a>{/capture}
-				{capture assign="register"}<a
-					href="{url page="user" op="register"}">{translate key="about.onlineSubmissions.register"}</a>{/capture}
-				<div>
-					{translate key="about.onlineSubmissions.registrationRequired" login=$login register=$register}
-				</div>
+				{if $isUserLoggedIn}
+					{capture assign="newSubmission"}<a
+						href="{url page="submission"}">{translate key="about.onlineSubmissions.newSubmission"}</a>{/capture}
+					{capture assign="viewSubmissions"}<a
+						href="{url page="submissions"}">{translate key="about.onlineSubmissions.viewSubmissions"}</a>{/capture}
+					<div>
+						{translate key="about.onlineSubmissions.submissionActions" newSubmission=$newSubmission viewSubmissions=$viewSubmissions}
+					</div>
+				{else}
+					{capture assign="login"}<a
+						href="{url page="login"}">{translate key="about.onlineSubmissions.login"}</a>{/capture}
+					{capture assign="register"}<a
+						href="{url page="user" op="register"}">{translate key="about.onlineSubmissions.register"}</a>{/capture}
+					<div>
+						{translate key="about.onlineSubmissions.registrationRequired" login=$login register=$register}
+					</div>
+				{/if}
 			{/if}
 
 			{if $currentContext->getLocalizedData('authorGuidelines')}
@@ -93,9 +99,9 @@
 								{$section->getLocalizedPolicy()}
 							{/if}
 							{if $isUserLoggedIn}
-								{capture assign="sectionSubmissionUrl"}{url page="submission" op="wizard" sectionId=$section->getId()}{/capture}
+								{capture assign="sectionSubmissionUrl"}{url page="submission" sectionId=$section->getId()}{/capture}
 								<p>
-									{translate key="about.onlineSubmissions.submitToSection" name=$section->getLocalizedTitle() url=$sectionSubmissionUrl}
+									{translate key="about.onlineSubmissions.submitToSection" name=$section->getLocalizedTitle()|escape url=$sectionSubmissionUrl}
 								</p>
 							{/if}
 						</section>
