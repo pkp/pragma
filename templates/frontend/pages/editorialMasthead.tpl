@@ -15,7 +15,7 @@
         <div class="offset-md-1 col-md-10 offset-lg-2 col-lg-8">
             <header class="main__header">
                 <h1 class="main__title">
-                    <span>{translate key="common.editorialMasthead"}<span>
+                    <span>{translate key="common.editorialMasthead"}</span>
                 </h1>
             </header>
 
@@ -26,7 +26,9 @@
                         {foreach from=$mastheadUsers[$mastheadRole->id] item="mastheadUser"}
                             <li>
                                 {strip}
-                                    <span class="date_start">{translate key="common.fromUntil" from=$mastheadUser['dateStart'] until=""}</span>
+                                    {if !empty($mastheadUser['dateStart'])}
+                                        <span class="date_start">{translate key="common.fromUntil" from=$mastheadUser['dateStart'] until=""}</span>
+                                    {/if}
                                     <span class="name">
                                         {$mastheadUser['user']->getFullName()|escape}
                                             {if $mastheadUser['user']->getData('orcid') && $mastheadUser['user']->hasVerifiedOrcid()}
@@ -47,7 +49,7 @@
                 {/if}
             {/foreach}
 			<p>
-				{capture assign=editorialHistoryUrl}{url page="about" op="editorialHistory" router=\PKP\core\PKPApplication::ROUTE_PAGE}{/capture}
+				{capture assign=editorialHistoryUrl}{url page="about" op="editorialHistory" router=PKP\core\PKPApplication::ROUTE_PAGE}{/capture}
 				{translate key="about.editorialMasthead.linkToEditorialHistory" url=$editorialHistoryUrl}
 			</p>
             <hr>

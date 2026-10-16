@@ -25,7 +25,7 @@
 			      action="{url page="login" op="requestResetPassword"}" method="post">
 				{csrf}
 				{if $error}
-					{translate key=$error}
+					{translate key=$error reason=$reason}
 				{/if}
 
 				<fieldset>

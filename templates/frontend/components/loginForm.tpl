@@ -22,14 +22,14 @@
 	<fieldset>
 		<div class="form-group">
 			<label for="usernameModal" class="form-label">
-				{translate key="user.username"}
+				{translate key="user.usernameOrEmail"}
 				<span class="required" aria-hidden="true">*</span>
 				<span class="visually-hidden">
 					{translate key="common.required"}
 				</span>
 			</label>
 			<input type="text" class="form-control" name="username" id="usernameModal" value="{$username|default:""|escape}"
-			       maxlength="32" required>
+			       required>
 		</div>
 		<div class="form-group">
 			<label for="passwordModal" class="form-label">
