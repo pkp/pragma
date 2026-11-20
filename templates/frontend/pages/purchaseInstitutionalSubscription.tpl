@@ -34,7 +34,7 @@
 						<div class="form-group">
 							<label for="typeId">
 								{translate key="user.subscriptions.form.typeId"}
-								<span class="required">*</span>
+								<span class="required" aria-hidden="true">*</span>
 								<span class="visually-hidden">
 								{translate key="common.required"}
 								</span>
@@ -89,7 +89,7 @@
 							<label for="ipRanges">
 								{translate key="user.subscriptions.form.ipRange"}
 							</label>
-							<input class="form-control" type="text" name="ipRanges" id="ipRanges" value="{$ipRanges|escape}" aria-describedby="subscriptionIPDescription">
+							<textarea class="form-control" name="ipRanges" id="ipRanges" aria-describedby="subscriptionIPDescription">{$ipRanges|escape}</textarea>
 							<small id="subscriptionIPDescription">{translate key="user.subscriptions.form.ipRangeInstructions"}</small>
 						</div>
 					</div>

@@ -21,6 +21,9 @@
 			</header>
 
 			<form class="cmp_form register" id="register" method="post" action="{url op="register"}">
+				{if $orcidEnabled}
+					{include file="form/orcidProfile.tpl"}
+				{/if}
 				{csrf}
 
 				{if $source}
@@ -42,7 +45,7 @@
 									<input type="checkbox" class="form-check-input" name="privacyConsent" id="privacyConsent"
 										   value="1"{if $privacyConsent} checked="checked"{/if}>
 									<label for="privacyConsent" class="form-check-label">
-										{capture assign="privacyUrl"}{url router=$smarty.const.ROUTE_PAGE page="about" op="privacy"}{/capture}
+										{capture assign="privacyUrl"}{url router=PKP\core\PKPApplication::ROUTE_PAGE page="about" op="privacy"}{/capture}
 										{translate key="user.register.form.privacyConsent" privacyUrl=$privacyUrl}
 									</label>
 								</div>

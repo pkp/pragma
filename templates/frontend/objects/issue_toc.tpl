@@ -18,6 +18,11 @@
  * @uses $sectionHeading string Tag to use (h2, h3, etc) for section headings
  *}
 
+{* Indicate if this is only a preview *}
+{if !$issue->getPublished()}
+	{include file="frontend/components/notification.tpl" type="warning" messageKey="editor.issues.preview"}
+{/if}
+
 <div class="row">
 	<header class="col-sm-8 issue">
 		{if $requestedOp === "index"}
@@ -46,6 +51,31 @@
 			<h2 class="issue__title">
 				{$smarty.capture.issueMetadata}
 			</h2>
+		{/if}
+
+		{* Pub IDs (eg - URN) *}
+		{foreach from=$pubIdPlugins item=pubIdPlugin}
+			{assign var=pubId value=$issue->getStoredPubId($pubIdPlugin->getPubIdType())}
+			{if $pubId}
+				{assign var="resolvingUrl" value=$pubIdPlugin->getResolvingURL($currentJournal->getId(), $pubId)|escape}
+				<p class="metadata">
+					<strong>{$pubIdPlugin->getPubIdDisplayType()|escape}</strong>
+					{if $resolvingUrl}
+						<a href="{$resolvingUrl}">{$resolvingUrl}</a>
+					{else}
+						{$pubId|escape}
+					{/if}
+				</p>
+			{/if}
+		{/foreach}
+
+		{* DOI *}
+		{assign var=doiObject value=$issue->getData('doiObject')}
+		{if $doiObject}
+			{assign var="doiUrl" value=$doiObject->getData('resolvingUrl')|escape}
+			<p class="metadata">
+				<a href="{$doiUrl}">{$doiUrl}</a>
+			</p>
 		{/if}
 
 		{if $issue->getDatePublished()}
@@ -89,7 +119,7 @@
 		<hr/>
 		<section class="issue-section">
 			{if !$contentTableInserted}
-				<h3 class="issue-section__toc-title">Table of contents</h3>
+				<h3 class="issue-section__toc-title">{translate key="issue.toc"}</h3>
 				{assign var=contentTableInserted value=true}
 			{/if}
 			<header class="issue-section__header">
