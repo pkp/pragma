@@ -36,7 +36,7 @@
 			<h2 class="visually-hidden">{translate key="search.advancedFilters"}</h2>
 			{capture name="searchFormUrl"}{url op="search" escape=false}{/capture}
 			{assign var=formUrlParameters value=[]}{* Prevent Smarty warning *}
-			{$smarty.capture.searchFormUrl|parse_url:$smarty.const.PHP_URL_QUERY|parse_str:$formUrlParameters}
+			{$smarty.capture.searchFormUrl|parse_url:$smarty.const.PHP_URL_QUERY|default:""|parse_str:$formUrlParameters}
 			<form class="cmp_form" method="get" action="{$smarty.capture.searchFormUrl|strtok:"?"|escape}">
 				{foreach from=$formUrlParameters key=paramKey item=paramValue}
 					<input type="hidden" name="{$paramKey|escape}" value="{$paramValue|escape}"/>
@@ -54,6 +54,21 @@
 					</label>
 					<input type="text" class="form-control" id="authors" name="authors" value="{$authors|escape}" placeholder="{translate key='common.name'}">
 				</div>
+				{if $searchableContexts}
+					<div class="form-group">
+						<label for="searchJournal">
+							{translate key="search.journal"}
+						</label>
+						<select class="form-control" name="searchJournal" id="searchJournal">
+							<option></option>
+							{foreach from=$searchableContexts item="searchableContext"}
+								<option value="{$searchableContext->id}" {if $searchJournal == $searchableContext->id}selected{/if}>
+									{$searchableContext->name|escape}
+								</option>
+							{/foreach}
+						</select>
+					</div>
+				{/if}
 				<div class="form-group">
 					<label for="dateFromYear">
 						{translate key="search.dateFrom"}
@@ -70,6 +85,7 @@
 						{html_select_date class="form-control" prefix="dateTo" time=$dateTo start_year=$yearStart end_year=$yearEnd year_empty="{translate key='common.year'}" month_empty="{translate key='common.month'}" day_empty="{translate key='common.day'}" field_order="YMD"}
 					</div>
 				</div>
+				{call_hook name="Templates::Search::SearchResults::AdditionalFilters"}
 				<div class="form-group">
 					<button class="btn btn-primary" type="submit">{translate key="common.search"}</button>
 				</div>
@@ -77,6 +93,8 @@
 		</aside>
 
 		<div class="col-md-8">
+			{call_hook name="Templates::Search::SearchResults::PreResults"}
+
 			{* No results found *}
 			{if $results->wasEmpty()}
 				{if $error}

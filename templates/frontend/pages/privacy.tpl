@@ -20,7 +20,7 @@
 				</h1>
 			</header>
 			<div>
-				{$currentContext->getLocalizedData('privacyStatement')}
+				{$privacyStatement}
 			</div>
 		</div>
 	</div>

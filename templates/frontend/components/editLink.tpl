@@ -15,7 +15,7 @@
  * @uses SectionTitleKey string A key that must be translated to get the
  *       $sectionTitle
  *}
-{if in_array(\PKP\security\Role::ROLE_ID_MANAGER, (array) $userRoles)}
+{if in_array(PKP\security\Role::ROLE_ID_MANAGER, (array) $userRoles)}
 
 	{* Render the $sectionTitle if we only have a translation key *}
 	{if $sectionTitleKey}
@@ -28,7 +28,7 @@
 		{capture assign="editLinkUrl"}{url page=$page op=$op path=$path}{/capture}
 	{/if}
 
-	<small class="float-right">
+	<small class="float-end">
 		<a href="{$editLinkUrl}" class="btn btn-primary" target="_blank">
 			{translate key="common.edit"}
 			{* Screen readers need more context *}
