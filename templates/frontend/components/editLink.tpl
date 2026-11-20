@@ -28,7 +28,7 @@
 		{capture assign="editLinkUrl"}{url page=$page op=$op path=$path}{/capture}
 	{/if}
 
-	<small class="float-right">
+	<small class="float-end">
 		<a href="{$editLinkUrl}" class="btn btn-primary" target="_blank">
 			{translate key="common.edit"}
 			{* Screen readers need more context *}

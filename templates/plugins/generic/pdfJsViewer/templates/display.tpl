@@ -23,7 +23,7 @@
 						{/if}
 					</a>
 
-					<a href="{$pdfUrl}" class="btn btn-primary float-right" download>
+					<a href="{$pdfUrl}" class="btn btn-primary float-end" download>
 						{translate key="common.download"}
 						<span class="visually-hidden">
 							{translate key="common.downloadPdf"}
