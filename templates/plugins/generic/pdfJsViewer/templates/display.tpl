@@ -55,7 +55,7 @@
 			</script>
 
 			<div id="pdfCanvasContainer" class="offset-lg-1 col-lg-10 galley__content" style="overflow: visible; -webkit-overflow-scrolling: touch;">
-				<iframe src="" width="100%" height="100%" style="min-height: 500px;" title="{$galleyTitle|escape}" allowfullscreen webkitallowfullscreen></iframe>
+				<iframe src="" width="100%" height="100%" style="min-height: 500px;" title="{$galleyTitle|escape}" allow="fullscreen" webkitallowfullscreen="webkitallowfullscreen"></iframe>
 			</div>
 		</div>
 	</main>
