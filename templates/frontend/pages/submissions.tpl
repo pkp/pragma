@@ -77,7 +77,7 @@
 			{/if}
 
 			{if $currentContext->getLocalizedData('privacyStatement')}
-				<section>
+				<section id="privacyStatement">
 					{include file="frontend/components/editLink.tpl" page="management" op="settings" path="website" anchor="setup/privacy" sectionTitleKey="about.privacyStatement"}
 					<h2>
 						{translate key="about.privacyStatement"}
