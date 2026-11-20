@@ -32,7 +32,7 @@
 					<div class="form-group">
 						<label for="email">
 							{translate key="user.login.registeredEmail"}
-							<span class="required">*</span>
+							<span class="required" aria-hidden="true">*</span>
 							<span class="visually-hidden">{translate key="common.required"}</span>
 						</label>
 						<input class="form-control" type="email" name="email" id="email" value="{$email|escape}" required>
